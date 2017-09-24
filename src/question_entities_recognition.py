@@ -3,7 +3,8 @@ import re
 
 from src.TextRazorManager import TextRazorManager
 
-qa_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\WebQuestions'
+# qa_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\WebQuestions'
+qa_folder = r'D:\MeachineLearningData'
 train_path = os.path.join(qa_folder, 'webquestions.examples.train.json')
 test_path = os.path.join(qa_folder, 'webquestions.examples.test.json')
 
@@ -39,6 +40,7 @@ def parse_question(question):
 
     def do_parse(client, question):
       try:
+        # TODO 还不知道Parse失败会返回什么 下次可以试一下
         response = client.analyze(question)
         success = response.ok
       except:
