@@ -8,8 +8,8 @@ qa_folder = r'D:\MeachineLearningData'
 train_path = os.path.join(qa_folder, 'webquestions.examples.train.json')
 test_path = os.path.join(qa_folder, 'webquestions.examples.test.json')
 
-train_res_path = '../data/webquestions.train.textrazor.txt'
-test_res_path = '../data/webquestions.test.textrazor.txt'
+train_res_path = '../data/webquestions.train.textrazor.full.txt'
+test_res_path = '../data/webquestions.test.textrazor.full.txt'
 
 train_log_path = '../log/train.log'
 test_log_path = '../log/test.log'
