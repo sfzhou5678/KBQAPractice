@@ -19,22 +19,15 @@ import json
 #   wf.write('b\n')
 #   wf.write(str(data))
 
-parsed_qapair = []
-with open('../data/webquestions.train.textrazor.txt', encoding='utf-8') as f:
-  lines = f.readlines()
-  for line in lines:
-    qa_pair = eval(line.strip())
-    parsed_qapair.append(qa_pair)
+import numpy as np
 
-raw_qapair = []
-import os
-
-with open(os.path.join(r'D:\DeeplearningData\NLP-DATA\英文QA\WebQuestions', 'webquestions.examples.train.json')) as f:
-  lines = f.readlines()
-  for line in lines[:-5]:
-    if line.count('utterance') > 0:
-      qa_pair = eval(line.strip())[0]
-      raw_qapair.append(qa_pair)
-
-for item1, item2 in zip(parsed_qapair, raw_qapair):
-  print(item1['question']+'\t'+item2['utterance'])
+batch_size = 8
+for i in range(222, 223):
+  raw_data = range(i)
+  data_len = np.size(raw_data)
+  batch_len = (data_len // batch_size) // 3
+  data = np.reshape(raw_data[0: batch_size * batch_len * 3],
+                    [batch_size, -1])
+  print(data)
+  if len(data[0]) % 3 != 0:
+    print(i)
