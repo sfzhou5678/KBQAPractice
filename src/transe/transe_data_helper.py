@@ -4,6 +4,7 @@ import time
 import numpy as np
 import tensorflow as tf
 from collections import Counter
+import pickle
 import collections
 
 
@@ -64,6 +65,7 @@ def build_word_dictionary(words, vocab_size, UNK='_UNK_'):
     if word not in word2id:
       unk_count += 1
   count[0][1] = unk_count
+  print('unk count=%d' % unk_count)
   id2word = dict(zip(word2id.values(), word2id.keys()))
   return count, word2id, id2word
 
@@ -99,48 +101,39 @@ def build_vocab(files, entity_vocab_size, relation_vocab_size):
 
 def build_ids(raw_file_path, ids_file_path, entities_word2id, relations_word2id):
   if os.path.exists(ids_file_path):
-    datas = []
     try:
-      with open(ids_file_path, encoding='utf-8') as f:
-        lines = f.readlines()
-        for line in lines:
-          data = line.strip().split('\t')
-          assert len(data) == 3
-          data = [int(item) for item in data]
-          datas.append(data)
+      f_read = open(ids_file_path, 'rb')
+      datas = pickle.load(f_read)
       return datas
     except:
       print('读取ids时发生异常')
-  try:
-    datas = []
-    with open(raw_file_path, encoding='utf-8') as f:
-      with open(ids_file_path, 'w', encoding='utf-8') as wf:
-        lines = f.readlines()
-        for line in lines:
-          head, relation, tail = line.strip().split('\t')
 
-          if head in entities_word2id:
-            head = entities_word2id[head]
-          else:
-            head = 0
+  datas = []
+  with open(raw_file_path, encoding='utf-8') as f:
+    lines = f.readlines()
+    for line in lines:
+      head, relation, tail = line.strip().split('\t')
 
-          if tail in entities_word2id:
-            tail = entities_word2id[tail]
-          else:
-            tail = 0
+      if head in entities_word2id:
+        head = entities_word2id[head]
+      else:
+        head = 0
 
-          if relation in relations_word2id:
-            relation = relations_word2id[relation]
-          else:
-            relation = 0
+      if tail in entities_word2id:
+        tail = entities_word2id[tail]
+      else:
+        tail = 0
 
-          data = [head, relation, tail]
-          datas.append(data)
-          wf.write('\t'.join(str(item) for item in data) + '\n')
-          wf.flush()
-    return datas
-  except:
-    print('%s不存在' % raw_file_path)
+      if relation in relations_word2id:
+        relation = relations_word2id[relation]
+      else:
+        relation = 0
+
+      data = [head, relation, tail]
+      datas.append(data)
+    f_write = open(ids_file_path, 'wb')
+    pickle.dump(datas, f_write, True)
+  return datas
 
 
 def batch_producer(ids, batch_size):
@@ -163,8 +156,8 @@ def batch_producer(ids, batch_size):
     raw_data = tf.reshape(raw_data, [-1])
 
     data_len = tf.size(raw_data)
-    batch_len = (data_len // batch_size)//3
-    data = tf.reshape(raw_data[0: batch_size * batch_len*3],
+    batch_len = (data_len // batch_size) // 3
+    data = tf.reshape(raw_data[0: batch_size * batch_len * 3],
                       [batch_size, -1])
 
     assertion = tf.assert_positive(
@@ -173,19 +166,18 @@ def batch_producer(ids, batch_size):
     with tf.control_dependencies([assertion]):
       batch_len = tf.identity(batch_len, name="epoch_size")
 
-
     i = tf.train.range_input_producer(batch_len, shuffle=False).dequeue()
 
-    head = tf.strided_slice(data, [0, i*3],
-                            [batch_size, i*3 + 1])
+    head = tf.strided_slice(data, [0, i * 3],
+                            [batch_size, i * 3 + 1])
     head = tf.reshape(head, [-1])
 
-    relation = tf.strided_slice(data, [0, i*3 + 1],
-                                [batch_size, i*3 + 2])
+    relation = tf.strided_slice(data, [0, i * 3 + 1],
+                                [batch_size, i * 3 + 2])
     relation = tf.reshape(relation, [-1])
 
-    tail = tf.strided_slice(data, [0, i*3 + 2],
-                            [batch_size, i*3 + 3])
+    tail = tf.strided_slice(data, [0, i * 3 + 2],
+                            [batch_size, i * 3 + 3])
     tail = tf.reshape(tail, [batch_size, 1])
 
     return head, relation, tail
