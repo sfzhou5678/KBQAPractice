@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
   with tf.name_scope('Test'):
     # 注意这里的variable_scope要和训练集一致，而且train的reuse=None而valid和test的reuse都是True
-    with tf.variable_scope("Model", reuse=True, initializer=initializer):
+    with tf.variable_scope("Model", reuse=True):
       test_model = TransEModel(config=config, is_training=False)
 
   sess_config = tf.ConfigProto()
@@ -47,11 +47,11 @@ if __name__ == '__main__':
       head, relations, tail = sess.run([train_head_batch, train_r_batch, train_t_batch])
       # _, loss = sess.run([model.train_op, model.loss],
       #                    {model.heads: head, model.relations: relations, model.tails: tail})
-      _, softmax_loss, _, loss = sess.run([model.softmax_train_op, model.softmax_loss,
-                                           model.train_op, model.loss,
-                                           ],
-                                          {model.heads: head, model.relations: relations,
-                                           model.tails: tail})
+      _, softmax_loss, _, loss, = sess.run([model.softmax_train_op, model.softmax_loss,
+                                            model.train_op, model.loss,
+                                            ],
+                                           {model.heads: head, model.relations: relations,
+                                            model.tails: tail})
       if step % 400 == 0:
         softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
           [model.softmax_pred, model.softmax_accuracy,
@@ -75,7 +75,17 @@ if __name__ == '__main__':
         print('[t-softmax acc: %.3f]\t[t-top20 acc: %.3f]\t[t-top100 acc: %.3f]' % (
           test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
 
-        # print('[%d] %.4f, %.4f' % (i, loss, test_loss))
+        # test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
+        # # test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
+        # #                                         {test_model.heads: test_head, test_model.relations: test_relation,
+        # #                                          test_model.tails: test_tail})
+        #
+        # # 用训练集数据做测试，验证test函数是否有误
+        # test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
+        #                                         {test_model.heads: head, test_model.relations: relations,
+        #                                          test_model.tails: tail})
+
+        print('[%d] %.4f, %.4f' % (step, loss, test_loss))
 
     coord.request_stop()
     coord.join(threads)

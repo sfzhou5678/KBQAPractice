@@ -20,10 +20,10 @@ class TransEModel:
     # Ops and variables pinned to the CPU because of missing GPU implementation
     with tf.device('/cpu:0'):
       # Look up embeddings for inputs.
-      entities_embeddings = tf.Variable(
-        tf.random_uniform([entities_vocab_size, embedding_size], -1.0, 1.0))
-      relations_embeddings = tf.Variable(
-        tf.random_uniform([relations_vocab_size, embedding_size], -1.0, 1.0))
+      entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, embedding_size],
+                                            dtype=tf.float32)
+      relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, embedding_size],
+                                             dtype=tf.float32)
 
       embed_heads = tf.nn.embedding_lookup(entities_embeddings, self.heads)
       # embed_tails = tf.nn.embedding_lookup(entities_embeddings, tails)  # target不需要做embedding
@@ -34,7 +34,14 @@ class TransEModel:
       nce_weights = tf.Variable(
         tf.truncated_normal([entities_vocab_size, embedding_size],
                             stddev=1.0 / math.sqrt(embedding_size)))
-      nce_biases = tf.Variable(tf.zeros([entities_vocab_size]))
+      nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size],
+                                    dtype=tf.float32,
+                                    # initializer=tf.truncated_normal([entities_vocab_size, embedding_size],
+                                    #                                 stddev=1.0 / math.sqrt(embedding_size))
+                                    )
+
+      # nce_biases = tf.Variable(tf.zeros([entities_vocab_size]))
+      nce_biases = tf.get_variable('nce_biases', [entities_vocab_size], dtype=tf.float32, )
 
     embed = tf.add(embed_heads, embed_relations)
 
@@ -58,8 +65,6 @@ class TransEModel:
                      inputs=embed,
                      num_sampled=num_sampled,
                      num_classes=entities_vocab_size))
-
-
 
     correct_prediction = tf.equal(tf.cast(tf.argmax(softmax_logits, -1), dtype=tf.int32),
                                   tf.reshape(self.tails, [batch_size]))
