@@ -21,13 +21,12 @@ import json
 
 import numpy as np
 
-batch_size = 8
-for i in range(222, 223):
-  raw_data = range(i)
-  data_len = np.size(raw_data)
-  batch_len = (data_len // batch_size) // 3
-  data = np.reshape(raw_data[0: batch_size * batch_len * 3],
-                    [batch_size, -1])
-  print(data)
-  if len(data[0]) % 3 != 0:
-    print(i)
+def func(num,k):
+  kk=[]
+  for item in k:
+    print(item)
+    kk.append(item)
+  return kk
+
+a,b,c=func(5,[1,2,3])
+print(a,b,c)
