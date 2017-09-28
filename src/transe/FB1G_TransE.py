@@ -85,7 +85,7 @@ if __name__ == '__main__':
         #                                         {test_model.heads: head, test_model.relations: relations,
         #                                          test_model.tails: tail})
 
-        print('[%d] %.4f, %.4f' % (step, loss, test_loss))
+        # print('[%d] %.4f, %.4f' % (step, loss, test_loss))
 
     coord.request_stop()
     coord.join(threads)
