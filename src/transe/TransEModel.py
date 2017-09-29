@@ -31,9 +31,9 @@ class TransEModel:
       embed_relations = tf.nn.embedding_lookup(relations_embeddings, self.relations)
       # Construct the variables for the NCE loss
       # TODO nce weights是什么？
-      nce_weights = tf.Variable(
-        tf.truncated_normal([entities_vocab_size, embedding_size],
-                            stddev=1.0 / math.sqrt(embedding_size)))
+      # nce_weights = tf.Variable(
+      #   tf.truncated_normal([entities_vocab_size, embedding_size],
+      #                       stddev=1.0 / math.sqrt(embedding_size)))
       nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size],
                                     dtype=tf.float32,
                                     # initializer=tf.truncated_normal([entities_vocab_size, embedding_size],

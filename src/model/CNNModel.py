@@ -109,7 +109,30 @@ class CNNModel:
     similarity_mode = 'concat'
     if similarity_mode == 'concat':
       question_latent = tf.concat([question_entity_latent, question_relation_latent], axis=-1)
-      ans_latent = tf.concat([embedded_entity, embedded_entity], axis=-1)
+
+      # 首先尝试对relation做负采样
+      neg_entity_sampler = tf.nn.log_uniform_candidate_sampler(
+        true_classes=self.relation,
+        num_true=1,
+        num_sampled=32,
+        unique=True,
+        range_max=relations_vocab_size)
+      from tensorflow.python.ops import embedding_ops
+      from tensorflow.python.ops import candidate_sampling_ops
+      from tensorflow.python.ops import array_ops
+      from tensorflow.python.ops import math_ops
+
+      sampled_relation, true_expected_count, sampled_expected_count = (
+        array_ops.stop_gradient(s) for s in neg_entity_sampler)
+      sampled_relation = math_ops.cast(sampled_relation, tf.int32)  # shape=[batchsize,num_sampled]
+
+      # with tf.device("/cpu:0"):
+      #   embedded_neg_relation = tf.nn.embedding_lookup(relations_embeddings, sampled_relation)
+
+      neg_ans_lantent=tf.concat([tf.concat([embedded_entity]*num_sampled,axis=-1),
+                                 ],axis=-1)
+      #
+      ans_latent = tf.concat([embedded_entity, embedded_relation], axis=-1)
 
       question_final_latent = self.get_latent(question_latent, output_latent_vec_size=100,
                                               name='final_similarity_layer', is_training=is_training)

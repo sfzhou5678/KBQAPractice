@@ -1,32 +1,122 @@
 import json
-
-# # inp_str = " {'k1':123, 'k2': '345',’k3’,’ares’} "
-# # str = '{"time": 0.004747, "ok": True, "response": {"language": "eng", "properties": [{"wordPositions": [3], "id": 0, "propertyPositions": [2]}], "sentences": [{"words": [{"token": "what", "partOfSpeech": "WP", "relationToParent": "nsubj", "lemma": "what", "startingPos": 0, "endingPos": 4, "stem": "what", "parentPosition": 4, "position": 0}, {"token": "does", "partOfSpeech": "VBZ", "relationToParent": "aux", "lemma": "do", "startingPos": 5, "endingPos": 9, "stem": "doe", "parentPosition": 4, "position": 1}, {"token": "jamaican", "partOfSpeech": "JJ", "relationToParent": "amod", "lemma": "jamaican", "startingPos": 10, "endingPos": 18, "stem": "jamaican", "parentPosition": 3, "position": 2}, {"token": "people", "partOfSpeech": "NNS", "relationToParent": "nsubj", "lemma": "person", "startingPos": 19, "endingPos": 25, "stem": "peopl", "parentPosition": 4, "position": 3}, {"token": "speak", "partOfSpeech": "VBP", "lemma": "speak", "startingPos": 26, "endingPos": 31, "stem": "speak", "position": 4}, {"token": "?", "partOfSpeech": ".", "relationToParent": "punct", "lemma": "?", "startingPos": 31, "endingPos": 32, "stem": "?", "parentPosition": 4, "position": 5}], "position": 0}], "languageIsReliable": True, "entities": [{"freebaseTypes": ["/location/location"], "id": 0, "confidenceScore": 0.5, "matchingTokens": [2], "startingPos": 10, "relevanceScore": 0, "type": ["Place"], "entityEnglishId": "", "matchedText": "jamaican", "wikiLink": "", "endingPos": 18, "entityId": "jamaican"}], "nounPhrases": [{"wordPositions": [0], "id": 0}, {"wordPositions": [2, 3], "id": 1}]}}'
-# str='{"response": {"sentences": [{"position": 0, "words": [{"token": "what", "relationToParent": "nsubj", "startingPos": 0, "parentPosition": 4, "position": 0, "lemma": "what", "endingPos": 4, "partOfSpeech": "WP", "stem": "what"}, {"token": "does", "relationToParent": "aux", "startingPos": 5, "parentPosition": 4, "position": 1, "lemma": "do", "endingPos": 9, "partOfSpeech": "VBZ", "stem": "doe"}, {"token": "jamaican", "relationToParent": "amod", "startingPos": 10, "parentPosition": 3, "position": 2, "lemma": "jamaican", "endingPos": 18, "partOfSpeech": "JJ", "stem": "jamaican"}, {"token": "people", "relationToParent": "nsubj", "startingPos": 19, "parentPosition": 4, "position": 3, "lemma": "person", "endingPos": 25, "partOfSpeech": "NNS", "stem": "peopl"}, {"token": "speak", "startingPos": 26, "position": 4, "lemma": "speak", "endingPos": 31, "partOfSpeech": "VBP", "stem": "speak"}, {"token": "?", "relationToParent": "punct", "startingPos": 31, "parentPosition": 4, "position": 5, "lemma": "?", "endingPos": 32, "partOfSpeech": ".", "stem": "?"}]}], "language": "eng", "properties": [{"wordPositions": [3], "propertyPositions": [2], "id": 0}], "languageIsReliable": True, "entities": [{"type": ["Place"], "confidenceScore": 0.5, "wikiLink": "", "freebaseTypes": ["/location/location"], "startingPos": 10, "endingPos": 18, "entityEnglishId": "", "matchingTokens": [2], "entityId": "jamaican", "relevanceScore": 0, "id": 0, "matchedText": "jamaican"}]}, "ok": True, "time": 0.004139}'
-# # str="{'language': 'eng', 'entailments': [{'entailedWords': ['jamaican'], 'score': 1, 'wordPositions': [2], 'entailedTree': {'word': 'jamaican'}, 'priorScore': 1, 'id': 0, 'contextScore': 1}, {'entailedWords': ['american'], 'score': 1.059, 'wordPositions': [2], 'entailedTree': {'word': 'american'}, 'priorScore': 0.04959, 'id': 1, 'contextScore': -0.08149}, {'entailedWords': ['chinese'], 'score': 0.9618, 'wordPositions': [2], 'entailedTree': {'word': 'chinese'}, 'priorScore': 0.04545, 'id': 2, 'contextScore': -0.1178}, {'entailedWords': ['polish'], 'score': 0.8329, 'wordPositions': [2], 'entailedTree': {'word': 'polish'}, 'priorScore': 0.03829, 'id': 3, 'contextScore': -0.08242}, {'entailedWords': ['jewish'], 'score': 0.7308, 'wordPositions': [2], 'entailedTree': {'word': 'jewish'}, 'priorScore': 0.03399, 'id': 4, 'contextScore': -0.1227}, {'entailedWords': ['french'], 'score': 0.8125, 'wordPositions': [2], 'entailedTree': {'word': 'french'}, 'priorScore': 0.03688, 'id': 5, 'contextScore': -0.06298}, {'entailedWords': ['local'], 'score': 1.181, 'wordPositions': [2], 'entailedTree': {'word': 'local'}, 'priorScore': 0.05216, 'id': 6, 'contextScore': 0.0954}, {'entailedWords': ['many'], 'score': 0.9005, 'wordPositions': [2], 'entailedTree': {'word': 'many'}, 'priorScore': 0.03297, 'id': 7, 'contextScore': 0.3527}, {'entailedWords': ['person'], 'score': 1, 'wordPositions': [3], 'entailedTree': {'word': 'person'}, 'priorScore': 1, 'id': 9, 'contextScore': 1}, {'entailedWords': ['individual'], 'score': 1.148, 'wordPositions': [3], 'entailedTree': {'word': 'individual'}, 'priorScore': 0.0522, 'id': 10, 'contextScore': 0.011}, {'entailedWords': ['everyone'], 'score': 0.6569, 'wordPositions': [3], 'entailedTree': {'word': 'everyone'}, 'priorScore': 0.01926, 'id': 11, 'contextScore': 0.4291}, {'entailedWords': ['speaker'], 'score': 0.4668, 'wordPositions': [3], 'entailedTree': {'word': 'speaker'}, 'priorScore': 0.0136, 'id': 12, 'contextScore': 0.2371}, {'entailedWords': ['someone'], 'score': 0.7581, 'wordPositions': [3], 'entailedTree': {'word': 'someone'}, 'priorScore': 0.02343, 'id': 13, 'contextScore': 0.4737}, {'entailedWords': ['citizen'], 'score': 0.858, 'wordPositions': [3], 'entailedTree': {'word': 'citizen'}, 'priorScore': 0.03572, 'id': 14, 'contextScore': 0.1089}, {'entailedWords': ['people'], 'score': 0.6576, 'wordPositions': [3], 'entailedTree': {'word': 'people'}, 'priorScore': 0.02219, 'id': 15, 'contextScore': 0.2847}, {'entailedWords': ['anyone'], 'score': 0.7849, 'wordPositions': [3], 'entailedTree': {'word': 'anyone'}, 'priorScore': 0.02264, 'id': 16, 'contextScore': 0.58}, {'entailedWords': ['woman'], 'score': 1.426, 'wordPositions': [3], 'entailedTree': {'word': 'woman'}, 'priorScore': 0.06712, 'id': 17, 'contextScore': -0.04223}, {'entailedWords': ['life'], 'score': 0.2829, 'wordPositions': [3], 'entailedTree': {'word': 'life'}, 'priorScore': 0.008956, 'id': 18, 'contextScore': 0.00952}, {'entailedWords': ['case'], 'score': 0.2715, 'wordPositions': [3], 'entailedTree': {'word': 'case'}, 'priorScore': 0.01083, 'id': 19, 'contextScore': -0.1129}, {'entailedWords': ['man'], 'score': 1.62, 'wordPositions': [3], 'entailedTree': {'word': 'man'}, 'priorScore': 0.07506, 'id': 21, 'contextScore': 0.04666}, {'entailedWords': ['speak'], 'score': 1, 'wordPositions': [4], 'entailedTree': {'word': 'speak'}, 'priorScore': 1, 'id': 22, 'contextScore': 1}, {'entailedWords': ['communicate'], 'score': 0.224, 'wordPositions': [4], 'entailedTree': {'word': 'communicate'}, 'priorScore': 0.007545, 'id': 23, 'contextScore': -0.06724}, {'entailedWords': ['pronounce'], 'score': 0.2613, 'wordPositions': [4], 'entailedTree': {'word': 'pronounce'}, 'priorScore': 0.007223, 'id': 24, 'contextScore': 0.04215}, {'entailedWords': ['respond'], 'score': 0.2444, 'wordPositions': [4], 'entailedTree': {'word': 'respond'}, 'priorScore': 0.006466, 'id': 25, 'contextScore': 0.03775}, {'entailedWords': ['mention'], 'score': 0.2829, 'wordPositions': [4], 'entailedTree': {'word': 'mention'}, 'priorScore': 0.01042, 'id': 26, 'contextScore': -0.06373}, {'entailedWords': ['explain'], 'score': 0.4376, 'wordPositions': [4], 'entailedTree': {'word': 'explain'}, 'priorScore': 0.01033, 'id': 27, 'contextScore': 0.3275}, {'entailedWords': ['discuss'], 'score': 0.3839, 'wordPositions': [4], 'entailedTree': {'word': 'discuss'}, 'priorScore': 0.01471, 'id': 28, 'contextScore': -0.02558}, {'entailedWords': ['relate'], 'score': 0.4641, 'wordPositions': [4], 'entailedTree': {'word': 'relate'}, 'priorScore': 0.01411, 'id': 29, 'contextScore': 0.2046}, {'entailedWords': ['reason'], 'score': 0.27, 'wordPositions': [4], 'entailedTree': {'word': 'reason'}, 'priorScore': 0.0009943, 'id': 30, 'contextScore': 0.3753}, {'entailedWords': ['moment'], 'score': 0.2473, 'wordPositions': [4], 'entailedTree': {'word': 'moment'}, 'priorScore': 0.0003215, 'id': 31, 'contextScore': 0.3523}, {'entailedWords': ['inform'], 'score': 0.2107, 'wordPositions': [4], 'entailedTree': {'word': 'inform'}, 'priorScore': 0.005509, 'id': 32, 'contextScore': 0.001303}, {'entailedWords': ['decide'], 'score': 0.2202, 'wordPositions': [4], 'entailedTree': {'word': 'decide'}, 'priorScore': 0.004086, 'id': 33, 'contextScore': 0.09612}, {'entailedWords': ['write'], 'score': 0.7127, 'wordPositions': [4], 'entailedTree': {'word': 'write'}, 'priorScore': 0.0326, 'id': 34, 'contextScore': -0.09803}, {'entailedWords': ['treat'], 'score': 0.225, 'wordPositions': [4], 'entailedTree': {'word': 'treat'}, 'priorScore': 0.006736, 'id': 35, 'contextScore': -0.02421}, {'entailedWords': ['refer'], 'score': 0.8869, 'wordPositions': [4], 'entailedTree': {'word': 'refer'}, 'priorScore': 0.0394, 'id': 36, 'contextScore': -0.002598}, {'entailedWords': ['argue'], 'score': 0.1612, 'wordPositions': [4], 'entailedTree': {'word': 'argue'}, 'priorScore': 0.004505, 'id': 37, 'contextScore': -0.07226}, {'entailedWords': ['word'], 'score': 0.2286, 'wordPositions': [4], 'entailedTree': {'word': 'word'}, 'priorScore': 0.004778, 'id': 38, 'contextScore': 0.08261}, {'entailedWords': ['time'], 'score': 0.1865, 'wordPositions': [4], 'entailedTree': {'word': 'time'}, 'priorScore': 0.0008111, 'id': 39, 'contextScore': 0.1757}, {'entailedWords': ['tell'], 'score': 0.6455, 'wordPositions': [4], 'entailedTree': {'word': 'tell'}, 'priorScore': 0.01834, 'id': 40, 'contextScore': 0.447}, {'entailedWords': ['talk'], 'score': 0.4093, 'wordPositions': [4], 'entailedTree': {'word': 'talk'}, 'priorScore': 0.01217, 'id': 41, 'contextScore': 0.1647}, {'entailedWords': ['take'], 'score': 0.5451, 'wordPositions': [4], 'entailedTree': {'word': 'take'}, 'priorScore': 0.02199, 'id': 42, 'contextScore': 0.01298}, {'entailedWords': ['read'], 'score': 0.3777, 'wordPositions': [4], 'entailedTree': {'word': 'read'}, 'priorScore': 0.01631, 'id': 43, 'contextScore': -0.1213}, {'entailedWords': ['meet'], 'score': 0.3036, 'wordPositions': [4], 'entailedTree': {'word': 'meet'}, 'priorScore': 0.01059, 'id': 44, 'contextScore': -0.02039}, {'entailedWords': ['mean'], 'score': 0.4343, 'wordPositions': [4], 'entailedTree': {'word': 'mean'}, 'priorScore': 0.01076, 'id': 45, 'contextScore': 0.2976}, {'entailedWords': ['make'], 'score': 0.4585, 'wordPositions': [4], 'entailedTree': {'word': 'make'}, 'priorScore': 0.01501, 'id': 46, 'contextScore': 0.1461}, {'entailedWords': ['know'], 'score': 1.009, 'wordPositions': [4], 'entailedTree': {'word': 'know'}, 'priorScore': 0.03038, 'id': 47, 'contextScore': 0.7531}, {'entailedWords': ['hear'], 'score': 0.5017, 'wordPositions': [4], 'entailedTree': {'word': 'hear'}, 'priorScore': 0.01342, 'id': 48, 'contextScore': 0.3332}, {'entailedWords': ['give'], 'score': 0.6127, 'wordPositions': [4], 'entailedTree': {'word': 'give'}, 'priorScore': 0.02501, 'id': 49, 'contextScore': 0.03122}, {'entailedWords': ['deal'], 'score': 0.1909, 'wordPositions': [4], 'entailedTree': {'word': 'deal'}, 'priorScore': 0.006416, 'id': 50, 'contextScore': -0.09352}, {'entailedWords': ['come'], 'score': 0.7782, 'wordPositions': [4], 'entailedTree': {'word': 'come'}, 'priorScore': 0.03265, 'id': 51, 'contextScore': 0.06293}, {'entailedWords': ['call'], 'score': 0.3232, 'wordPositions': [4], 'entailedTree': {'word': 'call'}, 'priorScore': 0.01337, 'id': 52, 'contextScore': -0.1106}, {'entailedWords': ['use'], 'score': 0.4761, 'wordPositions': [4], 'entailedTree': {'word': 'use'}, 'priorScore': 0.02124, 'id': 53, 'contextScore': -0.1215}, {'entailedWords': ['say'], 'score': 0.6168, 'wordPositions': [4], 'entailedTree': {'word': 'say'}, 'priorScore': 0.0159, 'id': 54, 'contextScore': 0.4968}, {'entailedWords': ['rap'], 'score': 0.2612, 'wordPositions': [4], 'entailedTree': {'word': 'rap'}, 'priorScore': 0.0006473, 'id': 55, 'contextScore': 0.3705}, {'entailedWords': ['put'], 'score': 0.3354, 'wordPositions': [4], 'entailedTree': {'word': 'put'}, 'priorScore': 0.01028, 'id': 56, 'contextScore': 0.07468}, {'entailedWords': ['ask'], 'score': 0.4813, 'wordPositions': [4], 'entailedTree': {'word': 'ask'}, 'priorScore': 0.0117, 'id': 57, 'contextScore': 0.3685}], 'sentences': [{'position': 0, 'words': [{'partOfSpeech': 'WP', 'relationToParent': 'nsubj', 'position': 0, 'stem': 'what', 'lemma': 'what', 'token': 'what', 'parentPosition': 4, 'startingPos': 0, 'endingPos': 4}, {'partOfSpeech': 'VBZ', 'relationToParent': 'aux', 'position': 1, 'stem': 'doe', 'lemma': 'do', 'token': 'does', 'parentPosition': 4, 'startingPos': 5, 'endingPos': 9}, {'partOfSpeech': 'JJ', 'relationToParent': 'amod', 'position': 2, 'stem': 'jamaican', 'lemma': 'jamaican', 'token': 'jamaican', 'parentPosition': 3, 'startingPos': 10, 'endingPos': 18}, {'partOfSpeech': 'NNS', 'relationToParent': 'nsubj', 'position': 3, 'stem': 'peopl', 'lemma': 'person', 'token': 'people', 'parentPosition': 4, 'startingPos': 19, 'endingPos': 25}, {'partOfSpeech': 'VBP', 'position': 4, 'stem': 'speak', 'lemma': 'speak', 'token': 'speak', 'startingPos': 26, 'endingPos': 31}, {'partOfSpeech': '.', 'relationToParent': 'punct', 'position': 5, 'stem': '?', 'lemma': '?', 'token': '?', 'parentPosition': 4, 'startingPos': 31, 'endingPos': 32}]}], 'properties': [{'id': 0, 'wordPositions': [3], 'propertyPositions': [2]}], 'entities': [{'freebaseTypes': ['/location/location'], 'wikiLink': '', 'confidenceScore': 0.5, 'relevanceScore': 0, 'matchingTokens': [2], 'startingPos': 10, 'type': ['Place'], 'matchedText': 'jamaican', 'entityId': 'jamaican', 'id': 0, 'entityEnglishId': '', 'endingPos': 18}], 'languageIsReliable': True}"
-# dic=eval(str)
-# for k,v in dic.items():
-#   print(k)
-#   print(v)
-#
-# # print(json.loads(inp_strr))
-
-# data={}
-# data['question']='hello'
-# data['answers']=['123','abc']
-#
-# with open('123.txt','a') as wf:
-#   wf.write('b\n')
-#   wf.write(str(data))
-
 import numpy as np
+import tensorflow as tf
+from collections import Counter
 
-def func(num,k):
-  kk=[]
-  for item in k:
-    print(item)
-    kk.append(item)
-  return kk
+from tensorflow.python.ops import embedding_ops
+from tensorflow.python.ops import candidate_sampling_ops
+from tensorflow.python.ops import array_ops
+from tensorflow.python.ops import math_ops
 
-a,b,c=func(5,[1,2,3])
-print(a,b,c)
+# 开始验证nce的负采样sampler
+
+batch_size = 32
+num_classes = 100
+# labels = np.random.randint(0, num_classes, size=[batch_size, 1])
+input_ids = np.random.randint(0, num_classes, size=[batch_size])
+# entity_ids = np.random.randint(0, num_classes, size=[batch_size, 1])
+entity_ids = np.ones([batch_size, 1], dtype=np.int32)
+relation_ids = np.random.randint(0, num_classes, size=[batch_size, 1])
+
+entity_embedding = tf.get_variable('entity_embedding', [num_classes, 32], dtype=tf.float32)
+inputs = tf.nn.embedding_lookup(entity_embedding, input_ids)
+
+neg_entity_sampler = candidate_sampling_ops.log_uniform_candidate_sampler(
+  true_classes=entity_ids,
+  num_true=1,
+  num_sampled=64,
+  unique=True,
+  range_max=num_classes)
+sampled, true_expected_count, sampled_expected_count = (
+  array_ops.stop_gradient(s) for s in neg_entity_sampler)
+sampled = math_ops.cast(sampled, tf.int32)
+
+labels_flat = array_ops.reshape(entity_ids, [-1])
+all_ids = array_ops.concat([labels_flat, sampled], 0)
+weights = tf.get_variable('weights', [num_classes, 32], dtype=tf.float32)
+all_w = embedding_ops.embedding_lookup(
+  weights, all_ids, partition_strategy='mod')
+
+true_w = array_ops.slice(
+  all_w, [0, 0], array_ops.stack([array_ops.shape(labels_flat)[0], -1]))
+
+
+def _sum_rows(x):
+  """Returns a vector summing up each row of the matrix x."""
+  # _sum_rows(x) is equivalent to math_ops.reduce_sum(x, 1) when x is
+  # a matrix.  The gradient of _sum_rows(x) is more efficient than
+  # reduce_sum(x, 1)'s gradient in today's implementation. Therefore,
+  # we use _sum_rows(x) in the nce_loss() computation since the loss
+  # is mostly used for training.
+  cols = array_ops.shape(x)[1]
+  ones_shape = array_ops.stack([cols, 1])
+  ones = array_ops.ones(ones_shape, x.dtype)
+  return array_ops.reshape(math_ops.matmul(x, ones), [-1])
+
+
+dim = array_ops.shape(true_w)[1:2]
+new_true_w_shape = array_ops.concat([[-1, 1], dim], 0)
+row_wise_dots = math_ops.multiply(
+  array_ops.expand_dims(inputs, 1),
+  array_ops.reshape(true_w, new_true_w_shape))
+# We want the row-wise dot plus biases which yields a
+# [batch_size, num_true] tensor of true_logits.
+dots_as_matrix = array_ops.reshape(row_wise_dots,
+                                   array_ops.concat([[-1], dim], 0))
+true_logits = array_ops.reshape(_sum_rows(dots_as_matrix), [-1, 1])
+
+sampled_w = array_ops.slice(
+  all_w, array_ops.stack([array_ops.shape(labels_flat)[0], 0]), [-1, -1])
+sampled_logits = math_ops.matmul(
+  inputs, sampled_w, transpose_b=True)
+
+subtract_log_q = True
+if subtract_log_q:
+  # Subtract log of Q(l), prior probability that l appears in sampled.
+  true_logits -= math_ops.log(true_expected_count)
+  sampled_logits -= math_ops.log(sampled_expected_count)
+
+out_logits = array_ops.concat([true_logits, sampled_logits], 1)
+# true_logits is a float tensor, ones_like(true_logits) is a float tensor
+# of ones. We then divide by num_true to ensure the per-example labels sum
+# to 1.0, i.e. form a proper probability distribution.
+out_labels = array_ops.concat([
+  array_ops.ones_like(true_logits) / 1,
+  array_ops.zeros_like(sampled_logits)
+], 1)
+
+sampled_losses = tf.nn.softmax_cross_entropy_with_logits(labels=out_labels,
+                                                          logits=out_logits)
+
+# neg_relation_sampler = candidate_sampling_ops.log_uniform_candidate_sampler(
+#   true_classes=relation_ids,
+#   num_true=1,
+#   num_sampled=64,
+#   unique=True,
+#   range_max=num_classes)
+
+
+
+sess_config = tf.ConfigProto()
+sess_config.gpu_options.allow_growth = True
+with tf.Session(config=sess_config) as sess:
+  tf.global_variables_initializer().run()
+  for i in range(2):
+    all_id = sess.run(all_ids)
+    all_ws = sess.run(all_w)
+    true_ws = sess.run(true_w)
+    sampled_ws = sess.run(sampled_w)
+    samples_logits_ = sess.run(sampled_logits)
+    true_logits_ = sess.run(true_logits)
+    output_logits_,output_labels_=sess.run([out_logits,out_labels])
+    loss=sess.run(sampled_losses)
+
+    print(all_id)
+    print(all_ws.shape)
+    print(true_ws.shape)
+    print(sampled_ws.shape)
+    print(samples_logits_.shape)
+    print(true_logits_.shape)
+    print(output_logits_.shape,output_labels_.shape)
+    print(loss)
+    # neg_relation_samples = sess.run(neg_relation_sampler)
