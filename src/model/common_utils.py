@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+
 def cos_similarity(x1, x2):
   x1_norm = tf.sqrt(tf.reduce_sum(tf.square(x1), axis=-1))
   x2_norm = tf.sqrt(tf.reduce_sum(tf.square(x2), axis=-1))
@@ -8,6 +9,7 @@ def cos_similarity(x1, x2):
   cos_sim = tf.divide(x1_x2, tf.multiply(x1_norm, x2_norm))
 
   return cos_sim
+
 
 def get_accuracy(logits, target, k_list):
   acc = []
@@ -18,7 +20,7 @@ def get_accuracy(logits, target, k_list):
   return acc
 
 
-def nce_alignment(embed, target_id, embedding_size, vocab_size, num_sampled, name, is_training):
+def nce_alignment(embed, target_id, batch_size, embedding_size, vocab_size, num_sampled, name, is_training):
   with tf.variable_scope(name, reuse=not is_training):
     nce_weights = tf.get_variable('nce_weights', [vocab_size, embedding_size], dtype=tf.float32, )
     nce_biases = tf.get_variable('nce_biases', [vocab_size], dtype=tf.float32, )
@@ -26,7 +28,7 @@ def nce_alignment(embed, target_id, embedding_size, vocab_size, num_sampled, nam
     nce_loss = tf.reduce_mean(
       tf.nn.nce_loss(weights=nce_weights,
                      biases=nce_biases,
-                     labels=target_id,
+                     labels=tf.reshape(target_id, [batch_size, 1]),
                      inputs=embed,
                      num_sampled=num_sampled,
                      num_classes=vocab_size))
