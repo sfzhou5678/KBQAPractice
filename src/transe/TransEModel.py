@@ -1,5 +1,4 @@
 import tensorflow as tf
-import math
 
 
 class TransEModel:
@@ -26,21 +25,9 @@ class TransEModel:
                                              dtype=tf.float32)
 
       embed_heads = tf.nn.embedding_lookup(entities_embeddings, self.heads)
-      # embed_tails = tf.nn.embedding_lookup(entities_embeddings, tails)  # target不需要做embedding
-
       embed_relations = tf.nn.embedding_lookup(relations_embeddings, self.relations)
-      # Construct the variables for the NCE loss
-      # TODO nce weights是什么？
-      # nce_weights = tf.Variable(
-      #   tf.truncated_normal([entities_vocab_size, embedding_size],
-      #                       stddev=1.0 / math.sqrt(embedding_size)))
-      nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size],
-                                    dtype=tf.float32,
-                                    # initializer=tf.truncated_normal([entities_vocab_size, embedding_size],
-                                    #                                 stddev=1.0 / math.sqrt(embedding_size))
-                                    )
 
-      # nce_biases = tf.Variable(tf.zeros([entities_vocab_size]))
+      nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size], dtype=tf.float32, )
       nce_biases = tf.get_variable('nce_biases', [entities_vocab_size], dtype=tf.float32, )
 
     embed = tf.add(embed_heads, embed_relations)
@@ -57,7 +44,6 @@ class TransEModel:
     )
     self.softmax_loss = tf.reduce_mean(softmax_loss)
 
-    # todo NCELoss详解
     self.loss = tf.reduce_mean(
       tf.nn.nce_loss(weights=nce_weights,
                      biases=nce_biases,
@@ -79,7 +65,6 @@ class TransEModel:
     self.softmax_top100_accuracy = tf.reduce_mean(tf.cast(top100_correction_predcition, tf.float32))
 
     if is_training:
-      # Construct the SGD optimizer using a learning rate of 1.0.
       global_step = tf.contrib.framework.get_or_create_global_step()
       learning_rate = tf.train.exponential_decay(
         1.0,

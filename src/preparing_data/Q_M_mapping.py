@@ -1,7 +1,7 @@
 import os
 import pickle
 
-data_path = '../data/train_ansEntity.txt'
+data_path = '../../data/train_ansEntity.txt'
 
 
 def get_Q_M_mapping():
@@ -82,5 +82,5 @@ with open(data_path) as f:
   print(no_QID_mapping_count)
   print(len(freebase_MID))
 
-mid_write = open('../data/WebQuestion.mid.pkl', 'wb')
+mid_write = open('../../data/WebQuestion.mid.pkl', 'wb')
 pickle.dump(freebase_MID, mid_write, True)

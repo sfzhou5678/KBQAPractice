@@ -1,6 +1,6 @@
 import os
 
-data_folder = '../data'
+data_folder = '../../data'
 full_train_response_path = os.path.join(data_folder, 'webquestions.train.textrazor.full.txt')
 full_test_response_path = os.path.join(data_folder, 'webquestions.test.textrazor.full.txt')
 

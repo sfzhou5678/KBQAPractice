@@ -137,20 +137,6 @@ def build_ids(raw_file_path, ids_file_path, entities_word2id, relations_word2id)
 
 
 def batch_producer(ids, batch_size):
-  # with tf.name_scope(None, "BatchProducer", [ids, batch_size]):
-  #   raw_data = tf.convert_to_tensor(ids, name="raw_data", dtype=tf.int32)
-  #   raw_data = tf.reshape(raw_data, [-1])
-  #
-  #   data_len = tf.size(raw_data)
-  #   batch_len = (data_len // batch_size)
-  #   data = tf.reshape(raw_data[0: batch_size * batch_len],
-  #                     [batch_size, -1])
-  #
-  #   assertion = tf.assert_positive(
-  #     batch_len,
-  #     message="epoch_size == 0, decrease batch_size or num_steps")
-  #   with tf.control_dependencies([assertion]):
-  #     batch_len = tf.identity(batch_len, name="epoch_size")
   with tf.name_scope(None, "BatchProducer", [ids, batch_size]):
     raw_data = tf.convert_to_tensor(ids, name="raw_data", dtype=tf.int32)
     raw_data = tf.reshape(raw_data, [-1])
@@ -181,8 +167,3 @@ def batch_producer(ids, batch_size):
     tail = tf.reshape(tail, [batch_size, 1])
 
     return head, relation, tail
-
-    # x=tf.slice(data,[0,i*3],
-    #          [batch_size,3])
-    #
-    # return data,x

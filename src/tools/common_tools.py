@@ -1,5 +1,5 @@
 import tensorflow as tf
-
+import pickle
 
 def cos_similarity(x1, x2):
   x1_norm = tf.sqrt(tf.reduce_sum(tf.square(x1), axis=-1))
@@ -24,7 +24,6 @@ def nce_alignment(embed, target_id, batch_size, embedding_size, vocab_size, num_
   with tf.variable_scope(name, reuse=not is_training):
     nce_weights = tf.get_variable('nce_weights', [vocab_size, embedding_size], dtype=tf.float32, )
     nce_biases = tf.get_variable('nce_biases', [vocab_size], dtype=tf.float32, )
-    # fixme: 为什么tf.nn.nce_loss不需要提供embedding？
     nce_loss = tf.reduce_mean(
       tf.nn.nce_loss(weights=nce_weights,
                      biases=nce_biases,
@@ -51,3 +50,15 @@ def softmax_model(embed, target_id, embedding_size, vocab_size, name, is_trainin
     softmax_loss = tf.reduce_mean(softmax_loss)
 
     return softmax_logits, softmax_loss, softmax_pred
+
+
+def pickle_dump(data, file_path):
+  f_write = open(file_path, 'wb')
+  pickle.dump(data, f_write, True)
+
+
+def pickle_load(file_path):
+  f_read = open(file_path, 'rb')
+  data = pickle.load(f_read)
+
+  return data

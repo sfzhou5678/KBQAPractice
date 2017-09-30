@@ -1,18 +1,18 @@
 import os
 import re
 
-from src.TextRazorManager import TextRazorManager
+from src.preparing_data.TextRazorManager import TextRazorManager
 
 # qa_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\WebQuestions'
 qa_folder = r'D:\MeachineLearningData'
 train_path = os.path.join(qa_folder, 'webquestions.examples.train.json')
 test_path = os.path.join(qa_folder, 'webquestions.examples.test.json')
 
-train_res_path = '../data/webquestions.train.textrazor.full.txt'
-test_res_path = '../data/webquestions.test.textrazor.full.txt'
+train_res_path = '../../data/webquestions.train.textrazor.full.txt'
+test_res_path = '../../data/webquestions.test.textrazor.full.txt'
 
-train_log_path = '../log/train.log'
-test_log_path = '../log/test.log'
+train_log_path = '../../log/train.log'
+test_log_path = '../../log/test.log'
 
 
 def load_or_create_count(log_path):

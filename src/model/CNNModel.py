@@ -1,6 +1,6 @@
 import tensorflow as tf
 from src.model.cnn_utils import *
-from src.model.common_utils import get_accuracy, nce_alignment, cos_similarity
+from src.tools.common_tools import get_accuracy, nce_alignment, cos_similarity
 
 from tensorflow.python.ops import array_ops
 from tensorflow.python.ops import math_ops
@@ -236,7 +236,7 @@ class CNNModel:
 
 
 if __name__ == '__main__':
-  from src.transe.transe_config import CNNModelConfig
+  from src.configs import CNNModelConfig
 
   config = CNNModelConfig()
   model = CNNModel(config, is_training=True)
