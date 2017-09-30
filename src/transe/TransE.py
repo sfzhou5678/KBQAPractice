@@ -7,10 +7,8 @@ from src.tools.reader import get_vocabulary, get_train_test_ids
 
 if __name__ == '__main__':
   config = TransEConfig()
-  data_folder = r'F:\FBData'
-
   # ========数据路径设置==========
-  file_path = os.path.join(data_folder, 'SmallBase_gama')
+  data_folder = r'F:\FBData'
   selected_twice_data_path = os.path.join(data_folder, 'fb.wikiMappings.webquestion+random12.twice.se')
 
   selected_ids_path = os.path.join(data_folder, 'fb.wikiMappings.webquestion+random12.id.pkl')
@@ -23,6 +21,13 @@ if __name__ == '__main__':
   entity_vocab_path = os.path.join(data_folder, 'fb.wikiMappings.webquestion+random12.entityVocab.pkl')
   relation_vocab_path = os.path.join(data_folder, 'fb.wikiMappings.webquestion+random12.relationVocab.pkl')
 
+  # ========结果路径设置==========
+  res_folder = '../../result/TransEResult'
+  ckpt_folder_path = os.path.join(res_folder,
+                                  'res-[%d]-[%d]-[%d]' % (config.batch_size, config.embedding_size, config.num_sampled))
+  if not os.path.exists(ckpt_folder_path):
+    os.makedirs(ckpt_folder_path)
+  log_saving_path = os.path.join(ckpt_folder_path, 'RunningInfo.log')
   # ========提取关键信息==========
 
   relation_vocab = get_vocabulary(relation_vocab_path, relation_counter_path, percent=1.0)
@@ -58,38 +63,50 @@ if __name__ == '__main__':
     tf.global_variables_initializer().run()
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+    saver = tf.train.Saver()
 
-    for step in range(200000):
-      head, relations, tail = sess.run([train_head_batch, train_r_batch, train_t_batch])
-      # _, loss = sess.run([model.train_op, model.loss],
-      #                    {model.heads: head, model.relations: relations, model.tails: tail})
-      _, softmax_loss, _, loss, = sess.run([model.softmax_train_op, model.softmax_loss,
-                                            model.train_op, model.loss,
-                                            ],
-                                           {model.heads: head, model.relations: relations,
-                                            model.tails: tail})
-      if step % 400 == 0:
-        softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
-          [model.softmax_pred, model.softmax_accuracy,
-           model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
-          {model.heads: head, model.relations: relations, model.tails: tail})
+    with open(log_saving_path, 'w') as wf:
+      for step in range(200000):
+        head, relations, tail = sess.run([train_head_batch, train_r_batch, train_t_batch])
+        # _, loss = sess.run([model.train_op, model.loss],
+        #                    {model.heads: head, model.relations: relations, model.tails: tail})
+        _, softmax_loss, _, loss, = sess.run([model.softmax_train_op, model.softmax_loss,
+                                              model.train_op, model.loss,
+                                              ],
+                                             {model.heads: head, model.relations: relations,
+                                              model.tails: tail})
+        if step % 400 == 0:
+          softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
+            [model.softmax_pred, model.softmax_accuracy,
+             model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
+            {model.heads: head, model.relations: relations, model.tails: tail})
 
-        test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
-        test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
-                                                {test_model.heads: test_head, test_model.relations: test_relation,
-                                                 test_model.tails: test_tail})
-        test_softmax_pred, test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc = sess.run(
-          [test_model.softmax_pred, test_model.softmax_accuracy,
-           test_model.softmax_top20_accuracy, test_model.softmax_top100_accuracy, ],
-          {test_model.heads: test_head, test_model.relations: test_relation, test_model.tails: test_tail})
+          test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
+          test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
+                                                  {test_model.heads: test_head, test_model.relations: test_relation,
+                                                   test_model.tails: test_tail})
+          test_softmax_pred, test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc = sess.run(
+            [test_model.softmax_pred, test_model.softmax_accuracy,
+             test_model.softmax_top20_accuracy, test_model.softmax_top100_accuracy, ],
+            {test_model.heads: test_head, test_model.relations: test_relation, test_model.tails: test_tail})
 
-        print('==============[%d] %.4f %.4f\t %.4f %.4f==============' % (step, loss, softmax_loss,
-                                                                          test_loss, test_softmax_loss))
-        print('[softmax acc: %.3f]\t[top20 acc: %.3f]\t[top100 acc: %.3f]' % (
-          softmax_acc, softmax_top20_acc, softmax_top100_acc))
+          # print('==============[%d] %.4f %.4f\t %.4f %.4f==============' % (step, loss, softmax_loss,
+          #                                                                   test_loss, test_softmax_loss))
+          # print('[softmax acc: %.3f]\t[top20 acc: %.3f]\t[top100 acc: %.3f]' % (
+          #   softmax_acc, softmax_top20_acc, softmax_top100_acc))
+          # print('[t-softmax acc: %.3f]\t[t-top20 acc: %.3f]\t[t-top100 acc: %.3f]' % (
+          #   test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
+          saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
 
-        print('[t-softmax acc: %.3f]\t[t-top20 acc: %.3f]\t[t-top100 acc: %.3f]' % (
-          test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
+          print('==============[%d] %.4f %.4f\t %.4f %.4f==============' % (step, loss, softmax_loss,
+                                                                            test_loss, test_softmax_loss))
+          wf.write('==============[%d] %.4f %.4f\t %.4f %.4f==============\n' % (step, loss, softmax_loss,
+                                                                                 test_loss, test_softmax_loss))
+          wf.write('softmax acc: %.3f\ttop20 acc: %.3f\ttop100 acc: %.3f\n' % (
+            softmax_acc, softmax_top20_acc, softmax_top100_acc))
+          wf.write('t-softmax acc: %.3f\tt-top20 acc: %.3f\tt-top100 acc: %.3f\n' % (
+            test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
+          wf.flush()
 
     coord.request_stop()
     coord.join(threads)

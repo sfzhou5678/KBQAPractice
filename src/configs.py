@@ -1,8 +1,8 @@
 class TransEConfig:
-  batch_size = 32
+  batch_size = 32         # 调这个可加速，有时对结果也有影响，能64或128最好
   entities_vocab_size = 500000
   relations_vocab_size = 3065 + 1
-  embedding_size = 128
+  embedding_size = 128    # 优先调大这个值 256或512均可
 
   num_sampled = 64
   init_scale = 0.5
