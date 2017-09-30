@@ -41,7 +41,7 @@ def main():
             failed_wf.flush()
             continue
           entities = qa_pair['parsed_question']['entities']
-          useful_entities_info = []
+          useful_entitiy_infos = []
           for entity in entities:
             useful_entity_info = {}
             if 'entityId' in entity:
@@ -57,11 +57,11 @@ def main():
               useful_entity_info['type'] = entity['type']
             if 'wikidataId' in entity:
               useful_entity_info['wikidataId'] = entity['wikidataId']
-            useful_entities_info.append(useful_entity_info)
+            useful_entitiy_infos.append(useful_entity_info)
           new_qa_pair = {}
           new_qa_pair['question'] = qa_pair['question']
           new_qa_pair['ans'] = qa_pair['ans']
-          new_qa_pair['entities'] = useful_entities_info
+          new_qa_pair['entities'] = useful_entitiy_infos
           entities_wf.write(str(new_qa_pair) + '\n')
           entities_wf.flush()
 
