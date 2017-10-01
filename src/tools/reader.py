@@ -92,7 +92,7 @@ def filter_data(freebase_mid_set):
   pickle_dump(useful_entity_word_counter, useful_entity_counter_path)
 
 
-def get_vocabulary(vocab_path, counter_path, percent=1.0):
+def get_vocabulary(vocab_path, counter_path, UNK='_UNK_',percent=1.0):
   if os.path.exists(vocab_path):
     try:
       vocab = pickle_load(vocab_path)
@@ -107,11 +107,13 @@ def get_vocabulary(vocab_path, counter_path, percent=1.0):
   print(len(counter))
 
   vocab = {}
+  vocab[UNK]=0
+  id = 1
+
   f_sum = sum([v for k, v in counter])
   print(f_sum)
   percent_sum = (percent * f_sum)
   cur_f = 0
-  id = 0
   for k, v in counter:
     cur_f += v
     vocab[k] = id

@@ -30,8 +30,8 @@ if __name__ == '__main__':
   log_saving_path = os.path.join(ckpt_folder_path, 'RunningInfo.log')
   # ========提取关键信息==========
 
-  relation_vocab = get_vocabulary(relation_vocab_path, relation_counter_path, percent=1.0)
-  entity_vocab = get_vocabulary(entity_vocab_path, useful_entity_counter_path, percent=0.95)
+  relation_vocab = get_vocabulary(relation_vocab_path, relation_counter_path, UNK='RelationUNK', percent=1.0)
+  entity_vocab = get_vocabulary(entity_vocab_path, useful_entity_counter_path, UNK='EntityUNK', percent=0.95)
 
   config.relations_vocab_size = len(relation_vocab)
   config.entities_vocab_size = len(entity_vocab)
