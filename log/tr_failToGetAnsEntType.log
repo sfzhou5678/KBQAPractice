@@ -1,0 +1,340 @@
+{'answer': 'New York City', 'index': 2, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7013126'}
+{'answer': 'Germany', 'index': 10, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q41304'}
+{'answer': 'Canada', 'index': 13, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16865338'}
+{'answer': 'Black Liberation', 'index': 32, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2545743'}
+{'answer': 'Paris', 'index': 35, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q90'}
+{'answer': 'Susa', 'index': 36, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q12267760'}
+{'answer': 'Susa', 'index': 36, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q23681984'}
+{'answer': 'West Horndon', 'index': 39, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2380835'}
+{'answer': 'West Horndon', 'index': 39, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7985416'}
+{'answer': 'AT&T Park', 'index': 52, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q283937'}
+{'answer': 'A Study in Scarlet', 'index': 57, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2819922'}
+{'answer': 'Portugal', 'index': 60, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q13498039'}
+{'answer': 'Jazz', 'index': 67, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2696551'}
+{'answer': 'City of Sydney', 'index': 68, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1094194'}
+{'answer': 'Blossom', 'index': 69, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q506'}
+{'answer': 'Blossom', 'index': 69, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q61244'}
+{'answer': 'Blossom', 'index': 69, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q11335140'}
+{'answer': 'Tower of London', 'index': 77, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1770524'}
+{'answer': 'Collectivity of Saint Martin', 'index': 79, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q126125'}
+{'answer': 'Jozef Isra\xc3\xabls', 'index': 80, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19281505'}
+{'answer': 'Jozef Isra\xc3\xabls', 'index': 80, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19281506'}
+{'answer': 'Rembrandt', 'index': 80, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5598'}
+{'answer': 'Rembrandt', 'index': 80, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1428455'}
+{'answer': 'Baldwin', 'index': 81, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q589094'}
+{'answer': 'Chinese language', 'index': 84, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q15764613'}
+{'answer': 'Tennessee', 'index': 86, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1509'}
+{'answer': 'Tennessee', 'index': 86, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1747671'}
+{'answer': 'North Korea', 'index': 89, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q423'}
+{'answer': 'North Korea', 'index': 89, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q827575'}
+{'answer': 'University of Oxford', 'index': 117, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q34433'}
+{'answer': 'Statesman', 'index': 137, 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)", 'Qid': u'Q17070924'}
+{'answer': 'Scientist', 'index': 137, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q28971205'}
+{'answer': 'Joseph Estrada', 'index': 157, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q212733'}
+{'answer': 'Bergamo', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16137'}
+{'answer': 'Bergamo', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2660713'}
+{'answer': 'Barcelona', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2011622'}
+{'answer': 'Bratislava', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q12763470'}
+{'answer': 'Bratislava', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q750419'}
+{'answer': 'Nottingham', 'index': 158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2304472'}
+{'answer': 'Paul of Tarsus', 'index': 160, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q9200'}
+{'answer': 'guitar', 'index': 162, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1028626'}
+{'answer': 'Dallas', 'index': 164, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q111013'}
+{'answer': 'Dallas', 'index': 164, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q168708'}
+{'answer': 'Eurasia', 'index': 180, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5401'}
+{'answer': 'Gulf of California', 'index': 254, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q725493'}
+{'answer': 'Paris Saint-Germain F.C.', 'index': 289, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2945336'}
+{'answer': 'Standard Mandarin', 'index': 290, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q727694'}
+{'answer': 'Marin County', 'index': 292, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q108117'}
+{'answer': 'Marin County', 'index': 292, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1150950'}
+{'answer': 'Marin County', 'index': 292, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q20199514'}
+{'answer': 'Monotheism', 'index': 293, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q9159'}
+{'answer': 'Karma', 'index': 293, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1756326'}
+{'answer': 'Castilleja de la Cuesta', 'index': 294, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q841589'}
+{'answer': 'Near East', 'index': 300, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q258212'}
+{'answer': 'Near East', 'index': 300, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q6984365'}
+{'answer': 'Thomaston', 'index': 307, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1561061'}
+{'answer': 'London Eye', 'index': 340, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q160659'}
+{'answer': 'Westminster Abbey', 'index': 340, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5933'}
+{'answer': "St Paul's Cathedral", 'index': 340, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q173882'}
+{'answer': 'San Francisco Giants', 'index': 354, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q308966'}
+{'answer': 'Canberra', 'index': 359, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q14600395'}
+{'answer': 'The Reader', 'index': 360, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2629423'}
+{'answer': 'The Reader', 'index': 360, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q425602'}
+{'answer': 'Ford Motor Company', 'index': 361, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q17759331'}
+{'answer': 'Saint Anne', 'index': 366, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29429347'}
+{'answer': 'Super Bowl XXX', 'index': 387, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q939802'}
+{'answer': '1656', 'index': 389, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q141972'}
+{'answer': 'The Supreme Court', 'index': 394, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19201850'}
+{'answer': 'The Supreme Court', 'index': 394, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q39186754'}
+{'answer': 'The Supreme Court', 'index': 394, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q34443410'}
+{'answer': 'Eurasia', 'index': 395, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5401'}
+{'answer': 'Eurasia', 'index': 395, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29995'}
+{'answer': 'Middle East', 'index': 395, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1940683'}
+{'answer': 'Titanium', 'index': 396, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q236618'}
+{'answer': 'Canada', 'index': 397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q257304'}
+{'answer': 'United States of America', 'index': 397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1057263'}
+{'answer': 'United States of America', 'index': 397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q119515'}
+{'answer': 'United Kingdom', 'index': 397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q174193'}
+{'answer': 'Ireland', 'index': 397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q14688494'}
+{'answer': 'Iowa', 'index': 398, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q828268'}
+{'answer': 'Kansas', 'index': 398, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1558'}
+{'answer': 'Kansas', 'index': 398, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q68088'}
+{'answer': 'Illinois', 'index': 398, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1658831'}
+{'answer': 'Illinois', 'index': 398, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16846577'}
+{'answer': 'Massachusetts', 'index': 400, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q771'}
+{'answer': 'Japanese yen', 'index': 402, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q11394831'}
+{'answer': 'Drowning', 'index': 404, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16962900'}
+{'answer': 'Republic', 'index': 405, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q267220'}
+{'answer': 'Volcano', 'index': 407, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q8072'}
+{'answer': 'Canada', 'index': 409, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2569593'}
+{'answer': 'Dutch Language', 'index': 412, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q152299'}
+{'answer': 'Korean Language', 'index': 413, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q9176'}
+{'answer': 'Writer', 'index': 415, 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)", 'Qid': u'Q28389'}
+{'answer': 'Writer', 'index': 415, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q27067863'}
+{'answer': 'New York City', 'index': 418, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16998793'}
+{'answer': 'Riverside Resort Hotel & Casino', 'index': 423, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7338586'}
+{'answer': 'Politician', 'index': 426, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q82955'}
+{'answer': 'Politician', 'index': 426, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2843993'}
+{'answer': 'Politician', 'index': 426, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21741412'}
+{'answer': 'Scotland', 'index': 427, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q254100'}
+{'answer': 'Wales', 'index': 427, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q482546'}
+{'answer': 'Northern Ireland', 'index': 427, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q649464'}
+{'answer': '1952 NBA Finals', 'index': 432, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4567490'}
+{'answer': 'Richard Harris', 'index': 436, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q106775'}
+{'answer': 'Richard Harris', 'index': 436, 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)", 'Qid': u'Q18818005'}
+{'answer': 'Vancouver', 'index': 437, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21551808'}
+{'answer': 'American Dad!', 'index': 438, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q210311'}
+{'answer': 'A1 Team Canada', 'index': 441, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q279742'}
+{'answer': 'Singer', 'index': 446, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21730518'}
+{'answer': 'Actor', 'index': 446, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q291840'}
+{'answer': 'Actor', 'index': 446, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q421957'}
+{'answer': 'Hudson River', 'index': 454, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3140'}
+{'answer': 'Hudson River', 'index': 454, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21909535'}
+{'answer': 'Santo Domingo', 'index': 459, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q34820'}
+{'answer': 'Italy', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q172579'}
+{'answer': 'Italy', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q838931'}
+{'answer': 'Portugal', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1045833'}
+{'answer': 'Slovenia', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q215'}
+{'answer': 'Austria', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q25114801'}
+{'answer': 'Germany', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q41304'}
+{'answer': 'Germany', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q43310'}
+{'answer': 'Greece', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q36902901'}
+{'answer': 'Spain', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29'}
+{'answer': 'Spain', 'index': 463, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q438633'}
+{'answer': 'Texas Revolution', 'index': 464, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3542576'}
+{'answer': 'Pennsylvania', 'index': 467, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7163634'}
+{'answer': 'Opera', 'index': 483, 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)", 'Qid': u'Q30028359'}
+{'answer': 'William Shakespeare', 'index': 506, 'error': "URLError(timeout('timed out',),)", 'Qid': u'Q8018308'}
+{'answer': "Boyle's law", 'index': 518, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q175974'}
+{'answer': 'Ice Cube', 'index': 523, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3147600'}
+{'answer': 'Lithuania', 'index': 538, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4563'}
+{'answer': 'Kirkcaldy', 'index': 1119, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q691685'}
+{'answer': 'Florence', 'index': 1121, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q289483'}
+{'answer': 'Spacehunter: Adventures in the Forbidden Zone', 'index': 1142, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1763458'}
+{'answer': 'Tempest', 'index': 1142, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q723612'}
+{'answer': 'Tempest', 'index': 1142, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1753505'}
+{'answer': 'Canada', 'index': 1148, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q257304'}
+{'answer': 'Brazilian real', 'index': 1150, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q173117'}
+{'answer': 'South Korea', 'index': 1158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q202040'}
+{'answer': 'South Korea', 'index': 1158, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q495848'}
+{'answer': 'France', 'index': 1206, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q24620833'}
+{'answer': 'Togo', 'index': 1238, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q253748'}
+{'answer': 'Guinea-Bissau', 'index': 1238, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q140772'}
+{'answer': 'Brian Austin Green', 'index': 1287, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q313311'}
+{'answer': 'Europeans', 'index': 1290, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1377133'}
+{'answer': 'Europe', 'index': 1291, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q198697'}
+{'answer': 'North Africa', 'index': 1291, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1770513'}
+{'answer': 'Marlon Brando', 'index': 1294, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q6771920'}
+{'answer': 'Canada', 'index': 1297, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2569593'}
+{'answer': 'The Adventures of Captain Hatteras', 'index': 1314, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21626187'}
+{'answer': 'Brazil', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2923981'}
+{'answer': 'Brazil', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q18007903'}
+{'answer': 'Canada', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16865338'}
+{'answer': 'Portugal', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q31697898'}
+{'answer': 'Mozambique', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1029'}
+{'answer': 'Mozambique', 'index': 1317, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5793520'}
+{'answer': 'Somalia', 'index': 1318, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q319984'}
+{'answer': 'Airbus A319', 'index': 1320, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q15629325'}
+{'answer': 'Adelphi', 'index': 1321, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4682062'}
+{'answer': 'Polo Grounds', 'index': 1326, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q28403484'}
+{'answer': 'Sherwood Anderson', 'index': 1335, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q233898'}
+{'answer': 'England', 'index': 1337, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q47762'}
+{'answer': 'Busting', 'index': 1345, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5002202'}
+{'answer': 'Rango', 'index': 1354, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3418957'}
+{'answer': 'Sweeney Todd: The Demon Barber of Fleet Street', 'index': 1354, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4050454'}
+{'answer': 'Wen Jiabao', 'index': 1355, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29439430'}
+{'answer': 'Dictatorship', 'index': 1358, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q118365'}
+{'answer': 'North Vietnam', 'index': 1359, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1465530'}
+{'answer': 'Kingdom of Laos', 'index': 1359, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q870055'}
+{'answer': 'Taiwan', 'index': 1359, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q57251'}
+{'answer': 'Soviet Union', 'index': 1359, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q26325652'}
+{'answer': 'Latin Quarter, Paris', 'index': 1360, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q20488770'}
+{'answer': 'Heavy metal', 'index': 1367, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q105789'}
+{'answer': 'Lung cancer', 'index': 1386, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q20767486'}
+{'answer': 'Cancer', 'index': 1386, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q428243'}
+{'answer': 'The New School', 'index': 1392, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7753736'}
+{'answer': 'Euro', 'index': 1397, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4916'}
+{'answer': 'Ukraine', 'index': 1399, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q206073'}
+{'answer': 'Belarus', 'index': 1399, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q6436326'}
+{'answer': 'Kazakhstan', 'index': 1399, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1388078'}
+{'answer': 'Lithuania', 'index': 1399, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q37'}
+{'answer': 'Norway', 'index': 1399, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2480177'}
+{'answer': 'Anger Management', 'index': 1402, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29638628'}
+{'answer': 'Big Daddy', 'index': 1402, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4905531'}
+{'answer': 'Mercy', 'index': 1527, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q227800'}
+{'answer': 'Tomorrow', 'index': 1527, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q397392'}
+{'answer': 'English Language', 'index': 1529, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1860'}
+{'answer': 'Kevin James', 'index': 1539, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q44561'}
+{'answer': 'Monarchy', 'index': 1542, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q739941'}
+{'answer': 'Mexico', 'index': 1544, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q96'}
+{'answer': 'Central African Republic', 'index': 1546, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q28554153'}
+{'answer': 'Djibouti', 'index': 1546, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q977'}
+{'answer': 'Star Trek', 'index': 1591, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1077'}
+{'answer': 'Business magnate', 'index': 1601, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q911554'}
+{'answer': 'Socialist state', 'index': 1603, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q842112'}
+{'answer': 'Modernism', 'index': 1616, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2426218'}
+{'answer': 'Ballad', 'index': 1618, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q624558'}
+{'answer': 'France', 'index': 1624, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q88918'}
+{'answer': 'Holly Hobbie and Friends: Christmas Wishes', 'index': 1625, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q12124800'}
+{'answer': 'Central Europe', 'index': 1628, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q207020'}
+{'answer': 'National Railway Company of Belgium', 'index': 1649, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q524255'}
+{'answer': 'Physicist', 'index': 1655, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q17667080'}
+{'answer': 'Sonic the Hedgehog', 'index': 1657, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1046812'}
+{'answer': 'Big Fish', 'index': 1657, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q278997'}
+{'answer': 'Bolt', 'index': 1657, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1147806'}
+{'answer': 'High School Musical 2', 'index': 1657, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4040685'}
+{'answer': 'United Arab Emirates', 'index': 1658, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q200294'}
+{'answer': '1956 Major League Baseball Season', 'index': 1662, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1648980'}
+{'answer': 'Canada', 'index': 1663, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16'}
+{'answer': 'Australia', 'index': 1663, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q205546'}
+{'answer': 'Zimbabwe', 'index': 1663, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q10724657'}
+{'answer': 'Uganda', 'index': 1663, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7877575'}
+{'answer': 'Uganda', 'index': 1663, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q28554087'}
+{'answer': 'Sydenham', 'index': 1665, 'error': "URLError(timeout('timed out',),)", 'Qid': u'Q7639008'}
+{'answer': 'Stegosaurus', 'index': 1672, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21352338'}
+{'answer': 'Stegosaurus', 'index': 1672, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q41220232'}
+{'answer': 'Yule Marble', 'index': 1672, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3287571'}
+{'answer': 'Texas A&M University\xe2\x80\x93Kingsville', 'index': 1673, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q634651'}
+{'answer': 'Africa', 'index': 1676, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q383824'}
+{'answer': 'Bedtime Stories', 'index': 1677, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2291771'}
+{'answer': '1961', 'index': 1682, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4570256'}
+{'answer': 'Bill Gates', 'index': 1683, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q371973'}
+{'answer': 'Bill Gates', 'index': 1683, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q17616469'}
+{'answer': 'Hayden Christensen', 'index': 1688, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q192812'}
+{'answer': 'Closer', 'index': 1692, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3327884'}
+{'answer': 'Beautiful Girls', 'index': 1692, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q813451'}
+{'answer': '17 Again', 'index': 1695, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4553524'}
+{'answer': 'Australia', 'index': 1781, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q408'}
+{'answer': 'Know Nothing', 'index': 1803, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q550678'}
+{'answer': 'Classical music', 'index': 2010, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q30430806'}
+{'answer': 'San Joaquin County', 'index': 2014, 'error': "URLError(timeout('timed out',),)", 'Qid': u'Q7414386'}
+{'answer': 'Tower of London', 'index': 2032, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1770524'}
+{'answer': 'Buckingham Palace', 'index': 2032, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q42182'}
+{'answer': 'Dutch Language', 'index': 2050, 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)", 'Qid': u'Q1814570'}
+{'answer': '1991', 'index': 2059, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2062'}
+{'answer': '1991', 'index': 2059, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q860678'}
+{'answer': 'Oude Kerk', 'index': 2067, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19401021'}
+{'answer': 'Super Bowl X', 'index': 2079, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q126291'}
+{'answer': 'Heather', 'index': 2108, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q26615'}
+{'answer': 'Turkey', 'index': 2110, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1715478'}
+{'answer': 'Nicole Kidman', 'index': 2111, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q37459'}
+{'answer': 'English Language', 'index': 2123, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1346342'}
+{'answer': 'English Language', 'index': 2123, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3312722'}
+{'answer': 'Nipsey Russell', 'index': 2133, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q708172'}
+{'answer': 'Newton', 'index': 2199, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q12438'}
+{'answer': 'UPS Airlines', 'index': 2454, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1318737'}
+{'answer': 'Ionian Islands', 'index': 2512, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1147674'}
+{'answer': 'Scarecrow', 'index': 2518, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1995321'}
+{'answer': 'Columbia University', 'index': 2533, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7691246'}
+{'answer': 'Battle of Antietam', 'index': 2534, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q719252'}
+{'answer': 'Charles W. Fairbanks', 'index': 2547, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q270539'}
+{'answer': 'Charlotte Bobcats', 'index': 2552, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q163480'}
+{'answer': 'Buddhism', 'index': 2556, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q748'}
+{'answer': 'Buddhism', 'index': 2556, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1044604'}
+{'answer': 'Malay Language', 'index': 2558, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19646238'}
+{'answer': 'English Language', 'index': 2558, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1860'}
+{'answer': 'Queens', 'index': 2563, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1760438'}
+{'answer': 'Alabama', 'index': 2566, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q173'}
+{'answer': 'Alabama', 'index': 2566, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q227051'}
+{'answer': 'Portugal', 'index': 2583, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1045833'}
+{'answer': 'Forney Transportation Museum', 'index': 2701, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5470379'}
+{'answer': 'Museum of Contemporary Art Denver', 'index': 2701, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16895577'}
+{'answer': 'William Daniels', 'index': 2888, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q370181'}
+{'answer': 'American Folk Art Museum', 'index': 2893, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q464354'}
+{'answer': 'Laguna Beach', 'index': 2903, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1734959'}
+{'answer': 'Kalmia latifolia', 'index': 2940, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1235131'}
+{'answer': 'Afghanistan', 'index': 2954, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q182865'}
+{'answer': 'Afghanistan', 'index': 2954, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q192966'}
+{'answer': 'Romansh language', 'index': 2964, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q13199'}
+{'answer': 'Liverpool', 'index': 2978, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q24826'}
+{'answer': 'Liverpool', 'index': 2978, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1189030'}
+{'answer': 'Dick Williams', 'index': 3005, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2745810'}
+{'answer': 'Pakistan', 'index': 3011, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4121082'}
+{'answer': 'Kyrgyzstan', 'index': 3011, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q141202'}
+{'answer': 'Democratic Party', 'index': 3014, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q816863'}
+{'answer': 'Polonium', 'index': 3021, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2377223'}
+{'answer': "Parkinson's disease", 'index': 3023, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q24815148'}
+{'answer': 'Damon Thomas', 'index': 3025, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5212888'}
+{'answer': 'Ontario', 'index': 3032, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q488134'}
+{'answer': 'Reykjavik', 'index': 3124, 'error': "URLError(timeout('timed out',),)", 'Qid': u'Q29443632'}
+{'answer': 'Belgium', 'index': 3173, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q404713'}
+{'answer': 'Jacksonville', 'index': 3174, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q79412'}
+{'answer': 'Serbo-Croatian', 'index': 3212, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q20812309'}
+{'answer': 'Big band', 'index': 3219, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3639787'}
+{'answer': 'Strong Medicine', 'index': 3248, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3222227'}
+{'answer': 'Strong Medicine', 'index': 3248, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3729972'}
+{'answer': 'Benin', 'index': 3251, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q22150'}
+{'answer': 'Abuse', 'index': 3255, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q600571'}
+{'answer': '1938 NFL Championship Game', 'index': 3289, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4564290'}
+{'answer': 'Parthenon', 'index': 3303, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q19901207'}
+{'answer': 'Oldsmobile', 'index': 3310, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q2002196'}
+{'answer': 'Cadillac', 'index': 3310, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q295477'}
+{'answer': 'The Legend of Zelda', 'index': 3311, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q12393'}
+{'answer': 'France', 'index': 3321, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3209212'}
+{'answer': 'Helena', 'index': 3326, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q11543'}
+{'answer': 'Helena', 'index': 3326, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q348215'}
+{'answer': 'The Bronx', 'index': 3332, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q18426'}
+{'answer': 'Britt McKillip', 'index': 3338, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q458871'}
+{'answer': 'Euro', 'index': 3340, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q46'}
+{'answer': 'El Mirage', 'index': 3342, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5351602'}
+{'answer': 'Glendale', 'index': 3342, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q485716'}
+{'answer': 'Avondale', 'index': 3342, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q79449'}
+{'answer': 'Asia', 'index': 3350, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q4654942'}
+{'answer': 'ru', 'index': 3351, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7737'}
+{'answer': 'su', 'index': 3351, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q40587'}
+{'answer': 'Ralph Waldo Emerson', 'index': 3357, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q212423'}
+{'answer': 'Fast Food', 'index': 3458, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3739984'}
+{'answer': 'Piedmont', 'index': 3459, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q29689'}
+{'answer': 'Federal republic', 'index': 3460, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1045'}
+{'answer': 'Brother Bear', 'index': 3464, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q20760526'}
+{'answer': 'Bahrain', 'index': 3543, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q398'}
+{'answer': 'Los Angeles', 'index': 3547, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q10515395'}
+{'answer': 'United States of America', 'index': 3580, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7865813'}
+{'answer': 'The Fire Next Time', 'index': 3594, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q17507209'}
+{'answer': 'California', 'index': 3601, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q151526'}
+{'answer': 'Zilker Park', 'index': 3603, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q8071899'}
+{'answer': 'Jefferson County', 'index': 3615, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q61289'}
+{'answer': 'United States of America', 'index': 3615, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q30'}
+{'answer': 'Morehouse College', 'index': 3620, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1524124'}
+{'answer': 'Triangle', 'index': 3626, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3708419'}
+{'answer': 'Empire State', 'index': 3626, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1384'}
+{'answer': 'Presenter', 'index': 3627, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q3910937'}
+{'answer': '2011', 'index': 3629, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q79967'}
+{'answer': 'Ric Pipino', 'index': 3638, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q21012297'}
+{'answer': 'Belarus', 'index': 3642, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q9091'}
+{'answer': 'Moldova', 'index': 3642, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q6895786'}
+{'answer': 'Hungary', 'index': 3642, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q5943060'}
+{'answer': 'Babylon', 'index': 3669, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q224963'}
+{'answer': 'Babylon', 'index': 3669, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q221818'}
+{'answer': 'The Chimes', 'index': 3673, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q16826590'}
+{'answer': 'Felipe Calder\xc3\xb3n', 'index': 3680, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q562568'}
+{'answer': 'Khammouan', 'index': 3689, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q506641'}
+{'answer': 'Texas', 'index': 3745, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q916484'}
+{'answer': 'Parthenon', 'index': 3747, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7140248'}
+{'answer': 'Parthenon', 'index': 3747, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1467467'}
+{'answer': 'Tennessee State Museum', 'index': 3747, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q7700171'}
+{'answer': 'Agobard', 'index': 3755, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q1881656'}
+{'answer': 'Bohemia', 'index': 3757, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q39193'}
+{'answer': 'Brazilian Portuguese', 'index': 3760, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q37560646'}
+{'answer': 'Maundy Thursday', 'index': 3773, 'error': "SSLError('The read operation timed out',)", 'Qid': u'Q14914700'}

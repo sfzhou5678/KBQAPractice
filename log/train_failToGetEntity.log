@@ -1,0 +1,8 @@
+{'answer': 'Narrative of the Life of Frederick Douglass, an American Slave', 'index': 54, 'question': 'what was the name of frederick douglass book?', 'error': "URLError(timeout('timed out',),)"}
+{'answer': 'Walt Whitman', 'index': 303, 'question': 'what inspired langston hughes to write poetry?', 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)"}
+{'answer': 'Central Time Zone', 'index': 403, 'question': 'what is the time zone in oklahoma city?', 'error': "URLError(timeout('timed out',),)"}
+{'answer': 'iPartyRadio.com: The #1 Party Authority', 'index': 458, 'question': 'what happened to madonna childhood home?', 'error': "ValueError('No JSON object could be decoded',)"}
+{'answer': 'Presenter', 'index': 1013, 'question': 'who is aidan davis?', 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)"}
+{'answer': 'Euro', 'index': 1017, 'question': 'what kind of currency does greece have?', 'error': "URLError(SSLError('_ssl.c:645: The handshake operation timed out',),)"}
+{'answer': 'English Language', 'index': 1199, 'question': 'what do people in south africa speak?', 'error': "URLError(timeout('timed out',),)"}
+{'answer': 'M\xc3\xbchlhausen', 'index': 2646, 'question': 'where did johann sebastian bach live?', 'error': "URLError(timeout('timed out',),)"}
