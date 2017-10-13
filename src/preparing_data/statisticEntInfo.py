@@ -93,7 +93,7 @@ def someStatics(tr_ansEnt_withTypeMid):
         # Count the amount of answer type kinds, and the amount of each kind of answer type
         # 统计这些问答对：在一个问题的所有答案中，有答案的所有entities Qid都找不到Mid,如果是多答案的问题，
         # 则还要统计这样的answer数目，以及这样的答案在该问题的所有答案里所占的比例
-        # 统计每一个问答对中，找不到Mid的实体占该问答对中所有答案实体的比例，给出超过50 %，70 % 和90 % 的比例
+        # 统计每一个问答对中，找不到Mid的实体占该问答对中所有答案实体的比例，给出超过50%，70% 和90% 的比例
         ansNoMid = {'index': fullPairDict['lineNum'], 'answers': []}
         entNoMid = {'index': fullPairDict['lineNum']}
         if 'ans' in fullPairDict:
