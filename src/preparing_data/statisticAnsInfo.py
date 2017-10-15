@@ -16,6 +16,8 @@ tr_ansNoEnt_oneAns_path = data_path + '/tr_ansEntNotFound_oneAns.txt'
 tr_ansEntFound_multiAns_path = data_path + '/tr_ansEntFound_multiAns.txt'
 tr_ansNoEnt_multiAns_path = data_path + '/tr_ansEntNotFound_multiAns.txt'
 
+ts_ansEntity_fixConErr_path = data_path + '/ts_ansEntity_fixConErr.txt'
+
 # Function: divideByEntitiesNum
 # Description: If some entities failed to be searched when running getAnsInfo.getAnswersEntity()
 #              due to connection timed out error, get them here.
@@ -79,6 +81,68 @@ def fixConnectionError(train_ansEntity_raw, train_connectionErr, train_ansEntity
         f_train_ansEntity_fixErr.write(line)
         # f_train_ansEntity_fixErr.write('\n')
     f_train_ansEntity_fixErr.close()
+
+
+def fixConnectionError2(file_path):
+    infile = open(file_path, 'r')
+    lines = infile.readlines()
+    lenPairs = len(lines)
+
+    # f_tr_ansEntity_raw = open(train_ansEntity_raw_path, 'w')
+    f_tr_ansEntity_raw = open(ts_ansEntity_fixConErr_path, 'w')
+
+    for index in range(lenPairs):  # Be aware that (index + 1) is the line number of a piece of full QAPairs information.
+        pairsFullInfo = eval(lines[index].strip())
+        answersEntities = []
+        for ans in pairsFullInfo['ans']:
+            entities = []
+            ansTrans = ans.replace(" ", "%20")
+            try:
+                entityJson = getHtml("https://www.wikidata.org/w/api.php?action=wbsearchentities&search="+ansTrans+"&language=en&format=json")
+                entityDict = json.loads(entityJson)
+            except Exception, e:
+                # If the error Type is "ValueError('No JSON object could be decoded',)",
+                # set entities as empty list.
+                if repr(e) == "ValueError('No JSON object could be decoded',)":
+                    answersEntities.append({"name": ans, "entities": []})
+                # For other error types, record them in the log, not handle at the moment.
+                errorDict = {"question": pairsFullInfo['question'], "answer": ans, "index": index,
+                             "error": repr(e)}
+                logger.error(str(errorDict))
+                continue
+            entityInfo = entityDict["search"]
+            for info in entityInfo:
+                entity = {"Qid": info["id"]}
+                # Some entity may not consists of "label" or "description" property
+                if "label" in info:
+                    entity["label"] = info["label"]
+                else:
+                    entity["label"] = "null"
+                if "description" in info:
+                    entity["description"] = info['description']
+                else:
+                    entity["description"] = "null"
+                if 'url' in info:
+                    entity["url"] = info["url"]
+                else:
+                    entity["url"] = "null"
+                if "concepturi" in info:
+                    entity["concepturi"] = info["concepturi"]
+                else:
+                    entity["concepturi"] = "null"
+                if "pageid" in info:
+                    entity["pageid"] = info["pageid"]
+                else:
+                    entity["pageid"] = "null"
+                entities.append(entity)
+            answersEntities.append({"name": ans, "entities": entities})
+        pairsFullInfo['ans'] = answersEntities
+        # Because multi threads method are used, the order where the file print is changed. So I
+        # record the line number of a piece of full QAPairs information in test_res_path.
+        pairsFullInfo['lineNum'] = index
+        f_tr_ansEntity_raw.write(str(pairsFullInfo))
+        # print str(pairsFullInfo)
+        f_tr_ansEntity_raw.write('\n')
 
 
 # Function: findNoEntity

@@ -12,14 +12,16 @@ data_path = '../../data'
 src_path = '../../src'
 log_path = '../../log'
 
-train_res_path = '../data/webquestions.train.textrazor.full.txt'
-test_res_path = '../data/webquestions.test.textrazor.full.txt'
+train_res_path = '../../data/webquestions.train.textrazor.full.txt'
+test_res_path = '../../data/webquestions.test.textrazor.full.txt'
 
 train_ansEntity_raw_path = data_path + '/train_ansEntity_raw.txt'
 train_failToGetEntity_path = log_path + '/train_failToGetEntity.log'
+ts_ansEntity_raw_path = data_path + '/ts_ansEntity_raw.txt'
+ts_failToGetEntity_path = log_path + '/ts_failToGetEntity.log'
 
 logger = logging.getLogger(__name__)
-fileH = logging.FileHandler(train_failToGetEntity_path)
+fileH = logging.FileHandler(ts_failToGetEntity_path)
 conH = logging.StreamHandler()
 logger.addHandler(fileH)
 logger.addHandler(conH)
@@ -42,7 +44,7 @@ def getAnswersEntity(file_path):
 
     lenPairs = len(lines)
     lenPart = lenPairs / 3
-    f_tr_ansEntity_raw = open(train_ansEntity_raw_path, 'w')
+    f_tr_ansEntity_raw = open(ts_ansEntity_raw_path, 'w')
     lock = threading.Lock()
 
     t1 = threading.Thread(target=getAnswersEntity_thread,
@@ -82,9 +84,8 @@ def getAnswersEntity_thread(begin, end, lines, f_tr_ansEntity, lock):
             except Exception, e:
                 if repr(e) == "ValueError('No JSON object could be decoded',)":
                     answersEntities.append({"name": ans, "entities": entities})
-                errorDict = {"question": pairsFullInfo['question'], "answer": ans, "index": index,
-                             "error": repr(e)}
-                logger.error(str(errorDict))
+                else:
+                    logger.error(str(pairsFullInfo))
                 continue
             entityInfo = entityDict["search"]
             for info in entityInfo:
@@ -137,19 +138,8 @@ def getAnswersEntity_direct(file_path):
         for ans in pairsFullInfo['ans']:
             entities = []
             ansTrans = ans.replace(" ", "%20")
-            try:
-                entityJson = getHtml("https://www.wikidata.org/w/api.php?action=wbsearchentities&search="+ansTrans+"&language=en&format=json")
-                entityDict = json.loads(entityJson)
-            except Exception, e:
-                # If the error Type is "ValueError('No JSON object could be decoded',)",
-                # set entities as empty list.
-                if repr(e) == "ValueError('No JSON object could be decoded',)":
-                    answersEntities.append({"name": ans, "entities": []})
-                # For other error types, record them in the log, not handle at the moment.
-                errorDict = {"question": pairsFullInfo['question'], "answer": ans, "index": index,
-                             "error": repr(e)}
-                logger.error(str(errorDict))
-                continue
+            entityJson = getHtml("https://www.wikidata.org/w/api.php?action=wbsearchentities&search="+ansTrans+"&language=en&format=json")
+            entityDict = json.loads(entityJson)
             entityInfo = entityDict["search"]
             for info in entityInfo:
                 entity = {"Qid": info["id"]}
@@ -185,7 +175,7 @@ def getAnswersEntity_direct(file_path):
         f_tr_ansEntity_raw.write('\n')
 
 def main():
-    getAnswersEntity_direct(train_res_path)
+    getAnswersEntity(test_res_path)
     print "Back to main."
 
 
