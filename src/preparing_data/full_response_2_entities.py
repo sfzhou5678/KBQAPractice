@@ -30,6 +30,11 @@ https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q49892&format=json&l
 
 
 def main():
+  # 观察数据质量用的临时counter
+  wiki_id_count = 0
+  total_entity_count = 0
+  without_wikidataid_count = 0
+
   with open(full_train_response_path, encoding='utf-8') as f:
     lines = f.readlines()
     with open(train_entity_recognition_failed_list_path, 'w', encoding='utf-8') as failed_wf:
@@ -41,8 +46,12 @@ def main():
             failed_wf.flush()
             continue
           entities = qa_pair['parsed_question']['entities']
+          entities.sort(key=lambda k: k.get('confidenceScore', 0), reverse=True)  # 按confidenceScore从高到低给entities排序
           useful_entitiy_infos = []
+
+          without_wikidata_id = True
           for entity in entities:
+            total_entity_count += 1
             useful_entity_info = {}
             if 'entityId' in entity:
               useful_entity_info['entityId'] = entity['entityId']
@@ -57,13 +66,20 @@ def main():
               useful_entity_info['type'] = entity['type']
             if 'wikidataId' in entity:
               useful_entity_info['wikidataId'] = entity['wikidataId']
+              wiki_id_count += 1
+              without_wikidata_id = False
             useful_entitiy_infos.append(useful_entity_info)
+
+          if without_wikidata_id:
+            without_wikidataid_count += 1
           new_qa_pair = {}
           new_qa_pair['question'] = qa_pair['question']
           new_qa_pair['ans'] = qa_pair['ans']
           new_qa_pair['entities'] = useful_entitiy_infos
-          entities_wf.write(str(new_qa_pair) + '\n')
-          entities_wf.flush()
+          # entities_wf.write(str(new_qa_pair) + '\n')
+          # entities_wf.flush()
+
+    print('%d %d %d %d' % (len(lines), total_entity_count, wiki_id_count, without_wikidataid_count))
 
 
 if __name__ == '__main__':
