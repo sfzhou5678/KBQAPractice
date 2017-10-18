@@ -22,6 +22,10 @@ class CNNModel:
 
     self.global_step = tf.contrib.framework.get_or_create_global_step()
 
+    # 每次输入batchSize个数据
+    # 每个数据包含：questionIds，一个topicEntity，一组正确答案，一组定长的负采样答案(候选答案-正确答案+填充至定长)
+    # 答案拆分为：relation和tailEntity两个部分，所以应该有正确答案的R和T+错误答案的R+T共4组数据[TODO: 正确答案的长度能否变长？如果必须定长的话那就默认一次1个正确答案]
+
     self.question_ids = tf.placeholder(tf.int32, [batch_size, max_question_length])
 
     self.entity_id = tf.placeholder(tf.int32, [batch_size])
