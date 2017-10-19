@@ -62,3 +62,15 @@ def pickle_load(file_path):
   data = pickle.load(f_read)
 
   return data
+
+def reverse_dict(cur_dict):
+  new_dict = {}
+  for key, value in cur_dict.items():
+    new_dict[value] = key
+  return new_dict
+
+def get_id(vocab, word, unk_id=0):
+  if word in vocab:
+    return vocab[word]
+  else:
+    return unk_id

@@ -1,17 +1,18 @@
-# word_frequency = {'a': 10, 'b': 2, 'c': 1}
-# print(word_frequency)
-# new_word_frequency = {}
-# for k in word_frequency:
-#   if word_frequency[k] > 1:
-#     new_word_frequency[k] = word_frequency[k]
-#
-#
-#
-#   # word_frequency=sorted(word_frequency.items(),key=lambda d:d[1],reverse=True)
-# print(new_word_frequency)
 
+def func(word_vocab,item_vocab,realtion_vocab):
 
-a=[1,2,3]
-import random
-random.shuffle(a)
-print(a)
+  with open(r'G:\WikiData\ForFun\train.both.triples+candidate.txt') as f:
+    for i in range(500):
+      line = f.readline().strip()
+      if line == '':
+        break
+      data = eval(line)
+      question = data['question']
+      topic_entity_id = data['topic_entity']
+      forward_ans = data['forward_ans']
+      forward_candicate_ans = data['forward_candidate_ans']
+
+      reverse_ans = data['reverse_ans']
+      reverse_candidate_ans = data['reverse_candidate_ans']
+
+      print(len(forward_candicate_ans), len(reverse_candidate_ans))
