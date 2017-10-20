@@ -9,6 +9,7 @@ class TransEConfig:
 
 
 class CNNModelConfig:
+  num_sampled=64
   batch_size = 4
   base_learning_rate=1.0
   lr_decay=0.98
@@ -21,7 +22,7 @@ class CNNModelConfig:
   embedding_size = 128
   output_latent_vec_size=100
 
-  num_sampled = 64
+  # num_sampled = 64
   init_scale = 0.5
 
   need_vocab_aligment = True

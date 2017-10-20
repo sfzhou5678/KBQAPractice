@@ -4,6 +4,7 @@ import random
 import re
 import string
 import time
+import heapq
 import tensorflow as tf
 from src.database.DBManager import DBManager
 from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, get_id
@@ -38,42 +39,84 @@ def get_example(question_ids, topic_entity_id,
   return example
 
 
-def get_tf_data(tf_records_path, question_max_length, num_samples):
+def get_test_example(question_ids, topic_entity_id,
+                     true_ans_list, true_relation_list,
+                     candidate_ans, candidate_relation):
+  example = tf.train.Example(features=tf.train.Features(feature={
+    "question": tf.train.Feature(int64_list=tf.train.Int64List(value=question_ids)),
+    "topic_entity": tf.train.Feature(int64_list=tf.train.Int64List(value=[topic_entity_id])),
+    "true_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=true_ans_list)),
+    "true_relation": tf.train.Feature(int64_list=tf.train.Int64List(value=true_relation_list)),
+    "candidate_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=candidate_ans)),
+    "candidate_relation": tf.train.Feature(int64_list=tf.train.Int64List(value=candidate_relation)),
+  }))
+
+  return example
+
+
+def get_tf_data(tf_records_path, question_max_length, num_samples, mode='train'):
   # fixme: 函数名修改
   # fixme: 功能待测试
   reader = tf.TFRecordReader()
   filename_queue = tf.train.string_input_producer([tf_records_path])
 
   _, serialized_example = reader.read(filename_queue)
-  features = tf.parse_single_example(
-    serialized_example,
-    features={
-      'question': tf.FixedLenFeature([question_max_length], tf.int64),
-      "topic_entity": tf.FixedLenFeature([1], tf.int64),
-      'true_ans': tf.FixedLenFeature([1], tf.int64),
-      'true_relation': tf.FixedLenFeature([1], tf.int64),
-      'neg_ans': tf.FixedLenFeature([num_samples], tf.int64),
-      'neg_relation': tf.FixedLenFeature([num_samples], tf.int64)
-    })
 
-  question = tf.cast(features['question'], tf.int32)
-  topic_entity = tf.cast(features['topic_entity'], tf.int32)[0]
+  if mode == 'train':
+    features = tf.parse_single_example(
+      serialized_example,
+      features={
+        'question': tf.FixedLenFeature([question_max_length], tf.int64),
+        "topic_entity": tf.FixedLenFeature([1], tf.int64),
+        'true_ans': tf.FixedLenFeature([1], tf.int64),
+        'true_relation': tf.FixedLenFeature([1], tf.int64),
+        'neg_ans': tf.FixedLenFeature([num_samples], tf.int64),
+        'neg_relation': tf.FixedLenFeature([num_samples], tf.int64)
+      })
 
-  true_ans = tf.cast(features['true_ans'], tf.int32)[0]
-  true_relation = tf.cast(features['true_relation'], tf.int32)[0]
+    question = tf.cast(features['question'], tf.int32)
+    topic_entity = tf.cast(features['topic_entity'], tf.int32)[0]
 
-  neg_ans = tf.cast(features['neg_ans'], tf.int32)
-  neg_relation = tf.cast(features['neg_relation'], tf.int32)
+    true_ans = tf.cast(features['true_ans'], tf.int32)[0]
+    true_relation = tf.cast(features['true_relation'], tf.int32)[0]
 
-  return question, topic_entity, \
-         true_ans, true_relation, \
-         neg_ans, neg_relation
+    neg_ans = tf.cast(features['neg_ans'], tf.int32)
+    neg_relation = tf.cast(features['neg_relation'], tf.int32)
+
+    return question, topic_entity, \
+           true_ans, true_relation, \
+           neg_ans, neg_relation
+  elif mode == 'test':
+    features = tf.parse_single_example(
+      serialized_example,
+      features={
+        'question': tf.FixedLenFeature([question_max_length], tf.int64),
+        "topic_entity": tf.FixedLenFeature([1], tf.int64),
+        'true_ans': tf.FixedLenFeature([20], tf.int64),
+        'true_relation': tf.FixedLenFeature([20], tf.int64),
+        'candidate_ans': tf.FixedLenFeature([500], tf.int64),
+        'candidate_relation': tf.FixedLenFeature([500], tf.int64)
+      })
+
+    question = tf.cast(features['question'], tf.int32)
+    topic_entity = tf.cast(features['topic_entity'], tf.int32)[0]
+
+    true_ans = tf.cast(features['true_ans'], tf.int32)
+    true_relation = tf.cast(features['true_relation'], tf.int32)
+
+    candidate_ans = tf.cast(features['candidate_ans'], tf.int32)
+    candidate_relation = tf.cast(features['candidate_relation'], tf.int32)
+
+    return question, topic_entity, \
+           true_ans, true_relation, \
+           candidate_ans, candidate_relation
 
 
 def triples_to_tfrecords(triples_path, tfrecords_folder_path,
-                         word_vocab, item_vocab, realtion_vocab,
+                         word_vocab, item_vocab, relation_vocab,
                          question_max_length,
-                         num_samples=64):
+                         num_samples=64,
+                         mode='train'):
   """
   本函数的作用是将triples文件转换成tfrecords。
   
@@ -86,10 +129,14 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
   :param tfrecords_folder_path:
   :return: 
   """
-  forward_tfrecords_path = os.path.join(tfrecords_folder_path, 'train.forward.tfrecords')
-  reverse_tfrecords_path = os.path.join(tfrecords_folder_path, 'train.reverse.tfrecords')
+  forward_tfrecords_path = os.path.join(tfrecords_folder_path, '%s.forward.%d.tfrecords' % (mode, num_samples))
+  reverse_tfrecords_path = os.path.join(tfrecords_folder_path, '%s.reverse.%d.tfrecords' % (mode, num_samples))
 
-  count = 0
+  # if os.path.exists(forward_tfrecords_path) and os.path.exists(reverse_tfrecords_path):
+  #   return
+  # todo 暂时只测试forward的情况
+  if os.path.exists(forward_tfrecords_path):
+    return
 
   punctuation = string.punctuation
 
@@ -123,45 +170,69 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
                                for (h, r, t) in raw_reverse_candidate_ans]
 
       if len(raw_forward_ans) > 0:
-        n_forward = (len(forward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
-        need_sample = n_forward * num_samples - len(forward_candidate_ans)
-        for _ in range(need_sample):
-          sampled_r = random.randint(1, len(realtion_vocab) - 1)
-          sampled_t = random.randint(1, len(item_vocab) - 1)
-          forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
+        if mode == 'train':
+          n_forward = (len(forward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
+          need_sample = n_forward * num_samples - len(forward_candidate_ans)
+          for _ in range(need_sample):
+            sampled_r = random.randint(1, len(relation_vocab) - 1)
+            sampled_t = random.randint(1, len(item_vocab) - 1)
+            forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
 
-        for (h, r, t) in raw_forward_ans:
-          true_relation = get_id(relation_vocab, r)
-          true_ans = get_id(item_vocab, t)
+          for (h, r, t) in raw_forward_ans:
+            true_relation = get_id(relation_vocab, r)
+            true_ans = get_id(item_vocab, t)
 
-          for i in range(n_forward):
-            candidate_ans = forward_candidate_ans[i * num_samples:(i + 1) * num_samples]
-            neg_ans = [t for (h, r, t) in candidate_ans]
-            neg_relation = [r for (h, r, t) in candidate_ans]
+            for i in range(n_forward):
+              candidate_ans = forward_candidate_ans[i * num_samples:(i + 1) * num_samples]
+              neg_ans = [t for (h, r, t) in candidate_ans]
+              neg_relation = [r for (h, r, t) in candidate_ans]
 
-            example = get_example(question_ids, topic_entity_id, true_ans, true_relation,
-                                  neg_ans, neg_relation)
-            writer.write(example.SerializeToString())
-            count += 1
-        print(count)
-        # del tf_data['forward_candidate_ans']  # 在reverse文件中不需要上面的forward
-        # if len(raw_reverse_ans) > 0:
-        #   n_reverse = (len(reverse_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
-        #   need_sample = n_reverse * num_samples - len(reverse_candidate_ans)
-        #   for _ in range(need_sample):
-        #     sampled_r = random.randint(1, len(realtion_vocab) - 1)
-        #     sampled_t = random.randint(1, len(item_vocab) - 1)
-        #     reverse_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))
-        #
-        #   for (h, r, t) in raw_reverse_ans:
-        #     h_id = get_id(item_vocab, h)
-        #     r_id = get_id(relation_vocab, r)
-        #     t_id = get_id(item_vocab, t)
-        #     tf_data['ans'] = (h_id, r_id, t_id)
-        #
-        #     for i in range(n_reverse):
-        #       candidate_ans = reverse_candidate_ans[i * num_samples:(i + 1) * num_samples]
-        #       tf_data['reverse_candidate_ans'] = candidate_ans
+              example = get_example(question_ids, topic_entity_id, true_ans, true_relation,
+                                    neg_ans, neg_relation)
+              writer.write(example.SerializeToString())
+        elif mode == 'test':
+          # FIXME: 对于多个答案的临时做法：全都填充至20个，如果答案多余20个，就把多出来的抛弃掉
+          true_ans_list = []
+          true_realation_list = []
+          for (h, r, t) in raw_forward_ans:
+            true_relation = get_id(relation_vocab, r)
+            true_ans = get_id(item_vocab, t)
+            true_ans_list.append(true_ans)
+            true_realation_list.append(true_relation)
+            if len(true_ans_list) >= 20:
+              break
+          for _ in range(20 - len(raw_forward_ans)):
+            true_ans_list.append(-1)
+            true_realation_list.append(-1)
+
+          # fixme: 由于fixedLengthFeatures的存在，临时将candidate填充至500
+          candidate_ans = forward_candidate_ans[:500]
+          candidate_a = [t for (h, r, t) in candidate_ans]
+          candidate_r = [r for (h, r, t) in candidate_ans]
+          for _ in range(500 - len(candidate_a)):
+            candidate_a.append(0)
+            candidate_r.append(0)
+
+          example = get_test_example(question_ids, topic_entity_id, true_ans_list, true_realation_list,
+                                     candidate_a, candidate_r)
+          writer.write(example.SerializeToString())
+          # if len(raw_reverse_ans) > 0:
+          #   n_reverse = (len(reverse_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
+          #   need_sample = n_reverse * num_samples - len(reverse_candidate_ans)
+          #   for _ in range(need_sample):
+          #     sampled_r = random.randint(1, len(realtion_vocab) - 1)
+          #     sampled_t = random.randint(1, len(item_vocab) - 1)
+          #     reverse_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))
+          #
+          #   for (h, r, t) in raw_reverse_ans:
+          #     h_id = get_id(item_vocab, h)
+          #     r_id = get_id(relation_vocab, r)
+          #     t_id = get_id(item_vocab, t)
+          #     tf_data['ans'] = (h_id, r_id, t_id)
+          #
+          #     for i in range(n_reverse):
+          #       candidate_ans = reverse_candidate_ans[i * num_samples:(i + 1) * num_samples]
+          #       tf_data['reverse_candidate_ans'] = candidate_ans
   writer.close()
 
 
@@ -439,14 +510,35 @@ if __name__ == '__main__':
   config = CNNModelConfig()
   # 然后配合各vocab，将rawModelData转化成真正的ModelData
   triples_to_tfrecords(r'F:\WikiData\ForFun\train.both.triples+candidate.txt', r'F:\WikiData\ForFun',
-                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled)
+                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled,
+                       mode='train')
 
-  question, topic_entity, true_ans, true_relation, neg_ans, neg_relation = get_tf_data(
-    r'F:\WikiData\ForFun\train.forward.tfrecords', config.max_question_length, config.num_sampled)
+  triples_to_tfrecords(r'F:\WikiData\ForFun\test.both.triples+candidate.txt', r'F:\WikiData\ForFun',
+                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled,
+                       mode='test')
+
+  question, topic_entity, true_ans, true_relation_list, neg_ans, neg_relation = get_tf_data(
+    r'F:\WikiData\ForFun\train.forward.%d.tfrecords' % config.num_sampled, config.max_question_length,
+    config.num_sampled, mode='train')
+
+  test_question, test_topic_entity, \
+  test_true_ans_list, test_true_relation_list, test_candidate_ans, test_candidate_realtion = get_tf_data(
+    r'F:\WikiData\ForFun\test.forward.%d.tfrecords' % config.num_sampled, config.max_question_length,
+    config.num_sampled, mode='test')
 
   question_batch, topic_entity_batch, true_ans_batch, true_relation_batch, \
   neg_ans_batch, neg_relation_batch = tf.train.batch(
-    [question, topic_entity, true_ans, true_relation, neg_ans, neg_relation],
+    [question, topic_entity,
+     true_ans, true_relation_list,
+     neg_ans, neg_relation],
+    batch_size=4,
+    capacity=4 * 3 + 1000)
+
+  test_question_batch, test_topic_entity_batch, test_true_ans_batch, test_true_relation_batch, \
+  test_candidate_ans_batch, test_candidate_relation_batch = tf.train.batch(
+    [test_question, test_topic_entity,
+     test_true_ans_list, test_true_relation_list,
+     test_candidate_ans, test_candidate_realtion],
     batch_size=4,
     capacity=4 * 3 + 1000)
 
@@ -454,7 +546,13 @@ if __name__ == '__main__':
   config.relations_vocab_size = len(relation_vocab)
   config.words_vocab_size = len(word_vocab)
 
-  model = CNNModel(config, is_training=True)
+  with tf.name_scope('Train'):
+    with tf.variable_scope("Model", reuse=None):
+      model = CNNModel(config, is_training=True)
+
+  with tf.name_scope('Test'):
+    with tf.variable_scope("Model", reuse=True):
+      test_model = CNNModel(config, is_training=False, is_test=True)
 
   with tf.Session() as sess:
     tf.global_variables_initializer().run()
@@ -463,16 +561,30 @@ if __name__ == '__main__':
 
     time0 = time.time()
     for i in range(2000):
-      q, topic, t_ans, t_relation, n_ans, n_relation = sess.run(
+      q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
         [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
          neg_ans_batch, neg_relation_batch])
       _, loss, acc = sess.run([model.cos_sim_train_op, model.cos_similarity_loss, model.accuracy],
                               {model.question_ids: q, model.topic_entity_id: topic,
-                               model.true_ans: t_ans, model.true_relation: t_relation,
+                               model.true_ans: gt_ans, model.true_relation: gt_relation,
                                model.neg_ans: n_ans, model.neg_relation: n_relation})
+
       if i % 100 == 0:
         print(loss, acc, time.time() - time0)
         time0 = time.time()
+
+        test_q, test_topic_entity, test_ans_list, test_relation_list, \
+        test_c_ans, test_c_relation = sess.run([test_question_batch, test_topic_entity_batch,
+                                                test_true_ans_batch, test_true_relation_batch,
+                                                test_candidate_ans_batch, test_candidate_relation_batch])
+        cos = sess.run(test_model.cos_sim,
+                       {test_model.question_ids: test_q, test_model.topic_entity_id: test_topic_entity,
+                        test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation})
+
+        for i in range(config.batch_size):
+          top_5_ans = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
+          ans = [a for a in test_ans_list[i] if a >= 0]
+          print(ans,'\t',top_5_ans)
 
     coord.request_stop()
     coord.join(threads)
