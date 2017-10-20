@@ -3,6 +3,7 @@ import json
 import random
 import re
 import string
+import tensorflow as tf
 from src.database.DBManager import DBManager
 from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, get_id
 
@@ -21,6 +22,41 @@ def main():
   db.close()
 
 
+def get_example(question_ids, topic_entity_id, ans, candidate_ans):
+  example = tf.train.Example(features=tf.train.Features(feature={
+    "question": tf.train.Feature(int64_list=tf.train.Int64List(value=question_ids)),
+    "topic_entity": tf.train.Feature(int64_list=tf.train.Int64List(value=[topic_entity_id])),
+    "ans": tf.train.Feature(int64_list=tf.train.Int64List(value=ans)),
+    "candidate_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=candidate_ans))
+  }))
+
+  return example
+
+
+def get_tf_data(tf_records_path):
+  # fixme: 函数名修改
+  # fixme: 功能待测试
+  reader = tf.TFRecordReader()
+  filename_queue = tf.train.string_input_producer([tf_records_path])
+
+  _, serialized_example = reader.read(filename_queue)
+  features = tf.parse_single_example(
+    serialized_example,
+    features={
+      'question': tf.FixedLenFeature([50], tf.int64),
+      "topic_entity": tf.FixedLenFeature([1], tf.int64),
+      'ans': tf.FixedLenFeature([3], tf.int64),
+      "candidate_ans": tf.FixedLenFeature([3 * 64], tf.int64),
+    })
+
+  question = tf.cast(features['question'], tf.int32)
+  topic_entity = tf.cast(features['topic_entity'], tf.int32)
+  ans = tf.cast(features['ans'], tf.int32)
+  candidate_ans = tf.cast(features['candidate_ans'], tf.int32)
+
+  return question, topic_entity, ans, candidate_ans
+
+
 def triples_to_tfrecords(triples_path, tfrecords_folder_path,
                          word_vocab, item_vocab, realtion_vocab,
                          num_samples=64):
@@ -30,7 +66,7 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
   考虑到原triples中会有多个forward_ans以及多个reverse_ans：
   1) 在tfRecords中会将每个ans单独列作一行。
   2) 每一行包括：question对应的ids；正确答案的h，r，t；补全到定长数组的负样本候选答案的[(h,r,t),(h,r,t)]
-  3) TODO: 正反向数据有没有统一的方式？如果没有的话需要分别写在两个文件中 
+  3) 正反向数据分别写在两个文件中 
   
   :param triples_path: 
   :param tfrecords_folder_path:
@@ -39,10 +75,11 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
   forward_tfrecords_path = os.path.join(tfrecords_folder_path, 'train.forward.tfrecords')
   reverse_tfrecords_path = os.path.join(tfrecords_folder_path, 'train.reverse.tfrecords')
 
-  # 0. 准备文本词汇表(用于question2id)和实体词汇表(用于hrt)
-  # 1. question to id
-  # 2. h,r,t to id
+  count = 0
+
   punctuation = string.punctuation
+
+  writer = tf.python_io.TFRecordWriter(forward_tfrecords_path)
   with open(triples_path) as f:
     while True:
       line = f.readline().strip()
@@ -61,6 +98,9 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
       # 开始处理
       raw_question = re.sub(r'[{}]+'.format(punctuation), ' ', raw_question).strip()
       question_ids = [get_id(word_vocab, word) for word in re.split('\s+', raw_question)]
+      question_ids = question_ids[:50]
+      for i in range(50 - len(question_ids)):
+        question_ids.append(0)
 
       topic_entity_id = get_id(item_vocab, raw_topic_entity)
       forward_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
@@ -68,12 +108,58 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
       reverse_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
                                for (h, r, t) in raw_reverse_candidate_ans]
 
-      for (h, r, t) in raw_forward_ans:
-        h_id = get_id(item_vocab, h)
-        r_id = get_id(relation_vocab, r)
-        t_id = get_id(item_vocab, t)
+      tf_data = {}
+      tf_data['question'] = question_ids
+      tf_data['topic_id'] = topic_entity_id
 
-        # todo 写到forwardTxt中
+      if len(raw_forward_ans) > 0:
+        n_forward = (len(forward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
+        need_sample = n_forward * num_samples - len(forward_candidate_ans)
+        for _ in range(need_sample):
+          sampled_r = random.randint(1, len(realtion_vocab) - 1)
+          sampled_t = random.randint(1, len(item_vocab) - 1)
+          forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
+
+        # 由于tfrecords中的Int64List必须接受list形式的数据，所以吧三元组全都拆分开来一个个排列成list
+        new_forward_candidate_ans = []
+        for (h, r, t) in forward_candidate_ans:
+          new_forward_candidate_ans.append(h)
+          new_forward_candidate_ans.append(r)
+          new_forward_candidate_ans.append(t)
+        forward_candidate_ans = new_forward_candidate_ans
+
+        for (h, r, t) in raw_forward_ans:
+          h_id = get_id(item_vocab, h)
+          r_id = get_id(relation_vocab, r)
+          t_id = get_id(item_vocab, t)
+          tf_data['ans'] = [h_id, r_id, t_id]
+
+          for i in range(n_forward):
+            candidate_ans = forward_candidate_ans[i * 3 * num_samples:(i + 1) * 3 * num_samples]
+            tf_data['forward_candidate_ans'] = candidate_ans
+            example = get_example(question_ids, topic_entity_id, tf_data['ans'], candidate_ans)
+            writer.write(example.SerializeToString())
+            count += 1
+        print(count)
+        # del tf_data['forward_candidate_ans']  # 在reverse文件中不需要上面的forward
+        # if len(raw_reverse_ans) > 0:
+        #   n_reverse = (len(reverse_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
+        #   need_sample = n_reverse * num_samples - len(reverse_candidate_ans)
+        #   for _ in range(need_sample):
+        #     sampled_r = random.randint(1, len(realtion_vocab) - 1)
+        #     sampled_t = random.randint(1, len(item_vocab) - 1)
+        #     reverse_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))
+        #
+        #   for (h, r, t) in raw_reverse_ans:
+        #     h_id = get_id(item_vocab, h)
+        #     r_id = get_id(relation_vocab, r)
+        #     t_id = get_id(item_vocab, t)
+        #     tf_data['ans'] = (h_id, r_id, t_id)
+        #
+        #     for i in range(n_reverse):
+        #       candidate_ans = reverse_candidate_ans[i * num_samples:(i + 1) * num_samples]
+        #       tf_data['reverse_candidate_ans'] = candidate_ans
+  writer.close()
 
 
 def qid_to_triples(db, file_path, saving_path):
@@ -304,7 +390,7 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
 if __name__ == '__main__':
   # 首先在main中利用DB将原始的问答对转化成Model所需的{question, topicEntity，trueAns，candidateAns}
 
-  wikidata_folder = r'G:\WikiData'
+  wikidata_folder = r'F:\WikiData'
   selected_wikidata_file_path = os.path.join(wikidata_folder, 'selected-latest-all.OnlyRelevant.data')
 
   transe_data_saving_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
@@ -347,5 +433,23 @@ if __name__ == '__main__':
   word_vocab = get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK')
 
   # 然后配合各vocab，将rawModelData转化成真正的ModelData
-  triples_to_tfrecords(r'G:\WikiData\ForFun\train.both.triples+candidate.txt', r'G:\WikiData\ForFun',
-                       word_vocab, item_vocab, relation_vocab)
+  # triples_to_tfrecords(r'F:\WikiData\ForFun\train.both.triples+candidate.txt', r'F:\WikiData\ForFun',
+  #                      word_vocab, item_vocab, relation_vocab)
+
+  question, topic_entity, ans, candidate_ans = get_tf_data(r'F:\WikiData\ForFun\train.forward.tfrecords')
+  question_batch, topic_entity_batch, ans_batch, candidate_ans_batch = tf.train.batch(
+    [question, topic_entity, ans, candidate_ans],
+    batch_size=4,
+    capacity=4 * 3 + 1000)
+
+  with tf.Session() as sess:
+    tf.global_variables_initializer().run()
+    coord = tf.train.Coordinator()
+    threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+
+    for i in range(80):
+      q, t, a, ca = sess.run([question_batch, topic_entity_batch, ans_batch, candidate_ans_batch])
+      print(t)
+
+    coord.request_stop()
+    coord.join(threads)
