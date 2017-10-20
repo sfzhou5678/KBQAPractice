@@ -198,6 +198,7 @@ class CNNModel:
           lr_decay
         )
         self.cos_sim_train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(self.cos_similarity_loss)
+
       else:
         # fixme: num_sampled应该是具体的candidate数
         candidate_num = 500

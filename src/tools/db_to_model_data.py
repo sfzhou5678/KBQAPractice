@@ -161,6 +161,7 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
       question_ids = [get_id(word_vocab, word) for word in re.split('\s+', raw_question)]
       question_ids = question_ids[:question_max_length]
       for i in range(question_max_length - len(question_ids)):
+        # todo append Padding
         question_ids.append(0)
 
       topic_entity_id = get_id(item_vocab, raw_topic_entity)
@@ -432,7 +433,7 @@ def get_entity_vocabulary(counter_path, vocab_saving_path, UNK='_UNK_', percent=
   return vocab
 
 
-def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK'):
+def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK', PAD='PAD'):
   if os.path.exists(word_vocab_saving_path):
     try:
       word_vocab = pickle_load(word_vocab_saving_path)
@@ -443,7 +444,8 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
 
   word_vocab = {}
   word_vocab[UNK] = 0
-  id = 1
+  word_vocab[PAD] = 1
+  id = 2
   with open(pretrained_wordvec_saving_path, encoding='utf-8') as f:
     lines = f.readlines()
     for line in lines:
@@ -531,16 +533,16 @@ if __name__ == '__main__':
     [question, topic_entity,
      true_ans, true_relation_list,
      neg_ans, neg_relation],
-    batch_size=4,
-    capacity=4 * 3 + 1000)
+    batch_size=config.batch_size,
+    capacity=config.batch_size * 3 + 1000)
 
   test_question_batch, test_topic_entity_batch, test_true_ans_batch, test_true_relation_batch, \
   test_candidate_ans_batch, test_candidate_relation_batch = tf.train.batch(
     [test_question, test_topic_entity,
      test_true_ans_list, test_true_relation_list,
      test_candidate_ans, test_candidate_realtion],
-    batch_size=4,
-    capacity=4 * 3 + 1000)
+    batch_size=config.batch_size,
+    capacity=config.batch_size * 3 + 1000)
 
   config.entities_vocab_size = len(item_vocab)
   config.relations_vocab_size = len(relation_vocab)
@@ -582,9 +584,14 @@ if __name__ == '__main__':
                         test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation})
 
         for i in range(config.batch_size):
-          top_5_ans = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
+          top_5_ans_index = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
+          top_5_ans = [test_c_ans[i][index] for index in top_5_ans_index]
           ans = [a for a in test_ans_list[i] if a >= 0]
-          print(ans,'\t',top_5_ans)
+          for aaa in top_5_ans:
+            if aaa in ans:
+              print('√', end='\t')
+              break
+          print(ans, '\t', top_5_ans)
 
     coord.request_stop()
     coord.join(threads)
