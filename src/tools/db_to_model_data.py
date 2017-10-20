@@ -3,6 +3,7 @@ import json
 import random
 import re
 import string
+import time
 import tensorflow as tf
 from src.database.DBManager import DBManager
 from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, get_id
@@ -22,18 +23,22 @@ def main():
   db.close()
 
 
-def get_example(question_ids, topic_entity_id, ans, candidate_ans):
+def get_example(question_ids, topic_entity_id,
+                true_ans, true_relation,
+                neg_ans, neg_relation):
   example = tf.train.Example(features=tf.train.Features(feature={
     "question": tf.train.Feature(int64_list=tf.train.Int64List(value=question_ids)),
     "topic_entity": tf.train.Feature(int64_list=tf.train.Int64List(value=[topic_entity_id])),
-    "ans": tf.train.Feature(int64_list=tf.train.Int64List(value=ans)),
-    "candidate_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=candidate_ans))
+    "true_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=[true_ans])),
+    "true_relation": tf.train.Feature(int64_list=tf.train.Int64List(value=[true_relation])),
+    "neg_ans": tf.train.Feature(int64_list=tf.train.Int64List(value=neg_ans)),
+    "neg_relation": tf.train.Feature(int64_list=tf.train.Int64List(value=neg_relation))
   }))
 
   return example
 
 
-def get_tf_data(tf_records_path):
+def get_tf_data(tf_records_path, question_max_length, num_samples):
   # fixme: 函数名修改
   # fixme: 功能待测试
   reader = tf.TFRecordReader()
@@ -43,22 +48,31 @@ def get_tf_data(tf_records_path):
   features = tf.parse_single_example(
     serialized_example,
     features={
-      'question': tf.FixedLenFeature([50], tf.int64),
+      'question': tf.FixedLenFeature([question_max_length], tf.int64),
       "topic_entity": tf.FixedLenFeature([1], tf.int64),
-      'ans': tf.FixedLenFeature([3], tf.int64),
-      "candidate_ans": tf.FixedLenFeature([3 * 64], tf.int64),
+      'true_ans': tf.FixedLenFeature([1], tf.int64),
+      'true_relation': tf.FixedLenFeature([1], tf.int64),
+      'neg_ans': tf.FixedLenFeature([num_samples], tf.int64),
+      'neg_relation': tf.FixedLenFeature([num_samples], tf.int64)
     })
 
   question = tf.cast(features['question'], tf.int32)
-  topic_entity = tf.cast(features['topic_entity'], tf.int32)
-  ans = tf.cast(features['ans'], tf.int32)
-  candidate_ans = tf.cast(features['candidate_ans'], tf.int32)
+  topic_entity = tf.cast(features['topic_entity'], tf.int32)[0]
 
-  return question, topic_entity, ans, candidate_ans
+  true_ans = tf.cast(features['true_ans'], tf.int32)[0]
+  true_relation = tf.cast(features['true_relation'], tf.int32)[0]
+
+  neg_ans = tf.cast(features['neg_ans'], tf.int32)
+  neg_relation = tf.cast(features['neg_relation'], tf.int32)
+
+  return question, topic_entity, \
+         true_ans, true_relation, \
+         neg_ans, neg_relation
 
 
 def triples_to_tfrecords(triples_path, tfrecords_folder_path,
                          word_vocab, item_vocab, realtion_vocab,
+                         question_max_length,
                          num_samples=64):
   """
   本函数的作用是将triples文件转换成tfrecords。
@@ -98,8 +112,8 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
       # 开始处理
       raw_question = re.sub(r'[{}]+'.format(punctuation), ' ', raw_question).strip()
       question_ids = [get_id(word_vocab, word) for word in re.split('\s+', raw_question)]
-      question_ids = question_ids[:50]
-      for i in range(50 - len(question_ids)):
+      question_ids = question_ids[:question_max_length]
+      for i in range(question_max_length - len(question_ids)):
         question_ids.append(0)
 
       topic_entity_id = get_id(item_vocab, raw_topic_entity)
@@ -107,10 +121,6 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
                                for (h, r, t) in raw_forward_candidate_ans]
       reverse_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
                                for (h, r, t) in raw_reverse_candidate_ans]
-
-      tf_data = {}
-      tf_data['question'] = question_ids
-      tf_data['topic_id'] = topic_entity_id
 
       if len(raw_forward_ans) > 0:
         n_forward = (len(forward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
@@ -120,24 +130,17 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
           sampled_t = random.randint(1, len(item_vocab) - 1)
           forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
 
-        # 由于tfrecords中的Int64List必须接受list形式的数据，所以吧三元组全都拆分开来一个个排列成list
-        new_forward_candidate_ans = []
-        for (h, r, t) in forward_candidate_ans:
-          new_forward_candidate_ans.append(h)
-          new_forward_candidate_ans.append(r)
-          new_forward_candidate_ans.append(t)
-        forward_candidate_ans = new_forward_candidate_ans
-
         for (h, r, t) in raw_forward_ans:
-          h_id = get_id(item_vocab, h)
-          r_id = get_id(relation_vocab, r)
-          t_id = get_id(item_vocab, t)
-          tf_data['ans'] = [h_id, r_id, t_id]
+          true_relation = get_id(relation_vocab, r)
+          true_ans = get_id(item_vocab, t)
 
           for i in range(n_forward):
-            candidate_ans = forward_candidate_ans[i * 3 * num_samples:(i + 1) * 3 * num_samples]
-            tf_data['forward_candidate_ans'] = candidate_ans
-            example = get_example(question_ids, topic_entity_id, tf_data['ans'], candidate_ans)
+            candidate_ans = forward_candidate_ans[i * num_samples:(i + 1) * num_samples]
+            neg_ans = [t for (h, r, t) in candidate_ans]
+            neg_relation = [r for (h, r, t) in candidate_ans]
+
+            example = get_example(question_ids, topic_entity_id, true_ans, true_relation,
+                                  neg_ans, neg_relation)
             writer.write(example.SerializeToString())
             count += 1
         print(count)
@@ -254,7 +257,6 @@ def qid_to_triples(db, file_path, saving_path):
 
           if line_count % 100 == 0:
             print(line_count, no_ans_count)
-            break
       print(line_count, no_ans_count)
 
 
@@ -389,6 +391,8 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
 
 if __name__ == '__main__':
   # 首先在main中利用DB将原始的问答对转化成Model所需的{question, topicEntity，trueAns，candidateAns}
+  from src.configs import CNNModelConfig
+  from src.model.CNNModel import CNNModel
 
   wikidata_folder = r'F:\WikiData'
   selected_wikidata_file_path = os.path.join(wikidata_folder, 'selected-latest-all.OnlyRelevant.data')
@@ -407,9 +411,9 @@ if __name__ == '__main__':
   # db = DBManager(host='192.168.1.139', port=3306, user='root', psd='1405', db='kbqa')
   #
   # train_file_path = '../../data/trains_ansEntity_fixConnectErr.txt'
-  # train_triples_candidate_path = '../../data/train.both.triples+candidate.txt'
+  # train_triples_candidate_path = r'F:\WikiData\ForFun\train.both.triples+candidate.txt'
   # test_file_path = '../../data/ts_ansEntity_raw.txt'
-  # test_triples_candidate_path = '../../data/test.both.triples+candidate.txt'
+  # test_triples_candidate_path = r'F:\WikiData\ForFun\test.both.triples+candidate.txt'
   #
   # qid_to_triples(db, train_file_path, train_triples_candidate_path)
   # qid_to_triples(db, test_file_path, test_triples_candidate_path)
@@ -432,24 +436,43 @@ if __name__ == '__main__':
 
   word_vocab = get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK')
 
+  config = CNNModelConfig()
   # 然后配合各vocab，将rawModelData转化成真正的ModelData
-  # triples_to_tfrecords(r'F:\WikiData\ForFun\train.both.triples+candidate.txt', r'F:\WikiData\ForFun',
-  #                      word_vocab, item_vocab, relation_vocab)
+  triples_to_tfrecords(r'F:\WikiData\ForFun\train.both.triples+candidate.txt', r'F:\WikiData\ForFun',
+                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled)
 
-  question, topic_entity, ans, candidate_ans = get_tf_data(r'F:\WikiData\ForFun\train.forward.tfrecords')
-  question_batch, topic_entity_batch, ans_batch, candidate_ans_batch = tf.train.batch(
-    [question, topic_entity, ans, candidate_ans],
+  question, topic_entity, true_ans, true_relation, neg_ans, neg_relation = get_tf_data(
+    r'F:\WikiData\ForFun\train.forward.tfrecords', config.max_question_length, config.num_sampled)
+
+  question_batch, topic_entity_batch, true_ans_batch, true_relation_batch, \
+  neg_ans_batch, neg_relation_batch = tf.train.batch(
+    [question, topic_entity, true_ans, true_relation, neg_ans, neg_relation],
     batch_size=4,
     capacity=4 * 3 + 1000)
+
+  config.entities_vocab_size = len(item_vocab)
+  config.relations_vocab_size = len(relation_vocab)
+  config.words_vocab_size = len(word_vocab)
+
+  model = CNNModel(config, is_training=True)
 
   with tf.Session() as sess:
     tf.global_variables_initializer().run()
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
-    for i in range(80):
-      q, t, a, ca = sess.run([question_batch, topic_entity_batch, ans_batch, candidate_ans_batch])
-      print(t)
+    time0 = time.time()
+    for i in range(2000):
+      q, topic, t_ans, t_relation, n_ans, n_relation = sess.run(
+        [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
+         neg_ans_batch, neg_relation_batch])
+      _, loss, acc = sess.run([model.cos_sim_train_op, model.cos_similarity_loss, model.accuracy],
+                              {model.question_ids: q, model.topic_entity_id: topic,
+                               model.true_ans: t_ans, model.true_relation: t_relation,
+                               model.neg_ans: n_ans, model.neg_relation: n_relation})
+      if i % 100 == 0:
+        print(loss, acc, time.time() - time0)
+        time0 = time.time()
 
     coord.request_stop()
     coord.join(threads)

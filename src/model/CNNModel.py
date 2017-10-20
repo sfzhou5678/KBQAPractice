@@ -27,9 +27,14 @@ class CNNModel:
     # 答案拆分为：relation和tailEntity两个部分，所以应该有正确答案的R和T+错误答案的R+T共4组数据[TODO: 正确答案的长度能否变长？如果必须定长的话那就默认一次1个正确答案]
 
     self.question_ids = tf.placeholder(tf.int32, [batch_size, max_question_length])
+    self.topic_entity_id = tf.placeholder(tf.int32, [batch_size])
 
-    self.entity_id = tf.placeholder(tf.int32, [batch_size])
-    self.relation = tf.placeholder(tf.int32, [batch_size])  # 暂时只考虑一条的情况
+    self.true_relation = tf.placeholder(tf.int32, [batch_size])
+    self.true_ans = tf.placeholder(tf.int32, [batch_size])
+
+    self.neg_relation = tf.placeholder(tf.int32, [batch_size, num_sampled])
+    self.neg_ans = tf.placeholder(tf.int32, [batch_size, num_sampled])
+
     # self.ans_type = tf.placeholder(tf.int32, [None])  # TODO 可以做成one-hot
     # self.context_ids = tf.placeholder(tf.int32, [batch_size, None])  # 每个节点的context数量都不同，所以第二维设成了none
 
@@ -48,14 +53,20 @@ class CNNModel:
       embedded_question = tf.nn.embedding_lookup(words_embeddings, self.question_ids)
       embedded_question = tf.expand_dims(embedded_question, -1)
 
-      # fixme: 对字符串形式的ans的处理方法？
-      embedded_entity = tf.nn.embedding_lookup(entities_embeddings, self.entity_id)
-      embedded_relation = tf.nn.embedding_lookup(relations_embeddings, self.relation)
+      # fixme: 对字符串形式的ans的处理方法(str、time等用一个统一的id标注，不考虑具体的值(因为只要topic和R对的话值就能确定下来了))
+      embedded_entity = tf.nn.embedding_lookup(entities_embeddings, self.topic_entity_id)
+
+      embedding_ans = tf.nn.embedding_lookup(entities_embeddings, self.true_ans)
+      embedded_relation = tf.nn.embedding_lookup(relations_embeddings, self.true_relation)
+
+      embedding_neg_ans = tf.nn.embedding_lookup(entities_embeddings, self.neg_ans)
+      embedding_neg_realtion = tf.nn.embedding_lookup(relations_embeddings, self.neg_relation)
       # todo type的编码方式?
       # todo 根据ids找到一个context列表 然后reduceMean
 
-    question_entity_latent_vec = self.get_latent_vec(embedded_question, embedding_size, name='question_entity',
-                                                     reuse=not is_training)
+    # TODO 这种entity可以试试直接CNN提取，也可以在TransE的基础上，试一下把ansentity_latent替换成H+R=T!
+    question_ansentity_latent_vec = self.get_latent_vec(embedded_question, embedding_size, name='question_ans_entity',
+                                                        reuse=not is_training)
     question_relation_latent_vec = self.get_latent_vec(embedded_question, embedding_size, name='question_relation',
                                                        reuse=not is_training)
     # question_context_latent = self.get_latent(embedded_question, config, name='question_context',
@@ -66,15 +77,13 @@ class CNNModel:
 
     """
     得到latent之后要做的就是让各latent和目标ans尽量接近，并且和非目标ans尽量远离
-    [问题]：应该把ncel_loss的sampler得到的东西拿出来，后续Step2接着能用
     
-    
-    Step1. NCE: 
+    ####Step1. NCE: 
     NCE的作用相当于让用于自然语言的词汇表和FB中用到的entity以及relation词汇表做一个对齐
     相当于一个预训练过程，可以单独训练，也可以一起训练(目前选择的是一起训练)
     参照NCE在word2vec中的用法，区别在于原始输入的wordEmbedding被转换成了questionLatent，其他都保持不变
     
-    Step2. Cos similarity
+    ####Step2. Cos similarity
     第一步NCE已经对不同词汇表的词作了对齐，那么接下来要做的就是判断QLatent和ALatents的相似度了
     关于相似度的训练目前有两种方案：
     1) 参考论文中的，分别对不同维度的特征做相似度计算，最后再求和作为总的相似度[优化目标是4+1还是4个还是1个？]
@@ -91,12 +100,12 @@ class CNNModel:
     need_vocab_aligment = config.need_vocab_aligment  # 是否需要做自然语言到FBEentity的对齐 如果要的话则是通过类似word2vec的nceLoss完成
     if is_training:
       if need_vocab_aligment:
-        question_entity_nce_loss = nce_alignment(question_entity_latent_vec, self.entity_id,
-                                                 batch_size, embedding_size,
-                                                 entities_vocab_size, num_sampled,
-                                                 name='question_entity',
-                                                 is_training=is_training)
-        question_relation_nce_loss = nce_alignment(question_relation_latent_vec, self.relation, batch_size,
+        question_ansentity_nce_loss = nce_alignment(question_ansentity_latent_vec, self.true_ans,
+                                                    batch_size, embedding_size,
+                                                    entities_vocab_size, num_sampled,
+                                                    name='question_ans_entity',
+                                                    is_training=is_training)
+        question_relation_nce_loss = nce_alignment(question_relation_latent_vec, self.true_relation, batch_size,
                                                    embedding_size,
                                                    relations_vocab_size, num_sampled,
                                                    name='question_relation',
@@ -114,7 +123,7 @@ class CNNModel:
           300,
           lr_decay
         )
-        self.q_entity_nce_opt = tf.train.GradientDescentOptimizer(learning_rate).minimize(question_entity_nce_loss)
+        self.q_entity_nce_opt = tf.train.GradientDescentOptimizer(learning_rate).minimize(question_ansentity_nce_loss)
         self.q_relation_nce_opt = tf.train.GradientDescentOptimizer(learning_rate).minimize(
           question_relation_nce_loss)
 
@@ -122,63 +131,34 @@ class CNNModel:
     if similarity_mode == 'concat':
       # fixme: 用了太多concat和reshape 不知道执行效率会受到多大的影响
 
-      # question_latent_vec=[batchSize,n*lantentSize]
-      # question_latent_vec = tf.concat([question_entity_latent_vec, question_relation_latent_vec], axis=-1)
-
-      # width为特征维度，height为embeddingSize， depth为默认值1
-      # question_latent_vec=[batchSize,n,lantentSize,1] 用于CNN再次提取特征
-      question_latent_vec = tf.concat([tf.reshape(question_entity_latent_vec, [batch_size, 1, embedding_size]),
+      # 拼接多维度特征，分别产生qeustion,ans,neg_ans的特征向量
+      question_latent_vec = tf.concat([tf.reshape(question_ansentity_latent_vec, [batch_size, 1, embedding_size]),
                                        tf.reshape(question_relation_latent_vec, [batch_size, 1, embedding_size])],
                                       axis=1)
       question_latent_vec = tf.expand_dims(question_latent_vec, axis=-1)
 
-      # ans_latent_vec = tf.concat([embedded_entity, embedded_relation], axis=-1)
-      ans_latent_vec = tf.concat([tf.reshape(embedded_entity, [batch_size, 1, embedding_size]),
+      ans_latent_vec = tf.concat([tf.reshape(embedding_ans, [batch_size, 1, embedding_size]),
                                   tf.reshape(embedded_relation, [batch_size, 1, embedding_size])], axis=1)
       ans_latent_vec = tf.expand_dims(ans_latent_vec, axis=-1)
 
-      def get_neg_ans_lantent():
-        # 首先尝试对relation做负采样
-        neg_entity_sampler = tf.nn.log_uniform_candidate_sampler(
-          true_classes=tf.reshape(tf.cast(self.relation, tf.int64), [batch_size, 1]),
-          num_true=1,
-          num_sampled=num_sampled,
-          unique=True,
-          range_max=relations_vocab_size)
+      neg_ans_latent_vec = tf.concat([tf.reshape(embedding_neg_ans, [batch_size * num_sampled, 1, embedding_size]),
+                                      tf.reshape(embedding_neg_realtion,
+                                                 [batch_size * num_sampled, 1, embedding_size])], axis=1)
+      neg_ans_latent_vec = tf.expand_dims(neg_ans_latent_vec, axis=-1)
 
-        sampled_relation, true_expected_count, sampled_expected_count = (
-          array_ops.stop_gradient(s) for s in neg_entity_sampler)
-        sampled_relation = math_ops.cast(sampled_relation, tf.int32)  # shape=[num_sampled]
-        sampled_relation = tf.concat([tf.reshape(sampled_relation, [1, num_sampled])] * batch_size,
-                                     axis=0)  # 所有batch共用同一组负采样id
-
-        with tf.device("/cpu:0"):
-          # embedded_neg_relation =[batchSize,numSampled,embeddingSize]
-          embedded_neg_relation = tf.nn.embedding_lookup(relations_embeddings, sampled_relation)
-
-        # expended_embedded_entity=[batchSize,numSampled,embeddingSize]
-        expended_embedded_entity = tf.concat(
-          [tf.reshape(embedded_entity, shape=[batch_size, 1, embedding_size])] * num_sampled, axis=1)
-
-        neg_ans_lantent = tf.concat(
-          [tf.reshape(expended_embedded_entity, [batch_size * num_sampled, 1, embedding_size]),
-           tf.reshape(embedded_neg_relation, [batch_size * num_sampled, 1, embedding_size])],
-          axis=1)
-        neg_ans_lantent = tf.expand_dims(neg_ans_lantent, axis=-1)
-
-        return neg_ans_lantent
-
-      neg_ans_lantent = get_neg_ans_lantent()
-
+      # 再通过一次CNN提取特征
       question_final_latent_vec = self.get_latent_vec(question_latent_vec,
                                                       output_latent_vec_size=output_latent_vec_size,
                                                       name='final_similarity_layer', reuse=not is_training)
       ans_final_latent_vec = self.get_latent_vec(ans_latent_vec, output_latent_vec_size=output_latent_vec_size,
                                                  name='final_similarity_layer', reuse=True)
-      neg_ans_final_latent_vec = self.get_latent_vec(neg_ans_lantent, output_latent_vec_size=output_latent_vec_size,
+      neg_ans_final_latent_vec = self.get_latent_vec(neg_ans_latent_vec, output_latent_vec_size=output_latent_vec_size,
                                                      name='final_similarity_layer', reuse=True)
+
+      # 之前把每个batch的numSamples个数据拼在一起，当作batchSize*NumSamples个batch，现在再reshape回来
       neg_ans_final_latent_vec = tf.reshape(neg_ans_final_latent_vec, [batch_size, num_sampled, output_latent_vec_size])
 
+      # 最后计算相似度
       cos_sim_positive = cos_similarity(question_final_latent_vec, ans_final_latent_vec)
       cos_sim_positive = tf.concat([tf.reshape(cos_sim_positive, [batch_size, 1])] * num_sampled, axis=1)
 
@@ -193,7 +173,7 @@ class CNNModel:
       # 所以需要对模型进行限制，另cosP-cosN限制在Margin以内。Margin=0.1-0.3均能取得不错的效果，margin越大则越容易过拟合
       zeros = tf.zeros(shape=[batch_size, num_sampled])
       cos_similarity_loss = tf.maximum(zeros, tf.subtract(margin, tf.subtract(cos_sim_positive, cos_sim_negative)))
-      cos_similarity_loss = tf.reduce_mean(cos_similarity_loss)
+      self.cos_similarity_loss = tf.reduce_mean(cos_similarity_loss)
 
       correct = tf.equal(zeros, cos_similarity_loss)
       self.accuracy = tf.reduce_mean(tf.cast(correct, "float"), name="accuracy")
@@ -206,7 +186,7 @@ class CNNModel:
           300,
           lr_decay
         )
-        self.cos_sim_train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(cos_similarity_loss)
+        self.cos_sim_train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(self.cos_similarity_loss)
 
   def get_latent_vec(self, embedded_input, output_latent_vec_size, name, reuse):
     norm = True
@@ -244,3 +224,5 @@ if __name__ == '__main__':
 
   config = CNNModelConfig()
   model = CNNModel(config, is_training=True)
+
+  # todo assign word_embedding
