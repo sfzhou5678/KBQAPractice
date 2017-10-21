@@ -1,9 +1,11 @@
 import random
 import re
 import string
+import os
+import numpy as np
 
-
-data=[-1,2,0,-5]
-
-a=[ d for d in data if d >=0]
-print(a)
+data=np.reshape(np.array(range(15)),[3,5])
+print(data
+      )
+d=data[:,-2:]
+print(d)

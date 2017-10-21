@@ -15,6 +15,7 @@ class TransEModel:
     self.relations = tf.placeholder(tf.int32, shape=[batch_size])
     # if is_training:
     self.tails = tf.placeholder(tf.int32, shape=[batch_size, 1])
+    self.is_forward = tf.placeholder(tf.bool)
 
     # Ops and variables pinned to the CPU because of missing GPU implementation
     with tf.device('/cpu:0'):
@@ -30,7 +31,11 @@ class TransEModel:
       nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size], dtype=tf.float32, )
       nce_biases = tf.get_variable('nce_biases', [entities_vocab_size], dtype=tf.float32, )
 
-    embed = tf.add(embed_heads, embed_relations)
+    # 如果有一组数据是h+r=t,那么forward时h+r=t,backward时t-r=h
+    embed = tf.cond(self.is_forward,
+                    lambda: tf.add(embed_heads, embed_relations),
+                    lambda: tf.subtract(embed_heads, embed_relations))
+    # embed = tf.add(embed_heads, embed_relations)
 
     # 由于nce内部做的只是一个LR二分类，所以还可以尝试加一个softmax变成预测问题，配上对应的loss和opt
     # 注: 训练softmax会导致模型训练时间大幅延长，慎用
@@ -67,7 +72,7 @@ class TransEModel:
     if is_training:
       global_step = tf.contrib.framework.get_or_create_global_step()
       learning_rate = tf.train.exponential_decay(
-        1.0,
+        config.base_learning_rate,
         global_step,
         300,
         0.98

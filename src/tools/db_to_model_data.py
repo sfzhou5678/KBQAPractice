@@ -6,6 +6,7 @@ import string
 import time
 import heapq
 import tensorflow as tf
+import numpy as np
 from src.database.DBManager import DBManager
 from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, get_id
 
@@ -54,7 +55,7 @@ def get_test_example(question_ids, topic_entity_id,
   return example
 
 
-def get_tf_data(tf_records_path, question_max_length, num_samples, mode='train'):
+def get_tf_data(tf_records_path, question_max_length, num_samples, mode='train', candidate_len=500):
   # fixme: 函数名修改
   # fixme: 功能待测试
   reader = tf.TFRecordReader()
@@ -94,8 +95,8 @@ def get_tf_data(tf_records_path, question_max_length, num_samples, mode='train')
         "topic_entity": tf.FixedLenFeature([1], tf.int64),
         'true_ans': tf.FixedLenFeature([20], tf.int64),
         'true_relation': tf.FixedLenFeature([20], tf.int64),
-        'candidate_ans': tf.FixedLenFeature([500], tf.int64),
-        'candidate_relation': tf.FixedLenFeature([500], tf.int64)
+        'candidate_ans': tf.FixedLenFeature([candidate_len], tf.int64),
+        'candidate_relation': tf.FixedLenFeature([candidate_len], tf.int64)
       })
 
     question = tf.cast(features['question'], tf.int32)
@@ -115,6 +116,7 @@ def get_tf_data(tf_records_path, question_max_length, num_samples, mode='train')
 def triples_to_tfrecords(triples_path, tfrecords_folder_path,
                          word_vocab, item_vocab, relation_vocab,
                          question_max_length,
+                         padding_id,
                          num_samples=64,
                          mode='train'):
   """
@@ -130,17 +132,14 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
   :return: 
   """
   forward_tfrecords_path = os.path.join(tfrecords_folder_path, '%s.forward.%d.tfrecords' % (mode, num_samples))
-  reverse_tfrecords_path = os.path.join(tfrecords_folder_path, '%s.reverse.%d.tfrecords' % (mode, num_samples))
+  backward_tfrecords_path = os.path.join(tfrecords_folder_path, '%s.backward.%d.tfrecords' % (mode, num_samples))
 
-  # if os.path.exists(forward_tfrecords_path) and os.path.exists(reverse_tfrecords_path):
-  #   return
-  # todo 暂时只测试forward的情况
-  if os.path.exists(forward_tfrecords_path):
+  if os.path.exists(forward_tfrecords_path) and os.path.exists(backward_tfrecords_path):
     return
 
   punctuation = string.punctuation
-
-  writer = tf.python_io.TFRecordWriter(forward_tfrecords_path)
+  forward_writer = tf.python_io.TFRecordWriter(forward_tfrecords_path)
+  backward_writer = tf.python_io.TFRecordWriter(backward_tfrecords_path)
   with open(triples_path) as f:
     while True:
       line = f.readline().strip()
@@ -153,28 +152,28 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
       raw_forward_ans = datas['forward_ans']
       raw_forward_candidate_ans = datas['forward_candidate_ans']
 
-      raw_reverse_ans = datas['reverse_ans']
-      raw_reverse_candidate_ans = datas['reverse_candidate_ans']
+      raw_backward_ans = datas['reverse_ans']
+      raw_backward_candidate_ans = datas['reverse_candidate_ans']
 
       # 开始处理
       raw_question = re.sub(r'[{}]+'.format(punctuation), ' ', raw_question).strip()
       question_ids = [get_id(word_vocab, word) for word in re.split('\s+', raw_question)]
       question_ids = question_ids[:question_max_length]
       for i in range(question_max_length - len(question_ids)):
-        # todo append Padding
-        question_ids.append(0)
+        question_ids.append(padding_id)
 
       topic_entity_id = get_id(item_vocab, raw_topic_entity)
+      # forward的第一个是topic，最后一个是ans；backward的第一个是ans，最后一个是topic
       forward_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
                                for (h, r, t) in raw_forward_candidate_ans]
-      reverse_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
-                               for (h, r, t) in raw_reverse_candidate_ans]
+      backward_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
+                                for (h, r, t) in raw_backward_candidate_ans]
 
       if len(raw_forward_ans) > 0:
         if mode == 'train':
           n_forward = (len(forward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
-          need_sample = n_forward * num_samples - len(forward_candidate_ans)
-          for _ in range(need_sample):
+          forward_need_sample = n_forward * num_samples - len(forward_candidate_ans)
+          for _ in range(forward_need_sample):
             sampled_r = random.randint(1, len(relation_vocab) - 1)
             sampled_t = random.randint(1, len(item_vocab) - 1)
             forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
@@ -190,7 +189,7 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
 
               example = get_example(question_ids, topic_entity_id, true_ans, true_relation,
                                     neg_ans, neg_relation)
-              writer.write(example.SerializeToString())
+              forward_writer.write(example.SerializeToString())
         elif mode == 'test':
           # FIXME: 对于多个答案的临时做法：全都填充至20个，如果答案多余20个，就把多出来的抛弃掉
           true_ans_list = []
@@ -216,25 +215,56 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
 
           example = get_test_example(question_ids, topic_entity_id, true_ans_list, true_realation_list,
                                      candidate_a, candidate_r)
-          writer.write(example.SerializeToString())
-          # if len(raw_reverse_ans) > 0:
-          #   n_reverse = (len(reverse_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
-          #   need_sample = n_reverse * num_samples - len(reverse_candidate_ans)
-          #   for _ in range(need_sample):
-          #     sampled_r = random.randint(1, len(realtion_vocab) - 1)
-          #     sampled_t = random.randint(1, len(item_vocab) - 1)
-          #     reverse_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))
-          #
-          #   for (h, r, t) in raw_reverse_ans:
-          #     h_id = get_id(item_vocab, h)
-          #     r_id = get_id(relation_vocab, r)
-          #     t_id = get_id(item_vocab, t)
-          #     tf_data['ans'] = (h_id, r_id, t_id)
-          #
-          #     for i in range(n_reverse):
-          #       candidate_ans = reverse_candidate_ans[i * num_samples:(i + 1) * num_samples]
-          #       tf_data['reverse_candidate_ans'] = candidate_ans
-  writer.close()
+          forward_writer.write(example.SerializeToString())
+      if len(raw_backward_ans) > 0:
+        if mode == 'train':
+          n_backward = (len(backward_candidate_ans) - 1) // num_samples + 1  # 先-1再+1是为了避免len=64这类情况
+          backward_need_sample = n_backward * num_samples - len(backward_candidate_ans)
+          for _ in range(backward_need_sample):
+            sampled_r = random.randint(1, len(relation_vocab) - 1)
+            sampled_t = random.randint(1, len(item_vocab) - 1)
+            backward_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))  # 注意，这里是topic在最後，与forward不同
+
+          for (h, r, t) in raw_backward_ans:
+            true_relation = get_id(relation_vocab, r)
+            true_ans = get_id(item_vocab, h)  # 注意，这里是h而不是t，与forward不同
+
+            for i in range(n_backward):
+              candidate_ans = backward_candidate_ans[i * num_samples:(i + 1) * num_samples]
+              neg_ans = [h for (h, r, t) in candidate_ans]  # 注意，这里是h而不是t，与forward不同
+              neg_relation = [r for (h, r, t) in candidate_ans]
+
+              example = get_example(question_ids, topic_entity_id, true_ans, true_relation,
+                                    neg_ans, neg_relation)
+              backward_writer.write(example.SerializeToString())
+        elif mode == 'test':
+          # FIXME: 对于多个答案的临时做法：全都填充至20个，如果答案多余20个，就把多出来的抛弃掉
+          true_ans_list = []
+          true_realation_list = []
+          for (h, r, t) in raw_backward_ans:
+            true_relation = get_id(relation_vocab, r)
+            true_ans = get_id(item_vocab, h)  # 注意这里是h不是t
+            true_ans_list.append(true_ans)
+            true_realation_list.append(true_relation)
+            if len(true_ans_list) >= 20:
+              break
+          for _ in range(20 - len(raw_backward_ans)):
+            true_ans_list.append(-1)
+            true_realation_list.append(-1)
+
+          # fixme: 由于fixedLengthFeatures的存在，临时将candidate填充至500
+          candidate_ans = backward_candidate_ans[:500]
+          candidate_a = [h for (h, r, t) in candidate_ans]  # 注意是h不是t
+          candidate_r = [r for (h, r, t) in candidate_ans]
+          for _ in range(500 - len(candidate_a)):
+            candidate_a.append(0)
+            candidate_r.append(0)
+
+          example = get_test_example(question_ids, topic_entity_id, true_ans_list, true_realation_list,
+                                     candidate_a, candidate_r)
+          backward_writer.write(example.SerializeToString())
+  forward_writer.close()
+  backward_writer.close()
 
 
 def qid_to_triples(db, file_path, saving_path):
@@ -433,18 +463,25 @@ def get_entity_vocabulary(counter_path, vocab_saving_path, UNK='_UNK_', percent=
   return vocab
 
 
-def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK', PAD='PAD'):
+def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, word_embedding_saving_path,
+                        UNK='WORD_UNK', PAD='PAD',
+                        vocab_size=50000):
   if os.path.exists(word_vocab_saving_path):
     try:
       word_vocab = pickle_load(word_vocab_saving_path)
+      word_embeddings = pickle_load(word_embedding_saving_path)
 
-      return word_vocab
+      return word_vocab, word_embeddings
     except:
       print('读取字典%s时出错' % word_vocab_saving_path)
 
+  embeddings = []
   word_vocab = {}
   word_vocab[UNK] = 0
+  embeddings.append(np.zeros([100], dtype=np.float32))
   word_vocab[PAD] = 1
+  embeddings.append(np.ones([100], dtype=np.float32))
+
   id = 2
   with open(pretrained_wordvec_saving_path, encoding='utf-8') as f:
     lines = f.readlines()
@@ -453,13 +490,19 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
       data = line.split(' ')
       word = data[0]
       # TODO: 是否要直接把embedding的内容return？
-      # embedding = data[1:]
+      embedding = data[1:]
+      embedding = np.array([float(e) for e in embedding])
+      embeddings.append(embedding)
 
       word_vocab[word] = id
       id += 1
+      if id >= vocab_size:
+        break
+  embeddings = np.array(embeddings)
   pickle_dump(word_vocab, word_vocab_saving_path)
+  pickle_dump(embeddings, word_embedding_saving_path)
 
-  return word_vocab
+  return word_vocab, embeddings
 
 
 if __name__ == '__main__':
@@ -479,6 +522,7 @@ if __name__ == '__main__':
 
   pretrained_wordvec_saving_path = os.path.join(wikidata_folder, 'glove.6B.100d.txt')
   word_vocab_saving_path = os.path.join(wikidata_folder, 'word.vocab.glove.100.voc')
+  word_embedding_saving_path = os.path.join(wikidata_folder, 'word.embedding.glove.100.emd')
 
   # 首先在main中利用DB将原始的问答对转化成Model所需的{question, topicEntity，trueAns，candidateAns}
   # db = DBManager(host='192.168.1.139', port=3306, user='root', psd='1405', db='kbqa')
@@ -507,20 +551,30 @@ if __name__ == '__main__':
 
   item_vocab = get_entity_vocabulary(item_counter_saving_path, item_vocab_saving_path, UNK='ITEM_UNK', percent=0.80)
 
-  word_vocab = get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, UNK='WORD_UNK')
+  word_vocab, word_embedding = get_word_vocabulary(pretrained_wordvec_saving_path,
+                                                   word_vocab_saving_path,
+                                                   word_embedding_saving_path,
+                                                   UNK='WORD_UNK', PAD='PAD')
 
   config = CNNModelConfig()
   # 然后配合各vocab，将rawModelData转化成真正的ModelData
   triples_to_tfrecords(r'F:\WikiData\ForFun\train.both.triples+candidate.txt', r'F:\WikiData\ForFun',
-                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled,
+                       word_vocab, item_vocab, relation_vocab, config.max_question_length,
+                       padding_id=1,
+                       num_samples=config.num_sampled,
                        mode='train')
 
   triples_to_tfrecords(r'F:\WikiData\ForFun\test.both.triples+candidate.txt', r'F:\WikiData\ForFun',
-                       word_vocab, item_vocab, relation_vocab, config.max_question_length, config.num_sampled,
+                       word_vocab, item_vocab, relation_vocab, config.max_question_length,
+                       padding_id=1,
                        mode='test')
 
   question, topic_entity, true_ans, true_relation_list, neg_ans, neg_relation = get_tf_data(
     r'F:\WikiData\ForFun\train.forward.%d.tfrecords' % config.num_sampled, config.max_question_length,
+    config.num_sampled, mode='train')
+
+  bf_question, bf_topic_entity, bf_true_ans, bf_true_relation_list, bf_neg_ans, bf_neg_relation = get_tf_data(
+    r'F:\WikiData\ForFun\train.backward.%d.tfrecords' % config.num_sampled, config.max_question_length,
     config.num_sampled, mode='train')
 
   test_question, test_topic_entity, \
@@ -528,11 +582,24 @@ if __name__ == '__main__':
     r'F:\WikiData\ForFun\test.forward.%d.tfrecords' % config.num_sampled, config.max_question_length,
     config.num_sampled, mode='test')
 
+  bf_test_question, bf_test_topic_entity, \
+  bf_test_true_ans_list, bf_test_true_relation_list, bf_test_candidate_ans, bf_test_candidate_realtion = get_tf_data(
+    r'F:\WikiData\ForFun\test.backward.%d.tfrecords' % config.num_sampled, config.max_question_length,
+    config.num_sampled, mode='test', candidate_len=500)
+
   question_batch, topic_entity_batch, true_ans_batch, true_relation_batch, \
   neg_ans_batch, neg_relation_batch = tf.train.batch(
     [question, topic_entity,
      true_ans, true_relation_list,
      neg_ans, neg_relation],
+    batch_size=config.batch_size,
+    capacity=config.batch_size * 3 + 1000)
+
+  bf_question_batch, bf_topic_entity_batch, bf_true_ans_batch, bf_true_relation_batch, \
+  bf_neg_ans_batch, bf_neg_relation_batch = tf.train.batch(
+    [bf_question, bf_topic_entity,
+     bf_true_ans, bf_true_relation_list,
+     bf_neg_ans, bf_neg_relation],
     batch_size=config.batch_size,
     capacity=config.batch_size * 3 + 1000)
 
@@ -544,10 +611,19 @@ if __name__ == '__main__':
     batch_size=config.batch_size,
     capacity=config.batch_size * 3 + 1000)
 
+  bf_test_question_batch, bf_test_topic_entity_batch, bf_test_true_ans_batch, bf_test_true_relation_batch, \
+  bf_test_candidate_ans_batch, bf_test_candidate_relation_batch = tf.train.batch(
+    [bf_test_question, bf_test_topic_entity,
+     bf_test_true_ans_list, bf_test_true_relation_list,
+     bf_test_candidate_ans, bf_test_candidate_realtion],
+    batch_size=config.batch_size,
+    capacity=config.batch_size * 3 + 1000)
+
   config.entities_vocab_size = len(item_vocab)
   config.relations_vocab_size = len(relation_vocab)
   config.words_vocab_size = len(word_vocab)
 
+  print('Model')
   with tf.name_scope('Train'):
     with tf.variable_scope("Model", reuse=None):
       model = CNNModel(config, is_training=True)
@@ -556,23 +632,38 @@ if __name__ == '__main__':
     with tf.variable_scope("Model", reuse=True):
       test_model = CNNModel(config, is_training=False, is_test=True)
 
-  with tf.Session() as sess:
+
+  sess_config = tf.ConfigProto()
+  sess_config.gpu_options.allow_growth = True
+  with tf.Session(config=sess_config) as sess:
     tf.global_variables_initializer().run()
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
+    model.assign_word_embedding(sess, word_embedding)
     time0 = time.time()
-    for i in range(2000):
-      q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
-        [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
-         neg_ans_batch, neg_relation_batch])
-      _, loss, acc = sess.run([model.cos_sim_train_op, model.cos_similarity_loss, model.accuracy],
-                              {model.question_ids: q, model.topic_entity_id: topic,
-                               model.true_ans: gt_ans, model.true_relation: gt_relation,
-                               model.neg_ans: n_ans, model.neg_relation: n_relation})
+    for i in range(20000):
 
+      bf_q, bf_topic, bf_gt_ans, bf_gt_relation, bf_n_ans, bf_n_relation = sess.run(
+        [bf_question_batch, bf_topic_entity_batch, bf_true_ans_batch, bf_true_relation_batch,
+         bf_neg_ans_batch, bf_neg_relation_batch])
+      _, bf_loss, bf_acc = sess.run([model.cos_sim_train_op,
+                                     model.cos_similarity_loss, model.accuracy],
+                                    {model.question_ids: bf_q, model.topic_entity_id: bf_topic,
+                                     model.true_ans: bf_gt_ans, model.true_relation: bf_gt_relation,
+                                     model.neg_ans: bf_n_ans, model.neg_relation: bf_n_relation,
+                                     model.is_forward_data: False})
       if i % 100 == 0:
-        print(loss, acc, time.time() - time0)
+        q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
+          [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
+           neg_ans_batch, neg_relation_batch])
+        _, loss, acc = sess.run([model.cos_sim_train_op, model.cos_similarity_loss, model.accuracy],
+                                {model.question_ids: q, model.topic_entity_id: topic,
+                                 model.true_ans: gt_ans, model.true_relation: gt_relation,
+                                 model.neg_ans: n_ans, model.neg_relation: n_relation,
+                                 model.is_forward_data: True})
+
+        print('##step=%d##'%i,loss, acc, bf_loss, bf_acc, time.time() - time0)
         time0 = time.time()
 
         test_q, test_topic_entity, test_ans_list, test_relation_list, \
@@ -581,8 +672,21 @@ if __name__ == '__main__':
                                                 test_candidate_ans_batch, test_candidate_relation_batch])
         cos = sess.run(test_model.cos_sim,
                        {test_model.question_ids: test_q, test_model.topic_entity_id: test_topic_entity,
-                        test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation})
+                        test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation,
+                        test_model.is_forward_data: True})
 
+        # bf_test_q, bf_test_topic_entity, bf_test_ans_list, bf_test_relation_list, \
+        # bf_test_c_ans, bf_test_c_relation = sess.run([bf_test_question_batch, bf_test_topic_entity_batch,
+        #                                               bf_test_true_ans_batch, bf_test_true_relation_batch,
+        #                                               bf_test_candidate_ans_batch, bf_test_candidate_relation_batch])
+        # bf_test_c_ans=bf_test_c_ans[:,:500]
+        # bf_test_c_relation=bf_test_c_relation[:,:500]
+        #
+        # bf_cos = sess.run(test_model.cos_sim,
+        #                   {test_model.question_ids: bf_test_q, test_model.topic_entity_id: bf_test_topic_entity,
+        #                    test_model.candidate_ans: bf_test_c_ans, test_model.candidate_relation: bf_test_c_relation,
+        #                    test_model.is_forward_data: False})
+        # print(cos)
         for i in range(config.batch_size):
           top_5_ans_index = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
           top_5_ans = [test_c_ans[i][index] for index in top_5_ans_index]
@@ -592,6 +696,15 @@ if __name__ == '__main__':
               print('√', end='\t')
               break
           print(ans, '\t', top_5_ans)
+          #
+          # bf_top_5_ans_index = heapq.nlargest(5, range(len(bf_test_c_ans[i])), bf_cos[i].take)
+          # bf_top_5_ans = [bf_test_c_ans[i][index] for index in bf_top_5_ans_index]
+          # bf_ans = [a for a in bf_test_ans_list[i] if a >= 0]
+          # for aaa in bf_top_5_ans:
+          #   if aaa in bf_ans:
+          #     print('√', end='\t')
+          #     break
+          # print(bf_ans, '\t', bf_top_5_ans)
 
     coord.request_stop()
     coord.join(threads)

@@ -4,6 +4,7 @@ import re
 import random
 
 from src.tools.common_tools import pickle_load, pickle_dump
+from src.tools.common_tools import get_id
 
 data_folder = r'F:\FBData'
 file_path = os.path.join(data_folder, 'SmallBase_gama')
@@ -150,20 +151,9 @@ def get_id_data(raw_file_path, ids_file_path, entities_vocab, relations_vocab):
     for line in lines:
       head, relation, tail = line.strip().split('\t')
 
-      if head in entities_vocab:
-        head = entities_vocab[head]
-      else:
-        head = 0
-
-      if tail in entities_vocab:
-        tail = entities_vocab[tail]
-      else:
-        tail = 0
-
-      if relation in relations_vocab:
-        relation = relations_vocab[relation]
-      else:
-        relation = 0
+      head=get_id(entity_vocab,head)
+      tail=get_id(entity_vocab,tail)
+      relation=get_id(relation_vocab,relation)
 
       data = [head, relation, tail]
       datas.append(data)
@@ -173,30 +163,30 @@ def get_id_data(raw_file_path, ids_file_path, entities_vocab, relations_vocab):
 
 
 def get_train_test_ids(selected_data_path, selected_ids_path,
-                       selected_train_ids_path, selected_test_ids_path,
-                       entity_vocab, relation_vocab):
+                       entity_vocab, relation_vocab,percent=0.8):
   """
   获取train、test的id数据
   :return:
   """
+  assert percent>0 and percent<=1.0
   if os.path.exists(selected_test_ids_path) and os.path.exists(selected_train_ids_path):
     try:
-      train_ids = pickle_load(selected_train_ids_path)
-      test_ids = pickle_load(selected_test_ids_path)
+
+      ids= pickle_load(selected_ids_path)
+      train_ids=ids[:int(len(ids) * percent)]
+      test_ids=ids[int(len(ids) * percent):]
       return train_ids, test_ids
     except:
       pass
-  selected_ids = get_id_data(selected_data_path,
+  ids = get_id_data(selected_data_path,
                              ids_file_path=selected_ids_path,
                              entities_vocab=entity_vocab, relations_vocab=relation_vocab)
-  random.shuffle(selected_ids)
+  random.shuffle(ids)
 
-  train_ids = selected_ids[:int(len(selected_ids) * 0.8)]
-  test_ids = selected_ids[int(len(selected_ids) * 0.8):]
+  train_ids = ids[:int(len(ids) * percent)]
+  test_ids = ids[int(len(ids) * percent):]
 
-  pickle_dump(train_ids, selected_train_ids_path)
-  pickle_dump(test_ids, selected_test_ids_path)
-
+  pickle_dump(ids, selected_ids_path)
   return train_ids, test_ids
 
 
@@ -245,8 +235,8 @@ if __name__ == '__main__':
   relation_vocab = get_vocabulary(relation_vocab_path, relation_counter_path, percent=1.0)
   entity_vocab = get_vocabulary(entity_vocab_path, useful_entity_counter_path, percent=0.95)
 
-  train_ids, test_ids = get_train_test_ids(selected_twice_data_path, selected_ids_path,
-                                           selected_train_ids_path, selected_test_ids_path,
-                                           entity_vocab, relation_vocab)
-  print(len(test_ids))
-  print(test_ids[:10])
+  # train_ids, test_ids = get_train_test_ids(selected_twice_data_path, selected_ids_path,
+  #                                          selected_train_ids_path, selected_test_ids_path,
+  #                                          entity_vocab, relation_vocab)
+  # print(len(test_ids))
+  # print(test_ids[:10])
