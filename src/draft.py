@@ -3,9 +3,9 @@ import re
 import string
 import os
 import numpy as np
+import heapq
 
-data=np.reshape(np.array(range(15)),[3,5])
-print(data
-      )
-d=data[:,-2:]
-print(d)
+data=np.array([1,2,3,4,5])
+
+top_5_ans_index = heapq.nlargest(3, range(len(data)), data.take)
+print(top_5_ans_index)

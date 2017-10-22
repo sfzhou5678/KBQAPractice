@@ -79,16 +79,24 @@ class CNNModel:
         embedded_candidate_ans = tf.nn.embedding_lookup(entities_embeddings, self.candidate_ans)
         embedded_candidate_relation = tf.nn.embedding_lookup(entities_embeddings, self.candidate_relation)
         embedded_candidate_relation = tf.cond(self.is_forward_data, lambda: embedded_candidate_relation,
-                                        lambda: -1.0 * embedded_candidate_relation)
+                                              lambda: -1.0 * embedded_candidate_relation)
         # TODO 如果是反数据，直接让embedded_relation=-embedded_relation
 
     # TODO 这种entity可以试试直接CNN提取，也可以在TransE的基础上，试一下把ansentity_latent替换成H+R=T!
-    question_ansentity_latent_vec = self.get_latent_vec(embedded_question, output_latent_vec_size,
-                                                        name='question_ans_entity',
-                                                        reuse=not is_training)
+    # question_ansentity_latent_vec = self.get_question_latent_vec(embedded_question,word_embedding_size,output_latent_vec_size,
+    #                                                     name='question_ans_entity',
+    #                                                     reuse=not is_training)
+    # question_relation_latent_vec = self.get_question_latent_vec(embedded_question, word_embedding_size,output_latent_vec_size,
+    #                                                    name='question_relation',
+    #                                                    reuse=not is_training)
+
+    question_ansentity_latent_vec = self.get_latent_vec(embedded_question,output_latent_vec_size,
+                                                                 name='question_ans_entity',
+                                                                 reuse=not is_training)
     question_relation_latent_vec = self.get_latent_vec(embedded_question, output_latent_vec_size,
-                                                       name='question_relation',
-                                                       reuse=not is_training)
+                                                                name='question_relation',
+                                                                reuse=not is_training)
+
     # question_context_latent = self.get_latent(embedded_question, config, name='question_context',
     #                                                    is_training=not is_training)
     # # fixme 如果type用one-hot的话，不知道latent函数是否要改
@@ -195,7 +203,7 @@ class CNNModel:
 
         # ##注意##
         # 理论上cosP-cosN越大越好，但是如果不加限制的话模型很容易就会过拟合到1，-1的状态
-        # 所以需要对模型进行限制，另cosP-cosN限制在Margin以内。Margin=0.1-0.3均能取得不错的效果，margin越大则越容易过拟合
+        # 所以需要对模型进行限制，另cosP-cosN限制在Margin以内。
         margin = tf.constant(config.margin, shape=[batch_size, num_sampled], dtype=tf.float32)
         zeros = tf.zeros(shape=[batch_size, num_sampled])
         cos_similarity_loss = tf.maximum(zeros, tf.subtract(margin, tf.subtract(cos_sim_positive, cos_sim_negative)))
@@ -215,7 +223,9 @@ class CNNModel:
 
       else:
         # fixme: num_sampled应该是具体的candidate数
-        candidate_num = 500
+        candidate_num = 64
+        # candidate_num=tf.constant(self.candidate_ans.get_shape()[-1])
+        # candidate_num=tf.to_int32(candidate_num)
         candidate_ans_latent_vec = tf.concat(
           [tf.reshape(embedded_candidate_ans, [batch_size * candidate_num, 1, entity_embedding_size]),
            tf.reshape(embedded_candidate_relation,
@@ -241,6 +251,28 @@ class CNNModel:
 
   def assign_word_embedding(self, sess, word_embedding):
     sess.run(tf.assign(self.words_embeddings, word_embedding))
+
+  def get_question_latent_vec(self, embedded_input, word_embedding_size, output_latent_vec_size, name, reuse):
+    norm = True
+
+    # TODO 构建网络的过程弄成for
+    DEPTH1 = 16
+    with tf.variable_scope(name, reuse=reuse):
+      # TODO 可以吧filter的size改成embedding试试
+      network = conv_2d(embedded_input, [3, word_embedding_size, 1, DEPTH1], [DEPTH1], [1, 1, 1, 1], 'layer1-conv1',
+                        norm=norm,
+                        is_training=self.is_training)
+      network = max_pool_2d(network, [1, 1, 1, 1], [1, 1, 1, 1], 'layer1-pool1')
+
+      # 最后将CNN产生的值通过全局平均池化，再通过全连接层产生latent vector
+      net = slim.avg_pool2d(network, network.get_shape()[1:3], padding='VALID', scope='AvgPool')
+      # 这里不能加is_training=false，如果加了就会导致val时所有cos均为1 (原因未知，但是官方IncepResnetV2中也是恒为true的)
+      net = slim.dropout(net, 0.5, is_training=self.is_training, scope='Dropout')
+      net = slim.flatten(net)
+
+      latent_vec = slim.fully_connected(net, output_latent_vec_size, activation_fn=None, scope='latent_vec')
+
+      return latent_vec
 
   def get_latent_vec(self, embedded_input, output_latent_vec_size, name, reuse):
     norm = True

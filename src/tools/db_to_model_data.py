@@ -632,6 +632,8 @@ if __name__ == '__main__':
     with tf.variable_scope("Model", reuse=True):
       test_model = CNNModel(config, is_training=False, is_test=True)
 
+  a_count = 0
+  b_count = 0
 
   sess_config = tf.ConfigProto()
   sess_config.gpu_options.allow_growth = True
@@ -643,6 +645,15 @@ if __name__ == '__main__':
     model.assign_word_embedding(sess, word_embedding)
     time0 = time.time()
     for i in range(20000):
+      q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
+        [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
+         neg_ans_batch, neg_relation_batch])
+
+      # _, loss, acc = sess.run([model.cos_sim_train_op, model.cos_similarity_loss, model.accuracy],
+      #                         {model.question_ids: q, model.topic_entity_id: topic,
+      #                          model.true_ans: gt_ans, model.true_relation: gt_relation,
+      #                          model.neg_ans: n_ans, model.neg_relation: n_relation,
+      #                          model.is_forward_data: True})
 
       bf_q, bf_topic, bf_gt_ans, bf_gt_relation, bf_n_ans, bf_n_relation = sess.run(
         [bf_question_batch, bf_topic_entity_batch, bf_true_ans_batch, bf_true_relation_batch,
@@ -653,6 +664,8 @@ if __name__ == '__main__':
                                      model.true_ans: bf_gt_ans, model.true_relation: bf_gt_relation,
                                      model.neg_ans: bf_n_ans, model.neg_relation: bf_n_relation,
                                      model.is_forward_data: False})
+
+
       if i % 100 == 0:
         q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
           [question_batch, topic_entity_batch, true_ans_batch, true_relation_batch,
@@ -662,18 +675,24 @@ if __name__ == '__main__':
                                  model.true_ans: gt_ans, model.true_relation: gt_relation,
                                  model.neg_ans: n_ans, model.neg_relation: n_relation,
                                  model.is_forward_data: True})
-
-        print('##step=%d##'%i,loss, acc, bf_loss, bf_acc, time.time() - time0)
+        # print('##step=%d##'%i,loss, acc, bf_loss, bf_acc, time.time() - time0)
+        print('##step=%d##' % i)
         time0 = time.time()
 
-        test_q, test_topic_entity, test_ans_list, test_relation_list, \
-        test_c_ans, test_c_relation = sess.run([test_question_batch, test_topic_entity_batch,
-                                                test_true_ans_batch, test_true_relation_batch,
-                                                test_candidate_ans_batch, test_candidate_relation_batch])
-        cos = sess.run(test_model.cos_sim,
-                       {test_model.question_ids: test_q, test_model.topic_entity_id: test_topic_entity,
-                        test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation,
+        # test_q, test_topic_entity, test_ans_list, test_relation_list, \
+        # test_c_ans, test_c_relation = sess.run([test_question_batch, test_topic_entity_batch,
+        #                                         test_true_ans_batch, test_true_relation_batch,
+        #                                         test_candidate_ans_batch, test_candidate_relation_batch])
+        # cos = sess.run(test_model.cos_sim,
+        #                {test_model.question_ids: test_q, test_model.topic_entity_id: test_topic_entity,
+        #                 test_model.candidate_ans: test_c_ans, test_model.candidate_relation: test_c_relation,
+        #                 test_model.is_forward_data: True})
+
+        train_cos = sess.run(test_model.cos_sim,
+                       {test_model.question_ids: q, test_model.topic_entity_id: topic,
+                        test_model.candidate_ans: n_ans, test_model.candidate_relation: n_relation,
                         test_model.is_forward_data: True})
+        cos=train_cos
 
         # bf_test_q, bf_test_topic_entity, bf_test_ans_list, bf_test_relation_list, \
         # bf_test_c_ans, bf_test_c_relation = sess.run([bf_test_question_batch, bf_test_topic_entity_batch,
@@ -688,14 +707,27 @@ if __name__ == '__main__':
         #                    test_model.is_forward_data: False})
         # print(cos)
         for i in range(config.batch_size):
-          top_5_ans_index = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
-          top_5_ans = [test_c_ans[i][index] for index in top_5_ans_index]
-          ans = [a for a in test_ans_list[i] if a >= 0]
+          # a_count += 1
+          # top_5_ans_index = heapq.nlargest(5, range(len(test_c_ans[i])), cos[i].take)
+          # top_5_ans = [test_c_ans[i][index] for index in top_5_ans_index]
+          # ans = [a for a in test_ans_list[i] if a >= 0]
+
+          # 在训练集上测试拟合能力的代码
+          top_5_ans_index = heapq.nlargest(5, range(len(n_ans[i])), cos[i].take)
+          top_5_ans = [n_ans[i][index] for index in top_5_ans_index]
+          ans = [gt_ans[i] ]
+
+          for aaa in ans:
+            if aaa in n_ans[i]:
+              print('|√|',end='\t')
+              a_count+=1
+              break
           for aaa in top_5_ans:
             if aaa in ans:
               print('√', end='\t')
+              b_count += 1
               break
-          print(ans, '\t', top_5_ans)
+          print(b_count / a_count, '\t', ans, '\t', top_5_ans)
           #
           # bf_top_5_ans_index = heapq.nlargest(5, range(len(bf_test_c_ans[i])), bf_cos[i].take)
           # bf_top_5_ans = [bf_test_c_ans[i][index] for index in bf_top_5_ans_index]
