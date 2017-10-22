@@ -122,17 +122,20 @@ if __name__ == '__main__':
           #   softmax_acc, softmax_top20_acc, softmax_top100_acc))
           # print('[t-softmax acc: %.3f]\t[t-top20 acc: %.3f]\t[t-top100 acc: %.3f]' % (
           #   test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
-          saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
+          if step % 2000 == 0:
+            saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
 
-          print('==============[%d] %.4f %.4f\t %.4f %.4f==============' % (step, loss, softmax_loss,
-                                                                            test_loss, test_softmax_loss))
-          wf.write('==============[%d] %.4f %.4f\t %.4f %.4f==============\n' % (step, loss, softmax_loss,
-                                                                                 test_loss, test_softmax_loss))
-          wf.write('softmax acc: %.3f\ttop20 acc: %.3f\ttop100 acc: %.3f\n' % (
-            softmax_acc, softmax_top20_acc, softmax_top100_acc))
-          wf.write('t-softmax acc: %.3f\tt-top20 acc: %.3f\tt-top100 acc: %.3f\n' % (
-            test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
-          wf.flush()
+            print('==============[%d] %s %.4f %.4f\t %.4f %.4f==============' % (
+              step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())),
+              loss, softmax_loss, test_loss, test_softmax_loss))
+            wf.write('==============[%d] %s %.4f %.4f\t %.4f %.4f==============\n' % (
+              step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())), loss, softmax_loss,
+              test_loss, test_softmax_loss))
+            wf.write('softmax acc: %.3f\ttop20 acc: %.3f\ttop100 acc: %.3f\n' % (
+              softmax_acc, softmax_top20_acc, softmax_top100_acc))
+            wf.write('t-softmax acc: %.3f\tt-top20 acc: %.3f\tt-top100 acc: %.3f\n' % (
+              test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
+            wf.flush()
 
     coord.request_stop()
     coord.join(threads)
