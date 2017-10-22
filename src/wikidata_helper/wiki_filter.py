@@ -126,7 +126,7 @@ def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
           data_to_write = line
           need_select = True
         else:
-          claims = []
+          claims = {}
           for predicate in q_item['claims']:
             relevant_entities = q_item['claims'][predicate]
             relations = []
@@ -143,7 +143,7 @@ def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
                 error_count += 1
                 pass
             if len(relations) > 0:
-              claims.append(relations)
+              claims[predicate]=relations
           q_item['claims'] = claims
           data_to_write = json.dumps(q_item)
 
