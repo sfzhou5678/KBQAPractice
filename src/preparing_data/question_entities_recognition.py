@@ -136,8 +136,9 @@ api_key_list = ["b061d4d2c7fade52e7ae8c3c786eb4c50eb935876aae037159de827e",
                 ]
 api_key = api_key_list[0]
 
-print('===========Train QA===========')
-question_entities_recognition(train_path, train_res_path, train_log_path)
+if __name__ == '__main__':
+  print('===========Train QA===========')
+  question_entities_recognition(train_path, train_res_path, train_log_path)
 
-print('===========Test QA===========')
-question_entities_recognition(test_path, test_res_path, test_log_path)
+  print('===========Test QA===========')
+  question_entities_recognition(test_path, test_res_path, test_log_path)
