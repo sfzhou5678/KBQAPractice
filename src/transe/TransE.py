@@ -23,14 +23,14 @@ if __name__ == '__main__':
   # relation_vocab_path = os.path.join(data_folder, 'fb.wikiMappings.webquestion+random12.relationVocab.pkl')
 
   wikidata_folder = r'F:\WikiData'
-  transe_data_saving_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
-  transe_ids_saving_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.ids')
+  transe_data_save_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
+  transe_ids_save_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.ids')
 
-  item_counter_saving_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')
-  relation_counter_saving_path = os.path.join(wikidata_folder, 'relation.counter.OnlyRelevant.cnt')
+  item_counter_save_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')
+  relation_counter_save_path = os.path.join(wikidata_folder, 'relation.counter.OnlyRelevant.cnt')
 
-  item_vocab_saving_path = os.path.join(wikidata_folder, 'item.vocab.OnlyRelevant.voc')
-  relation_vocab_saving_path = os.path.join(wikidata_folder, 'relation.vocab.OnlyRelevant.voc')
+  item_vocab_save_path = os.path.join(wikidata_folder, 'item.vocab.OnlyRelevant.voc')
+  relation_vocab_save_path = os.path.join(wikidata_folder, 'relation.vocab.OnlyRelevant.voc')
 
   # ========结果路径设置==========
   res_folder = '../../result/TransEResult'
@@ -38,19 +38,19 @@ if __name__ == '__main__':
                                   'res-[%d]-[%d]-[%d]' % (config.batch_size, config.embedding_size, config.num_sampled))
   if not os.path.exists(ckpt_folder_path):
     os.makedirs(ckpt_folder_path)
-  log_saving_path = os.path.join(ckpt_folder_path, 'RunningInfo.log')
+  log_save_path = os.path.join(ckpt_folder_path, 'RunningInfo.log')
   # ========提取关键信息==========
 
-  relation_vocab = get_entity_vocabulary(relation_counter_saving_path, relation_vocab_saving_path,
+  relation_vocab = get_entity_vocabulary(relation_counter_save_path, relation_vocab_save_path,
                                          UNK='RELATION_UNK', percent=1.0)
-  item_vocab = get_entity_vocabulary(item_counter_saving_path, item_vocab_saving_path, UNK='ITEM_UNK', percent=0.80)
+  item_vocab = get_entity_vocabulary(item_counter_save_path, item_vocab_save_path, UNK='ITEM_UNK', percent=0.80)
   # relation_vocab = get_vocabulary(relation_vocab_path, relation_counter_path, UNK='RelationUNK', percent=1.0)
   # entity_vocab = get_vocabulary(entity_vocab_path, useful_entity_counter_path, UNK='EntityUNK', percent=0.95)
 
   config.relations_vocab_size = len(relation_vocab)
   config.entities_vocab_size = len(item_vocab)
 
-  train_ids, test_ids = get_train_test_ids(transe_data_saving_path, transe_ids_saving_path,
+  train_ids, test_ids = get_train_test_ids(transe_data_save_path, transe_ids_save_path,
                                            item_vocab, relation_vocab, percent=0.95)
   print('ids准备完毕')
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
     saver = tf.train.Saver()
 
-    with open(log_saving_path, 'w') as wf:
+    with open(log_save_path, 'w') as wf:
       for step in range(200000 * 8):
         head, relations, tail = sess.run([train_head_batch, train_r_batch, train_t_batch])
         _, loss = sess.run([model.train_op, model.loss],
@@ -101,10 +101,19 @@ if __name__ == '__main__':
                                      {model.heads: head, model.relations: relations,
                                       model.tails: tail, model.is_forward: True})
 
+          _, bf_softmax_loss = sess.run([model.softmax_train_op, model.softmax_loss],
+                                        {model.heads: bf_head, model.relations: relations,
+                                         model.tails: bf_tail, model.is_forward: False})
+
           softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
             [model.softmax_pred, model.softmax_accuracy,
              model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
             {model.heads: head, model.relations: relations, model.tails: tail, model.is_forward: True})
+
+          bf_softmax_pred, bf_softmax_acc, bf_softmax_top20_acc, bf_softmax_top100_acc = sess.run(
+            [model.softmax_pred, model.softmax_accuracy,
+             model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
+            {model.heads: bf_head, model.relations: relations, model.tails: bf_tail, model.is_forward: False})
 
           test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
           test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
@@ -125,12 +134,18 @@ if __name__ == '__main__':
           if step % 2000 == 0:
             saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
 
-            print('==============[%d] %s %.4f %.4f\t %.4f %.4f==============' % (
+            print('==============[%d] %s %.4f %.4f\t %.4f %.4f\t %.4f %.4f==============' % (
               step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())),
-              loss, softmax_loss, test_loss, test_softmax_loss))
-            wf.write('==============[%d] %s %.4f %.4f\t %.4f %.4f==============\n' % (
-              step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())), loss, softmax_loss,
-              test_loss, test_softmax_loss))
+              loss, softmax_loss,
+              bf_loss, bf_softmax_loss,
+              test_loss, test_softmax_loss,
+            ))
+            wf.write('==============[%d] %s %.4f %.4f\t %.4f %.4f\t %.4f %.4f==============\n' % (
+              step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())),
+              loss, softmax_loss,
+              bf_loss, bf_softmax_loss,
+              test_loss, test_softmax_loss,
+            ))
             wf.write('softmax acc: %.3f\ttop20 acc: %.3f\ttop100 acc: %.3f\n' % (
               softmax_acc, softmax_top20_acc, softmax_top100_acc))
             wf.write('t-softmax acc: %.3f\tt-top20 acc: %.3f\tt-top100 acc: %.3f\n' % (

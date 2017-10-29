@@ -267,7 +267,7 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
   backward_writer.close()
 
 
-def qid_to_triples(db, file_path, saving_path):
+def qid_to_triples(db, file_path, save_path):
   """
   本函数作用是通过查询DB：
   1) 将原本用Topic、ansQid表示的问答数据集转化成topic+relation=ansQid或ansQid+relation=topic的三元组
@@ -287,7 +287,7 @@ def qid_to_triples(db, file_path, saving_path):
   """
   line_count = 0
   no_ans_count = 0
-  with open(saving_path, 'w') as wf:
+  with open(save_path, 'w') as wf:
     with open(file_path) as f:
       lines = f.readlines()
       for line in lines:
@@ -362,9 +362,9 @@ def qid_to_triples(db, file_path, saving_path):
       print(line_count, no_ans_count)
 
 
-def prepare_transe_data(selected_wikidata_file_path, transe_data_saving_path):
+def prepare_transe_data(selected_wikidata_file_path, transe_data_save_path):
   total_lines = 0
-  with open(transe_data_saving_path, 'w') as wf:
+  with open(transe_data_save_path, 'w') as wf:
     with open(selected_wikidata_file_path) as f:
       while True:
         line = f.readline().strip()
@@ -390,7 +390,7 @@ def prepare_transe_data(selected_wikidata_file_path, transe_data_saving_path):
   print(total_lines)
 
 
-def build_entities_counter(transe_data_saving_path, item_counter_saving_path, relation_counter_saving_path):
+def build_entities_counter(transe_data_save_path, item_counter_save_path, relation_counter_save_path):
   def add_to_dic(dic, data):
     if data not in dic:
       dic[data] = 0
@@ -400,7 +400,7 @@ def build_entities_counter(transe_data_saving_path, item_counter_saving_path, re
   relation_word_counter = {}
 
   total_count = 0
-  with open(transe_data_saving_path) as f:
+  with open(transe_data_save_path) as f:
     while True:
       line = f.readline().strip()
       if line == '':
@@ -425,18 +425,18 @@ def build_entities_counter(transe_data_saving_path, item_counter_saving_path, re
   print(len(item_word_counter))
 
   print(len(relation_word_counter))
-  pickle_dump(item_word_counter, item_counter_saving_path)
-  pickle_dump(relation_word_counter, relation_counter_saving_path)
+  pickle_dump(item_word_counter, item_counter_save_path)
+  pickle_dump(relation_word_counter, relation_counter_save_path)
 
 
-def get_entity_vocabulary(counter_path, vocab_saving_path, UNK='_UNK_', percent=1.0):
-  if os.path.exists(vocab_saving_path):
+def get_entity_vocabulary(counter_path, vocab_save_path, UNK='_UNK_', percent=1.0):
+  if os.path.exists(vocab_save_path):
     try:
-      vocab = pickle_load(vocab_saving_path)
+      vocab = pickle_load(vocab_save_path)
 
       return vocab
     except:
-      print('读取字典%s时出错' % vocab_saving_path)
+      print('读取字典%s时出错' % vocab_save_path)
 
   # 不存在缓存，开始制作词汇表
   counter = pickle_load(counter_path)  # dict格式
@@ -459,21 +459,21 @@ def get_entity_vocabulary(counter_path, vocab_saving_path, UNK='_UNK_', percent=
       break
   print(len(vocab))
 
-  pickle_dump(vocab, vocab_saving_path)
+  pickle_dump(vocab, vocab_save_path)
   return vocab
 
 
-def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, word_embedding_saving_path,
+def get_word_vocabulary(pretrained_wordvec_save_path, word_vocab_save_path, word_embedding_save_path,
                         UNK='WORD_UNK', PAD='PAD',
                         vocab_size=50000):
-  if os.path.exists(word_vocab_saving_path):
+  if os.path.exists(word_vocab_save_path):
     try:
-      word_vocab = pickle_load(word_vocab_saving_path)
-      word_embeddings = pickle_load(word_embedding_saving_path)
+      word_vocab = pickle_load(word_vocab_save_path)
+      word_embeddings = pickle_load(word_embedding_save_path)
 
       return word_vocab, word_embeddings
     except:
-      print('读取字典%s时出错' % word_vocab_saving_path)
+      print('读取字典%s时出错' % word_vocab_save_path)
 
   embeddings = []
   word_vocab = {}
@@ -483,7 +483,7 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
   embeddings.append(np.ones([100], dtype=np.float32))
 
   id = 2
-  with open(pretrained_wordvec_saving_path, encoding='utf-8') as f:
+  with open(pretrained_wordvec_save_path, encoding='utf-8') as f:
     lines = f.readlines()
     for line in lines:
       line = line.strip()
@@ -499,10 +499,26 @@ def get_word_vocabulary(pretrained_wordvec_saving_path, word_vocab_saving_path, 
       if id >= vocab_size:
         break
   embeddings = np.array(embeddings)
-  pickle_dump(word_vocab, word_vocab_saving_path)
-  pickle_dump(embeddings, word_embedding_saving_path)
+  pickle_dump(word_vocab, word_vocab_save_path)
+  pickle_dump(embeddings, word_embedding_save_path)
 
   return word_vocab, embeddings
+
+
+def get_pretrained_entity_embeddings(item_embeddings_path, relation_embeddings_path):
+  """
+  注意item_embeddings使用的不是pickLoad而是np.load
+  这是一个特例
+  :param item_embeddings_path:
+  :param relation_embeddings_path:
+  :return:
+  """
+  # item_embeddings = np.load(item_embeddings_path)
+  relation_embeddings = pickle_load(relation_embeddings_path)
+
+  # return item_embeddings, relation_embeddings
+  return relation_embeddings
+
 
 
 if __name__ == '__main__':
@@ -513,16 +529,19 @@ if __name__ == '__main__':
   wikidata_folder = r'F:\WikiData'
   selected_wikidata_file_path = os.path.join(wikidata_folder, 'selected-latest-all.OnlyRelevant.data')
 
-  transe_data_saving_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
-  item_counter_saving_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')
-  relation_counter_saving_path = os.path.join(wikidata_folder, 'relation.counter.OnlyRelevant.cnt')
+  transe_data_save_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
+  item_counter_save_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')
+  relation_counter_save_path = os.path.join(wikidata_folder, 'relation.counter.OnlyRelevant.cnt')
 
-  item_vocab_saving_path = os.path.join(wikidata_folder, 'item.vocab.OnlyRelevant.voc')
-  relation_vocab_saving_path = os.path.join(wikidata_folder, 'relation.vocab.OnlyRelevant.voc')
+  item_vocab_save_path = os.path.join(wikidata_folder, 'item.vocab.OnlyRelevant.voc')
+  relation_vocab_save_path = os.path.join(wikidata_folder, 'relation.vocab.OnlyRelevant.voc')
 
-  pretrained_wordvec_saving_path = os.path.join(wikidata_folder, 'glove.6B.100d.txt')
-  word_vocab_saving_path = os.path.join(wikidata_folder, 'word.vocab.glove.100.voc')
-  word_embedding_saving_path = os.path.join(wikidata_folder, 'word.embedding.glove.100.emd')
+  pretrained_wordvec_save_path = os.path.join(wikidata_folder, 'glove.6B.100d.txt')
+  word_vocab_save_path = os.path.join(wikidata_folder, 'word.vocab.glove.100.voc')
+  word_embedding_save_path = os.path.join(wikidata_folder, 'word.embedding.glove.100.emd')
+
+  item_embeddings_path = os.path.join(wikidata_folder, 'item_embeddings.npy')
+  relation_embeddings_path = os.path.join(wikidata_folder, 'relation.embeddings.emd')
 
   # 首先在main中利用DB将原始的问答对转化成Model所需的{question, topicEntity，trueAns，candidateAns}
   # db = DBManager(host='192.168.1.139', port=3306, user='root', psd='1405', db='kbqa')
@@ -538,22 +557,22 @@ if __name__ == '__main__':
   # db.close()
 
   # 从原30G文件中提取三元组,总共提到了2300W多对
-  # prepare_transe_data(selected_wikidata_file_path, transe_data_saving_path)
+  # prepare_transe_data(selected_wikidata_file_path, transe_data_save_path)
 
   # 统计三元组中item和relation的词频
-  # build_entities_counter(transe_data_saving_path, item_counter_saving_path, relation_counter_saving_path)
+  # build_entities_counter(transe_data_save_path, item_counter_save_path, relation_counter_save_path)
 
 
   # 构建entities的词汇表，分别列在item和relation两个表中
   # 每个词汇表的0号位都是UNK
-  relation_vocab = get_entity_vocabulary(relation_counter_saving_path, relation_vocab_saving_path, UNK='RELATION_UNK',
+  relation_vocab = get_entity_vocabulary(relation_counter_save_path, relation_vocab_save_path, UNK='RELATION_UNK',
                                          percent=1.0)
 
-  item_vocab = get_entity_vocabulary(item_counter_saving_path, item_vocab_saving_path, UNK='ITEM_UNK', percent=0.80)
+  item_vocab = get_entity_vocabulary(item_counter_save_path, item_vocab_save_path, UNK='ITEM_UNK', percent=0.80)
 
-  word_vocab, word_embedding = get_word_vocabulary(pretrained_wordvec_saving_path,
-                                                   word_vocab_saving_path,
-                                                   word_embedding_saving_path,
+  word_vocab, word_embedding = get_word_vocabulary(pretrained_wordvec_save_path,
+                                                   word_vocab_save_path,
+                                                   word_embedding_save_path,
                                                    UNK='WORD_UNK', PAD='PAD')
 
   config = CNNModelConfig()
@@ -642,7 +661,16 @@ if __name__ == '__main__':
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
+    # 将预训练词向量赋给模型
     model.assign_word_embedding(sess, word_embedding)
+    del word_embedding
+
+    # fixme: 由于内存不足，itemEmbedding还不能拿进来(在tf.assign的时候会爆内存卡死)
+    # relation_embeddings = get_pretrained_entity_embeddings(item_embeddings_path,
+    #                                                                         relation_embeddings_path)
+    # model.assign_relation_embedding(sess, relation_embeddings)
+    # del relation_embeddings
+    
     time0 = time.time()
     for i in range(20000):
       q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
@@ -664,7 +692,6 @@ if __name__ == '__main__':
                                      model.true_ans: bf_gt_ans, model.true_relation: bf_gt_relation,
                                      model.neg_ans: bf_n_ans, model.neg_relation: bf_n_relation,
                                      model.is_forward_data: False})
-
 
       if i % 100 == 0:
         q, topic, gt_ans, gt_relation, n_ans, n_relation = sess.run(
@@ -689,10 +716,10 @@ if __name__ == '__main__':
         #                 test_model.is_forward_data: True})
 
         train_cos = sess.run(test_model.cos_sim,
-                       {test_model.question_ids: q, test_model.topic_entity_id: topic,
-                        test_model.candidate_ans: n_ans, test_model.candidate_relation: n_relation,
-                        test_model.is_forward_data: True})
-        cos=train_cos
+                             {test_model.question_ids: q, test_model.topic_entity_id: topic,
+                              test_model.candidate_ans: n_ans, test_model.candidate_relation: n_relation,
+                              test_model.is_forward_data: True})
+        cos = train_cos
 
         # bf_test_q, bf_test_topic_entity, bf_test_ans_list, bf_test_relation_list, \
         # bf_test_c_ans, bf_test_c_relation = sess.run([bf_test_question_batch, bf_test_topic_entity_batch,
@@ -715,12 +742,12 @@ if __name__ == '__main__':
           # 在训练集上测试拟合能力的代码
           top_5_ans_index = heapq.nlargest(5, range(len(n_ans[i])), cos[i].take)
           top_5_ans = [n_ans[i][index] for index in top_5_ans_index]
-          ans = [gt_ans[i] ]
+          ans = [gt_ans[i]]
 
           for aaa in ans:
             if aaa in n_ans[i]:
-              print('|√|',end='\t')
-              a_count+=1
+              print('|√|', end='\t')
+              a_count += 1
               break
           for aaa in top_5_ans:
             if aaa in ans:

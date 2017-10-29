@@ -51,33 +51,33 @@ class CNNModel:
       self.words_embeddings = tf.get_variable('words_embeddings', [words_vocab_size, word_embedding_size],
                                               dtype=tf.float32)
 
-      entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, entity_embedding_size],
-                                            dtype=tf.float32)
-      relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, entity_embedding_size],
-                                             dtype=tf.float32)
+      self.entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, entity_embedding_size],
+                                                 dtype=tf.float32)
+      self.relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, entity_embedding_size],
+                                                  dtype=tf.float32)
       # 2D conv要求输入是4维的([batchsize,width,height,depth])
       # 而原inputs是3维的([batch_size,num_steps,embedding_size])
       embedded_question = tf.nn.embedding_lookup(self.words_embeddings, self.question_ids)
       embedded_question = tf.expand_dims(embedded_question, -1)
 
       # fixme: 对字符串形式的ans的处理方法(str、time等用一个统一的id标注，不考虑具体的值(因为只要topic和R对的话值就能确定下来了))
-      embedded_entity = tf.nn.embedding_lookup(entities_embeddings, self.topic_entity_id)
+      embedded_entity = tf.nn.embedding_lookup(self.entities_embeddings, self.topic_entity_id)
 
       if not is_test:
-        embedded_ans = tf.nn.embedding_lookup(entities_embeddings, self.true_ans)
-        embedded_relation = tf.nn.embedding_lookup(relations_embeddings, self.true_relation)
+        embedded_ans = tf.nn.embedding_lookup(self.entities_embeddings, self.true_ans)
+        embedded_relation = tf.nn.embedding_lookup(self.relations_embeddings, self.true_relation)
         embedded_relation = tf.cond(self.is_forward_data, lambda: embedded_relation, lambda: -1.0 * embedded_relation)
 
-        embedded_neg_ans = tf.nn.embedding_lookup(entities_embeddings, self.neg_ans)
-        embedded_neg_realtion = tf.nn.embedding_lookup(relations_embeddings, self.neg_relation)
+        embedded_neg_ans = tf.nn.embedding_lookup(self.entities_embeddings, self.neg_ans)
+        embedded_neg_realtion = tf.nn.embedding_lookup(self.relations_embeddings, self.neg_relation)
         embedded_neg_realtion = tf.cond(self.is_forward_data, lambda: embedded_neg_realtion,
                                         lambda: -1.0 * embedded_neg_realtion)
 
         # todo type的编码方式?
         # todo 根据ids找到一个context列表 然后reduceMean
       else:
-        embedded_candidate_ans = tf.nn.embedding_lookup(entities_embeddings, self.candidate_ans)
-        embedded_candidate_relation = tf.nn.embedding_lookup(entities_embeddings, self.candidate_relation)
+        embedded_candidate_ans = tf.nn.embedding_lookup(self.entities_embeddings, self.candidate_ans)
+        embedded_candidate_relation = tf.nn.embedding_lookup(self.entities_embeddings, self.candidate_relation)
         embedded_candidate_relation = tf.cond(self.is_forward_data, lambda: embedded_candidate_relation,
                                               lambda: -1.0 * embedded_candidate_relation)
         # TODO 如果是反数据，直接让embedded_relation=-embedded_relation
@@ -90,12 +90,12 @@ class CNNModel:
     #                                                    name='question_relation',
     #                                                    reuse=not is_training)
 
-    question_ansentity_latent_vec = self.get_latent_vec(embedded_question,output_latent_vec_size,
-                                                                 name='question_ans_entity',
-                                                                 reuse=not is_training)
+    question_ansentity_latent_vec = self.get_latent_vec(embedded_question, output_latent_vec_size,
+                                                        name='question_ans_entity',
+                                                        reuse=not is_training)
     question_relation_latent_vec = self.get_latent_vec(embedded_question, output_latent_vec_size,
-                                                                name='question_relation',
-                                                                reuse=not is_training)
+                                                       name='question_relation',
+                                                       reuse=not is_training)
 
     # question_context_latent = self.get_latent(embedded_question, config, name='question_context',
     #                                                    is_training=not is_training)
@@ -249,9 +249,6 @@ class CNNModel:
         self.cos_sim = cos_similarity(question_final_latent_vec, candidate_ans_final_latent_vec)
         pass
 
-  def assign_word_embedding(self, sess, word_embedding):
-    sess.run(tf.assign(self.words_embeddings, word_embedding))
-
   def get_question_latent_vec(self, embedded_input, word_embedding_size, output_latent_vec_size, name, reuse):
     norm = True
 
@@ -303,6 +300,15 @@ class CNNModel:
       latent_vec = slim.fully_connected(net, output_latent_vec_size, activation_fn=None, scope='latent_vec')
 
       return latent_vec
+
+  def assign_word_embedding(self, sess, word_embedding):
+    sess.run(tf.assign(self.words_embeddings, word_embedding))
+
+  def assign_item_embedding(self, sess, item_embedding):
+    sess.run(tf.assign(self.entities_embeddings, item_embedding))
+
+  def assign_relation_embedding(self, sess, relation_embedding):
+    sess.run(tf.assign(self.relations_embeddings, relation_embedding))
 
 
 if __name__ == '__main__':

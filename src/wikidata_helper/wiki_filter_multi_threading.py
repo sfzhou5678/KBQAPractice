@@ -20,16 +20,16 @@ import pickle
 
 def get_qid_set(train_file_path='../data/trains_ansEntity_fixConnectErr.txt',
                 test_file_path='../data/ts_ansEntity_raw.txt',
-                pkl_saving_path=None):
+                pkl_save_path=None):
   """
   ### 一些相关统计：
   1. 训练集+测试集的[topicEntities]总计有6041个，2491种(有3550个重复)
   2. 训练集+测试集的[ansEntities]总计有52291个，23124种(有29167个重复)
   3. 训练集+测试集的[topicEntities+ansEntities]总计有58332个，24945种(33387个重复)
   """
-  if pkl_saving_path is not None:
+  if pkl_save_path is not None:
     try:
-      f_read = open(pkl_saving_path, 'rb')
+      f_read = open(pkl_save_path, 'rb')
       qid_set = pickle.load(f_read)
       return qid_set
     except:
@@ -79,9 +79,9 @@ def get_qid_set(train_file_path='../data/trains_ansEntity_fixConnectErr.txt',
             reduplicated_qid_count += 1
           qid_set.add(ans_qid)
 
-  if pkl_saving_path is not None:
+  if pkl_save_path is not None:
     try:
-      f_write = open(pkl_saving_path, 'wb')
+      f_write = open(pkl_save_path, 'wb')
       pickle.dump(qid_set, f_write, True)
     except:
       pass
@@ -159,7 +159,7 @@ def main():
 
   qid_set = get_qid_set(train_file_path='../../data/trains_ansEntity_fixConnectErr.txt',
                         test_file_path='../../data/ts_ansEntity_raw.txt',
-                        pkl_saving_path='../../qid_set.pkl')
+                        pkl_save_path='../../qid_set.pkl')
   print('len(qid_set) = %d' % len(qid_set))
 
   f_read = open(wikidata_file_path)

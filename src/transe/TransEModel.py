@@ -20,13 +20,14 @@ class TransEModel:
     # Ops and variables pinned to the CPU because of missing GPU implementation
     with tf.device('/cpu:0'):
       # Look up embeddings for inputs.
-      entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, embedding_size],
-                                            dtype=tf.float32)
-      relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, embedding_size],
-                                             dtype=tf.float32)
+      self.entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, embedding_size],
+                                                 dtype=tf.float32)
 
-      embed_heads = tf.nn.embedding_lookup(entities_embeddings, self.heads)
-      embed_relations = tf.nn.embedding_lookup(relations_embeddings, self.relations)
+      self.relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, embedding_size],
+                                                  dtype=tf.float32)
+
+      embed_heads = tf.nn.embedding_lookup(self.entities_embeddings, self.heads)
+      embed_relations = tf.nn.embedding_lookup(self.relations_embeddings, self.relations)
 
       nce_weights = tf.get_variable('nce_weights', [entities_vocab_size, embedding_size], dtype=tf.float32, )
       nce_biases = tf.get_variable('nce_biases', [entities_vocab_size], dtype=tf.float32, )
