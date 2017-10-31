@@ -10,7 +10,7 @@ from src.preparing_data.question_entities_recognition import parse_question
 punctuation = string.punctuation
 
 
-class ManagerHelperInterface:
+class DataManagerInterface:
   @abstractmethod
   def recognize_topic_entity(self, question): pass
 
@@ -41,7 +41,7 @@ class ManagerHelperInterface:
                        reverse_relation_vocab, reverse_item_vocab): pass
 
 
-class QAManagerHelpderImp(ManagerHelperInterface):
+class DataDataManagerImp(DataManagerInterface):
   def recognize_topic_entity(self, question):
     success, parsed_question = parse_question(question)
 
@@ -117,9 +117,9 @@ class QAManagerHelpderImp(ManagerHelperInterface):
     return topk_relation, topk_ans
 
   def id2text(self, data_id, reverse_vocab):
-    id = lookup_vocab(reverse_vocab, data_id)
+    text = lookup_vocab(reverse_vocab, data_id)
     # todo 根据QID在线获取label
-    return "text" + str(id)
+    return 'text(%s)' % text
 
   def get_pred_triples(self, topic_entity_text, fw_pred_relations, fw_pred_answers, bw_pred_relations, bw_pred_answers,
                        reverse_relation_vocab, reverse_item_vocab):
@@ -140,4 +140,5 @@ class QAManagerHelpderImp(ManagerHelperInterface):
     for r, a in zip(bw_pred_text_relations, bw_pred_text_answers):
       triple = {"ans": a, "detail": {"head": a, "relation": r, "ans": topic_entity_text}}
       pred_triples.append(triple)
-    pass
+
+    return pred_triples

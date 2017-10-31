@@ -4,7 +4,7 @@ from src.tools.common_tools import reverse_dict
 from src.database.DBManager import DBManager
 from src.tools.db_to_model_data import get_entity_vocabulary, get_word_vocabulary
 from src.configs import CNNModelConfig
-from src.qamanager_helper import QAManagerHelpderImp
+from src.QADataManager import DataDataManagerImp
 from src.QAModelManager import QAModelManager
 
 
@@ -52,7 +52,7 @@ class QASysManager(object):
     self.reverse_word_vocab = reverse_dict(self.word_vocab)
 
     self.model_manager = QAModelManager(self.config)
-    self.data_helper = QAManagerHelpderImp()
+    self.data_helper = DataDataManagerImp()
 
   def get_answer(self, question):
     """
@@ -63,18 +63,18 @@ class QASysManager(object):
     :param question:
     :return:
     """
-    cur_log = {"status": '',
-               "result": ''}
+    response = {"status": '',
+                "result": ''}
 
     # 做主题词识别
     qids = self.data_helper.recognize_topic_entity(question)
     if qids is None:
-      cur_log['status'] = 'error'
-      cur_log['result'] = "调用API失败"
+      response['status'] = 'error'
+      response['result'] = "调用API失败"
       return
     elif len(qids) == 0:
-      cur_log['status'] = 'error'
-      cur_log['result'] = "没有识别出topic entity."
+      response['status'] = 'error'
+      response['result'] = "没有识别出topic entity."
       return
 
     # 构建数据
@@ -122,16 +122,14 @@ class QASysManager(object):
       ans["pred"].append(pred)
 
     # 循环完毕之后返回结果
-    print(ans)
-    print(json.dumps(ans))
-    cur_log["status"] = "success"
-    cur_log["result"] = json.dumps(ans)
+    response["status"] = "success"
+    response["result"] = json.dumps(ans)
 
-    return json.dumps(cur_log)
+    return json.dumps(response)
 
 
 if __name__ == '__main__':
   db_setting = {'host': '192.168.1.139', 'port': 3306, 'user': 'root', "psd": '1405', "db": 'kbqa'}
-  qa_model = QASysManager(db_setting)
+  qa_sys = QASysManager(db_setting)
 
-  qa_model.get_answer("what is the oregon ducks 2012 football schedule?")
+  print(qa_sys.get_answer("what is the oregon ducks 2012 football schedule?"))
