@@ -4,7 +4,7 @@ import re
 import random
 
 from src.tools.common_tools import pickle_load, pickle_dump
-from src.tools.common_tools import get_id
+from src.tools.common_tools import lookup_vocab
 
 data_folder = r'F:\FBData'
 file_path = os.path.join(data_folder, 'SmallBase_gama')
@@ -151,9 +151,9 @@ def get_id_data(raw_file_path, ids_file_path, entities_vocab, relations_vocab):
     for line in lines:
       head, relation, tail = line.strip().split('\t')
 
-      head=get_id(entity_vocab,head)
-      tail=get_id(entity_vocab,tail)
-      relation=get_id(relation_vocab,relation)
+      head=lookup_vocab(entity_vocab, head)
+      tail=lookup_vocab(entity_vocab, tail)
+      relation=lookup_vocab(relation_vocab, relation)
 
       data = [head, relation, tail]
       datas.append(data)

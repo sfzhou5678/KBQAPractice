@@ -8,7 +8,7 @@ import heapq
 import tensorflow as tf
 import numpy as np
 from src.database.DBManager import DBManager
-from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, get_id
+from src.tools.common_tools import pickle_load, pickle_dump, reverse_dict, lookup_vocab
 
 
 def main():
@@ -157,16 +157,16 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
 
       # 开始处理
       raw_question = re.sub(r'[{}]+'.format(punctuation), ' ', raw_question).strip()
-      question_ids = [get_id(word_vocab, word) for word in re.split('\s+', raw_question)]
+      question_ids = [lookup_vocab(word_vocab, word) for word in re.split('\s+', raw_question)]
       question_ids = question_ids[:question_max_length]
       for i in range(question_max_length - len(question_ids)):
         question_ids.append(padding_id)
 
-      topic_entity_id = get_id(item_vocab, raw_topic_entity)
+      topic_entity_id = lookup_vocab(item_vocab, raw_topic_entity)
       # forward的第一个是topic，最后一个是ans；backward的第一个是ans，最后一个是topic
-      forward_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
+      forward_candidate_ans = [(lookup_vocab(item_vocab, h), lookup_vocab(relation_vocab, r), lookup_vocab(item_vocab, t))
                                for (h, r, t) in raw_forward_candidate_ans]
-      backward_candidate_ans = [(get_id(item_vocab, h), get_id(relation_vocab, r), get_id(item_vocab, t))
+      backward_candidate_ans = [(lookup_vocab(item_vocab, h), lookup_vocab(relation_vocab, r), lookup_vocab(item_vocab, t))
                                 for (h, r, t) in raw_backward_candidate_ans]
 
       if len(raw_forward_ans) > 0:
@@ -179,8 +179,8 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
             forward_candidate_ans.append((topic_entity_id, sampled_r, sampled_t))
 
           for (h, r, t) in raw_forward_ans:
-            true_relation = get_id(relation_vocab, r)
-            true_ans = get_id(item_vocab, t)
+            true_relation = lookup_vocab(relation_vocab, r)
+            true_ans = lookup_vocab(item_vocab, t)
 
             for i in range(n_forward):
               candidate_ans = forward_candidate_ans[i * num_samples:(i + 1) * num_samples]
@@ -195,8 +195,8 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
           true_ans_list = []
           true_realation_list = []
           for (h, r, t) in raw_forward_ans:
-            true_relation = get_id(relation_vocab, r)
-            true_ans = get_id(item_vocab, t)
+            true_relation = lookup_vocab(relation_vocab, r)
+            true_ans = lookup_vocab(item_vocab, t)
             true_ans_list.append(true_ans)
             true_realation_list.append(true_relation)
             if len(true_ans_list) >= 20:
@@ -226,8 +226,8 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
             backward_candidate_ans.append((sampled_t, sampled_r, topic_entity_id))  # 注意，这里是topic在最後，与forward不同
 
           for (h, r, t) in raw_backward_ans:
-            true_relation = get_id(relation_vocab, r)
-            true_ans = get_id(item_vocab, h)  # 注意，这里是h而不是t，与forward不同
+            true_relation = lookup_vocab(relation_vocab, r)
+            true_ans = lookup_vocab(item_vocab, h)  # 注意，这里是h而不是t，与forward不同
 
             for i in range(n_backward):
               candidate_ans = backward_candidate_ans[i * num_samples:(i + 1) * num_samples]
@@ -242,8 +242,8 @@ def triples_to_tfrecords(triples_path, tfrecords_folder_path,
           true_ans_list = []
           true_realation_list = []
           for (h, r, t) in raw_backward_ans:
-            true_relation = get_id(relation_vocab, r)
-            true_ans = get_id(item_vocab, h)  # 注意这里是h不是t
+            true_relation = lookup_vocab(relation_vocab, r)
+            true_ans = lookup_vocab(item_vocab, h)  # 注意这里是h不是t
             true_ans_list.append(true_ans)
             true_realation_list.append(true_relation)
             if len(true_ans_list) >= 20:

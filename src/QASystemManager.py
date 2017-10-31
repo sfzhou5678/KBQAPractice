@@ -1,9 +1,10 @@
 import os
-from src.preparing_data.question_entities_recognition import parse_question
+import json
+from src.tools.common_tools import reverse_dict
 from src.database.DBManager import DBManager
 from src.tools.db_to_model_data import get_entity_vocabulary, get_word_vocabulary
 from src.configs import CNNModelConfig
-from src.qamanager_helper import *
+from src.qamanager_helper import QAManagerHelpderImp
 from src.QAModelManager import QAModelManager
 
 
@@ -46,8 +47,12 @@ class QASysManager(object):
                                              self.word_vocab_save_path,
                                              self.word_embedding_save_path,
                                              UNK='WORD_UNK', PAD='PAD')
+    self.reverse_relation_vocab = reverse_dict(self.relation_vocab)
+    self.reverse_item_vocab = reverse_dict(self.item_vocab)
+    self.reverse_word_vocab = reverse_dict(self.word_vocab)
 
     self.model_manager = QAModelManager(self.config)
+    self.data_helper = QAManagerHelpderImp()
 
   def get_answer(self, question):
     """
@@ -58,18 +63,24 @@ class QASysManager(object):
     :param question:
     :return:
     """
-    cur_log = {}
+    cur_log = {"status": '',
+               "result": ''}
 
     # 做主题词识别
-    qids = self.__recognize_topic_entity(question)
+    qids = self.data_helper.recognize_topic_entity(question)
     if qids is None:
-      cur_log['error'] = "调用API失败"
+      cur_log['status'] = 'error'
+      cur_log['result'] = "调用API失败"
       return
     elif len(qids) == 0:
-      cur_log['error'] = "没有识别出topic entity."
+      cur_log['status'] = 'error'
+      cur_log['result'] = "没有识别出topic entity."
       return
 
     # 构建数据
+    ans = {}
+    ans["question"] = question
+    ans["pred"] = []
     for topic_entity_qid in qids:
       # 首先从DB中查询正反三元组
       forward_candidate_data = list(self.db.select_from_topic(topic_entity_qid, max_depth=1))
@@ -77,53 +88,46 @@ class QASysManager(object):
 
       # 构造输入模型的数据
       question_ids, topic_entity_id, \
-      fw_relations, fw_answers, bw_relations, bw_answers = get_data_to_model(question, topic_entity_qid, self.config,
-                                                                             self.word_vocab, self.item_vocab,
-                                                                             self.relation_vocab,
-                                                                             forward_candidate_data,
-                                                                             backward_candidate_data, padding_id=1)
+      fw_relations, fw_answers, \
+      bw_relations, bw_answers = self.data_helper.get_data_to_model(question, topic_entity_qid, self.config,
+                                                                    self.word_vocab, self.item_vocab,
+                                                                    self.relation_vocab,
+                                                                    forward_candidate_data, backward_candidate_data,
+                                                                    padding_id=1)
 
       # 通过Model计算相似度
       # TODO 候选答案太多时的处理方法
-      fw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id,
-                                                           fw_relations, fw_answers,
+      fw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, fw_relations, fw_answers,
                                                            is_forward=True)
-      bw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id,
-                                                           bw_relations, bw_answers,
+      bw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, bw_relations, bw_answers,
                                                            is_forward=True)
 
       # 选择答案
-      fw_pred_relations, fw_pred_answers = select_topk_ans(fw_relations, fw_answers, fw_similarities,
-                                                           k=3, threshold=0.3)
-      bw_pred_relations, bw_pred_answers = select_topk_ans(bw_relations, bw_answers, bw_similarities,
-                                                           k=5, threshold=0.95)
+      fw_pred_relations, fw_pred_answers = self.data_helper.select_topk_ans(fw_relations, fw_answers, fw_similarities,
+                                                                            k=3, threshold=0.3)
+      bw_pred_relations, bw_pred_answers = self.data_helper.select_topk_ans(bw_relations, bw_answers, bw_similarities,
+                                                                            k=5, threshold=0.95)
 
-      # TODO 转化成具体的单词
-      # TODO 记录到一个数组中
-      print()
-    print()
-    # TODO 循环完毕之后返回结果
+      # 转化成具体的单词
+      topic_entity_text = self.data_helper.id2text(topic_entity_qid, self.reverse_item_vocab)
+      pred_triples = self.data_helper.get_pred_triples(topic_entity_text,
+                                                       fw_pred_relations, fw_pred_answers,
+                                                       bw_pred_relations, bw_pred_answers,
+                                                       self.reverse_relation_vocab, self.reverse_item_vocab)
 
-  def __recognize_topic_entity(self, question):
-    success, parsed_question = parse_question(question)
+      pred = {}
+      pred["topic_entity"] = topic_entity_text
+      pred["pred_ans"] = pred_triples
 
-    # 4. 记录结果
-    qids = []
-    if success:
-      if 'entities' in parsed_question:
-        for entity in parsed_question['entities']:
-          if 'wikidataId' in entity:
-            qids.append(entity['wikidataId'])
-          else:
-            # todo 日志中记录这个答案没有对应的qid
-            pass
-      else:
-        # todo 日志中记录这个问题没有找到对应的entities
-        pass
-      return qids
-    else:
-      # TODO 尚未清楚success什么情况下会是false,记录日志
-      return None
+      ans["pred"].append(pred)
+
+    # 循环完毕之后返回结果
+    print(ans)
+    print(json.dumps(ans))
+    cur_log["status"] = "success"
+    cur_log["result"] = json.dumps(ans)
+
+    return json.dumps(cur_log)
 
 
 if __name__ == '__main__':

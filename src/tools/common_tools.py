@@ -69,7 +69,7 @@ def reverse_dict(cur_dict):
     new_dict[value] = key
   return new_dict
 
-def get_id(vocab, word, unk_id=0):
+def lookup_vocab(vocab, word, unk_id=0):
   if word in vocab:
     return vocab[word]
   else:
