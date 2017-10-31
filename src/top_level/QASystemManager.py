@@ -4,8 +4,8 @@ from src.tools.common_tools import reverse_dict
 from src.database.DBManager import DBManager
 from src.tools.db_to_model_data import get_entity_vocabulary, get_word_vocabulary
 from src.configs import CNNModelConfig
-from src.QADataManager import DataDataManagerImp
-from src.QAModelManager import QAModelManager
+from src.top_level.QADataManager import DataDataManagerImp
+from src.top_level.QAModelManager import QAModelManager
 
 
 class QASysManager(object):
@@ -30,14 +30,14 @@ class QASysManager(object):
   item_embeddings_path = os.path.join(wikidata_folder, 'item_embeddings.npy')
   relation_embeddings_path = os.path.join(wikidata_folder, 'relation.embeddings.emd')
 
-  def __init__(self, db_setting):
+  def __init__(self, db_setting, config):
     """
     1. DB初始化
     """
     self.db = DBManager(host=db_setting['host'], port=db_setting['port'], user=db_setting['user'],
                         psd=db_setting['psd'], db=db_setting['db'])
 
-    self.config = CNNModelConfig()
+    self.config = config
 
     self.relation_vocab = get_entity_vocabulary(self.relation_counter_save_path, self.relation_vocab_save_path,
                                                 UNK='RELATION_UNK', percent=1.0)
@@ -130,6 +130,7 @@ class QASysManager(object):
 
 if __name__ == '__main__':
   db_setting = {'host': '192.168.1.139', 'port': 3306, 'user': 'root', "psd": '1405', "db": 'kbqa'}
-  qa_sys = QASysManager(db_setting)
+  model_config = CNNModelConfig()
+  qa_sys = QASysManager(db_setting, model_config)
 
   print(qa_sys.get_answer("what is the oregon ducks 2012 football schedule?"))
