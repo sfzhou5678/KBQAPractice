@@ -2,6 +2,7 @@ import os
 import time
 import json
 import pickle
+from src.tools.common_tools import pickle_load, pickle_dump
 
 """
 根据QA的QID，从完整200多G的wikiJson数据中筛选数据
@@ -11,84 +12,85 @@ import pickle
 """
 
 
-def get_qid_set(train_file_path='../data/trains_ansEntity_fixConnectErr.txt',
-                test_file_path='../data/ts_ansEntity_raw.txt',
-                pkl_save_path=None):
+def get_qid_set(webQ_file_paths,
+                simpleQ_file_paths,
+                entity_set_pkl_save_path=None,
+                relation_set_pkl_sav_path=None):
   """
   ### 一些相关统计：
   1. 训练集+测试集的[topicEntities]总计有6041个，2491种(有3550个重复)
   2. 训练集+测试集的[ansEntities]总计有52291个，23124种(有29167个重复)
   3. 训练集+测试集的[topicEntities+ansEntities]总计有58332个，24945种(33387个重复)
   """
-  if pkl_save_path is not None:
+  if entity_set_pkl_save_path is not None and relation_set_pkl_sav_path is not None:
     try:
-      f_read = open(pkl_save_path, 'rb')
-      qid_set = pickle.load(f_read)
-      return qid_set
+      entity_set = pickle_load(entity_set_pkl_save_path)
+      relation_set = pickle_load(relation_set_pkl_sav_path)
+
+      return entity_set, relation_set
     except:
       pass
 
-  qid_set = set()
+  entity_set = set()
+  relation_set = set()
+
   reduplicated_qid_count = 0
-  with open(train_file_path) as f:
-    lines = f.readlines()
-    for line in lines:
-      data = eval(line.strip())
+  for path in webQ_file_paths:
+    with open(path) as f:
+      lines = f.readlines()
+      for line in lines:
+        data = eval(line.strip())
 
-      if 'entities' in data['parsed_question']:
-        entities = data['parsed_question']['entities']
-        for entity in entities:
-          if 'wikidataId' in entity:
-            topic_entity_qid = entity['wikidataId']
-            if topic_entity_qid in qid_set:
+        if 'entities' in data['parsed_question']:
+          entities = data['parsed_question']['entities']
+          for entity in entities:
+            if 'wikidataId' in entity:
+              topic_entity_qid = entity['wikidataId']
+              if topic_entity_qid in entity_set:
+                reduplicated_qid_count += 1
+              entity_set.add(topic_entity_qid)
+
+        for ans in data['ans']:
+          for ans_entity in ans['entities']:
+            ans_qid = ans_entity['Qid']
+            if ans_qid in entity_set:
               reduplicated_qid_count += 1
-            qid_set.add(topic_entity_qid)
+            entity_set.add(ans_qid)
 
-      for ans in data['ans']:
-        for ans_entity in ans['entities']:
-          ans_qid = ans_entity['Qid']
-          if ans_qid in qid_set:
-            reduplicated_qid_count += 1
-          qid_set.add(ans_qid)
+  for file_path in simpleQ_file_paths:
+    with open(file_path, encoding='utf-8') as f:
+      lines = f.readlines()
+      for line in lines:
+        line = line.strip()
+        head, relation, tail, _ = line.split('\t')
 
-  with open(test_file_path) as f:
-    lines = f.readlines()
-    for line in lines:
-      data = eval(line.strip())
+        entity_set.add(head)
+        entity_set.add(tail)
+        relation = 'P' + relation[1:]
+        relation_set.add(relation)
 
-      if 'entities' in data['parsed_question']:
-        entities = data['parsed_question']['entities']
-        for entity in entities:
-          if 'wikidataId' in entity:
-            topic_entity_qid = entity['wikidataId']
-            if topic_entity_qid in qid_set:
-              reduplicated_qid_count += 1
-            qid_set.add(topic_entity_qid)
-
-      for ans in data['ans']:
-        for ans_entity in ans['entities']:
-          ans_qid = ans_entity['Qid']
-          if ans_qid in qid_set:
-            reduplicated_qid_count += 1
-          qid_set.add(ans_qid)
-
-  if pkl_save_path is not None:
+  if entity_set_pkl_save_path is not None:
     try:
-      f_write = open(pkl_save_path, 'wb')
-      pickle.dump(qid_set, f_write, True)
+      f_write = open(entity_set_pkl_save_path, 'wb')
+      pickle.dump(entity_set, f_write, True)
     except:
       pass
-  # print(len(qid_set))
-  # print(reduplicated_qid_count)
+  if relation_set_pkl_sav_path is not None:
+    try:
+      f_write = open(relation_set_pkl_sav_path, 'wb')
+      pickle.dump(relation_set, f_write, True)
+    except:
+      pass
 
-  return qid_set
+  return entity_set, relation_set
 
 
-def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
+def select_relevant_entities(entity_set, relation_set, wikidata_file_path, selected_data_path):
   """
   筛选规则：
   1. 对于每一行数据，若这个entity本身位于qidSet中，就将这一整行数据保存下来
-  2. 对于所有与该entity有关联的实体，只将QID位于qidSet中的关系对记录下来，其余的数据抛弃
+  2. 如果某个P位于PID_SET中，那么就将这个P一下的所有实体都保留下来
+  3. 对于所有与该entity有关联的实体，只将QID位于qidSet中的关系对记录下来，其余的数据抛弃
 
   功效：相对于整行选取，这个方法可以将关系对的数量减少到20%左右，占用空间压缩到30%左右
 
@@ -121,7 +123,7 @@ def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
         q_item = json.loads(line)
         QID = q_item['id']
 
-        if QID in qid_set:
+        if QID in entity_set:
           total_triple_count += sum([len(q_item['claims'][predicate]) for predicate in q_item['claims']])
           data_to_write = line
           need_select = True
@@ -130,12 +132,17 @@ def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
           for predicate in q_item['claims']:
             relevant_entities = q_item['claims'][predicate]
             relations = []
+            is_useful_relation = False
+
+            if predicate in relation_set:
+              is_useful_relation = True
+
             for revelant_entity in relevant_entities:
               try:
                 main_snak = revelant_entity['mainsnak']
                 if main_snak['datavalue']['type'] == 'wikibase-entityid':
                   revelant_qid = main_snak['datavalue']['value']['id']
-                  if revelant_qid in qid_set:
+                  if is_useful_relation or (revelant_qid in entity_set):
                     total_triple_count += 1
                     relations.append(revelant_entity)
                     need_select = True
@@ -143,7 +150,7 @@ def select_relevant_entities(qid_set, wikidata_file_path, selected_data_path):
                 error_count += 1
                 pass
             if len(relations) > 0:
-              claims[predicate]=relations
+              claims[predicate] = relations
           q_item['claims'] = claims
           data_to_write = json.dumps(q_item)
 
@@ -228,15 +235,25 @@ def main():
   data_folder = r'F:\WikiData'
   wikidata_file_path = os.path.join(data_folder, 'latest-all.json')
   # selected_whole_line_data_path = os.path.join(data_folder, 'selected-latest-all.WholeLines.data')
-  selected_only_relevant_data_path = os.path.join(data_folder, 'selected-latest-all.OnlyRelevant.data')
+  selected_only_relevant_data_path = os.path.join(data_folder, 'SimpleQeustionBased',
+                                                  'selected-latest-all.OnlyRelevant.data')
 
-  qid_set = get_qid_set(train_file_path='../../data/trains_ansEntity_fixConnectErr.txt',
-                        test_file_path='../../data/ts_ansEntity_raw.txt',
-                        pkl_save_path='../../data/qid_set.pkl')
+  webqeustion_file_paths = ['../../data/trains_ansEntity_fixConnectErr.txt',
+                            '../../data/ts_ansEntity_raw.txt']
 
-  print('len(qid_set) = %d' % len(qid_set))
-  # select_the_whole_line(qid_set, wikidata_file_path, selected_data_path=selected_whole_line_data_path)
-  select_relevant_entities(qid_set, wikidata_file_path, selected_data_path=selected_only_relevant_data_path)
+  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  simplequestion_file_paths = [os.path.join(sq_data_folder, 'annotated_wd_data_train.txt'),
+                               os.path.join(sq_data_folder, 'annotated_wd_data_valid.txt'),
+                               os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')]
+
+  entity_set, relation_set = get_qid_set(webqeustion_file_paths, simplequestion_file_paths,
+                                         entity_set_pkl_save_path='../../data/entity_set.pkl',
+                                         relation_set_pkl_sav_path='../../data/relation_set.pkl')
+
+  print('len(entity_set) = %d' % len(entity_set))
+  # select_the_whole_line(entity_set, wikidata_file_path, selected_data_path=selected_whole_line_data_path)
+  select_relevant_entities(entity_set, relation_set, wikidata_file_path,
+                           selected_data_path=selected_only_relevant_data_path)
 
 
 if __name__ == '__main__':
