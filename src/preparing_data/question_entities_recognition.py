@@ -1,5 +1,6 @@
 import os
 import re
+import time
 
 from src.preparing_data.TextRazorManager import TextRazorManager
 
@@ -53,6 +54,16 @@ def parse_question(question):
       return success, parsed_question
 
     success, parsed_question = do_parse(client, question)
+
+    cnt = 0
+    # fixme: 加了几个变态的while 有时间改掉
+    while not success:
+      time.sleep(1)
+      success, parsed_question = do_parse(client, question)
+      cnt += 1
+      if cnt > 10:
+        break
+
     while not success:
       if len(api_key_list) > 1:
         api_key_list.remove(api_key_list[0])
@@ -60,7 +71,15 @@ def parse_question(question):
         api_key = api_key_list[0]
         print('[Change %s -> %s]' % (old_api_key, api_key))
         client = TextRazorManager.get_client_with_key(api_key)
+
         success, parsed_question = do_parse(client, question)
+        cnt = 0
+        while not success:
+          time.sleep(1)
+          success, parsed_question = do_parse(client, question)
+          cnt += 1
+          if cnt > 10:
+            break
       else:
         # 最坏情况没有可用key了，就保存处理结果,停止运行
         break
@@ -126,6 +145,55 @@ def question_entities_recognition(question_path, res_path, log_path):
             break
 
 
+def sqdata_question_entities_recognition(simpleQ_file_path, res_path, log_path):
+  """
+  专门处理SimpleQuestions中问题数据的函数
+  :param question_path:
+  :param res_path:
+  :param log_path:
+  :return:
+  """
+  total_handled_count = load_or_create_count(log_path)
+
+  with open(simpleQ_file_path, encoding='utf-8') as f:
+    lines = f.readlines()
+    with open(res_path, 'a', encoding='utf-8') as wf:
+      for line in lines:
+        line = line.strip()
+        head, relation, tail, question = line.split('\t')
+
+        # 3. 调用api查询question中的entity等
+        success, parsed_question = parse_question(question)
+        candidate_topic = []
+        if 'entities' in parsed_question:
+          for entity in parsed_question['entities']:
+            if 'wikidataId' in entity:
+              candidate_topic.append(entity['wikidataId'])
+
+        if head not in candidate_topic:
+          candidate_topic.append(head)
+
+        qa_pair = {}
+        qa_pair['question'] = question
+        qa_pair['ans'] = tail
+        qa_pair['gt_topic'] = head
+        qa_pair['candidate_topic'] = candidate_topic
+
+        # 4. 记录结果
+        if success:
+          wf.write(str(qa_pair) + '\n')
+          wf.flush()
+          total_handled_count += 1
+          if total_handled_count % 100 == 0:
+            print(total_handled_count)
+          with open(log_path, 'w') as log_wf:
+            # 记录当前成功处理到哪里了
+            log_wf.write(str(total_handled_count) + '\n')
+        else:
+          print('Error!')
+          break
+
+
 api_key_list = ["b061d4d2c7fade52e7ae8c3c786eb4c50eb935876aae037159de827e",
                 '9ba775f9ac0a0afdbd3d6aa78be0f2e4939040540e0925ff64d63b56',
                 'c4098b525a46aa1836ad8d47ca673bd1645da1e73a6cd37419cc644a',
@@ -137,8 +205,25 @@ api_key_list = ["b061d4d2c7fade52e7ae8c3c786eb4c50eb935876aae037159de827e",
 api_key = api_key_list[0]
 
 if __name__ == '__main__':
+  # print('===========Train QA===========')
+  # question_entities_recognition(train_path, train_res_path, train_log_path)
+  #
+  # print('===========Test QA===========')
+  # question_entities_recognition(test_path, test_res_path, test_log_path)
+
+  ## 处理SimpleQuestions
+  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
+  sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
+
+  sq_train_res_path = '../../data/SimpleQuestions/webquestions.train.textrazor.full.txt'
+  sq_test_res_path = '../../data/SimpleQuestions/webquestions.test.textrazor.full.txt'
+
+  sq_train_log_path = '../../log/SimpleQuestions/train.log'
+  sq_test_log_path = '../../log/SimpleQuestions/test.log'
+
   print('===========Train QA===========')
-  question_entities_recognition(train_path, train_res_path, train_log_path)
+  sqdata_question_entities_recognition(sq_train_data_path, sq_train_res_path, sq_train_log_path)
 
   print('===========Test QA===========')
-  question_entities_recognition(test_path, test_res_path, test_log_path)
+  sqdata_question_entities_recognition(sq_test_data_path, sq_test_res_path, sq_test_log_path)
