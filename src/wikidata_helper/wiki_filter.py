@@ -88,11 +88,18 @@ def get_qid_set(webQ_file_paths,
 def select_relevant_entities(entity_set, relation_set, wikidata_file_path, selected_data_path):
   """
   筛选规则：
-  1. 对于每一行数据，若这个entity本身位于qidSet中，就将这一整行数据保存下来
-  2. 如果某个P位于PID_SET中，那么就将这个P一下的所有实体都保留下来
-  3. 对于所有与该entity有关联的实体，只将QID位于qidSet中的关系对记录下来，其余的数据抛弃
+  1. 对于每一行数据，若这个entity本身位于qidSet中，那么该entity的信息会得到保留(但是不保证存在三元组)
+  2. 对于所有与该entity有关联的实体，只将QID位于entity_set中的关系对记录下来，其余的数据抛弃
 
-  功效：相对于整行选取，这个方法可以将关系对的数量减少到20%左右，占用空间压缩到30%左右
+
+
+
+
+  # 以下为老规则
+  # 1. 对于每一行数据，若这个entity本身位于qidSet中，就将这一整行数据保存下来
+  # 2. 如果某个P位于PID_SET中，那么就将这个P一下的所有实体都保留下来
+  # 3. 对于所有与该entity有关联的实体，只将QID位于qidSet中的关系对记录下来，其余的数据抛弃
+
 
   数据情况：
   # 260G的json文件大致3590W行
@@ -124,35 +131,28 @@ def select_relevant_entities(entity_set, relation_set, wikidata_file_path, selec
         QID = q_item['id']
 
         if QID in entity_set:
-          total_triple_count += sum([len(q_item['claims'][predicate]) for predicate in q_item['claims']])
-          data_to_write = line
           need_select = True
-        else:
-          claims = {}
-          for predicate in q_item['claims']:
-            relevant_entities = q_item['claims'][predicate]
-            relations = []
-            is_useful_relation = False
 
-            if predicate in relation_set:
-              is_useful_relation = True
-
-            for revelant_entity in relevant_entities:
-              try:
-                main_snak = revelant_entity['mainsnak']
-                if main_snak['datavalue']['type'] == 'wikibase-entityid':
-                  revelant_qid = main_snak['datavalue']['value']['id']
-                  if is_useful_relation or (revelant_qid in entity_set):
-                    total_triple_count += 1
-                    relations.append(revelant_entity)
-                    need_select = True
-              except:
-                error_count += 1
-                pass
-            if len(relations) > 0:
-              claims[predicate] = relations
-          q_item['claims'] = claims
-          data_to_write = json.dumps(q_item)
+        claims = {}
+        for predicate in q_item['claims']:
+          relevant_entities = q_item['claims'][predicate]
+          relations = []
+          for revelant_entity in relevant_entities:
+            try:
+              main_snak = revelant_entity['mainsnak']
+              if main_snak['datavalue']['type'] == 'wikibase-entityid':
+                revelant_qid = main_snak['datavalue']['value']['id']
+                if revelant_qid in entity_set:
+                  total_triple_count += 1
+                  relations.append(revelant_entity)
+                  need_select = True
+            except:
+              error_count += 1
+              pass
+          if len(relations) > 0:
+            claims[predicate] = relations
+        q_item['claims'] = claims  # 在新模式下，这个claim可能为空
+        data_to_write = json.dumps(q_item)
 
         line_count += 1
         if need_select:
@@ -160,9 +160,12 @@ def select_relevant_entities(entity_set, relation_set, wikidata_file_path, selec
           wf.write(data_to_write + '\n')
           pass
         if line_count % 100000 == 0:
+          wf.flush()
           print('[line]:%d [selectedLine]:%d [triples]:%d [timeConsumed]:%ds' % (
             line_count, selected_line_count, total_triple_count, time.time() - time0))
           time0 = time.time()
+      print('[line]:%d [selectedLine]:%d [triples]:%d [timeConsumed]:%ds' % (
+        line_count, selected_line_count, total_triple_count, time.time() - time0))
 
 
 def select_the_whole_line(qid_set, wikidata_file_path, selected_data_path):
