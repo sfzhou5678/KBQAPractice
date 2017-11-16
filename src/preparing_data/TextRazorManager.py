@@ -38,5 +38,7 @@ class TextRazorManager:
       api_key = api_key_list[0]
       print('[Change %s -> %s]' % (old_api_key, api_key))
       client = TextRazorManager.get_client_with_key(api_key)
-
-    return client
+      return client
+    else:
+      # fixme: apikey用完的情况，现在并没有处理
+      return old_client

@@ -238,6 +238,19 @@ api_key_list = ["b061d4d2c7fade52e7ae8c3c786eb4c50eb935876aae037159de827e",
                 'c9f7b1be6d6fac0da7064e391af266afa93ee5c82695f7677550719d',
                 '6a419870f92a8d8fee15182db8b4831a193e3b57b4fccc2f71e049e4',
                 'e0a4d30f91129fd9852832bf326da617180f43b425413de67aa67867',
+
+                "9559748fcd49b977242263cc98be3e09e60e9659186d6aa1b07ebbff",
+                'c2bae67dcc9a6568d802bb8152e2d50d1f8e2bc5344ac6dc58fbf109',
+                '0a43407ecf749366e3bae6ec03e092d41c4ecdab4a79f3f405bbc1b7',
+                '7134e99c6b1ed923809b6ef2b92f6861c675969a94ab797e3bb4732f',
+                'a5a5877cee2887aa71fd0ebd03d8d14374dc1bc9d64901406e73ae9d',
+                '2469798f8a8dbc8829f88ad5f21503c4a9b7af3e0ae5f14e87e9c79f',
+                'e3f85e1a00f7dd9a1b862ac1b800ad1d91a62764bc5c0a29017d42f9',
+                '187dec3f979007d4d5ce7aa56333a7fe81409cb30d5d0396832bac91',
+                '8bfcb980b537c8e3a3052bc84b9979c8eedb36ea8064df1ef73fcd0e',
+                '390c9b7e3d691cc7b20dc7093dc790c42cc9377f59a5e15a7573a68a',
+                '628190b2f03ece9e42fb86b65aab2034ee2b9f25a21f4d7f8efae556',
+                '6713e829242b995b9d8dac949532c82c2b43faf660fb4267289ba6d7',
                 ]
 api_key = api_key_list[0]
 
@@ -256,8 +269,8 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  # sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
-  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  # sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
 
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
