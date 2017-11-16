@@ -256,7 +256,9 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  # sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
 
