@@ -44,26 +44,38 @@ def get_p31(raw_wikidata_path, entity_set, res_path, error_path):
   error_wf = open(error_path, 'w')
   wf = open(res_path, 'w')
 
-  line_count = 0
+  total_line_count = 0
+  in_entity_set_line_count = 0
+  no_p31_count = 0
   with open(raw_wikidata_path) as f:
+    f.readline()  # 由于第一行是一个'[' ,所以把他跳过
     while True:
       line = f.readline().strip()
-      if line == '':
+      if line == ']' or line == '':
+        # 最后一行是一个']'
         break
 
-      line_count += 1
-      if line_count % 100000 == 0:
-        print(line_count)
+      if line.endswith(','):
+        line = line[:-1]
+
+      total_line_count += 1
+      if total_line_count % 100000 == 0:
+        print(total_line_count, in_entity_set_line_count, no_p31_count)
         wf.flush()
       q_item = json.loads(line)
       qid = q_item['id']
       if qid not in entity_set:
         continue
 
-      del q_item['sitelinks']
+      in_entity_set_line_count += 1
+
+      try:
+        del q_item['sitelinks']
+      except:
+        pass
 
       if 'P31' not in q_item['claims']:
-        print(qid)
+        no_p31_count += 1
         error_wf.write(line + '\n')
         error_wf.flush()
         pass
@@ -71,8 +83,6 @@ def get_p31(raw_wikidata_path, entity_set, res_path, error_path):
         claims = {}
         claims['P31'] = q_item['claims']['P31']
         q_item['claims'] = claims
-
-        data_to_write = json.dumps(q_item)
 
         wf.write(json.dumps(q_item) + '\n')
   error_wf.close()
@@ -90,6 +100,7 @@ def main():
   p31_res_path = os.path.join(data_folder, 'SimpleQeustionBased', 'p31.data')
   p31_error_path = os.path.join(data_folder, 'SimpleQeustionBased', 'p31Error.log')
 
+  # 开始处理
   entity_set = get_entity_set(selected_only_relevant_data_path, entity_set_save_path)
   get_p31(raw_wikidata_path, entity_set, p31_res_path, p31_error_path)
 

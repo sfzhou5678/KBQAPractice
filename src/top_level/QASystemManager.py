@@ -75,7 +75,7 @@ class QASysManager(object):
     #   response['result'] = "没有识别出topic entity."
     #   return
     # fixme: 以下为build topic set的桩函数
-    candidate_topic=['Q3452']
+    candidate_topic=['Q312']
 
 
     # 2. 根据识别出的主题词，构建候选关系集合
@@ -84,8 +84,8 @@ class QASysManager(object):
     relations_set=self.data_helper.build_relation_set(self.db,candidate_topic)
 
 
-
     # 3. 然后将数据构建成Model能用的形式
+    
 
     # 4. 接下来将该数据输入模型，返回softmax之后每个topic和relation成为答案的概率
 
@@ -97,7 +97,7 @@ class QASysManager(object):
     #                                                  self.reverse_relation_vocab, self.reverse_item_vocab)
 
     """
-    以下为启用代码
+    以下为弃用代码
     """
     # # 构建数据
     # ans = {}
