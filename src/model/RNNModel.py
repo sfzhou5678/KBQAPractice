@@ -15,12 +15,15 @@ class RNNModel(object):
     question = tf.placeholder(tf.int32, [None, config.max_question_length], 'question')
     candidate_items = tf.placeholder(tf.int32, [None, config.max_candidate_item_size, config.max_item_label_length],
                                      name='candidate_items')
-    candidate_relations = tf.placeholder(tf.int32, [None, config.max_candidate_relation_size, config.max_relation_label_length],
-                                         name='candidate_relations')
+    # candidate_relations = tf.placeholder(tf.int32, [None, config.max_candidate_relation_size, config.max_relation_label_length],
+    #                                      name='candidate_relations')
+
+    # relation由于数量较少，而且R不存在label，所以直接赋予TransE训练的结果
+    candidate_relations=tf.placeholder(tf.int32,[None,1],name='candidate_relations')
     if not is_testing:
       # 只有非测试的时候才会提供gt数据
       gt_item=tf.placeholder(tf.int32,[None,1,config.max_item_label_length],name='gt_item')
-      gt_relation=tf.placeholder(tf.int32,[None,1,config.max_candidate_relation_size],name='gt_relation')
+      gt_relation=tf.placeholder(tf.int32,[None,1],name='gt_relation')
 
     # TODO: 1. 将item和relation转化成embedding
     # TODO: 1.1 首先转化成one-hot形式

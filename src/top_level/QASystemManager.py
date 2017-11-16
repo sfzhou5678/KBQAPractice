@@ -1,11 +1,14 @@
 import os
 import json
+import numpy as np
+
 from src.tools.common_tools import reverse_dict
 from src.database.DBManager import DBManager
 from src.tools.db_to_model_data import get_entity_vocabulary, get_word_vocabulary
-from src.configs import CNNModelConfig
+from src.configs import CNNModelConfig, RNNModelConfig
 from src.top_level.QADataManager import DataDataManagerImp
 from src.top_level.QAModelManager import QAModelManager
+from src.RNNTrain import pad_item, pad_realtion
 
 
 class QASysManager(object):
@@ -52,6 +55,9 @@ class QASysManager(object):
     self.model_manager = QAModelManager(self.config)
     self.data_helper = DataDataManagerImp()
 
+    # fixme: 构建char_vocab
+    self.char_vocab = self.item_vocab
+
   def get_answer(self, question):
     """
     1. topic entity - 返回一个识别出的qid的列表
@@ -75,18 +81,41 @@ class QASysManager(object):
     #   response['result'] = "没有识别出topic entity."
     #   return
     # fixme: 以下为build topic set的桩函数
-    candidate_topic=['Q312']
-
+    candidate_topic = ['Q312']
 
     # 2. 根据识别出的主题词，构建候选关系集合
     # 1) 首先筛选出1跳内的所有正向和反向关系(反向关系需要加一个映射，找出其对应的R，比如有B--P1-->A，就应该变成A--R1-->B)
     # 2) 然后将R和P都添加到同一个集合中去重复
-    relations_set=self.data_helper.build_relation_set(self.db,candidate_topic)
-
-
+    candidate_relations = self.data_helper.build_relation_set(self.db, candidate_topic)
+    candidate_relations = list(candidate_relations)
     # 3. 然后将数据构建成Model能用的形式
-    
+    # 3.2 然后为question，候选item做padding
+    # 3.3 最后转换成narray形式
+    # TODO: 下面这些P移出去
+    UNK = 0
+    START = 1
+    END = 2
+    PAD = 3
 
+    RELATION_UNK = 0
+    RELATION_PAD = 1
+
+    # 3.1 首先从数据库中查询出QID对应的label
+    candidate_topic_label = self.data_helper.get_entity_label(self.db, candidate_topic)
+
+    # 3.2 然后为question，候选item做padding
+    padded_candidate_topic = pad_item(candidate_topic_label, self.config.max_candidate_item_size,
+                                      self.config.max_item_label_length,
+                                      self.char_vocab, UNK, START, END, PAD)
+    padded_question = pad_item([question], 1, self.config.max_question_length,
+                               self.char_vocab, UNK, START, END, PAD)[0]
+    padded_relation = pad_realtion(candidate_relations, self.config.max_candidate_relation_size, self.relation_vocab,
+                                   RELATION_UNK, RELATION_PAD)
+
+    padded_question = np.reshape(np.array(padded_question), [1, self.config.max_question_length])
+    padded_candidate_topic = np.reshape(np.array(padded_candidate_topic),
+                                        [1, self.config.max_candidate_item_size, self.config.max_item_label_length])
+    padded_relation = np.reshape(np.array(padded_relation),[1,self.config.max_candidate_relation_size])
     # 4. 接下来将该数据输入模型，返回softmax之后每个topic和relation成为答案的概率
 
     # 5. 查询反向词典，将ID转化成具体的单词
@@ -152,7 +181,7 @@ class QASysManager(object):
 
 if __name__ == '__main__':
   db_setting = {'host': '192.168.1.139', 'port': 3306, 'user': 'root', "psd": '1405', "db": 'kbqa'}
-  model_config = CNNModelConfig()
+  model_config = RNNModelConfig()
   qa_sys = QASysManager(db_setting, model_config)
 
   print(qa_sys.get_answer("what is the oregon ducks 2012 football schedule?"))

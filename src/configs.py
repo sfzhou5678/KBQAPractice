@@ -40,8 +40,9 @@ class RNNModelConfig:
   lr_decay = 0.98
 
   max_question_length = 20
-  max_candidate_item_size = 16
-  max_item_label_length = 24
+
+  max_candidate_item_size = 16  # size表示候选答案集合的大小
+  max_item_label_length = 24    # length表示label的最大长度
 
   max_candidate_relation_size = 128
   max_relation_label_length = 24

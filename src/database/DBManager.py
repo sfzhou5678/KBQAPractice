@@ -37,6 +37,11 @@ class DBManager:
 
     return self.cur.fetchall()
 
+  def get_labels_by_id(self, id):
+    # TODO: 等label加入之后补上真正的返回label的代码
+
+    return 'label(%s)' % str(id)
+
   def select_to_topic(self, topic_qid, max_depth=1):
     self.cur.execute("SELECT * FROM relation WHERE OBJ_QID='%s'" % topic_qid)
 

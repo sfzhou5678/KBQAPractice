@@ -160,3 +160,8 @@ class DataDataManagerImp(DataManagerInterface):
         relation_set.add(relation)
 
     return relation_set
+
+  def get_entity_label(self, db, candidate_topic):
+    labels = [db.get_labels_by_id(topic) for topic in candidate_topic]
+
+    return labels
