@@ -33,19 +33,20 @@ class CNNModelConfig:
 
 
 class RNNModelConfig:
-  batch_size = 4
+  batch_size = 16
   num_sampled = 64
 
   base_learning_rate = 0.1
   lr_decay = 0.98
 
   max_question_length = 20
-
   max_candidate_item_size = 16  # size表示候选答案集合的大小
-  max_item_label_length = 24    # length表示label的最大长度
-
+  max_item_label_length = 24  # length表示label的最大长度
   max_candidate_relation_size = 128
-  max_relation_label_length = 24
+
+  char_vocab_size = 128
+  item_vocab_size = 5000000
+  relations_vocab_size = 3000
 
   # 重要：三个embeddingSize最好一致
   word_embedding_size = 100

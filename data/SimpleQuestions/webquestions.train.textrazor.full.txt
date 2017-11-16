@@ -4372,3 +4372,17 @@
 {'gt_topic': 'Q373024', 'candidate_topic': ['Q373024'], 'question': 'what city did vicente gerbasi die in', 'ans': 'Q1533'}
 {'gt_topic': 'Q2220886', 'candidate_topic': ['Q2220886'], 'question': 'What genre of film does the movie fifty dead men walking belong to', 'ans': 'Q130232'}
 {'gt_topic': 'Q568617', 'candidate_topic': ['Q171004', 'Q568617'], 'question': 'to what film is the grizzly bear (band) given music contributor credit', 'ans': 'Q1582590'}
+{'question': 'which country released shadows of memory', 'candidate_topic': ['Q7460819'], 'gt_topic': 'Q7460819', 'ans': 'Q183'}
+{'question': 'who is a film director born in rome', 'candidate_topic': ['Q2526255', 'Q220'], 'gt_topic': 'Q220', 'ans': 'Q982878'}
+{'question': 'Who currently plays power forward?', 'candidate_topic': ['Q462471'], 'gt_topic': 'Q462471', 'ans': 'Q2407702'}
+{'question': 'what is lazaros papadopoulos position in basketball', 'candidate_topic': ['Q5372', 'Q741055'], 'gt_topic': 'Q741055', 'ans': 'Q222052'}
+{'question': "what is robert heinemann's gender?", 'candidate_topic': ['Q48277', 'Q1373293'], 'gt_topic': 'Q1373293', 'ans': 'Q6581097'}
+{'question': "What's an album recorded by widespread panic", 'candidate_topic': ['Q71787'], 'gt_topic': 'Q71787', 'ans': 'Q6655934'}
+{'question': 'Where was In-Beom Ko born?', 'candidate_topic': ['Q14944763'], 'gt_topic': 'Q14944763', 'ans': 'Q16520'}
+{'ans': 'Q216344', 'candidate_topic': ['Q6309992'], 'question': 'where was julius ochs adler buried?', 'gt_topic': 'Q6309992'}
+{'ans': 'Q40', 'candidate_topic': ['Q6787720'], 'question': 'Which country does mato Šimunović have nationality in', 'gt_topic': 'Q6787720'}
+{'ans': 'Q7449810', 'candidate_topic': ['Q37073'], 'question': "What's a pop music album", 'gt_topic': 'Q37073'}
+{'ans': 'Q130232', 'candidate_topic': ['Q16934881'], 'question': 'what type of film is the freediver?', 'gt_topic': 'Q16934881'}
+{'ans': 'Q158867', 'candidate_topic': ['Q5509851'], 'question': 'which album is created by fury of five', 'gt_topic': 'Q5509851'}
+{'ans': 'Q431102', 'candidate_topic': ['Q7272719'], 'question': 'which genre of television is quizmania broadcasted as?', 'gt_topic': 'Q7272719'}
+{'ans': 'Q49085', 'candidate_topic': ['Q892931'], 'question': 'What ethnicity is bonzi wells', 'gt_topic': 'Q892931'}
