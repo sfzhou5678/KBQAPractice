@@ -65,25 +65,23 @@ def parse_question(question):
       if cnt > 10:
         break
 
+    error_cnt = 0
     while not success:
-      if len(api_key_list) > 1:
-        api_key_list.remove(api_key_list[0])
-        old_api_key = TextRazorManager.api_key
-        api_key = api_key_list[0]
-        print('[Change %s -> %s]' % (old_api_key, api_key))
-        client = TextRazorManager.get_client_with_key(api_key)
-
-        success, parsed_question = do_parse(client, question)
-        cnt = 0
-        while not success:
-          time.sleep(1)
-          success, parsed_question = do_parse(client, question)
-          cnt += 1
-          if cnt > 10:
-            break
-      else:
-        # 最坏情况没有可用key了，就保存处理结果,停止运行
+      error_cnt += 1
+      if error_cnt > 20:
         break
+      api_key_lock.acquire()
+      client = TextRazorManager.get_new_client(api_key_list, client)
+      api_key_lock.release()
+
+      success, parsed_question = do_parse(client, question)
+      cnt = 0
+      while not success:
+        time.sleep(1)
+        success, parsed_question = do_parse(client, question)
+        cnt += 1
+        if cnt > 10:
+          break
 
     return success, parsed_question
 
@@ -146,7 +144,7 @@ def question_entities_recognition(question_path, res_path, log_path):
             break
 
 
-def sqdata_question_entities_recognition(f, wf, log_wf, error_wf, is_train=True):
+def sqdata_question_entities_recognition(f, wf, log_path, error_wf, is_train=True):
   """
   专门处理SimpleQuestions中问题数据的函数
   :param question_path:
@@ -158,9 +156,12 @@ def sqdata_question_entities_recognition(f, wf, log_wf, error_wf, is_train=True)
   global w_lock
   if is_train:
     global train_total_handled_count
+    total_handled_count = train_total_handled_count
   else:
     global test_total_handled_count
+    total_handled_count = test_total_handled_count
 
+  cur_count = 0
   while True:
     r_lock.acquire()
     line = f.readline().strip()
@@ -170,50 +171,58 @@ def sqdata_question_entities_recognition(f, wf, log_wf, error_wf, is_train=True)
       break
     r_lock.release()
 
+    cur_count += 1
+    if cur_count <= total_handled_count:
+      continue
+
     head, relation, tail, question = line.split('\t')
 
     # 3. 调用api查询question中的entity等
     success, parsed_question = parse_question(question)
-    candidate_topic = []
-    if 'entities' in parsed_question:
-      for entity in parsed_question['entities']:
-        if 'wikidataId' in entity:
-          candidate_topic.append(entity['wikidataId'])
-
-    if head not in candidate_topic:
-      candidate_topic.append(head)
-
-    qa_pair = {}
-    qa_pair['question'] = question
-    qa_pair['ans'] = tail
-    qa_pair['gt_topic'] = head
-    qa_pair['candidate_topic'] = candidate_topic
 
     # 4. 记录结果
     if success:
+      candidate_topic = []
+      if 'entities' in parsed_question:
+        for entity in parsed_question['entities']:
+          if 'wikidataId' in entity:
+            candidate_topic.append(entity['wikidataId'])
+
+      if head not in candidate_topic:
+        candidate_topic.append(head)
+
+      qa_pair = {}
+      qa_pair['question'] = question
+      qa_pair['ans'] = tail
+      qa_pair['gt_topic'] = head
+      qa_pair['candidate_topic'] = candidate_topic
+
       w_lock.acquire()
 
       wf.write(str(qa_pair) + '\n')
       wf.flush()
-      if is_train:
-        train_total_handled_count += 1
-        if train_total_handled_count % 100 == 0:
-          print(train_total_handled_count)
 
-        # 记录当前成功处理到哪里了
-        log_wf.write(str(train_total_handled_count) + '\n')
-      else:
-        test_total_handled_count += 1
-        if test_total_handled_count % 100 == 0:
-          print(test_total_handled_count)
+      # 记录工作编号，最后flush
+      with open(log_path, 'w') as log_wf:
+        if is_train:
+          train_total_handled_count += 1
+          if train_total_handled_count % 100 == 0:
+            print(train_total_handled_count)
 
-        # 记录当前成功处理到哪里了
-        log_wf.write(str(test_total_handled_count) + '\n')
+          # 记录当前成功处理到哪里了
+          log_wf.write(str(train_total_handled_count) + '\n')
+        else:
+          test_total_handled_count += 1
+          if test_total_handled_count % 100 == 0:
+            print(test_total_handled_count)
 
+          # 记录当前成功处理到哪里了
+          log_wf.write(str(test_total_handled_count) + '\n')
       w_lock.release()
     else:
       w_lock.acquire()
       error_wf.write(line + "\n")
+      error_wf.flush()
       w_lock.release()
       continue
 
@@ -234,6 +243,7 @@ api_key = api_key_list[0]
 
 r_lock = threading.RLock()
 w_lock = threading.RLock()
+api_key_lock = threading.RLock()
 train_total_handled_count = 0
 test_total_handled_count = 0
 
@@ -246,7 +256,7 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
 
@@ -270,14 +280,15 @@ def main():
   train_total_handled_count = load_or_create_count(sq_train_log_path)
   train_f = open(sq_train_data_path, encoding='utf-8')
   train_wf = open(sq_train_res_path, 'a', encoding='utf-8')
-  train_log_wf = open(sq_train_log_path, 'w')
-  train_error_wf = open(sq_train_error_path, 'w')
+  # train_log_wf = open(sq_train_log_path, 'w')
+  train_error_wf = open(sq_train_error_path, 'a', encoding='utf-8')
 
   for _ in range(thread_num):
     t = threading.Thread(target=sqdata_question_entities_recognition,
-                         args=(train_f, train_wf, train_log_wf, train_error_wf))
+                         args=(train_f, train_wf, sq_train_log_path, train_error_wf))
     thread_list.append(t)
     t.start()
+    time.sleep(2)
 
   for i in range(thread_num):
     thread = thread_list[i]
@@ -288,15 +299,16 @@ def main():
   test_total_handled_count = load_or_create_count(sq_test_log_path)
   test_f = open(sq_test_data_path, encoding='utf-8')
   test_wf = open(sq_test_res_path, 'a', encoding='utf-8')
-  test_log_wf = open(sq_test_log_path, 'w')
-  test_error_wf = open(sq_test_error_path, 'w')
+  # test_log_wf = open(sq_test_log_path, 'w')
+  test_error_wf = open(sq_test_error_path, 'a', encoding='utf-8')
 
   # sqdata_question_entities_recognition(test_f, test_wf, test_log_wf, test_error_wf)
   for _ in range(thread_num):
     t = threading.Thread(target=sqdata_question_entities_recognition,
-                         args=(test_f, test_wf, test_log_wf, test_error_wf))
+                         args=(test_f, test_wf, sq_test_log_path, test_error_wf))
     thread_list.append(t)
     t.start()
+    time.sleep(2)
 
   for i in range(thread_num):
     thread = thread_list[i]
