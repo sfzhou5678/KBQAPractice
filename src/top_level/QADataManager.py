@@ -12,7 +12,7 @@ punctuation = string.punctuation
 
 class DataManagerInterface:
   @abstractmethod
-  def recognize_topic_entity(self, question): pass
+  def build_topic_set(self, question): pass
 
   @abstractmethod
   def question2ids(self, raw_question, word_vocab, question_max_length, padding_id):  pass
@@ -42,7 +42,7 @@ class DataManagerInterface:
 
 
 class DataDataManagerImp(DataManagerInterface):
-  def recognize_topic_entity(self, question):
+  def build_topic_set(self, question):
     success, parsed_question = parse_question(question)
 
     # 4. 记录结果
@@ -142,3 +142,21 @@ class DataDataManagerImp(DataManagerInterface):
       pred_triples.append(triple)
 
     return pred_triples
+
+  def build_relation_set(self, db, candidiate_topics):
+    relation_set = set()
+
+    for topic_entity_qid in candidiate_topics:
+      # 首先从DB中查询正反三元组
+      forward_triples = list(db.select_from_topic(topic_entity_qid, max_depth=1))
+      backward_triples = list(db.select_to_topic(topic_entity_qid, max_depth=1))
+
+      for f_triple in forward_triples:
+        topic, relation, _ = f_triple
+        relation_set.add(relation)
+      for b_triple in backward_triples:
+        _, relation, topic = b_triple
+        relation = 'R' + relation[1:]
+        relation_set.add(relation)
+
+    return relation_set

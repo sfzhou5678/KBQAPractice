@@ -14,8 +14,6 @@ class QASysManager(object):
   """
   wikidata_folder = r'F:\WikiData'
 
-  selected_wikidata_file_path = os.path.join(wikidata_folder, 'selected-latest-all.OnlyRelevant.data')
-
   transe_data_save_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
   item_counter_save_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')
   relation_counter_save_path = os.path.join(wikidata_folder, 'relation.counter.OnlyRelevant.cnt')
@@ -66,60 +64,84 @@ class QASysManager(object):
     response = {"status": '',
                 "result": ''}
 
-    # 做主题词识别
-    qids = self.data_helper.recognize_topic_entity(question)
-    if qids is None:
-      response['status'] = 'error'
-      response['result'] = "调用API失败"
-      return
-    elif len(qids) == 0:
-      response['status'] = 'error'
-      response['result'] = "没有识别出topic entity."
-      return
+    # # 1. 做主题词识别
+    # candidate_topic = self.data_helper.build_topic_set(question)
+    # if candidate_topic is None:
+    #   response['status'] = 'error'
+    #   response['result'] = "调用API失败"
+    #   return
+    # elif len(candidate_topic) == 0:
+    #   response['status'] = 'error'
+    #   response['result'] = "没有识别出topic entity."
+    #   return
+    # fixme: 以下为build topic set的桩函数
+    candidate_topic=['Q3452']
 
-    # 构建数据
-    ans = {}
-    ans["question"] = question
-    ans["pred"] = []
-    for topic_entity_qid in qids:
-      # 首先从DB中查询正反三元组
-      forward_candidate_data = list(self.db.select_from_topic(topic_entity_qid, max_depth=1))
-      backward_candidate_data = list(self.db.select_to_topic(topic_entity_qid, max_depth=1))
 
-      # 构造输入模型的数据
-      question_ids, topic_entity_id, \
-      fw_relations, fw_answers, \
-      bw_relations, bw_answers = self.data_helper.get_data_to_model(question, topic_entity_qid, self.config,
-                                                                    self.word_vocab, self.item_vocab,
-                                                                    self.relation_vocab,
-                                                                    forward_candidate_data, backward_candidate_data,
-                                                                    padding_id=1)
+    # 2. 根据识别出的主题词，构建候选关系集合
+    # 1) 首先筛选出1跳内的所有正向和反向关系(反向关系需要加一个映射，找出其对应的R，比如有B--P1-->A，就应该变成A--R1-->B)
+    # 2) 然后将R和P都添加到同一个集合中去重复
+    relations_set=self.data_helper.build_relation_set(self.db,candidate_topic)
 
-      # 通过Model计算相似度
-      # TODO 候选答案太多时的处理方法
-      fw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, fw_relations, fw_answers,
-                                                           is_forward=True)
-      bw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, bw_relations, bw_answers,
-                                                           is_forward=True)
 
-      # 选择答案
-      fw_pred_relations, fw_pred_answers = self.data_helper.select_topk_ans(fw_relations, fw_answers, fw_similarities,
-                                                                            k=3, threshold=0.3)
-      bw_pred_relations, bw_pred_answers = self.data_helper.select_topk_ans(bw_relations, bw_answers, bw_similarities,
-                                                                            k=5, threshold=0.95)
 
-      # 转化成具体的单词
-      topic_entity_text = self.data_helper.id2text(topic_entity_qid, self.reverse_item_vocab)
-      pred_triples = self.data_helper.get_pred_triples(topic_entity_text,
-                                                       fw_pred_relations, fw_pred_answers,
-                                                       bw_pred_relations, bw_pred_answers,
-                                                       self.reverse_relation_vocab, self.reverse_item_vocab)
+    # 3. 然后将数据构建成Model能用的形式
 
-      pred = {}
-      pred["topic_entity"] = topic_entity_text
-      pred["pred_ans"] = pred_triples
+    # 4. 接下来将该数据输入模型，返回softmax之后每个topic和relation成为答案的概率
 
-      ans["pred"].append(pred)
+    # 5. 查询反向词典，将ID转化成具体的单词
+    # topic_entity_text = self.data_helper.id2text(topic_entity_qid, self.reverse_item_vocab)
+    # pred_triples = self.data_helper.get_pred_triples(topic_entity_text,
+    #                                                  fw_pred_relations, fw_pred_answers,
+    #                                                  bw_pred_relations, bw_pred_answers,
+    #                                                  self.reverse_relation_vocab, self.reverse_item_vocab)
+
+    """
+    以下为启用代码
+    """
+    # # 构建数据
+    # ans = {}
+    # ans["question"] = question
+    # ans["pred"] = []
+    # for topic_entity_qid in candidiate_topics:
+    #   # 首先从DB中查询正反三元组
+    #   forward_candidate_data = list(self.db.select_from_topic(topic_entity_qid, max_depth=1))
+    #   backward_candidate_data = list(self.db.select_to_topic(topic_entity_qid, max_depth=1))
+    #
+    #   # 构造输入模型的数据
+    #   question_ids, topic_entity_id, \
+    #   fw_relations, fw_answers, \
+    #   bw_relations, bw_answers = self.data_helper.get_data_to_model(question, topic_entity_qid, self.config,
+    #                                                                 self.word_vocab, self.item_vocab,
+    #                                                                 self.relation_vocab,
+    #                                                                 forward_candidate_data, backward_candidate_data,
+    #                                                                 padding_id=1)
+    #
+    #   # 通过Model计算相似度
+    #   # TODO 候选答案太多时的处理方法
+    #   fw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, fw_relations, fw_answers,
+    #                                                        is_forward=True)
+    #   bw_similarities = self.model_manager.calc_similarity(question_ids, topic_entity_id, bw_relations, bw_answers,
+    #                                                        is_forward=True)
+    #
+    #   # 选择答案
+    #   fw_pred_relations, fw_pred_answers = self.data_helper.select_topk_ans(fw_relations, fw_answers, fw_similarities,
+    #                                                                         k=3, threshold=0.3)
+    #   bw_pred_relations, bw_pred_answers = self.data_helper.select_topk_ans(bw_relations, bw_answers, bw_similarities,
+    #                                                                         k=5, threshold=0.95)
+    #
+    #   # 转化成具体的单词
+    #   topic_entity_text = self.data_helper.id2text(topic_entity_qid, self.reverse_item_vocab)
+    #   pred_triples = self.data_helper.get_pred_triples(topic_entity_text,
+    #                                                    fw_pred_relations, fw_pred_answers,
+    #                                                    bw_pred_relations, bw_pred_answers,
+    #                                                    self.reverse_relation_vocab, self.reverse_item_vocab)
+    #
+    #   pred = {}
+    #   pred["topic_entity"] = topic_entity_text
+    #   pred["pred_ans"] = pred_triples
+    #
+    #   ans["pred"].append(pred)
 
     # 循环完毕之后返回结果
     response["status"] = "success"

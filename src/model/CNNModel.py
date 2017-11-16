@@ -49,12 +49,18 @@ class CNNModel:
     with tf.device("/cpu:0"):
       # 总共有文本word，entity以及relation三个词汇表
       self.words_embeddings = tf.get_variable('words_embeddings', [words_vocab_size, word_embedding_size],
-                                              dtype=tf.float32)
+                                              dtype=tf.float32,
+                                              # trainable=False
+                                              )
 
       self.entities_embeddings = tf.get_variable('entities_embeddings', [entities_vocab_size, entity_embedding_size],
-                                                 dtype=tf.float32)
+                                                 dtype=tf.float32,
+                                                 # trainable=False
+                                                 )
       self.relations_embeddings = tf.get_variable('relations_embeddings', [relations_vocab_size, entity_embedding_size],
-                                                  dtype=tf.float32)
+                                                  dtype=tf.float32,
+                                                  # trainable=False
+                                                  )
       # 2D conv要求输入是4维的([batchsize,width,height,depth])
       # 而原inputs是3维的([batch_size,num_steps,embedding_size])
       embedded_question = tf.nn.embedding_lookup(self.words_embeddings, self.question_ids)
@@ -223,7 +229,7 @@ class CNNModel:
 
       else:
         # fixme: num_sampled应该是具体的candidate数
-        candidate_num = 64
+        candidate_num = 500
         # candidate_num=tf.constant(self.candidate_ans.get_shape()[-1])
         # candidate_num=tf.to_int32(candidate_num)
         candidate_ans_latent_vec = tf.concat(

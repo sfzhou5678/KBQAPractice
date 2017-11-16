@@ -1,11 +1,19 @@
+import heapq
 
 
-a=[1,2,3]
-b=[4,5,6]
-for i in a,b:
-  print(i)
+num=0
+def aaa(n):
+  global  num
+  n=num
+  n+=1
+  num+=1
 
-d=[i for i in (a,b)]
-a.append(b)
-print(a)
-print(d)
+
+def main():
+  global num
+  aaa(num)
+
+  print(num)
+
+if __name__ == '__main__':
+    main()
