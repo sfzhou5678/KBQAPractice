@@ -169,11 +169,11 @@ def sqdata_question_entities_recognition(f, wf, log_path, error_wf, is_train=Tru
       # 最后一行是一个']'
       r_lock.release()
       break
-    r_lock.release()
 
     cur_count += 1
     if cur_count <= total_handled_count:
       continue
+    r_lock.release()
 
     head, relation, tail, question = line.split('\t')
 
@@ -269,8 +269,8 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
-  # sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  # sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
 
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')

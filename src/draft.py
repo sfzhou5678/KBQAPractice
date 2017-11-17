@@ -1,9 +1,17 @@
 import heapq
+import numpy as np
 
-n_item=[1]
-item='abcccdsaf'
-for char in list(item[:3]):
-  # fixme: unk的ID还未确定
-  n_item.append(char)
-  n_item.append('End')
-print(n_item)
+datas=np.reshape(range(4*10*20),[4,10,20])
+pos=np.reshape(range(4),[4])
+
+print(datas)
+print(pos)
+
+for i in range(4):
+  p=pos[i]
+  print(datas[i,p])
+
+# print(datas[pos].shape)
+# print(np.take(datas,pos).shape)
+# 期望选出的是[4,20]
+

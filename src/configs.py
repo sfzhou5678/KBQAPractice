@@ -52,3 +52,9 @@ class RNNModelConfig:
   word_embedding_size = 100
   entity_embedding_size = 100
   output_latent_vec_size = 100  # 这个稍微小一点比较好？ 可能是小的话不容易过拟合
+
+  # LSTM配置
+  keep_prob = 0.5
+  hidden_size = 100
+  rnn_layers = 2
+  bi_lstm = True

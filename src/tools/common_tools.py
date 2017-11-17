@@ -1,6 +1,7 @@
 import tensorflow as tf
 import pickle
 
+
 def cos_similarity(x1, x2):
   x1_norm = tf.sqrt(tf.reduce_sum(tf.square(x1), axis=-1))
   x2_norm = tf.sqrt(tf.reduce_sum(tf.square(x2), axis=-1))
@@ -63,14 +64,62 @@ def pickle_load(file_path):
 
   return data
 
+
 def reverse_dict(cur_dict):
   new_dict = {}
   for key, value in cur_dict.items():
     new_dict[value] = key
   return new_dict
 
+
 def lookup_vocab(vocab, word, unk_id=0):
   if word in vocab:
     return vocab[word]
   else:
     return unk_id
+
+def _get_single_cell(hidden_size, keep_prob, is_training):
+  cell = tf.nn.rnn_cell.BasicLSTMCell(hidden_size)
+  if is_training and keep_prob < 1:
+    cell = tf.nn.rnn_cell.DropoutWrapper(cell, output_keep_prob=keep_prob)
+  return cell
+
+def build_decoder_cell_with_att(encoder_outputs, encoder_final_state,
+                                batch_size, max_length,
+                                rnn_layers, hidden_size, keep_prob, is_training):
+
+  # 如果只有decoder用了MultiRNNCell而encoder用的是BasicCell那么就会报错(不一致就会报错)
+  decoder_cell = tf.nn.rnn_cell.MultiRNNCell(
+    [_get_single_cell(hidden_size, keep_prob, is_training) for _ in range(rnn_layers)])
+
+  ## Create an attention mechanism
+  # TODO 这里的memory_sequence_length表示source_sequence_length(输入，不是输出targets)中的非PAD的长度
+  memory = encoder_outputs
+  attention_mechanism = tf.contrib.seq2seq.LuongAttention(
+    hidden_size, memory,
+    # memory_sequence_length=seq_lengths,
+    memory_sequence_length=tf.constant(max_length, shape=[batch_size],
+                                       dtype=tf.int32))
+
+  # alignment_history = tf.cond(is_training, lambda: False, lambda: True)
+  decoder_cell = tf.contrib.seq2seq.AttentionWrapper(
+    decoder_cell, attention_mechanism,
+    attention_layer_size=hidden_size,
+    # alignment_history=False,  # test时为true
+    name="attention")
+
+  attention_states = decoder_cell.zero_state(batch_size, tf.float32).clone(
+    cell_state=encoder_final_state)
+  decoder_init_state = attention_states
+
+  return decoder_cell, decoder_init_state
+
+
+def build_decoder_cell_wo_att(encoder_final_state,batch_size, rnn_layers, hidden_size, keep_prob, is_training):
+
+  # 如果只有decoder用了MultiRNNCell而encoder用的是BasicCell那么就会报错(不一致就会报错)
+  decoder_cell = tf.nn.rnn_cell.MultiRNNCell(
+    [_get_single_cell(hidden_size, keep_prob, is_training) for _ in range(rnn_layers)])
+  decoder_init_state=encoder_final_state
+
+  return decoder_cell, decoder_init_state
