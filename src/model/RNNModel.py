@@ -1,7 +1,8 @@
 import tensorflow as tf
 import numpy as np
-from src.tools.common_tools import cos_similarity, build_decoder_cell_with_att
+from src.tools.common_tools import cos_similarity, build_decoder_cell_with_att, get_topk_acc
 from src.model.cnn_utils import *
+from src.configs import RNNModelConfig
 
 
 class RNNModel(object):
@@ -39,9 +40,6 @@ class RNNModel(object):
                                                    [config.batch_size * config.max_candidate_item_size,
                                                     config.max_item_label_length]), config.char_vocab_size)
     candidate_items_onehot = tf.expand_dims(candidate_items_onehot, -1)
-    # candidate_items_onehot = tf.reshape(candidate_items_onehot,
-    #                                     [config.batch_size * config.max_candidate_item_size,
-    #                                      config.max_item_label_length, config.char_vocab_size, 1])
 
     # 1.2 然后在通过CNN，将one-hot编码转换成和relation通embeddingSize的向量
     # TODO: 现在CharCNN是用2层卷积做的，下次尝试按论文中的FC做法
@@ -64,10 +62,17 @@ class RNNModel(object):
                                                                     encoder_outputs, encoder_final_state, config,
                                                                     is_training)
 
-
-
+    # self.loss, self.train_opt = self._build_loss(self.item_similarities, self.relation_similarities,
+    #                                                       self.gt_items, self.gt_relations)
 
     # TODO: 3. loss&trainOpt&acc
+    self.item_loss, self.relation_loss = self._build_loss(
+      self.item_similarities, self.relation_similarities,
+      self.gt_items, self.gt_relations, config)
+
+    self.item_train_opt, self.relation_train_opt = self._build_train_opt(self.item_loss, self.relation_loss, config)
+    self.item_acc = get_topk_acc(self.item_similarities, self.gt_items, topk=1)
+    self.relation_acc = get_topk_acc(self.relation_similarities, self.gt_relations, topk=1)
 
   def _pred(self, candidate_item_embeddings, candidate_relation_embeddings,
             encoder_outputs, encoder_final_state, config, is_training):
@@ -96,7 +101,9 @@ class RNNModel(object):
           h1 = cell_output
 
           ## item_similarities.shape=[batch_size,max_item_size]
-          item_similarities = self._calc_similarity(h1, candidate_item_embeddings, config, mode='cos')
+          item_similarities = self._calc_similarity(h1, candidate_item_embeddings, config.batch_size,
+                                                    config.max_candidate_item_size,
+                                                    mode='cos')
           pred_items = tf.argmax(item_similarities, axis=-1)  # pred_items.shape=[batchsize]
 
         if time_step == 1:
@@ -106,7 +113,8 @@ class RNNModel(object):
             pred_item_embedding = self._lookup_embedding(candidate_item_embeddings, pred_items, config.batch_size)
           (cell_output, state) = decoder_cell(pred_item_embedding, state)
           h2 = cell_output
-          relation_similarities = self._calc_similarity(h2, candidate_relation_embeddings, config, mode='cos')
+          relation_similarities = self._calc_similarity(h2, candidate_relation_embeddings, config.batch_size,
+                                                        config.max_candidate_relation_size, mode='cos')
           pred_relations = tf.argmax(relation_similarities, axis=-1)  ## pred_items.shape=[batchsize]
 
     return pred_items, pred_relations, item_similarities, relation_similarities
@@ -127,7 +135,7 @@ class RNNModel(object):
 
     return pred_item_embedding
 
-  def _calc_similarity(self, h1, candidate_item_embeddings, config, mode='cos'):
+  def _calc_similarity(self, h1, candidate_item_embeddings, batch_size, max_candidate_size, mode='cos'):
     """
     计算某个h与candidateEmbedding之间的相似度
     默认为余弦相似度
@@ -138,10 +146,12 @@ class RNNModel(object):
     """
     if mode == 'cos':
       similarities = []
-      for i in range(config.max_candidate_item_size):
+      for i in range(max_candidate_size):
         similarity = cos_similarity(h1, candidate_item_embeddings[:, i, :])
         similarities.append(similarity)
       similarities = tf.convert_to_tensor(similarities)
+      # similarities = tf.reshape(similarities, [batch_size, max_candidate_size])
+      similarities = tf.transpose(similarities)
       return similarities
     else:
       raise Exception('Mode Error')
@@ -169,8 +179,6 @@ class RNNModel(object):
 
       if not bi_lstm:
         encoder_cell = build_cell(hidden_size)
-        # Run Dynamic RNN#   encoder_outpus: [max_time, batch_size, num_units]#   encoder_state: [batch_size, num_units]
-        # TODO 这里的sequence_length表示input_sequence_length，即原始输入中的非PAD的长度(所以会跳过PAD不训练)
         encoder_outputs, encoder_final_state = tf.nn.dynamic_rnn(
           encoder_cell, question_embedding,
           sequence_length=tf.constant(max_question_length, shape=[batch_size], dtype=tf.int32),
@@ -212,7 +220,7 @@ class RNNModel(object):
     DEPTH2 = DEPTH1 * 2
 
     with tf.variable_scope(name, reuse=not is_training):
-      # fixme: 论文中并不是用maxpooling而是FC？
+      # fixme: 论文中套上了FC？
       network = conv_2d(inputs, [3, char_vocab_size, 1, DEPTH1], [DEPTH1], [1, 1, 1, 1], 'layer1-conv1',
                         norm=norm,
                         is_training=is_training)
@@ -232,40 +240,27 @@ class RNNModel(object):
 
       return latent_vec
 
+  def _build_loss(self, item_similarities, relation_similarities, gt_items, gt_relations, config):
+    item_softmax = tf.nn.softmax(item_similarities)
+    relation_softmax = tf.nn.softmax(relation_similarities)
+
+    gt_items_onehot = tf.one_hot(gt_items, config.max_candidate_item_size)
+    gt_relations_onehot = tf.one_hot(gt_relations, config.max_candidate_relation_size)
+
+    item_cross_entropy = - tf.reduce_sum(gt_items_onehot * tf.log(item_softmax))/config.batch_size
+    relation_cross_entropy = - tf.reduce_sum(gt_relations_onehot * tf.log(relation_softmax))/config.batch_size
+
+    return item_cross_entropy, relation_cross_entropy
+
+  def _build_train_opt(self, item_cross_entropy, relation_cross_entropy, config):
+    item_train_opt = tf.train.AdamOptimizer(config.base_learning_rate).minimize(item_cross_entropy)
+    relation_train_opt = tf.train.AdamOptimizer(config.base_learning_rate).minimize(relation_cross_entropy)
+
+    return item_train_opt, relation_train_opt
+
 
 def main():
-  from src.configs import RNNModelConfig
-  config = RNNModelConfig()
-  model = RNNModel(config=config, is_training=True, is_testing=False)
-
-  with tf.Session() as sess:
-    tf.global_variables_initializer().run()
-
-    # char_embeddings=sess.run(model.char_embeddings)
-    # print(char_embeddings)
-    for i in range(2):
-      question = np.reshape(range(config.batch_size * config.max_question_length),
-                            [config.batch_size, config.max_question_length])
-      candidate_items = np.reshape(
-        range(config.batch_size * config.max_candidate_item_size * config.max_item_label_length),
-        [config.batch_size, config.max_candidate_item_size, config.max_item_label_length])
-      candidate_relations = np.reshape(range(config.batch_size * config.max_candidate_relation_size),
-                                       [config.batch_size, config.max_candidate_relation_size])
-
-      gt_items = np.reshape(range(config.batch_size), [config.batch_size])
-      gt_relations = np.reshape(range(config.batch_size), [config.batch_size])
-
-      pred_items, pred_relations = sess.run(
-        [model.pred_items, model.pred_relations],
-        {model.question: question,
-         model.candidate_items: candidate_items,
-         model.candidate_relations: candidate_relations,
-         model.gt_items: gt_items, model.gt_relations: gt_relations})
-      print(pred_items)
-      print(pred_items.shape)
-
-      print(pred_relations)
-      print(pred_relations.shape)
+  pass
 
 
 if __name__ == '__main__':

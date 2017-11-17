@@ -123,3 +123,16 @@ def build_decoder_cell_wo_att(encoder_final_state,batch_size, rnn_layers, hidden
   decoder_init_state=encoder_final_state
 
   return decoder_cell, decoder_init_state
+
+def get_topk_acc(pred_logits, labels, topk=1):
+  """
+  要求pred_logits是一个softmax，labels是一个ont-hot
+  :param pred_logits:
+  :param labels:
+  :param topk:
+  :return:
+  """
+  topk_correction_predcition = tf.nn.in_top_k(predictions=pred_logits, targets=labels, k=topk)
+  topk_accuracy = tf.reduce_mean(tf.cast(topk_correction_predcition, tf.float32))
+
+  return topk_accuracy

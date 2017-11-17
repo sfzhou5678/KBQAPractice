@@ -8,14 +8,15 @@ from src.tools.db_to_model_data import get_entity_vocabulary, get_word_vocabular
 from src.configs import CNNModelConfig, RNNModelConfig
 from src.top_level.QADataManager import DataDataManagerImp
 from src.top_level.QAModelManager import QAModelManager
-from src.RNNTrain import pad_item, pad_realtion
+from src.tools.char_rnn_tools import pad_item, pad_realtion
 
 
 class QASysManager(object):
   """
   服务器调用此类获取答案
   """
-  wikidata_folder = r'F:\WikiData'
+  # wikidata_folder = r'F:\WikiData'
+  wikidata_folder = r'D:\DeeplearningData\WikiData-关键'
 
   transe_data_save_path = os.path.join(wikidata_folder, 'transE.OnlyRelevant.data')
   item_counter_save_path = os.path.join(wikidata_folder, 'item.counter.OnlyRelevant.cnt')

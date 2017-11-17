@@ -33,8 +33,7 @@ class CNNModelConfig:
 
 
 class RNNModelConfig:
-  batch_size = 16
-  num_sampled = 64
+  batch_size = 64
 
   base_learning_rate = 0.1
   lr_decay = 0.98

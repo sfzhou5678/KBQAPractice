@@ -291,23 +291,23 @@ def main():
   thread_num = 10
   thread_list = []
 
-  # print('===========Train QA===========')
-  # train_total_handled_count = load_or_create_count(sq_train_log_path)
-  # train_f = open(sq_train_data_path, encoding='utf-8')
-  # train_wf = open(sq_train_res_path, 'a', encoding='utf-8')
-  # # train_log_wf = open(sq_train_log_path, 'w')
-  # train_error_wf = open(sq_train_error_path, 'a', encoding='utf-8')
-  #
-  # for _ in range(thread_num):
-  #   t = threading.Thread(target=sqdata_question_entities_recognition,
-  #                        args=(train_f, train_wf, sq_train_log_path, train_error_wf))
-  #   thread_list.append(t)
-  #   t.start()
-  #   time.sleep(2)
-  #
-  # for i in range(thread_num):
-  #   thread = thread_list[i]
-  #   thread.join()
+  print('===========Train QA===========')
+  train_total_handled_count = load_or_create_count(sq_train_log_path)
+  train_f = open(sq_train_data_path, encoding='utf-8')
+  train_wf = open(sq_train_res_path, 'a', encoding='utf-8')
+  # train_log_wf = open(sq_train_log_path, 'w')
+  train_error_wf = open(sq_train_error_path, 'a', encoding='utf-8')
+
+  for _ in range(thread_num):
+    t = threading.Thread(target=sqdata_question_entities_recognition,
+                         args=(train_f, train_wf, sq_train_log_path, train_error_wf))
+    thread_list.append(t)
+    t.start()
+    time.sleep(2)
+
+  for i in range(thread_num):
+    thread = thread_list[i]
+    thread.join()
 
   print('===========Test QA===========')
   test_total_handled_count = load_or_create_count(sq_test_log_path)
