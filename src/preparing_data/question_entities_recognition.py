@@ -194,8 +194,11 @@ def sqdata_question_entities_recognition(f, wf, log_path, error_wf, is_train=Tru
       qa_pair = {}
       qa_pair['question'] = question
       qa_pair['ans'] = tail
+
       qa_pair['gt_topic'] = head
       qa_pair['candidate_topic'] = candidate_topic
+
+      qa_pair['gt_relation'] = relation
 
       w_lock.acquire()
 
@@ -251,6 +254,22 @@ api_key_list = ["b061d4d2c7fade52e7ae8c3c786eb4c50eb935876aae037159de827e",
                 '390c9b7e3d691cc7b20dc7093dc790c42cc9377f59a5e15a7573a68a',
                 '628190b2f03ece9e42fb86b65aab2034ee2b9f25a21f4d7f8efae556',
                 '6713e829242b995b9d8dac949532c82c2b43faf660fb4267289ba6d7',
+
+                'e9b1dfa02d6c9ad267dd61cd47057ea0c9b600dc424ae0e20ce5e5c1',
+                "4bbf216410aae68a4ba65d5b4b1813daa047a410d477fa56ae95211d",
+                '4d89b993286174b0841cc2b77e207aa399cf0c07d1c712a24ebd5cb3',
+                'dbe7f2b359a06c909ebe03215add113848c1eaeb4c6a92eb5ce62e7e',
+                'd298fbba9465fb8b49efd0dc3b67893ac16ddc4e502c83262f60ab4b',
+                '637dcb57ed56ec6563afe493146db73f0000a792c6db62e4b0d9ce66',
+                '35c367d9f4cda86ec8ff8d147e9a5d6837810b949e051f72b55ecc93',
+                '551f731e4784133621643ce1aa83940918eb7570b23f1d099e6c4a9d',
+                '820279c85351094dc1ff8afc76d31da9cfcd96408e4ed4e7a9764f7a',
+                '3c11b9ececc5456ce0b713b42d2e637635563036312e615a98968ea7',
+                '34849bea29ab6bb8f2d90636955cf8808833871fbdc8e7c46d0b581e',
+                '6c6f944d99a5d3f2c32b7231d24321715d4df0b423559e6ff1d23d88',
+                'd6db1ab4780b942aae1c58c692bbf4e59bb7ff1fe2a24cd968ed824e',
+                'a5b59c6cf46c06f81c7cc8c1413124229086735f97ef763e91dc6cd0',
+
                 ]
 api_key = api_key_list[0]
 
@@ -269,14 +288,14 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  # sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
-  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  # sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
 
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
 
-  sq_train_res_path = '../../data/SimpleQuestions/webquestions.train.textrazor.full.txt'
-  sq_test_res_path = '../../data/SimpleQuestions/webquestions.test.textrazor.full.txt'
+  sq_train_res_path = '../../data/SimpleQuestions/sq.train.textrazor.txt'
+  sq_test_res_path = '../../data/SimpleQuestions/sq.test.textrazor.txt'
 
   sq_train_log_path = '../../log/SimpleQuestions/train.log'
   sq_test_log_path = '../../log/SimpleQuestions/test.log'
@@ -288,7 +307,7 @@ def main():
   global test_total_handled_count
 
   time0 = time.time()
-  thread_num = 10
+  thread_num = 2
   thread_list = []
 
   print('===========Train QA===========')
@@ -319,7 +338,7 @@ def main():
   # sqdata_question_entities_recognition(test_f, test_wf, test_log_wf, test_error_wf)
   for _ in range(thread_num):
     t = threading.Thread(target=sqdata_question_entities_recognition,
-                         args=(test_f, test_wf, sq_test_log_path, test_error_wf,False))
+                         args=(test_f, test_wf, sq_test_log_path, test_error_wf, False))
     thread_list.append(t)
     t.start()
     time.sleep(2)

@@ -12706,3 +12706,1402 @@
 {'gt_topic': 'Q129093', 'question': 'what type of music is  the last kind words?', 'ans': 'Q483352', 'candidate_topic': ['Q129093']}
 {'gt_topic': 'Q76901', 'question': 'What label can you find sandra signed too?', 'ans': 'Q203059', 'candidate_topic': ['Q76901']}
 {'gt_topic': 'Q208850', 'question': 'what is a game with single-player mode', 'ans': 'Q5307541', 'candidate_topic': ['Q208850']}
+{'gt_topic': 'Q6690782', 'ans': 'Q130232', 'candidate_topic': ['Q6690782'], 'question': 'what type of film is love is a fat woman'}
+{'gt_topic': 'Q129093', 'ans': 'Q483352', 'candidate_topic': ['Q129093'], 'question': 'what type of music is  the last kind words?'}
+{'gt_topic': 'Q76901', 'ans': 'Q203059', 'candidate_topic': ['Q76901'], 'question': 'What label can you find sandra signed too?'}
+{'gt_topic': 'Q208850', 'ans': 'Q5307541', 'candidate_topic': ['Q208850'], 'question': 'what is a game with single-player mode'}
+{'gt_topic': 'Q7769248', 'ans': 'Q649649', 'candidate_topic': ['Q7769248'], 'question': 'whats the production company of  the tiger'}
+{'gt_topic': 'Q6723734', 'ans': 'Q247949', 'candidate_topic': ['Q6723734'], 'question': 'who composed machinehead'}
+{'gt_topic': 'Q1536829', 'ans': 'Q40348', 'candidate_topic': ['Q1536829'], 'question': "What is sergio campana's profession?"}
+{'gt_topic': 'Q2707184', 'ans': 'Q3646', 'candidate_topic': ['Q159', 'Q2707184'], 'question': 'Where in Russia was sergei salnikov born?'}
+{'gt_topic': 'Q165745', 'ans': 'Q2335330', 'candidate_topic': ['Q18127', 'Q165745'], 'question': 'Who is an artist on the mercury records record label?'}
+{'gt_topic': 'Q834951', 'ans': 'Q34266', 'candidate_topic': ['Q834951'], 'question': 'What country was boris babochkin born in?'}
+{'gt_topic': 'Q4186746', 'ans': 'Q9730', 'candidate_topic': ['Q4186746'], 'question': 'what type of album is the last airbender'}
+{'gt_topic': 'Q856872', 'ans': 'Q19198', 'candidate_topic': ['Q11401', 'Q856872'], 'question': 'who is a rap metal artist?'}
+{'gt_topic': 'Q2729921', 'ans': 'Q6581097', 'candidate_topic': ['Q2729921'], 'question': 'What is the gender of martín lasarte?'}
+{'gt_topic': 'Q5485569', 'ans': 'Q504312', 'candidate_topic': ['Q5485569'], 'question': 'Where did frank burton ellis die?'}
+{'gt_topic': 'Q1861', 'ans': 'Q4919143', 'candidate_topic': ['Q1861'], 'question': 'who was born in bangkok'}
+{'gt_topic': 'Q6889355', 'ans': 'Q460674', 'candidate_topic': ['Q6889355'], 'question': 'What is the genre of the album modified'}
+{'gt_topic': 'Q4665962', 'ans': 'Q858', 'candidate_topic': ['Q4665962'], 'question': 'Where is abdullah atfeh from'}
+{'gt_topic': 'Q3612132', 'ans': 'Q459290', 'candidate_topic': ['Q3612132'], 'question': 'what type of film is all night?'}
+{'gt_topic': 'Q8991466', 'ans': 'Q21', 'candidate_topic': ['Q8991466'], 'question': 'Where is paul butler from'}
+{'gt_topic': 'Q3036000', 'ans': 'Q6581097', 'candidate_topic': ['Q3036000'], 'question': "What is donald crews's gender"}
+{'gt_topic': 'Q2709671', 'ans': 'Q14428', 'candidate_topic': ['Q904008', 'Q4485157', 'Q2709671'], 'question': 'who developed the computer game breath of fire: dragon quarter'}
+{'gt_topic': 'Q184194', 'ans': 'Q383271', 'candidate_topic': ['Q184194'], 'question': 'Who founded mensa international'}
+{'gt_topic': 'Q583429', 'ans': 'Q7432', 'candidate_topic': ['Q583429'], 'question': 'what rank is amazona albifrons'}
+{'gt_topic': 'Q1608254', 'ans': 'Q60', 'candidate_topic': ['Q30', 'Q1608254'], 'question': 'where in the united states did herbert fields pass away?'}
+{'gt_topic': 'Q7542', 'ans': 'Q2022584', 'candidate_topic': ['Q7542'], 'question': 'what is an album by prince'}
+{'gt_topic': 'Q1181566', 'ans': 'Q30', 'candidate_topic': ['Q1181566'], 'question': "What is Deborah Garrison's nationality?"}
+{'gt_topic': 'Q145', 'ans': 'Q5108222', 'candidate_topic': ['Q145'], 'question': 'Who was born in the United Kingdom?'}
+{'gt_topic': 'Q3469687', 'ans': 'Q2261628', 'candidate_topic': ['Q3469687'], 'question': 'What is the genre of the artist salem'}
+{'gt_topic': 'Q45981', 'ans': 'Q4833707', 'candidate_topic': ['Q45981', 'Q9759'], 'question': 'Name a rhythm and blues album.'}
+{'gt_topic': 'Q3288585', 'ans': 'Q6176179', 'candidate_topic': ['Q3288585'], 'question': 'who did stan freberg influence?'}
+{'gt_topic': 'Q2295871', 'ans': 'Q202585', 'candidate_topic': ['Q2295871'], 'question': 'which label is war signed to'}
+{'gt_topic': 'Q1188399', 'ans': 'Q11401', 'candidate_topic': ['Q272888', 'Q1188399'], 'question': 'what kind of music is the red light district'}
+{'gt_topic': 'Q2414730', 'ans': 'Q3028965', 'candidate_topic': ['Q2414730'], 'question': 'joe & mac was published by what company'}
+{'gt_topic': 'Q1221024', 'ans': 'Q130586', 'candidate_topic': ['Q1221024'], 'question': 'who was princetown named after'}
+{'gt_topic': 'Q876726', 'ans': 'Q6037711', 'candidate_topic': ['Q876726'], 'question': 'what album is from the artist cam clarke?'}
+{'gt_topic': 'Q6932988', 'ans': 'Q193592', 'candidate_topic': ['Q2736', 'Q6932988'], 'question': 'What position does muhannad eltahir play in soccer'}
+{'gt_topic': 'Q2640483', 'ans': 'Q974745', 'candidate_topic': ['Q2640483'], 'question': "what is aldin Čajić's place of birth"}
+{'gt_topic': 'Q211539', 'ans': 'Q408', 'candidate_topic': ['Q211539'], 'question': 'Where is peter singer from'}
+{'gt_topic': 'Q6607', 'ans': 'Q265252', 'candidate_topic': ['Q6607'], 'question': 'guitar was the instrument of choice for this music artist.'}
+{'gt_topic': 'Q16567', 'ans': 'Q7608782', 'candidate_topic': ['Q16567'], 'question': 'Who is someone born in columbus'}
+{'gt_topic': 'Q10283073', 'ans': 'Q48143', 'candidate_topic': ['Q10283073'], 'question': "What was the cause of flávio império's death?"}
+{'gt_topic': 'Q3109649', 'ans': 'Q1196752', 'candidate_topic': ['Q979347', 'Q3109649'], 'question': 'what type of music is played in god bless tiny tim'}
+{'gt_topic': 'Q10316657', 'ans': 'Q903354', 'candidate_topic': ['Q10316657'], 'question': 'What position is lawrence pillers on his football team?'}
+{'gt_topic': 'Q1376227', 'ans': 'Q324742', 'candidate_topic': ['Q1376227'], 'question': "who is samuel p. bush's child?"}
+{'gt_topic': 'Q492691', 'ans': 'Q8684', 'candidate_topic': ['Q18097', 'Q492691'], 'question': 'where in korea is lee kaeun from?'}
+{'gt_topic': 'Q5092', 'ans': 'Q730108', 'candidate_topic': ['Q1391', 'Q5092'], 'question': 'What musical artist was born in baltimore, maryland?'}
+{'gt_topic': 'Q616266', 'ans': 'Q3113164', 'candidate_topic': ['Q616266'], 'question': 'which book was written by john stillwell'}
+{'gt_topic': 'Q5213376', 'ans': 'Q947873', 'candidate_topic': ['Q5213376'], 'question': "What is dan diaconescu's profession?"}
+{'gt_topic': 'Q4030', 'ans': 'Q1453295', 'candidate_topic': ['Q4030'], 'question': 'Which label signed duke ellington'}
+{'gt_topic': 'Q2604002', 'ans': 'Q11399', 'candidate_topic': ['Q1724341', 'Q2604002'], 'question': 'what music does kiln house play'}
+{'gt_topic': 'Q840790', 'ans': 'Q158778', 'candidate_topic': ['Q840790'], 'question': 'who is a marshal who found in the battle of saltanovka'}
+{'gt_topic': 'Q6307727', 'ans': 'Q419', 'candidate_topic': ['Q6307727'], 'question': 'in what country was juliana filmed'}
+{'gt_topic': 'Q193592', 'ans': 'Q536896', 'candidate_topic': ['Q193592', 'Q24826'], 'question': 'who plays at midfielder for the liverpool team?'}
+{'gt_topic': 'Q5142206', 'ans': 'Q2086913', 'candidate_topic': ['Q5142206'], 'question': 'which time zone is used in cold brook township'}
+{'gt_topic': 'Q3208884', 'ans': 'Q21590660', 'candidate_topic': ['Q236795', 'Q2330543', 'Q3208884'], 'question': 'what genre is the film calamity jane and sam bass'}
+{'gt_topic': 'Q739731', 'ans': 'Q217199', 'candidate_topic': ['Q1353423', 'Q739731'], 'question': 'what kind of album is jailhouse rock?'}
+{'gt_topic': 'Q2541671', 'ans': 'Q652', 'candidate_topic': ['Q2541671'], 'question': 'what language is the composition arsilda, regina di ponto in?'}
+{'gt_topic': 'Q3076456', 'ans': 'Q434841', 'candidate_topic': ['Q3076456'], 'question': "who is the production company of foolin' around?"}
+{'gt_topic': 'Q5959069', 'ans': 'Q11425', 'candidate_topic': ['Q5959069'], 'question': 'what kind of film is hypnotic hick?'}
+{'gt_topic': 'Q8454', 'ans': 'Q4799093', 'candidate_topic': ['Q8454'], 'question': 'whose cause of death was due to capital punishment?'}
+{'gt_topic': 'Q1406454', 'ans': 'Q1641839', 'candidate_topic': ['Q1406454'], 'question': 'what music is on everything you ever wanted to know about silence?'}
+{'gt_topic': 'Q4955757', 'ans': 'Q35874', 'candidate_topic': ['Q4955757'], 'question': 'what is the genre for the book brain droppings'}
+{'gt_topic': 'Q333474', 'ans': 'Q145', 'candidate_topic': ['Q333474'], 'question': 'what country is quentin davies, baron davies of stamford from'}
+{'gt_topic': 'Q174224', 'ans': 'Q7171888', 'candidate_topic': ['Q5369', 'Q174224'], 'question': 'Which baseball player was born in wilmington?'}
+{'gt_topic': 'Q41323', 'ans': 'Q7240722', 'candidate_topic': ['Q41323'], 'question': 'Name a team that plays american football'}
+{'gt_topic': 'Q1711779', 'ans': 'Q7325', 'candidate_topic': ['Q1711779'], 'question': 'what ethnicity is yuli-yoel edelstein'}
+{'gt_topic': 'Q157808', 'ans': 'Q25989', 'candidate_topic': ['Q12143', 'Q1726', 'Q157808'], 'question': 'what time zone is technical university of munich located in?'}
+{'gt_topic': 'Q319221', 'ans': 'Q3220913', 'candidate_topic': ['Q319221', 'Q38'], 'question': "What's an italian adventure film?"}
+{'gt_topic': 'Q137636', 'ans': 'Q131351', 'candidate_topic': ['Q137636'], 'question': 'what was 129 antigone named after?'}
+{'gt_topic': 'Q912028', 'ans': 'Q2295655', 'candidate_topic': ['Q912028'], 'question': 'what label is the artist brian connolly from?'}
+{'gt_topic': 'Q6536525', 'ans': 'Q6625963', 'candidate_topic': ['Q6536525'], 'question': 'What job does elliott chaze have'}
+{'gt_topic': 'Q7839388', 'ans': 'Q364881', 'candidate_topic': ['Q364881', 'Q7839388'], 'question': 'who is the author of the self titled album trevor rabin'}
+{'gt_topic': 'Q1493218', 'ans': 'Q523', 'candidate_topic': ['Q10570', 'Q1493218'], 'question': 'what is the category of the celestial object gamma tauri'}
+{'gt_topic': 'Q5736436', 'ans': 'Q90', 'candidate_topic': ['Q5736436'], 'question': 'Which French city was hercules brabazon brabazon born in'}
+{'gt_topic': 'Q6811389', 'ans': 'Q1132127', 'candidate_topic': ['Q6811389'], 'question': 'What genre best describes melanie is demented?'}
+{'gt_topic': 'Q5167263', 'ans': 'Q868217', 'candidate_topic': ['Q5167263'], 'question': 'what type of videogame is cool boarders 2001'}
+{'gt_topic': 'Q327906', 'ans': 'Q34266', 'candidate_topic': ['Q539288', 'Q327906'], 'question': 'which entity was involved in the battle of luckau'}
+{'gt_topic': 'Q132311', 'ans': 'Q3041313', 'candidate_topic': ['Q132311'], 'question': 'What is a game in the fantasy genre?'}
+{'gt_topic': 'Q83440', 'ans': 'Q7711171', 'candidate_topic': ['Q83440'], 'question': 'Name a country album'}
+{'gt_topic': 'Q3336853', 'ans': 'Q130232', 'candidate_topic': ['Q3336853'], 'question': 'What type of movie is his brother?'}
+{'gt_topic': 'Q263607', 'ans': 'Q635937', 'candidate_topic': ['Q263607'], 'question': 'which movie is written by pat proft'}
+{'gt_topic': 'Q726445', 'ans': 'Q12129827', 'candidate_topic': ['Q726445'], 'question': 'what is a film produced by richard franklin'}
+{'gt_topic': 'Q623321', 'ans': 'Q49085', 'candidate_topic': ['Q623321'], 'question': 'what is the ethnicity of jeremy suarez?'}
+{'gt_topic': 'Q723183', 'ans': 'Q177220', 'candidate_topic': ['Q723183'], 'question': "what is rustyandersonmusic's profession?"}
+{'gt_topic': 'Q671097', 'ans': 'Q3956272', 'candidate_topic': ['Q18127', 'Q671097'], 'question': 'what artist is on the grp records label?'}
+{'gt_topic': 'Q3140141', 'ans': 'Q455939', 'candidate_topic': ['Q1627155', 'Q3140141'], 'question': 'What band plays honky-tonk music'}
+{'gt_topic': 'Q932977', 'ans': 'Q538634', 'candidate_topic': ['Q932977'], 'question': 'What is an example of a crossover thrash band'}
+{'gt_topic': 'Q1173707', 'ans': 'Q459290', 'candidate_topic': ['Q1173707'], 'question': 'is night of the pencils a drama or indie film'}
+{'gt_topic': 'Q1068771', 'ans': 'Q5148367', 'candidate_topic': ['Q460711', 'Q1068771'], 'question': 'Why kind of architecture describes checkerboard inn'}
+{'gt_topic': 'Q7836199', 'ans': 'Q1048902', 'candidate_topic': ['Q5369', 'Q7836199'], 'question': 'What position does baseball player travis baptist play?'}
+{'gt_topic': 'Q47912', 'ans': 'Q609860', 'candidate_topic': ['Q47912', 'Q12078'], 'question': 'Who died of lung cancer?'}
+{'gt_topic': 'Q38848', 'ans': 'Q905886', 'candidate_topic': ['Q38848'], 'question': "WHat's an example of a heavy metal album"}
+{'gt_topic': 'Q215355', 'ans': 'Q193391', 'candidate_topic': ['Q215355'], 'question': 'what is the occupation of sigismund von braun'}
+{'gt_topic': 'Q6250689', 'ans': 'Q215112', 'candidate_topic': ['Q6250689'], 'question': 'what conflict did  john norwood participate in'}
+{'gt_topic': 'Q15035777', 'ans': 'Q13377795', 'candidate_topic': ['Q15035777'], 'question': 'what type of book is skin trade'}
+{'gt_topic': 'Q4886079', 'ans': 'Q33999', 'candidate_topic': ['Q4886079'], 'question': 'what does ben lovett do for a living'}
+{'gt_topic': 'Q1346149', 'ans': 'Q494662', 'candidate_topic': ['Q1346149'], 'question': 'Who was a politician that died from complication?'}
+{'gt_topic': 'Q4732852', 'ans': 'Q203775', 'candidate_topic': ['Q4732852'], 'question': 'which style of music does the allison wonderland anthology belong to?'}
+{'gt_topic': 'Q660237', 'ans': 'Q2143665', 'candidate_topic': ['Q92640', 'Q660237'], 'question': 'what type of movie is alice in wonderland'}
+{'gt_topic': 'Q7253062', 'ans': 'Q33', 'candidate_topic': ['Q7253062'], 'question': 'Where was satu silvo born?'}
+{'gt_topic': 'Q1333118', 'ans': 'Q260509', 'candidate_topic': ['Q1333118'], 'question': 'which film did richard ayoade direct'}
+{'gt_topic': 'Q4911326', 'ans': 'Q6581097', 'candidate_topic': ['Q4911326'], 'question': 'which sex is bill wendell'}
+{'gt_topic': 'Q4220870', 'ans': 'Q55193', 'candidate_topic': ['Q4220870'], 'question': 'Who was the director of the film kinoglaz?'}
+{'gt_topic': 'Q132311', 'ans': 'Q162225', 'candidate_topic': ['Q132311'], 'question': 'which movie is fantasy'}
+{'gt_topic': 'Q5228551', 'ans': 'Q211573', 'candidate_topic': ['Q5228551'], 'question': 'what is the genre in which the artist dave cloud performs'}
+{'gt_topic': 'Q7194552', 'ans': 'Q928', 'candidate_topic': ['Q7194552'], 'question': 'what country did the tv show  pilyang kerubin originate'}
+{'gt_topic': 'Q2329403', 'ans': 'Q182015', 'candidate_topic': ['Q2329403'], 'question': 'Name the genre of the film odd thomas'}
+{'gt_topic': 'Q1795044', 'ans': 'Q16', 'candidate_topic': ['Q1795044'], 'question': 'what country is kyle greentree from'}
+{'gt_topic': 'Q609002', 'ans': 'Q487914', 'candidate_topic': ['Q609002'], 'question': 'What kind of music does elcantodelloco make'}
+{'gt_topic': 'Q114671', 'ans': 'Q183', 'candidate_topic': ['Q114671'], 'question': 'What nationality is christoph schappeler?'}
+{'gt_topic': 'Q33999', 'ans': 'Q1682867', 'candidate_topic': ['Q33999'], 'question': 'who is an example of an actor?'}
+{'gt_topic': 'Q7143215', 'ans': 'Q51290', 'candidate_topic': ['Q7143215'], 'question': 'What instrument did pat bergeson played?'}
+{'gt_topic': 'Q219155', 'ans': 'Q51511', 'candidate_topic': ['Q219155'], 'question': 'who edited dawn of the dead'}
+{'gt_topic': 'Q336286', 'ans': 'Q6943656', 'candidate_topic': ['Q336286', 'Q2736'], 'question': "what's the name of a soccer defender"}
+{'gt_topic': 'Q5416828', 'ans': 'Q6895044', 'candidate_topic': ['Q7889', 'Q1381947', 'Q1134845', 'Q5416828'], 'question': 'what gameplay mode is the videogame everquest ii: sentinels fate'}
+{'gt_topic': 'Q30', 'ans': 'Q4664484', 'candidate_topic': ['Q36649', 'Q30'], 'question': 'What is the name of a visual artist born in the united states?'}
+{'gt_topic': 'Q5181588', 'ans': 'Q737547', 'candidate_topic': ['Q5181588'], 'question': 'Where was craig whyte born?'}
+{'gt_topic': 'Q16142997', 'ans': 'Q6581097', 'candidate_topic': ['Q16142997'], 'question': 'What is the gender of afro-x?'}
+{'gt_topic': 'Q1202225', 'ans': 'Q9598', 'candidate_topic': ['Q1202225'], 'question': 'what religion does wang yuanlu follow?'}
+{'gt_topic': 'Q128147', 'ans': 'Q1655483', 'candidate_topic': ['Q128147'], 'question': 'Who was born in kingston upon hull?'}
+{'gt_topic': 'Q88960', 'ans': 'Q2090', 'candidate_topic': ['Q88960'], 'question': 'Where did karl amson joel die?'}
+{'gt_topic': 'Q558102', 'ans': 'Q2321734', 'candidate_topic': ['Q558102'], 'question': 'what type of movie is cop land'}
+{'gt_topic': 'Q1239556', 'ans': 'Q51490', 'candidate_topic': ['Q222344', 'Q1239556'], 'question': 'Who was the cinematographer behind the film brats?'}
+{'gt_topic': 'Q6148919', 'ans': 'Q144983', 'candidate_topic': ['Q6148919'], 'question': 'where was jan francisci born?'}
+{'gt_topic': 'Q69806', 'ans': 'Q201330', 'candidate_topic': ['Q69806'], 'question': 'What position does dirk heinen know how to play'}
+{'gt_topic': 'Q5485838', 'ans': 'Q6581097', 'candidate_topic': ['Q5485838'], 'question': "What is frank cimorelli's gender"}
+{'gt_topic': 'Q169566', 'ans': 'Q217557', 'candidate_topic': ['Q169566'], 'question': 'Which author was influenced by H.P. Lovecraft?'}
+{'gt_topic': 'Q12152', 'ans': 'Q2627503', 'candidate_topic': ['Q207550', 'Q12152'], 'question': 'Who died from myocardial infarction'}
+{'gt_topic': 'Q361676', 'ans': 'Q1028', 'candidate_topic': ['Q361676'], 'question': 'whats the nationality of  younes el aynaoui'}
+{'gt_topic': 'Q3296837', 'ans': 'Q212', 'candidate_topic': ['Q3296837'], 'question': 'which country does the cimirnariu river originate'}
+{'gt_topic': 'Q5078592', 'ans': 'Q145', 'candidate_topic': ['Q5078592'], 'question': 'which country is charles h. lindsey from'}
+{'gt_topic': 'Q6211484', 'ans': 'Q1048902', 'candidate_topic': ['Q6211484'], 'question': 'What is the position that joe murphy played'}
+{'gt_topic': 'Q2405480', 'ans': 'Q261669', 'candidate_topic': ['Q33999', 'Q22920017', 'Q2405480'], 'question': 'Name a voice actor.'}
+{'gt_topic': 'Q975002', 'ans': 'Q221491', 'candidate_topic': ['Q975002'], 'question': 'what films has saar klein edited'}
+{'gt_topic': 'Q7331541', 'ans': 'Q1326154', 'candidate_topic': ['Q715130', 'Q5369', 'Q7331541'], 'question': 'which position in baseball did rick leach play in?'}
+{'gt_topic': 'Q16156178', 'ans': 'Q1033', 'candidate_topic': ['Q313868', 'Q16156178'], 'question': 'Which country is the film finding fela! associated with'}
+{'gt_topic': 'Q7765150', 'ans': 'Q128758', 'candidate_topic': ['Q7765150'], 'question': 'what kind of book is the soldiers art?'}
+{'gt_topic': 'Q49273', 'ans': 'Q2373146', 'candidate_topic': ['Q49273'], 'question': 'Who is a notable person that was born in lubbock'}
+{'gt_topic': 'Q7758', 'ans': 'Q1127464', 'candidate_topic': ['Q7758'], 'question': 'Who was a parent of charles x of france'}
+{'gt_topic': 'Q926678', 'ans': 'Q55424', 'candidate_topic': ['Q90', 'Q926678'], 'question': 'who directed the film the cars that ate paris'}
+{'gt_topic': 'Q605713', 'ans': 'Q1773', 'candidate_topic': ['Q605713'], 'question': 'what is  kristaps valters place of birth'}
+{'gt_topic': 'Q1289681', 'ans': 'Q860626', 'candidate_topic': ['Q2474068', 'Q1289681'], 'question': 'What kind of film is the beautician and the beast'}
+{'gt_topic': 'Q4216153', 'ans': 'Q29', 'candidate_topic': ['Q162615', 'Q4216153'], 'question': 'where is the event cartagena uprising located'}
+{'gt_topic': 'Q656', 'ans': 'Q383093', 'candidate_topic': ['Q656'], 'question': 'which district does saint petersburg report to'}
+{'gt_topic': 'Q553105', 'ans': 'Q407275', 'candidate_topic': ['Q553105'], 'question': 'What show did oh! great create?'}
+{'gt_topic': 'Q130232', 'ans': 'Q706372', 'candidate_topic': ['Q1054574', 'Q15416', 'Q130232'], 'question': 'what is a 2012 South Korean romantic drama television series'}
+{'gt_topic': 'Q997481', 'ans': 'Q7046201', 'candidate_topic': ['Q997481'], 'question': 'name an artist who wrote in the genre of bubblegum pop.'}
+{'gt_topic': 'Q4004218', 'ans': 'Q130232', 'candidate_topic': ['Q4004218'], 'question': 'what types of tv program is decoy'}
+{'gt_topic': 'Q7152338', 'ans': 'Q6581097', 'candidate_topic': ['Q7152338'], 'question': 'is paul mceuen male or female'}
+{'gt_topic': 'Q5513719', 'ans': 'Q33298', 'candidate_topic': ['Q5513719'], 'question': 'what language is gma news live in'}
+{'gt_topic': 'Q1553166', 'ans': 'Q1685876', 'candidate_topic': ['Q14441', 'Q1553166'], 'question': 'what is the music in the film liza with a z?'}
+{'gt_topic': 'Q1080476', 'ans': 'Q3071', 'candidate_topic': ['Q1080476'], 'question': ' what type of genre does rachel bolan create'}
+{'gt_topic': 'Q4973577', 'ans': 'Q4413456', 'candidate_topic': ['Q4973577'], 'question': 'What is the label judith pronk is associated with?'}
+{'gt_topic': 'Q2665164', 'ans': 'Q17', 'candidate_topic': ['Q2665164'], 'question': 'What nationality is rihoko yoshida'}
+{'gt_topic': 'Q5057070', 'ans': 'Q49085', 'candidate_topic': ['Q5057070'], 'question': "what's cedric ball's nationality"}
+{'gt_topic': 'Q5195086', 'ans': 'Q54365', 'candidate_topic': ['Q5195086'], 'question': 'What type of music does current swell play'}
+{'gt_topic': 'Q4776077', 'ans': 'Q939838', 'candidate_topic': ['Q4776077'], 'question': 'whre was anton du beke born'}
+{'gt_topic': 'Q7166582', 'ans': 'Q143762', 'candidate_topic': ['Q7166582'], 'question': 'The pequest river feeds into what body of water?'}
+{'gt_topic': 'Q229134', 'ans': 'Q30', 'candidate_topic': ['Q229134'], 'question': "What is actress christine baranski's country of nationality?"}
+{'gt_topic': 'Q165405', 'ans': 'Q34647', 'candidate_topic': ['Q165405'], 'question': 'where did helen suzman die'}
+{'gt_topic': 'Q3307249', 'ans': 'Q45700', 'candidate_topic': ['Q3307249'], 'question': 'who is the publisher of metal warriors'}
+{'gt_topic': 'Q704759', 'ans': 'Q36908', 'candidate_topic': ['Q704759'], 'question': 'what is the cause of death of albert f. mummery'}
+{'gt_topic': 'Q5239824', 'ans': 'Q22', 'candidate_topic': ['Q5239824'], 'question': 'Which country does david sinclair have nationality in'}
+{'gt_topic': 'Q14917911', 'ans': 'Q1754', 'candidate_topic': ['Q34', 'Q14917911'], 'question': "what is john carlsson's birthplace in sweden?"}
+{'gt_topic': 'Q2643241', 'ans': 'Q17486489', 'candidate_topic': ['Q2643241'], 'question': 'who was the movie gifted hands: the ben carson story produced by'}
+{'gt_topic': 'Q3049750', 'ans': 'Q414', 'candidate_topic': ['Q3049750'], 'question': 'what country is el bonaerense filmed in'}
+{'gt_topic': 'Q5769605', 'ans': 'Q838368', 'candidate_topic': ['Q5769605'], 'question': 'what kind of movie is hired and fired'}
+{'gt_topic': 'Q433537', 'ans': 'Q1198391', 'candidate_topic': ['Q433537'], 'question': 'how did marit allen die?'}
+{'gt_topic': 'Q2959918', 'ans': 'Q181257', 'candidate_topic': ['Q12078', 'Q2959918'], 'question': 'what cancer did charles nolte die from'}
+{'gt_topic': 'Q2782443', 'ans': 'Q601629', 'candidate_topic': ['Q2782443'], 'question': 'who directed the quick gun'}
+{'gt_topic': 'Q45068', 'ans': 'Q75809', 'candidate_topic': ['Q45068'], 'question': 'What religion did carl xvi gustaf of sweden identify with?'}
+{'gt_topic': 'Q36687', 'ans': 'Q1478179', 'candidate_topic': ['Q36687', 'Q408'], 'question': 'What is the name of an administrative child of victoria (australia)'}
+{'gt_topic': 'Q7596477', 'ans': 'Q208850', 'candidate_topic': ['Q7596477'], 'question': 'what gameplay mode is stadium cross played in'}
+{'gt_topic': 'Q528', 'ans': 'Q523', 'candidate_topic': ['Q6999', 'Q528'], 'question': 'what celestial object is psr b1257+12'}
+{'gt_topic': 'Q544387', 'ans': 'Q6945757', 'candidate_topic': ['Q544387'], 'question': 'ray charles created what album'}
+{'gt_topic': 'Q123724', 'ans': 'Q105527', 'candidate_topic': ['Q123724'], 'question': 'what genre does patrick moraz classify under'}
+{'gt_topic': 'Q3334417', 'ans': 'Q868217', 'candidate_topic': ['Q3334417'], 'question': 'what type of game is nhl 2003'}
+{'gt_topic': 'Q7602057', 'ans': 'Q130232', 'candidate_topic': ['Q7602057'], 'question': 'what genre is the film starlet'}
+{'gt_topic': 'Q183412', 'ans': 'Q5441806', 'candidate_topic': ['Q183412', 'Q18127'], 'question': 'Who is an artist on the emi record label?'}
+{'gt_topic': 'Q3071', 'ans': 'Q7740004', 'candidate_topic': ['Q11399', 'Q3071', 'Q3071', 'Q11399'], 'question': 'who is an artist known for punk rock music'}
+{'gt_topic': 'Q6146963', 'ans': 'Q377720', 'candidate_topic': ['Q6146963'], 'question': 'where is the birthplace of jamie guy'}
+{'gt_topic': 'Q4847926', 'ans': 'Q132311', 'candidate_topic': ['Q186106', 'Q4847926'], 'question': 'What kind of show is las brujas de south beach'}
+{'gt_topic': 'Q842256', 'ans': 'Q116149', 'candidate_topic': ['Q842256'], 'question': 'what is a musical film that came out in 1983?'}
+{'gt_topic': 'Q513712', 'ans': 'Q184370', 'candidate_topic': ['Q513712', 'Q18127'], 'question': 'Name an artist on the pony canyon record label'}
+{'gt_topic': 'Q817138', 'ans': 'Q1970795', 'candidate_topic': ['Q817138'], 'question': 'who is an artist that is popular in electronica music'}
+{'gt_topic': 'Q5811914', 'ans': 'Q12585', 'candidate_topic': ['Q5811914'], 'question': "what kind of film is the heart's movements"}
+{'gt_topic': 'Q4996625', 'ans': 'Q30', 'candidate_topic': ['Q4996625'], 'question': 'What country is bull session from?'}
+{'gt_topic': 'Q3202325', 'ans': 'Q1321', 'candidate_topic': ['Q3202325'], 'question': "which language is used for the dictator's guns"}
+{'gt_topic': 'Q7672096', 'ans': 'Q373342', 'candidate_topic': ['Q3120983', 'Q7672096'], 'question': 'What kind of music does tv2 stars play'}
+{'gt_topic': 'Q207996', 'ans': 'Q6826877', 'candidate_topic': ['Q13218', 'Q207996'], 'question': 'who belongs to the xhosa people'}
+{'gt_topic': 'Q170147', 'ans': 'Q76519', 'candidate_topic': ['Q170147'], 'question': 'Who influenced hans reichenbach'}
+{'gt_topic': 'Q263408', 'ans': 'Q13395', 'candidate_topic': ['Q263408'], 'question': 'where did gaetano bedini die?'}
+{'gt_topic': 'Q130232', 'ans': 'Q4464508', 'candidate_topic': ['Q27', 'Q21010853', 'Q130232'], 'question': 'what is an Irish drama film'}
+{'gt_topic': 'Q577975', 'ans': 'Q550424', 'candidate_topic': ['Q577975'], 'question': 'where was albert lee born'}
+{'gt_topic': 'Q230754', 'ans': 'Q190585', 'candidate_topic': ['Q230754'], 'question': 'what label is lady sovereign signed to'}
+{'gt_topic': 'Q8678', 'ans': 'Q5042914', 'candidate_topic': ['Q41428', 'Q8678'], 'question': 'Who was born in rio de janeiro'}
+{'gt_topic': 'Q7127776', 'ans': 'Q1006240', 'candidate_topic': ['Q7127776'], 'question': 'Where was pallavi purohit born'}
+{'gt_topic': 'Q7702186', 'ans': 'Q2807', 'candidate_topic': ['Q29', 'Q7702186'], 'question': 'in what spanish city did teresa medina begin her life'}
+{'gt_topic': 'Q2092899', 'ans': 'Q17113214', 'candidate_topic': ['Q2092899'], 'question': 'what films have michael showalter written?'}
+{'gt_topic': 'Q5485664', 'ans': 'Q6581097', 'candidate_topic': ['Q5485664'], 'question': 'is frank cappuccino male or female'}
+{'gt_topic': 'Q5003814', 'ans': 'Q130232', 'candidate_topic': ['Q5003814'], 'question': 'What type of film is by player'}
+{'gt_topic': 'Q6702073', 'ans': 'Q330629', 'candidate_topic': ['Q6702073'], 'question': 'What label is luke johnson a part of?'}
+{'gt_topic': 'Q842407', 'ans': 'Q30192', 'candidate_topic': ['Q12143', 'Q842407'], 'question': 'what time zone is umm qasr located'}
+{'gt_topic': 'Q52607', 'ans': 'Q5941362', 'candidate_topic': ['Q52607'], 'question': "Who's a comedian born in mar del plata"}
+{'gt_topic': 'Q11425', 'ans': 'Q1251705', 'candidate_topic': ['Q11425'], 'question': 'Name a tv show from the animation genre'}
+{'gt_topic': 'Q2011493', 'ans': 'Q7411', 'candidate_topic': ['Q2011493'], 'question': 'what language is spoken in left bank linkeroever'}
+{'gt_topic': 'Q4647079', 'ans': 'Q11366', 'candidate_topic': ['Q4647079'], 'question': 'which musical genre does a.c. temple make'}
+{'gt_topic': 'Q1266725', 'ans': 'Q6296254', 'candidate_topic': ['Q1266725'], 'question': 'what film did fadil hadžić direct'}
+{'gt_topic': 'Q3434167', 'ans': 'Q5994', 'candidate_topic': ['Q3434167'], 'question': 'what instrument did erichutchinson play?'}
+{'gt_topic': 'Q1902266', 'ans': 'Q25989', 'candidate_topic': ['Q12143', 'Q1902266'], 'question': 'which time zone does ożarów mazowiecki associate with'}
+{'gt_topic': 'Q83270', 'ans': 'Q5064148', 'candidate_topic': ['Q643960', 'Q83270'], 'question': 'what is a hard rock album that pink cream 69 created'}
+{'gt_topic': 'Q2754867', 'ans': 'Q913495', 'candidate_topic': ['Q2754867'], 'question': 'Where was Larry Mckibben born?'}
+{'gt_topic': 'Q7432', 'ans': 'Q594810', 'candidate_topic': ['Q7432'], 'question': 'name a group of animals categorized as a species.'}
+{'gt_topic': 'Q3568860', 'ans': 'Q81997', 'candidate_topic': ['Q3568860'], 'question': 'where did william ouseley die'}
+{'gt_topic': 'Q2344453', 'ans': 'Q329965', 'candidate_topic': ['Q2', 'Q222344', 'Q2344453'], 'question': 'who was the cinematographer of near to earth'}
+{'gt_topic': 'Q1581882', 'ans': 'Q182046', 'candidate_topic': ['Q6247', 'Q1581882', 'Q163687'], 'question': "who is the architect of basilica of sant'andrea, mantua"}
+{'gt_topic': 'Q205162', 'ans': 'Q1399', 'candidate_topic': ['Q205162'], 'question': 'Who was isaiah berlin influenced by'}
+{'gt_topic': 'Q4120263', 'ans': 'Q35323', 'candidate_topic': ['Q4120263'], 'question': 'What is the ethnicity of mona zaki?'}
+{'gt_topic': 'Q24925', 'ans': 'Q8030746', 'candidate_topic': ['Q223393', 'Q24925'], 'question': 'what book is in the literary genre science fiction?'}
+{'gt_topic': 'Q274897', 'ans': 'Q270948', 'candidate_topic': ['Q274897'], 'question': 'What kind of game is portal?'}
+{'gt_topic': 'Q209182', 'ans': 'Q769684', 'candidate_topic': ['Q209182'], 'question': 'which debut album was released by public enemy (band)?'}
+{'gt_topic': 'Q3086842', 'ans': 'Q925843', 'candidate_topic': ['Q3086842'], 'question': 'Which film is fred guiol a director for'}
+{'gt_topic': 'Q146663', 'ans': 'Q173407', 'candidate_topic': ['Q171308', 'Q7688', 'Q146663'], 'question': 'Which oblast is monastyryska raion located?'}
+{'gt_topic': 'Q1344433', 'ans': 'Q3272978', 'candidate_topic': ['Q12143', 'Q1344433'], 'question': 'what time zone is mersing in?'}
+{'gt_topic': 'Q483352', 'ans': 'Q1166133', 'candidate_topic': ['Q38848', 'Q483352'], 'question': 'Name an album from the thrash metal genre'}
+{'gt_topic': 'Q16239933', 'ans': 'Q170263', 'candidate_topic': ['Q16239933'], 'question': 'where did margaret holford die'}
+{'gt_topic': 'Q1196408', 'ans': 'Q6816281', 'candidate_topic': ['Q1196408'], 'question': 'what book is a historical fiction?'}
+{'gt_topic': 'Q19526', 'ans': 'Q6876279', 'candidate_topic': ['Q19526'], 'question': 'What is an album by maya angelou?'}
+{'gt_topic': 'Q6751799', 'ans': 'Q364421', 'candidate_topic': ['Q6751799'], 'question': 'who directed that mansome movie'}
+{'gt_topic': 'Q2363944', 'ans': 'Q200092', 'candidate_topic': ['Q907311', 'Q2363944'], 'question': 'which netflix genre is the movie title i, madman'}
+{'gt_topic': 'Q4666630', 'ans': 'Q723418', 'candidate_topic': ['Q4666630'], 'question': 'What genre is abel talamantez'}
+{'gt_topic': 'Q3183669', 'ans': 'Q174002', 'candidate_topic': ['Q1397', 'Q3183669'], 'question': 'where in ohio is jordan aboudou from'}
+{'gt_topic': 'Q1428060', 'ans': 'Q92616', 'candidate_topic': ['Q1428060'], 'question': 'who was the designer for the computer videogame sid meiers simgolf'}
+{'gt_topic': 'Q4038432', 'ans': 'Q105527', 'candidate_topic': ['Q4038432'], 'question': 'what kind of music does exivious perform'}
+{'gt_topic': 'Q7443592', 'ans': 'Q157443', 'candidate_topic': ['Q7443592'], 'question': 'what kind of show is second thoughts'}
+{'gt_topic': 'Q38848', 'ans': 'Q659821', 'candidate_topic': ['Q222910', 'Q21', 'Q11399', 'Q38848'], 'question': 'what is the name of a heavy metal compilation album featuring studio sessions and a live concert recorded by an English rock group?'}
+{'gt_topic': 'Q273213', 'ans': 'Q492264', 'candidate_topic': ['Q273213'], 'question': 'What is the genre that elena kats-chernin falls under'}
+{'gt_topic': 'Q3020709', 'ans': 'Q853630', 'candidate_topic': ['Q3020709'], 'question': 'what genre is from the film death factory?'}
+{'gt_topic': 'Q2512082', 'ans': 'Q2086913', 'candidate_topic': ['Q12143', 'Q2512082'], 'question': 'what time zone does decatur follow'}
+{'gt_topic': 'Q7184453', 'ans': 'Q30', 'candidate_topic': ['Q7184453'], 'question': 'what country is philip taft from'}
+{'gt_topic': 'Q215263', 'ans': 'Q49081', 'candidate_topic': ['Q215263'], 'question': 'who did daniel dennett influence'}
+{'gt_topic': 'Q593644', 'ans': 'Q92054', 'candidate_topic': ['Q186414', 'Q189720', 'Q593644'], 'question': 'Which chemist was essential in the manufacture of aniline dye?'}
+{'gt_topic': 'Q3737249', 'ans': 'Q216364', 'candidate_topic': ['Q3737249'], 'question': 'What label is fmukrock signed under'}
+{'gt_topic': 'Q12473114', 'ans': 'Q130232', 'candidate_topic': ['Q12473114'], 'question': 'what is the genre of the film blind pig who wants to fly'}
+{'gt_topic': 'Q1489', 'ans': 'Q1710547', 'candidate_topic': ['Q96', 'Q1489'], 'question': 'who was born in the location of mexico city?'}
+{'gt_topic': 'Q7402644', 'ans': 'Q6581097', 'candidate_topic': ['Q7402644'], 'question': 'is sajid ghafoor male or female'}
+{'gt_topic': 'Q2702756', 'ans': 'Q1049502', 'candidate_topic': ['Q3444160', 'Q4485157', 'Q2702756'], 'question': 'who is a publisher of the computer game super bomberman'}
+{'gt_topic': 'Q1024838', 'ans': 'Q357014', 'candidate_topic': ['Q36834', 'Q1024838'], 'question': 'who is the music composer for the cabin fever (film)'}
+{'gt_topic': 'Q13519869', 'ans': 'Q98', 'candidate_topic': ['Q274569', 'Q13519869'], 'question': 'Where does bombardment of upolu take place?'}
+{'gt_topic': 'Q371506', 'ans': 'Q5911331', 'candidate_topic': ['Q371506'], 'question': 'What was a structure designed by  emery roth'}
+{'gt_topic': 'Q1380065', 'ans': 'Q39178', 'candidate_topic': ['Q1380065'], 'question': 'where did george chambers die'}
+{'gt_topic': 'Q1330714', 'ans': 'Q2532244', 'candidate_topic': ['Q1330714'], 'question': 'where did elisha cook, jr. die?'}
+{'gt_topic': 'Q4999478', 'ans': 'Q319221', 'candidate_topic': ['Q4999478'], 'question': "what kind of movie is burn 'em up barnes"}
+{'gt_topic': 'Q541962', 'ans': 'Q757862', 'candidate_topic': ['Q541962'], 'question': 'which games were published by jeff minter?'}
+{'gt_topic': 'Q2329403', 'ans': 'Q1860', 'candidate_topic': ['Q2329403'], 'question': 'which language is spoken in odd thomas'}
+{'gt_topic': 'Q431440', 'ans': 'Q30', 'candidate_topic': ['Q431440'], 'question': 'which country does lafayette county belong to'}
+{'gt_topic': 'Q1461028', 'ans': 'Q13377795', 'candidate_topic': ['Q1461028'], 'question': 'What type of film is not the sex pot movie?'}
+{'gt_topic': 'Q4260098', 'ans': 'Q252', 'candidate_topic': ['Q4260098'], 'question': 'what country does the rokan river flow into'}
+{'gt_topic': 'Q5967378', 'ans': 'Q4945914', 'candidate_topic': ['Q5967378'], 'question': 'what is the title of a  speculative fiction book'}
+{'ans': 'Q1860', 'gt_topic': 'Q2483345', 'candidate_topic': ['Q2483345'], 'question': 'In what language was the book "The Third Policeman" originally written?'}
+{'ans': 'Q310116', 'gt_topic': 'Q13670837', 'candidate_topic': ['Q485417', 'Q13670837'], 'question': 'who composed black skinhead?'}
+{'ans': 'Q671348', 'gt_topic': 'Q1701974', 'candidate_topic': ['Q1701974'], 'question': 'where did john turtle wood die'}
+{'ans': 'Q191', 'gt_topic': 'Q5548163', 'candidate_topic': ['Q5548163'], 'question': 'which country made georgica'}
+{'ans': 'Q467963', 'gt_topic': 'Q185529', 'candidate_topic': ['Q185529'], 'question': 'What is the title of a pornographic film?'}
+{'ans': 'Q75809', 'gt_topic': 'Q4888550', 'candidate_topic': ['Q4888550'], 'question': 'Which religion was benjamin f. leiter associated with'}
+{'ans': 'Q1841', 'gt_topic': 'Q4898274', 'candidate_topic': ['Q4898274'], 'question': 'what is the relgion of  betsy bloomingdale'}
+{'ans': 'Q389735', 'gt_topic': 'Q3035724', 'candidate_topic': ['Q146416', 'Q3035724'], 'question': 'What caused the death of don bexley?'}
+{'ans': 'Q11399', 'gt_topic': 'Q17143669', 'candidate_topic': ['Q154430', 'Q12136', 'Q544006', 'Q12136', 'Q17143669'], 'question': 'What disease is included with anxiety disorder'}
+{'ans': 'Q336286', 'gt_topic': 'Q4923866', 'candidate_topic': ['Q4923866'], 'question': 'Which position does blagoja kuleski play'}
+{'ans': 'Q3274230', 'gt_topic': 'Q2070892', 'candidate_topic': ['Q2070892'], 'question': 'whats an example of a vehicular combat game'}
+{'ans': 'Q23077', 'gt_topic': 'Q6204800', 'candidate_topic': ['Q6204800'], 'question': 'where was joan abse born?'}
+{'ans': 'Q20934', 'gt_topic': 'Q356065', 'candidate_topic': ['Q356065'], 'question': 'where did kim nam-il originate from'}
+{'ans': 'Q6789092', 'gt_topic': 'Q296609', 'candidate_topic': ['Q296609', 'Q245068'], 'question': 'Which comedian did russell brand influence?'}
+{'ans': 'Q1137387', 'gt_topic': 'Q7721758', 'candidate_topic': ['Q12280', 'Q892168', 'Q7721758'], 'question': 'the causeway  is a bridge over what body of water'}
+{'ans': 'Q60', 'gt_topic': 'Q765013', 'candidate_topic': ['Q765013'], 'question': "which american city was frank lowe's place of death?"}
+{'ans': 'Q193592', 'gt_topic': 'Q2601388', 'candidate_topic': ['Q2601388'], 'question': 'What football position does clifton sandvliet play?'}
+{'ans': 'Q1904', 'gt_topic': 'Q5545374', 'candidate_topic': ['Q16', 'Q5545374'], 'question': 'Where in canada was george tustin born'}
+{'ans': 'Q1321814', 'gt_topic': 'Q853630', 'candidate_topic': ['Q853630', 'Q191104'], 'question': 'What is the name of a slasher film that stars sean bean?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q1332709', 'candidate_topic': ['Q1332709'], 'question': 'is marshall joseph caifano male or female'}
+{'ans': 'Q3591330', 'gt_topic': 'Q90', 'candidate_topic': ['Q90'], 'question': 'Name someone who was born in paris'}
+{'ans': 'Q83270', 'gt_topic': 'Q914310', 'candidate_topic': ['Q142539', 'Q914310'], 'question': 'what kind of music is on the album dropbox?'}
+{'ans': 'Q5933887', 'gt_topic': 'Q581733', 'candidate_topic': ['Q581733'], 'question': 'who wrote the film the life and death of peter sellers'}
+{'ans': 'Q233962', 'gt_topic': 'Q5353262', 'candidate_topic': ['Q233962', 'Q5353262'], 'question': 'Who recorded elaine paige live?'}
+{'ans': 'Q6581072', 'gt_topic': 'Q16240674', 'candidate_topic': ['Q16240674'], 'question': 'what is sadie madison sandler biological sex?'}
+{'ans': 'Q30', 'gt_topic': 'Q7175256', 'candidate_topic': ['Q7175256'], 'question': 'Where is peter kollman from?'}
+{'ans': 'Q5172610', 'gt_topic': 'Q483352', 'candidate_topic': ['Q483352'], 'question': 'Which artist plays the genre thrash metal?'}
+{'ans': 'Q838368', 'gt_topic': 'Q4769826', 'candidate_topic': ['Q35852', 'Q4769826'], 'question': 'what kind of film is ano hata o ute?'}
+{'ans': 'Q170238', 'gt_topic': 'Q3817047', 'candidate_topic': ['Q3817047'], 'question': 'what kind of program is kristin'}
+{'ans': 'Q6581097', 'gt_topic': 'Q5497460', 'candidate_topic': ['Q5497460'], 'question': 'What is the gender of frederick c. blesse?'}
+{'ans': 'Q96', 'gt_topic': 'Q5225051', 'candidate_topic': ['Q5225051'], 'question': 'what country is déficit from'}
+{'ans': 'Q386620', 'gt_topic': 'Q61441', 'candidate_topic': ['Q61441'], 'question': 'what movie was produced by erich pommer'}
+{'ans': 'Q314252', 'gt_topic': 'Q450382', 'candidate_topic': ['Q450382'], 'question': "who was maya deren's mentor?"}
+{'ans': 'Q525', 'gt_topic': 'Q530356', 'candidate_topic': ['Q530356'], 'question': 'what does the 5157 hindemith orbit around'}
+{'ans': 'Q1701299', 'gt_topic': 'Q586', 'candidate_topic': ['Q586'], 'question': 'which actor was born in bonn?'}
+{'ans': 'Q3234675', 'gt_topic': 'Q547137', 'candidate_topic': ['Q547137'], 'question': 'what is the name of a latin pop album'}
+{'ans': 'Q1825472', 'gt_topic': 'Q4678239', 'candidate_topic': ['Q1825472', 'Q4678239'], 'question': 'what type of bridge is ada covered bridge?'}
+{'ans': 'Q3290613', 'gt_topic': 'Q33999', 'candidate_topic': ['Q33999'], 'question': 'Name an actor'}
+{'ans': 'Q21', 'gt_topic': 'Q5296732', 'candidate_topic': ['Q46', 'Q5296732'], 'question': 'which country in europe does donny davies belong to?'}
+{'ans': 'Q1422746', 'gt_topic': 'Q1143738', 'candidate_topic': ['Q1143738'], 'question': 'what types of game is jade empire'}
+{'ans': 'Q226730', 'gt_topic': 'Q7362426', 'candidate_topic': ['Q907311', 'Q7362426'], 'question': 'what type of netflix film is romance of the western chamber?'}
+{'ans': 'Q37073', 'gt_topic': 'Q7738797', 'candidate_topic': ['Q7738797'], 'question': 'what album genre is the happy club'}
+{'ans': 'Q5597813', 'gt_topic': 'Q7749', 'candidate_topic': ['Q7749'], 'question': 'who is a rock and roll artist'}
+{'ans': 'Q4051594', 'gt_topic': 'Q1144312', 'candidate_topic': ['Q1144312'], 'question': 'which tv program is automobile'}
+{'ans': 'Q4880838', 'gt_topic': 'Q636037', 'candidate_topic': ['Q636037'], 'question': 'What was written by peter abrahams'}
+{'ans': 'Q21', 'gt_topic': 'Q6204276', 'candidate_topic': ['Q6204276'], 'question': 'What nationality is Jo Ho?'}
+{'ans': 'Q3460245', 'gt_topic': 'Q111098', 'candidate_topic': ['Q111098'], 'question': 'what is a city in rockland county'}
+{'ans': 'Q862490', 'gt_topic': 'Q495044', 'candidate_topic': ['Q7889', 'Q659563', 'Q495044'], 'question': 'What type of computer video game genre is Knight Online?'}
+{'ans': 'Q30', 'gt_topic': 'Q7488963', 'candidate_topic': ['Q7488963'], 'question': "what country does shannon stewart's nationality come from"}
+{'ans': 'Q681023', 'gt_topic': 'Q280658', 'candidate_topic': ['Q280658'], 'question': 'Name a football player that plays the forward position'}
+{'ans': 'Q5092', 'gt_topic': 'Q2000924', 'candidate_topic': ['Q2000924'], 'question': 'Where was louise glaum born'}
+{'ans': 'Q6581097', 'gt_topic': 'Q209527', 'candidate_topic': ['Q209527'], 'question': 'what is the gender of clarence demar'}
+{'ans': 'Q6581097', 'gt_topic': 'Q5493161', 'candidate_topic': ['Q5493161'], 'question': 'What gender is françois audouy'}
+{'ans': 'Q743531', 'gt_topic': 'Q2807', 'candidate_topic': ['Q2807'], 'question': 'Name a person born in madrid'}
+{'ans': 'Q5083', 'gt_topic': 'Q6308458', 'candidate_topic': ['Q6308458'], 'question': 'what city is julie phillips from'}
+{'ans': 'Q1545013', 'gt_topic': 'Q5480583', 'candidate_topic': ['Q5480583'], 'question': 'What film did joseph papp produce?'}
+{'ans': 'Q3733', 'gt_topic': 'Q928931', 'candidate_topic': ['Q928931'], 'question': 'where was sadio diallo born?'}
+{'ans': 'Q639669', 'gt_topic': 'Q7365855', 'candidate_topic': ['Q7365855'], 'question': "What is Ronnie Dunn's profession?"}
+{'ans': 'Q155626', 'gt_topic': 'Q297', 'candidate_topic': ['Q297'], 'question': 'Who did diego velázquez influence'}
+{'ans': 'Q182015', 'gt_topic': 'Q3486695', 'candidate_topic': ['Q907311', 'Q3486695'], 'question': 'what kind of movie does netflix think slim till dead is'}
+{'ans': 'Q25989', 'gt_topic': 'Q117128', 'candidate_topic': ['Q117128'], 'question': 'What time zones does piglio fall in?'}
+{'ans': 'Q585626', 'gt_topic': 'Q1677244', 'candidate_topic': ['Q18127', 'Q1677244'], 'question': 'what record label worked with jack wilson'}
+{'ans': 'Q173941', 'gt_topic': 'Q1139035', 'candidate_topic': ['Q1139035'], 'question': 'Which company published need for speed ii?'}
+{'ans': 'Q238029', 'gt_topic': 'Q58669', 'candidate_topic': ['Q2035701', 'Q41710', 'Q58669'], 'question': 'name a person of latino  ethnicity'}
+{'ans': 'Q25989', 'gt_topic': 'Q270299', 'candidate_topic': ['Q270299'], 'question': "What's the time zone within rocchetta di vara"}
+{'ans': 'Q130232', 'gt_topic': 'Q4660613', 'candidate_topic': ['Q25', 'Q4660613'], 'question': 'what kind of film is a welsh singer'}
+{'ans': 'Q3182006', 'gt_topic': 'Q202866', 'candidate_topic': ['Q17175676', 'Q202866'], 'question': 'which program is in the genre animated cartoon'}
+{'ans': 'Q528145', 'gt_topic': 'Q471841', 'candidate_topic': ['Q471841'], 'question': 'what position does brian urlacher play'}
+{'ans': 'Q6150487', 'gt_topic': 'Q28389', 'candidate_topic': ['Q213', 'Q28389'], 'question': 'Name a Czech screenwriter'}
+{'ans': 'Q4729360', 'gt_topic': 'Q176483', 'candidate_topic': ['Q176483'], 'question': 'what building is an example of gothic architecture?'}
+{'ans': 'Q2627586', 'gt_topic': 'Q2363504', 'candidate_topic': ['Q2363504'], 'question': 'startide rising was written previous to what series?'}
+{'ans': 'Q1054844', 'gt_topic': 'Q1527988', 'candidate_topic': ['Q7889', 'Q1527988'], 'question': 'who developed super nova, the video game'}
+{'ans': 'Q23558', 'gt_topic': 'Q7991739', 'candidate_topic': ['Q7991739'], 'question': 'what tv series is whatever it takes an episode of'}
+{'ans': 'Q838368', 'gt_topic': 'Q4863478', 'candidate_topic': ['Q4863478'], 'question': 'what kind of film was barricade?'}
+{'ans': 'Q1054574', 'gt_topic': 'Q6009077', 'candidate_topic': ['Q6009077'], 'question': 'What type of film is the title in between days'}
+{'ans': 'Q3132486', 'gt_topic': 'Q36180', 'candidate_topic': ['Q221', 'Q36180'], 'question': 'Who is a writer that attributed to modern Macedonian literature'}
+{'ans': 'Q49085', 'gt_topic': 'Q7308308', 'candidate_topic': ['Q7308308'], 'question': "what is reggie showers's ethnicity?"}
+{'ans': 'Q130232', 'gt_topic': 'Q893262', 'candidate_topic': ['Q893262'], 'question': 'what genre is the immortal bachelor'}
+{'ans': 'Q739138', 'gt_topic': 'Q950517', 'candidate_topic': ['Q950517'], 'question': 'what genre of music does sammie produce?'}
+{'ans': 'Q271683', 'gt_topic': 'Q461307', 'candidate_topic': ['Q461307'], 'question': 'who was born in muzaffarabad'}
+{'ans': 'Q2086913', 'gt_topic': 'Q1385032', 'candidate_topic': ['Q1385032'], 'question': 'What time zone is cottonwood located in?'}
+{'ans': 'Q1703861', 'gt_topic': 'Q1335', 'candidate_topic': ['Q1335'], 'question': 'Who was born in montevideo?'}
+{'ans': 'Q361', 'gt_topic': 'Q510846', 'candidate_topic': ['Q510846'], 'question': 'Which war did angelo iachino participate in'}
+{'ans': 'Q188874', 'gt_topic': 'Q5297452', 'candidate_topic': ['Q5297452'], 'question': 'What was the cause of death of dora de pedery-hunt?'}
+{'ans': 'Q49218', 'gt_topic': 'Q4731694', 'candidate_topic': ['Q1384', 'Q4731694'], 'question': 'which new york town was allen hulsey born in?'}
+{'ans': 'Q11366', 'gt_topic': 'Q5463338', 'candidate_topic': ['Q5463338'], 'question': 'what kind of music is on flying?'}
+{'ans': 'Q1204', 'gt_topic': 'Q6259605', 'candidate_topic': ['Q186545', 'Q886420', 'Q6259605'], 'question': 'Where in the Midwest was john sullivan born?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q3764420', 'candidate_topic': ['Q3764420'], 'question': 'What gender is sultan salahuddin owaisi'}
+{'ans': 'Q525', 'gt_topic': 'Q1480201', 'candidate_topic': ['Q1480201'], 'question': 'What does (11815) 1981 eg31 orbit'}
+{'ans': 'Q93191', 'gt_topic': 'Q380433', 'candidate_topic': ['Q380433'], 'question': "what is al sharpton's religion?"}
+{'ans': 'Q159846', 'gt_topic': 'Q608370', 'candidate_topic': ['Q608370'], 'question': 'what is the production company that produced i married a witch?'}
+{'ans': 'Q150', 'gt_topic': 'Q3321427', 'candidate_topic': ['Q3321427'], 'question': 'What language was monsieur n. filmed in?'}
+{'ans': 'Q145845', 'gt_topic': 'Q372709', 'candidate_topic': ['Q372709'], 'question': "what was alexander büttner's place of birth"}
+{'ans': 'Q16', 'gt_topic': 'Q3194098', 'candidate_topic': ['Q3194098'], 'question': 'which country is kathy greenwood from'}
+{'ans': 'Q23800', 'gt_topic': 'Q664275', 'candidate_topic': ['Q664275'], 'question': 'where did victor pasmore die'}
+{'ans': 'Q573834', 'gt_topic': 'Q254106', 'candidate_topic': ['Q7835', 'Q254106'], 'question': 'Who was involved in the crimean war'}
+{'ans': 'Q1142885', 'gt_topic': 'Q1564579', 'candidate_topic': ['Q5369', 'Q1564579'], 'question': 'which baseball position is played by stump wiedman'}
+{'ans': 'Q6581097', 'gt_topic': 'Q6833582', 'candidate_topic': ['Q6833582'], 'question': 'Is michael pook male or female'}
+{'ans': 'Q3184039', 'gt_topic': 'Q280658', 'candidate_topic': ['Q280658'], 'question': 'What football player played forward?'}
+{'ans': 'Q1860', 'gt_topic': 'Q742551', 'candidate_topic': ['Q742551'], 'question': 'Which language is the tv program the honeymooners made in'}
+{'ans': 'Q1644', 'gt_topic': 'Q563813', 'candidate_topic': ['Q563813'], 'question': 'what is the mouth of the stepenitz river called'}
+{'ans': 'Q187760', 'gt_topic': 'Q4236323', 'candidate_topic': ['Q4236323'], 'question': 'what type of music does josie cotton make'}
+{'ans': 'Q7259377', 'gt_topic': 'Q160534', 'candidate_topic': ['Q160534'], 'question': 'What is the name of a book written by jack kerouac'}
+{'ans': 'Q41262', 'gt_topic': 'Q1291497', 'candidate_topic': ['Q1291497', 'Q41262', 'Q84'], 'question': 'did edward arthur thompson die in nottingham or london'}
+{'ans': 'Q7407201', 'gt_topic': 'Q10871364', 'candidate_topic': ['Q5369', 'Q10871364'], 'question': 'Name a baseball player.'}
+{'ans': 'Q213832', 'gt_topic': 'Q3270582', 'candidate_topic': ['Q3270582'], 'question': 'Where was susan price born'}
+{'ans': 'Q150', 'gt_topic': 'Q1588181', 'candidate_topic': ['Q1588181'], 'question': 'What type of language is the film "Jo" in?'}
+{'ans': 'Q3863', 'gt_topic': 'Q1315100', 'candidate_topic': ['Q1315100'], 'question': 'what is 8087 kazutaka'}
+{'ans': 'Q183387', 'gt_topic': 'Q5824704', 'candidate_topic': ['Q18127', 'Q5824704'], 'question': 'marvin isley is a part of what record label?'}
+{'ans': 'Q208850', 'gt_topic': 'Q2032816', 'candidate_topic': ['Q2032816', 'Q662'], 'question': "what's the main gameplay mode of neon genesis evangelion: girlfriend of steel"}
+{'ans': 'Q6522968', 'gt_topic': 'Q15401689', 'candidate_topic': ['Q15401689'], 'question': 'What artists are on the integrity media label'}
+{'ans': 'Q3274623', 'gt_topic': 'Q7927430', 'candidate_topic': ['Q32112', 'Q7927430'], 'question': 'which company published victorious boxers: revolution'}
+{'ans': 'Q7729548', 'gt_topic': 'Q19842222', 'candidate_topic': ['Q19842222', 'Q8261'], 'question': 'What is the name of a crime fiction novel?'}
+{'ans': 'Q336286', 'gt_topic': 'Q2617661', 'candidate_topic': ['Q2617661'], 'question': 'What position does cle kooiman play'}
+{'ans': 'Q13377795', 'gt_topic': 'Q156309', 'candidate_topic': ['Q156309'], 'question': 'what type of film is the the fugitive movie'}
+{'ans': 'Q336286', 'gt_topic': 'Q5980998', 'candidate_topic': ['Q5980998'], 'question': 'what position does ian brightwell play in football?'}
+{'ans': 'Q1035697', 'gt_topic': 'Q7376865', 'candidate_topic': ['Q7376865'], 'question': 'which band recorded rude bootleg'}
+{'ans': 'Q220', 'gt_topic': 'Q3964471', 'candidate_topic': ['Q3964471'], 'question': "Where was solveyg d'assunta born"}
+{'ans': 'Q918990', 'gt_topic': 'Q4167569', 'candidate_topic': ['Q1204', 'Q4167569'], 'question': 'Who was involved in the illinois campaign event'}
+{'ans': 'Q1762823', 'gt_topic': 'Q1681079', 'candidate_topic': ['Q1681079'], 'question': 'Where was james samuel coleman born?'}
+{'ans': 'Q30', 'gt_topic': 'Q5021646', 'candidate_topic': ['Q5021646'], 'question': 'in what country was call of the canyon filmed'}
+{'ans': 'Q6581097', 'gt_topic': 'Q1634101', 'candidate_topic': ['Q1634101'], 'question': 'what is the gender of wellington paulista'}
+{'ans': 'Q55227', 'gt_topic': 'Q216611', 'candidate_topic': ['Q216611'], 'question': 'Name a game published by lucasarts'}
+{'ans': 'Q770508', 'gt_topic': 'Q189454', 'candidate_topic': ['Q189454'], 'question': 'who was an influence on helena blavatsky'}
+{'ans': 'Q242', 'gt_topic': 'Q14326158', 'candidate_topic': ['Q14326158'], 'question': 'Which country is ashley torres from'}
+{'ans': 'Q1754', 'gt_topic': 'Q241854', 'candidate_topic': ['Q241854'], 'question': 'which city was helena mattsson born'}
+{'ans': 'Q588653', 'gt_topic': 'Q3576606', 'candidate_topic': ['Q160598', 'Q3576606'], 'question': 'What author wrote by heresies distressed?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q4695854', 'candidate_topic': ['Q4695854'], 'question': "whats ahmed hussain macan markar's gender"}
+{'ans': 'Q193592', 'gt_topic': 'Q2287552', 'candidate_topic': ['Q2287552'], 'question': 'what football position does simon hofer play at?'}
+{'ans': 'Q9592', 'gt_topic': 'Q232180', 'candidate_topic': ['Q232180'], 'question': 'what was the religion of louise Élisabeth dorléans'}
+{'ans': 'Q34739', 'gt_topic': 'Q5311564', 'candidate_topic': ['Q5311564'], 'question': 'where was ducky holmes born?'}
+{'ans': 'Q30', 'gt_topic': 'Q3746649', 'candidate_topic': ['Q3746649'], 'question': 'Which country did the film flora come from'}
+{'ans': 'Q17042', 'gt_topic': 'Q1262688', 'candidate_topic': ['Q1262688'], 'question': 'Where was Squire Fridell born?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q594363', 'candidate_topic': ['Q594363'], 'question': 'What is the gender of paul boutilier?'}
+{'ans': 'Q8067523', 'gt_topic': 'Q208850', 'candidate_topic': ['Q208850'], 'question': "What's a game that features single-player mode?"}
+{'ans': 'Q9585', 'gt_topic': 'Q10948640', 'candidate_topic': ['Q10948640'], 'question': 'what religion does hina khan practice'}
+{'ans': 'Q5125758', 'gt_topic': 'Q132438', 'candidate_topic': ['Q132438'], 'question': 'Name an album released in 2001 under the genre of black metal'}
+{'ans': 'Q41621', 'gt_topic': 'Q6650386', 'candidate_topic': ['Q6650386'], 'question': 'where was yonatan rozen born'}
+{'ans': 'Q342043', 'gt_topic': 'Q1386011', 'candidate_topic': ['Q1386011'], 'question': 'where was chesty puller born'}
+{'ans': 'Q131272', 'gt_topic': 'Q2452326', 'candidate_topic': ['Q2831', 'Q2452326'], 'question': "What is the original soul of michael jackson's genre"}
+{'ans': 'Q5475', 'gt_topic': 'Q3723058', 'candidate_topic': ['Q3723058'], 'question': 'elio marcuzzo was born in this city.'}
+{'ans': 'Q24925', 'gt_topic': 'Q7353330', 'candidate_topic': ['Q462', 'Q483394', 'Q8822', 'Q7353330'], 'question': 'Which genre is the film robot chicken: star wars episode ii'}
+{'ans': 'Q622747', 'gt_topic': 'Q14950768', 'candidate_topic': ['Q14950768'], 'question': 'what position does jeff smoker play in football'}
+{'ans': 'Q5214310', 'gt_topic': 'Q1342', 'candidate_topic': ['Q1342'], 'question': 'which former ambassador was born in pittsburgh'}
+{'ans': 'Q5146', 'gt_topic': 'Q3281276', 'candidate_topic': ['Q3281276'], 'question': 'What language is the guns in?'}
+{'ans': 'Q6895044', 'gt_topic': 'Q8564088', 'candidate_topic': ['Q208850', 'Q7889', 'Q752301', 'Q8564088'], 'question': 'Rather than a singleplayer video game, flushed away is what?'}
+{'ans': 'Q61', 'gt_topic': 'Q6287303', 'candidate_topic': ['Q30', 'Q6287303'], 'question': 'Where in the US did joseph t. dickman die'}
+{'ans': 'Q489103', 'gt_topic': 'Q180268', 'candidate_topic': ['Q180268'], 'question': 'who is a gospel music artist'}
+{'ans': 'Q840065', 'gt_topic': 'Q7812186', 'candidate_topic': ['Q7812186'], 'question': 'what specific genre is today'}
+{'ans': 'Q1368195', 'gt_topic': 'Q5292941', 'candidate_topic': ['Q5292941'], 'question': 'what position is don kolloway stationed at'}
+{'ans': 'Q1195497', 'gt_topic': 'Q2578974', 'candidate_topic': ['Q2578974'], 'question': "What's a movie that william goetz produced"}
+{'ans': 'Q6581097', 'gt_topic': 'Q1101739', 'candidate_topic': ['Q1101739'], 'question': "is olivier n'siabamfumu male or female"}
+{'ans': 'Q19842222', 'gt_topic': 'Q3354838', 'candidate_topic': ['Q127583', 'Q3354838'], 'question': 'what type of film is sapphire'}
+{'ans': 'Q130232', 'gt_topic': 'Q4321732', 'candidate_topic': ['Q4321732'], 'question': 'what film genre is nothing lasts forever'}
+{'ans': 'Q6788468', 'gt_topic': 'Q1190951', 'candidate_topic': ['Q1190951'], 'question': 'who is the parent of matthew centrowitz, jr.'}
+{'ans': 'Q6581097', 'gt_topic': 'Q1373293', 'candidate_topic': ['Q48277', 'Q1373293'], 'question': "what is robert heinemann's gender?"}
+{'ans': 'Q193023', 'gt_topic': 'Q2136070', 'candidate_topic': ['Q18127', 'Q2136070'], 'question': 'What record label is red simpson associated with'}
+{'ans': 'Q138518', 'gt_topic': 'Q102495', 'candidate_topic': ['Q102495'], 'question': 'where was erich kahler announced dead'}
+{'ans': 'Q193592', 'gt_topic': 'Q968217', 'candidate_topic': ['Q968217'], 'question': 'What position does alan osório da costa silva play'}
+{'ans': 'Q515942', 'gt_topic': 'Q183412', 'candidate_topic': ['Q183412'], 'question': 'Who is an artist known to be signed to emi?'}
+{'ans': 'Q130232', 'gt_topic': 'Q672968', 'candidate_topic': ['Q672968'], 'question': 'what kinda of movie is the sea wolves'}
+{'ans': 'Q345494', 'gt_topic': 'Q2067143', 'candidate_topic': ['Q2067143'], 'question': 'what music is in tony takitani'}
+{'ans': 'Q5469320', 'gt_topic': 'Q131272', 'candidate_topic': ['Q131272'], 'question': 'what is a soul music album'}
+{'ans': 'Q41555', 'gt_topic': 'Q335012', 'candidate_topic': ['Q335012'], 'question': 'who composed the tales of hoffmann'}
+{'ans': 'Q2179', 'gt_topic': 'Q109891', 'candidate_topic': ['Q109891'], 'question': 'what is 138 tolosa a member of?'}
+{'ans': 'Q4710', 'gt_topic': 'Q8253', 'candidate_topic': ['Q8253'], 'question': 'what books fall under the fiction genre'}
+{'ans': 'Q484344', 'gt_topic': 'Q291339', 'candidate_topic': ['Q291339'], 'question': 'what is the genre of the artist battlelore'}
+{'ans': 'Q145', 'gt_topic': 'Q7406571', 'candidate_topic': ['Q7406571'], 'question': 'which country was salvage with a smile filmed'}
+{'ans': 'Q189280', 'gt_topic': 'Q767560', 'candidate_topic': ['Q767560'], 'question': 'what ideology does the italian republican party believe in'}
+{'ans': 'Q905910', 'gt_topic': 'Q7926597', 'candidate_topic': ['Q36687', 'Q7926597', 'Q34932'], 'question': 'which body of water does victoria bridge, brisbane cross over?'}
+{'ans': 'Q88129', 'gt_topic': 'Q516485', 'candidate_topic': ['Q441', 'Q516485'], 'question': "Who's a botanist born in friedberg"}
+{'ans': 'Q16538', 'gt_topic': 'Q726099', 'candidate_topic': ['Q1317', 'Q726099'], 'question': 'Which popular TV show had an episode named osama bin laden has farty pants'}
+{'ans': 'Q3161013', 'gt_topic': 'Q18419', 'candidate_topic': ['Q18419'], 'question': 'what is the name of a director born in brooklyn?'}
+{'ans': 'Q21578', 'gt_topic': 'Q155005', 'candidate_topic': ['Q155005'], 'question': 'what was 508 princetonia named after'}
+{'ans': 'Q1860', 'gt_topic': 'Q7045848', 'candidate_topic': ['Q1187952', 'Q7045848'], 'question': 'what language was noblesse oblige originally written in'}
+{'ans': 'Q30', 'gt_topic': 'Q4667661', 'candidate_topic': ['Q206191', 'Q4667661'], 'question': 'what is the nationality of  abigail adams smith'}
+{'ans': 'Q431102', 'gt_topic': 'Q7272719', 'candidate_topic': ['Q7272719'], 'question': 'which genre of television is quizmania broadcasted as?'}
+{'ans': 'Q6232897', 'gt_topic': 'Q5179185', 'candidate_topic': ['Q5179185'], 'question': 'who wrote cover up?'}
+{'ans': 'Q1466687', 'gt_topic': 'Q6989174', 'candidate_topic': ['Q6989174'], 'question': 'Where did neil primrose pass away?'}
+{'ans': 'Q64', 'gt_topic': 'Q555904', 'candidate_topic': ['Q555904'], 'question': 'where did jan jakob maria de groot spend their final days'}
+{'ans': 'Q174', 'gt_topic': 'Q2546210', 'candidate_topic': ['Q2546210'], 'question': 'What is the birth place of gilberto kassab?'}
+{'ans': 'Q902', 'gt_topic': 'Q469875', 'candidate_topic': ['Q469875'], 'question': "What is Muhammad Ali Bogra's nationality?"}
+{'ans': 'Q1744304', 'gt_topic': 'Q5187552', 'candidate_topic': ['Q5187552'], 'question': 'what musical genre does cromagnon create'}
+{'ans': 'Q506446', 'gt_topic': 'Q272092', 'candidate_topic': ['Q272092'], 'question': 'where did ruby keeler take his last breath'}
+{'ans': 'Q504', 'gt_topic': 'Q1197590', 'candidate_topic': ['Q1197590'], 'question': 'who is the author of lassommoir?'}
+{'ans': 'Q1860', 'gt_topic': 'Q938629', 'candidate_topic': ['Q938629'], 'question': 'what language was originally used for forward the foundation'}
+{'ans': 'Q459290', 'gt_topic': 'Q1103047', 'candidate_topic': ['Q1103047'], 'question': 'what is the genre of the film club dread'}
+{'ans': 'Q21', 'gt_topic': 'Q5980471', 'candidate_topic': ['Q5980471'], 'question': 'which country is iain hesford from'}
+{'ans': 'Q202585', 'gt_topic': 'Q7754977', 'candidate_topic': ['Q7754977'], 'question': 'Which label are the olympic runners signed to'}
+{'ans': 'Q7097177', 'gt_topic': 'Q199909', 'candidate_topic': ['Q199909'], 'question': 'What military operation occurred in karbala'}
+{'ans': 'Q193592', 'gt_topic': 'Q6752666', 'candidate_topic': ['Q2736', 'Q6752666'], 'question': 'what soccer position does manuel kanté play'}
+{'ans': 'Q208881', 'gt_topic': 'Q3146417', 'candidate_topic': ['Q3146417'], 'question': "What lyricist composed i'm a man"}
+{'ans': 'Q19842222', 'gt_topic': 'Q14899735', 'candidate_topic': ['Q14899735'], 'question': 'What kind of film is leave me alone'}
+{'ans': 'Q203380', 'gt_topic': 'Q130766', 'candidate_topic': ['Q130766'], 'question': 'Where did ian axford pass away'}
+{'ans': 'Q286080', 'gt_topic': 'Q1615509', 'candidate_topic': ['Q1615509'], 'question': 'chuck acoustic ep is an album labeled as this type of music.'}
+{'ans': 'Q9503', 'gt_topic': 'Q2372773', 'candidate_topic': ['Q1850866', 'Q2372773'], 'question': 'What kind of book is devil in a blue dress'}
+{'ans': 'Q641740', 'gt_topic': 'Q1066435', 'candidate_topic': ['Q1066435'], 'question': 'Who wrote a dangerous path'}
+{'ans': 'Q221345', 'gt_topic': 'Q1983457', 'candidate_topic': ['Q1983457'], 'question': 'What is a film that was released by polygram filmed entertainment?'}
+{'ans': 'Q4947822', 'gt_topic': 'Q598070', 'candidate_topic': ['Q598070'], 'question': 'What is the name of a team that plays in an alumni stadium?'}
+{'ans': 'Q5949197', 'gt_topic': 'Q1330417', 'candidate_topic': ['Q1330417', 'Q213433'], 'question': 'which artist is under vertigo records?'}
+{'ans': 'Q58688', 'gt_topic': 'Q18575', 'candidate_topic': ['Q18575'], 'question': 'What country is tucson in'}
+{'ans': 'Q182015', 'gt_topic': 'Q3482275', 'candidate_topic': ['Q483394', 'Q3482275'], 'question': 'which genre of film is shinobi 3: hidden techniques'}
+{'ans': 'Q6581097', 'gt_topic': 'Q723562', 'candidate_topic': ['Q14118', 'Q723562'], 'question': 'Was peter ii, count of savoy a male or female'}
+{'ans': 'Q913311', 'gt_topic': 'Q145', 'candidate_topic': ['Q907311', 'Q145'], 'question': "what's a movie in the united kingdom group on netflix"}
+{'ans': 'Q7414', 'gt_topic': 'Q2065792', 'candidate_topic': ['Q93301', 'Q509337', 'Q2065792'], 'question': 'What production company created the great locomotive chase?'}
+{'ans': 'Q183504', 'gt_topic': 'Q4540205', 'candidate_topic': ['Q4540205'], 'question': 'what is the genre of “!” the album'}
+{'ans': 'Q5456172', 'gt_topic': 'Q24862', 'candidate_topic': ['Q24862'], 'question': 'Which film is a short film?'}
+{'ans': 'Q11399', 'gt_topic': 'Q6412595', 'candidate_topic': ['Q6412595'], 'question': 'is kingdom of heaven rock music or classical'}
+{'ans': 'Q1223082', 'gt_topic': 'Q90', 'candidate_topic': ['Q90'], 'question': "Who's a senator born in paris"}
+{'ans': 'Q554278', 'gt_topic': 'Q204933', 'candidate_topic': ['Q142', 'Q204933'], 'question': 'Name a French revolutionary who died of decapitation'}
+{'ans': 'Q424', 'gt_topic': 'Q856788', 'candidate_topic': ['Q856788'], 'question': 'what country is prey veng province located in'}
+{'ans': 'Q1253264', 'gt_topic': 'Q1339', 'candidate_topic': ['Q1339'], 'question': 'who was influenced by johann sebastian bach?'}
+{'ans': 'Q1860', 'gt_topic': 'Q61696', 'candidate_topic': ['Q61696'], 'question': 'What is the language of the film midnight cowboy?'}
+{'ans': 'Q130232', 'gt_topic': 'Q16725176', 'candidate_topic': ['Q16725176'], 'question': 'what type of film is whats the use of crying?'}
+{'ans': 'Q208964', 'gt_topic': 'Q332530', 'candidate_topic': ['Q332530'], 'question': 'What is a film that leo mccarey has directed?'}
+{'ans': 'Q2643509', 'gt_topic': 'Q3549949', 'candidate_topic': ['Q3549949'], 'question': 'What is the ethnicity of anoop desai?'}
+{'ans': 'Q193592', 'gt_topic': 'Q1407552', 'candidate_topic': ['Q1407552'], 'question': 'What position does antonino bernardini play?'}
+{'ans': 'Q5215843', 'gt_topic': 'Q843402', 'candidate_topic': ['Q18127', 'Q843402'], 'question': 'Who is an artist on warner bros. records label?'}
+{'ans': 'Q21', 'gt_topic': 'Q7407108', 'candidate_topic': ['Q7407108'], 'question': 'what country is sam ashton from'}
+{'ans': 'Q2179', 'gt_topic': 'Q140164', 'candidate_topic': ['Q3863', 'Q140164'], 'question': 'what asteroid group is 1502 arenda from'}
+{'ans': 'Q495784', 'gt_topic': 'Q336286', 'candidate_topic': ['Q336286', 'Q2736'], 'question': 'Who is a footballer that plays as a defender?'}
+{'ans': 'Q37073', 'gt_topic': 'Q4894345', 'candidate_topic': ['Q4894345'], 'question': 'what genre does bernie calvert perform'}
+{'ans': 'Q37073', 'gt_topic': 'Q49871', 'candidate_topic': ['Q49871'], 'question': 'Which genre of music is created by the artist wet wet wet'}
+{'ans': 'Q136592', 'gt_topic': 'Q36279', 'candidate_topic': ['Q907311', 'Q36279'], 'question': 'This film is one example of the titles that can be found under the netflix genre biography.'}
+{'ans': 'Q2542479', 'gt_topic': 'Q182015', 'candidate_topic': ['Q182015'], 'question': 'What is the name of a film in the thriller (genre) genre'}
+{'ans': 'Q16202929', 'gt_topic': 'Q1082606', 'candidate_topic': ['Q1082606'], 'question': 'what actor was born in http://en.wikipedia.org/wiki/Princess_Juliana_International_Airport'}
+{'ans': 'Q11074253', 'gt_topic': 'Q708766', 'candidate_topic': ['Q708766'], 'question': 'What is the name of an album by sandy lam'}
+{'ans': 'Q5191271', 'gt_topic': 'Q180268', 'candidate_topic': ['Q180268'], 'question': 'which american gospel music singer is also an author?'}
+{'ans': 'Q319578', 'gt_topic': 'Q1074991', 'candidate_topic': ['Q1074991', 'Q376749'], 'question': 'who was born in chittagong district'}
+{'ans': 'Q72792', 'gt_topic': 'Q375321', 'candidate_topic': ['Q375321'], 'question': 'who produced one million b.c.?'}
+{'ans': 'Q110462', 'gt_topic': 'Q128646', 'candidate_topic': ['Q90', 'Q128646'], 'question': 'Who was involved in the music of the film 2 days in paris?'}
+{'ans': 'Q193592', 'gt_topic': 'Q6393009', 'candidate_topic': ['Q6393009'], 'question': 'what football position does keoagetse radipotsane have'}
+{'ans': 'Q164444', 'gt_topic': 'Q216262', 'candidate_topic': ['Q216262', 'Q188451'], 'question': 'What music genre is the artist 23 skidoo?'}
+{'ans': 'Q30', 'gt_topic': 'Q6183627', 'candidate_topic': ['Q6183627'], 'question': 'where is jerry gaskill from'}
+{'ans': 'Q585731', 'gt_topic': 'Q24953', 'candidate_topic': ['Q24953'], 'question': 'Who provided the music for the film life of brian?'}
+{'ans': 'Q6197764', 'gt_topic': 'Q11404', 'candidate_topic': ['Q11404'], 'question': 'Who is a famous drum player'}
+{'ans': 'Q1192348', 'gt_topic': 'Q1789423', 'candidate_topic': ['Q1789423'], 'question': 'Who was a namesake of tane mahuta'}
+{'ans': 'Q35032', 'gt_topic': 'Q7938363', 'candidate_topic': ['Q7938363'], 'question': 'Which religion did vladimir hertza practice'}
+{'ans': 'Q11894522', 'gt_topic': 'Q339228', 'candidate_topic': ['Q192851', 'Q339228'], 'question': 'acclaim entertainment published what coin-operated arcade game in 1995?'}
+{'ans': 'Q459290', 'gt_topic': 'Q6746496', 'candidate_topic': ['Q6746496'], 'question': 'what type of film is the man with the screaming brain?'}
+{'ans': 'Q96', 'gt_topic': 'Q730604', 'candidate_topic': ['Q730604'], 'question': 'What is the country of origin for the program alborada?'}
+{'ans': 'Q145', 'gt_topic': 'Q337090', 'candidate_topic': ['Q45792', 'Q337090'], 'question': 'which country produced king arthur'}
+{'ans': 'Q2086913', 'gt_topic': 'Q4133651', 'candidate_topic': ['Q19610511', 'Q4133651'], 'question': 'what time zones is used in garden city township'}
+{'ans': 'Q4690646', 'gt_topic': 'Q9503', 'candidate_topic': ['Q9503'], 'question': 'Name a film in the suspense genre.'}
+{'ans': 'Q49233', 'gt_topic': 'Q6195525', 'candidate_topic': ['Q6195525'], 'question': 'where did jim heise die'}
+{'ans': 'Q863226', 'gt_topic': 'Q5291879', 'candidate_topic': ['Q5291879'], 'question': "Which artist created the album don't say no"}
+{'ans': 'Q1993214', 'gt_topic': 'Q1107', 'candidate_topic': ['Q1107'], 'question': 'what is a film in the anime genre'}
+{'ans': 'Q102932', 'gt_topic': 'Q16950318', 'candidate_topic': ['Q16950318'], 'question': 'What genre of music is maldoror?'}
+{'ans': 'Q38', 'gt_topic': 'Q2870105', 'candidate_topic': ['Q2870105'], 'question': 'Where was attila made?'}
+{'ans': 'Q11399', 'gt_topic': 'Q4900279', 'candidate_topic': ['Q4900279'], 'question': 'what type of music is on the album bez struje'}
+{'ans': 'Q12439', 'gt_topic': 'Q884123', 'candidate_topic': ['Q884123', 'Q186545'], 'question': 'where in the midwest is john j. bagley place of death?'}
+{'ans': 'Q7572528', 'gt_topic': 'Q123400', 'candidate_topic': ['Q123400'], 'question': 'What was a film that christian frei wrote'}
+{'ans': 'Q7173126', 'gt_topic': 'Q82955', 'candidate_topic': ['Q82955'], 'question': 'who is a politician?'}
+{'ans': 'Q8341', 'gt_topic': 'Q17092846', 'candidate_topic': ['Q8341', 'Q17092846'], 'question': 'what kind of music can be found on jazz from the hills'}
+{'ans': 'Q49451', 'gt_topic': 'Q1067963', 'candidate_topic': ['Q1067963'], 'question': 'What genre of music is off the album visor om slutet'}
+{'ans': 'Q668', 'gt_topic': 'Q5619703', 'candidate_topic': ['Q5619703'], 'question': 'What country is guppedu manasu from?'}
+{'ans': 'Q1860', 'gt_topic': 'Q2705680', 'candidate_topic': ['Q2705680'], 'question': 'what language was otis composed in'}
+{'ans': 'Q8341', 'gt_topic': 'Q371119', 'candidate_topic': ['Q371119'], 'question': 'what genre of music is bruce fowler known for'}
+{'ans': 'Q25989', 'gt_topic': 'Q51112', 'candidate_topic': ['Q168691', 'Q51112'], 'question': 'what time zone is galleria vittorio emanuele ii located in'}
+{'ans': 'Q6581097', 'gt_topic': 'Q7305832', 'candidate_topic': ['Q1026829', 'Q7305832'], 'question': "What is redfern froggatt's gender"}
+{'ans': 'Q30', 'gt_topic': 'Q5139127', 'candidate_topic': ['Q16', 'Q30', 'Q41576', 'Q5139127'], 'question': 'is cocaine cowboys 2 from the united states or canada'}
+{'ans': 'Q9089', 'gt_topic': 'Q7282973', 'candidate_topic': ['Q7282973'], 'question': 'which religion is ragho nand'}
+{'ans': 'Q30', 'gt_topic': 'Q1872411', 'candidate_topic': ['Q1872411'], 'question': 'what country is love me forever from'}
+{'ans': 'Q2142854', 'gt_topic': 'Q6923805', 'candidate_topic': ['Q6923805'], 'question': 'who founded mount st. mary academy?'}
+{'ans': 'Q407275', 'gt_topic': 'Q157443', 'candidate_topic': ['Q157443'], 'question': 'what tv program is in the genre comedy'}
+{'ans': 'Q182015', 'gt_topic': 'Q3020572', 'candidate_topic': ['Q3020572'], 'question': 'What kind of film is deadgirl?'}
+{'ans': 'Q1511971', 'gt_topic': 'Q847142', 'candidate_topic': ['Q98', 'Q847142', 'Q12143'], 'question': 'name a river in pacific time zone'}
+{'ans': 'Q145', 'gt_topic': 'Q6759440', 'candidate_topic': ['Q6759440'], 'question': 'What is the nationality of margaret gelling?'}
+{'ans': 'Q3275740', 'gt_topic': 'Q11425', 'candidate_topic': ['Q11425'], 'question': 'Name a tv program that falls under the animation category'}
+{'ans': 'Q3863', 'gt_topic': 'Q1042982', 'candidate_topic': ['Q797', 'Q1042982'], 'question': 'what type of object is 19148 alaska?'}
+{'ans': 'Q361', 'gt_topic': 'Q8015114', 'candidate_topic': ['Q8015114'], 'question': 'what conflict did william mariner participate in'}
+{'ans': 'Q7488211', 'gt_topic': 'Q193592', 'candidate_topic': ['Q1261', 'Q642408', 'Q193592'], 'question': 'who plays as a midfielder at the Colorado Rapids'}
+{'ans': 'Q10922', 'gt_topic': 'Q754051', 'candidate_topic': ['Q754051'], 'question': 'what kind of music does pennywise (band) perform'}
+{'ans': 'Q3309328', 'gt_topic': 'Q2981209', 'candidate_topic': ['Q1965', 'Q2981209'], 'question': 'Name someone born in cocagne, new brunswick.'}
+{'ans': 'Q1054574', 'gt_topic': 'Q3495081', 'candidate_topic': ['Q3495081'], 'question': 'what is the genre of the movie simba on netlfix'}
+{'ans': 'Q6581097', 'gt_topic': 'Q329999', 'candidate_topic': ['Q329999'], 'question': "what is eric frank russell's gender"}
+{'ans': 'Q380202', 'gt_topic': 'Q5645352', 'candidate_topic': ['Q5645352'], 'question': 'who authored the immigrants'}
+{'ans': 'Q1400', 'gt_topic': 'Q1016139', 'candidate_topic': ['Q822', 'Q1016139'], 'question': 'what state is lebanon the administrative parent to'}
+{'ans': 'Q2284765', 'gt_topic': 'Q675324', 'candidate_topic': ['Q675324', 'Q208143'], 'question': 'Who was involved with the battle of wigan lane?'}
+{'ans': 'Q769377', 'gt_topic': 'Q231480', 'candidate_topic': ['Q231480'], 'question': 'what operation was zvonimir Červenko a part of'}
+{'ans': 'Q1860', 'gt_topic': 'Q5451450', 'candidate_topic': ['Q5451450'], 'question': 'What is the original language of the book fire star'}
+{'ans': 'Q191489', 'gt_topic': 'Q3818245', 'candidate_topic': ['Q405', 'Q104641', 'Q3818245'], 'question': 'What genre is the film "Another Harvest Moon"?'}
+{'ans': 'Q218022', 'gt_topic': 'Q1405305', 'candidate_topic': ['Q1405305'], 'question': 'who was the director of not on the lips'}
+{'ans': 'Q1171405', 'gt_topic': 'Q179200', 'candidate_topic': ['Q179200', 'Q11396960'], 'question': 'what movie is by the metro-goldwyn-mayer production company?'}
+{'ans': 'Q203059', 'gt_topic': 'Q968828', 'candidate_topic': ['Q968828'], 'question': 'Which label did mrushent sign to?'}
+{'ans': 'Q16222470', 'gt_topic': 'Q6936779', 'candidate_topic': ['Q6936779'], 'question': 'who wrote munna (film)'}
+{'ans': 'Q4090286', 'gt_topic': 'Q314333', 'candidate_topic': ['Q314333'], 'question': 'what battle did john paul jones fight in'}
+{'ans': 'Q54058', 'gt_topic': 'Q54056', 'candidate_topic': ['Q54056'], 'question': "who is sigismund i the old's child?"}
+{'ans': 'Q525', 'gt_topic': 'Q1556867', 'candidate_topic': ['Q1556867'], 'question': 'What does (8842) 1990 kf orbit'}
+{'ans': 'Q41753', 'gt_topic': 'Q16581', 'candidate_topic': ['Q16581'], 'question': 'where was joseph stefan born?'}
+{'ans': 'Q30', 'gt_topic': 'Q5147716', 'candidate_topic': ['Q987296', 'Q5147716'], 'question': 'What country is colma: the musical from'}
+{'ans': 'Q1374916', 'gt_topic': 'Q13403364', 'candidate_topic': ['Q8341', 'Q5994', 'Q13403364'], 'question': 'Name someone who played jazz piano'}
+{'ans': 'Q3177602', 'gt_topic': 'Q10871364', 'candidate_topic': ['Q5369', 'Q10871364'], 'question': 'Name a baseball player'}
+{'ans': 'Q130232', 'gt_topic': 'Q659843', 'candidate_topic': ['Q2102', 'Q659843'], 'question': 'what type of film is the snake pit'}
+{'ans': 'Q1857673', 'gt_topic': 'Q875920', 'candidate_topic': ['Q875920', 'Q275934'], 'question': 'what 1969 tokusatsu film did toho produce'}
+{'ans': 'Q947109', 'gt_topic': 'Q4864883', 'candidate_topic': ['Q4864883'], 'question': 'which label is barry weiss signed to'}
+{'ans': 'Q193023', 'gt_topic': 'Q6275538', 'candidate_topic': ['Q6275538'], 'question': 'joni harms  is an artist who records under what label'}
+{'ans': 'Q5643306', 'gt_topic': 'Q330629', 'candidate_topic': ['Q330629'], 'question': 'what artist is signed to sony music entertainment'}
+{'ans': 'Q95008', 'gt_topic': 'Q209505', 'candidate_topic': ['Q200092', 'Q209505'], 'question': 'Who directed the horror film the ward?'}
+{'ans': 'Q535404', 'gt_topic': 'Q6890805', 'candidate_topic': ['Q6890805'], 'question': "Who's a producer of mohabbat ke dushman"}
+{'ans': 'Q1120456', 'gt_topic': 'Q483352', 'candidate_topic': ['Q687760', 'Q483352'], 'question': 'what album by coroner is thrash metal'}
+{'ans': 'Q7134604', 'gt_topic': 'Q4021200', 'candidate_topic': ['Q4021200', 'Q128452', 'Q427335'], 'question': 'who is the producer of x-men ii: the fall of the mutants'}
+{'ans': 'Q21590660', 'gt_topic': 'Q19363671', 'candidate_topic': ['Q178521', 'Q19363671'], 'question': 'what type of movie is lone cowboy'}
+{'ans': 'Q298930', 'gt_topic': 'Q8051786', 'candidate_topic': ['Q8051786'], 'question': 'What is the name of the artist for the album Yellow Pearl?'}
+{'ans': 'Q3816', 'gt_topic': 'Q33977', 'candidate_topic': ['Q33977'], 'question': 'jules verne was influenced by which artist?'}
+{'ans': 'Q1146100', 'gt_topic': 'Q231116', 'candidate_topic': ['Q231116'], 'question': 'What is the ethnicity of kelly hu?'}
+{'ans': 'Q661061', 'gt_topic': 'Q130232', 'candidate_topic': ['Q30', 'Q21010853', 'Q959790', 'Q130232'], 'question': 'what is a 2006 American crime drama film'}
+{'ans': 'Q311157', 'gt_topic': 'Q654940', 'candidate_topic': ['Q36834', 'Q654940'], 'question': 'Which composer composed connected?'}
+{'ans': 'Q33298', 'gt_topic': 'Q7118402', 'candidate_topic': ['Q7118402', 'Q1816551', 'Q169889'], 'question': 'what language is spoken on pba on abc'}
+{'ans': 'Q1860', 'gt_topic': 'Q3235173', 'candidate_topic': ['Q3235173'], 'question': 'what language is spoken in super why!'}
+{'ans': 'Q555578', 'gt_topic': 'Q2526255', 'candidate_topic': ['Q2526255'], 'question': 'Name a film director.'}
+{'ans': 'Q1054574', 'gt_topic': 'Q1919812', 'candidate_topic': ['Q1919812'], 'question': 'What genre of film is mem û zîn'}
+{'ans': 'Q598929', 'gt_topic': 'Q16995302', 'candidate_topic': ['Q17', 'Q1132127', 'Q598929', 'Q16995302'], 'question': 'is japan post-punk or hip-hop'}
+{'ans': 'Q22905', 'gt_topic': 'Q5929201', 'candidate_topic': ['Q5929201'], 'question': 'Where was jennifer metcalfe born?'}
+{'ans': 'Q1841', 'gt_topic': 'Q43746', 'candidate_topic': ['Q9174', 'Q43746'], 'question': 'Which religion does bonaventure practice?'}
+{'ans': 'Q66485', 'gt_topic': 'Q16221090', 'candidate_topic': ['Q16221090'], 'question': 'which city was kapil nirmal born'}
+{'ans': 'Q424', 'gt_topic': 'Q4335241', 'candidate_topic': ['Q4335241'], 'question': 'what country was operation eagle pull in'}
+{'ans': 'Q30', 'gt_topic': 'Q5067885', 'candidate_topic': ['Q5067885'], 'question': 'where was chain letter filmed'}
+{'ans': 'Q6581097', 'gt_topic': 'Q6209350', 'candidate_topic': ['Q6209350'], 'question': 'what is the gender of joe d. smith, jr.'}
+{'ans': 'Q624601', 'gt_topic': 'Q3436301', 'candidate_topic': ['Q3436301'], 'question': 'What is an organization that bobby shriver founded?'}
+{'ans': 'Q379449', 'gt_topic': 'Q16867', 'candidate_topic': ['Q16867'], 'question': 'what did edgar allan poe write'}
+{'ans': 'Q612323', 'gt_topic': 'Q360002', 'candidate_topic': ['Q3137', 'Q360002'], 'question': 'what film was jim clark the editor of'}
+{'ans': 'Q34057', 'gt_topic': 'Q6410195', 'candidate_topic': ['Q6410195', 'Q907311'], 'question': 'what types of movie is kimmy dora: kambal sa kiyeme in netflix'}
+{'ans': 'Q37073', 'gt_topic': 'Q1377782', 'candidate_topic': ['Q1377782'], 'question': 'what genre of music does  jerry scheff make'}
+{'ans': 'Q1969037', 'gt_topic': 'Q226730', 'candidate_topic': ['Q226730', 'Q201658'], 'question': 'Name a movie in the silent film genre.'}
+{'ans': 'Q19842222', 'gt_topic': 'Q577918', 'candidate_topic': ['Q577918'], 'question': 'Which genre of film is road house'}
+{'ans': 'Q90', 'gt_topic': 'Q22662', 'candidate_topic': ['Q22662'], 'question': 'Which city did maurice rené fréchet die in'}
+{'ans': 'Q5791367', 'gt_topic': 'Q201330', 'candidate_topic': ['Q21', 'Q201330'], 'question': 'which goalkeeper is from england?'}
+{'ans': 'Q8873', 'gt_topic': 'Q639416', 'candidate_topic': ['Q639416'], 'question': 'who wrote the music for the movie the adventures of goopy and bagha'}
+{'ans': 'Q492355', 'gt_topic': 'Q276780', 'candidate_topic': ['Q276780'], 'question': 'what city and state did robert e. rodes die in'}
+{'ans': 'Q1860', 'gt_topic': 'Q1469426', 'candidate_topic': ['Q1469426'], 'question': 'What language is spoken in the film the santa clause 2'}
+{'ans': 'Q83270', 'gt_topic': 'Q606969', 'candidate_topic': ['Q606969'], 'question': 'what genre of music did scott stapp make'}
+{'ans': 'Q16', 'gt_topic': 'Q949584', 'candidate_topic': ['Q949584'], 'question': 'What country is alexis andré from'}
+{'ans': 'Q64', 'gt_topic': 'Q108763', 'candidate_topic': ['Q108763'], 'question': 'where did  christine wodetzky die'}
+{'ans': 'Q1860', 'gt_topic': 'Q628674', 'candidate_topic': ['Q628674'], 'question': 'What is the language of the composition slow (song)?'}
+{'ans': 'Q130232', 'gt_topic': 'Q1169493', 'candidate_topic': ['Q1169493'], 'question': 'what type of genre is the coverup'}
+{'ans': 'Q27', 'gt_topic': 'Q6828529', 'candidate_topic': ['Q6828529'], 'question': 'where is michael beecher from'}
+{'ans': 'Q408', 'gt_topic': 'Q7733953', 'candidate_topic': ['Q7733953'], 'question': 'what country made the film the final winter'}
+{'ans': 'Q12204', 'gt_topic': 'Q1554797', 'candidate_topic': ['Q1554797'], 'question': "what was gunnar säve-söderbergh's cause of death"}
+{'ans': 'Q362', 'gt_topic': 'Q7297724', 'candidate_topic': ['Q7297724'], 'question': 'what event did ray kuhlman participate in?'}
+{'ans': 'Q124179', 'gt_topic': 'Q1140433', 'candidate_topic': ['Q1140433'], 'question': 'which band released the album music from \\\\"the elder\\\\"'}
+{'ans': 'Q6581097', 'gt_topic': 'Q310197', 'candidate_topic': ['Q310197'], 'question': 'is lazar hrebeljanović male or female'}
+{'ans': 'Q2038636', 'gt_topic': 'Q5039029', 'candidate_topic': ['Q5039029'], 'question': 'what artist released carencro?'}
+{'ans': 'Q525', 'gt_topic': 'Q154990', 'candidate_topic': ['Q154990'], 'question': 'what does 505 cava orbit around'}
+{'ans': 'Q183504', 'gt_topic': 'Q5399598', 'candidate_topic': ['Q5399598'], 'question': 'What kind of music does esser make?'}
+{'ans': 'Q821283', 'gt_topic': 'Q153132', 'candidate_topic': ['Q153132'], 'question': 'which battle did wladyslaw sikorski attend'}
+{'ans': 'Q1860', 'gt_topic': 'Q785255', 'candidate_topic': ['Q785255'], 'question': 'What is the original language of the book the lost world'}
+{'ans': 'Q752989', 'gt_topic': 'Q2702789', 'candidate_topic': ['Q2702789'], 'question': 'What is the name of a film made by relativity media'}
+{'ans': 'Q4851888', 'gt_topic': 'Q17884', 'candidate_topic': ['Q907311', 'Q17884'], 'question': 'What is a lgbt netflix movie?'}
+{'ans': 'Q33999', 'gt_topic': 'Q3009859', 'candidate_topic': ['Q3009859'], 'question': "What is cedric von sydow's profession?"}
+{'ans': 'Q173', 'gt_topic': 'Q16733341', 'candidate_topic': ['Q30', 'Q16733341'], 'question': 'Where in the US was michael nichols born'}
+{'ans': 'Q1946181', 'gt_topic': 'Q4842514', 'candidate_topic': ['Q4842514'], 'question': 'who produced the film bahay kubo: a pinoy mano po!?'}
+{'ans': 'Q1166842', 'gt_topic': 'Q6258312', 'candidate_topic': ['Q21', 'Q6258312'], 'question': 'Where in England was the historical figure john smith born in?'}
+{'ans': 'Q174', 'gt_topic': 'Q1043232', 'candidate_topic': ['Q1043232'], 'question': 'where was carlos santos de jesus born'}
+{'ans': 'Q3863', 'gt_topic': 'Q2621471', 'candidate_topic': ['Q2621471'], 'question': 'What category of celestial object is 15412 schaefer?'}
+{'ans': 'Q226730', 'gt_topic': 'Q3986803', 'candidate_topic': ['Q3986803'], 'question': 'which kind of film is the englishman and the girl affiliated with'}
+{'ans': 'Q816568', 'gt_topic': 'Q42406', 'candidate_topic': ['Q245068', 'Q33999', 'Q42406'], 'question': 'The english people can claim as there own, this comedian and actor.'}
+{'ans': 'Q81856', 'gt_topic': 'Q14950999', 'candidate_topic': ['Q14950999'], 'question': 'Where was jordan senn born?'}
+{'ans': 'Q4282636', 'gt_topic': 'Q1734828', 'candidate_topic': ['Q1734828'], 'question': 'what type of videogame is modern combat: sandstorm'}
+{'ans': 'Q6099018', 'gt_topic': 'Q6979170', 'candidate_topic': ['Q6979170', 'Q145'], 'question': 'who is the founder of national union of students (united kingdom)?'}
+{'ans': 'Q117', 'gt_topic': 'Q2701879', 'candidate_topic': ['Q2701879'], 'question': "What is mohammed kasola's nationality"}
+{'ans': 'Q3224256', 'gt_topic': 'Q24862', 'candidate_topic': ['Q24862'], 'question': 'name a 1980 short film'}
+{'ans': 'Q641', 'gt_topic': 'Q6101', 'candidate_topic': ['Q6101'], 'question': 'where did marco polo pass away'}
+{'ans': 'Q9687', 'gt_topic': 'Q187730', 'candidate_topic': ['Q187730'], 'question': "what was aaron flahavan's cause of death"}
+{'ans': 'Q6581072', 'gt_topic': 'Q7925364', 'candidate_topic': ['Q7925364'], 'question': "what is vicki anderson's gender"}
+{'ans': 'Q497262', 'gt_topic': 'Q1091339', 'candidate_topic': ['Q1091339'], 'question': 'what film was  david ayer the producer of'}
+{'ans': 'Q9036', 'gt_topic': 'Q465190', 'candidate_topic': ['Q465190', 'Q43035'], 'question': 'who is a founder of the american institute of electrical engineers'}
+{'ans': 'Q320800', 'gt_topic': 'Q450318', 'candidate_topic': ['Q450318', 'Q128783', 'Q2571760', 'Q132851'], 'question': 'which admiral was involved in battle of quiberon bay?'}
+{'ans': 'Q2501062', 'gt_topic': 'Q707689', 'candidate_topic': ['Q707689'], 'question': 'which artists are under gun records?'}
+{'ans': 'Q1754', 'gt_topic': 'Q4766788', 'candidate_topic': ['Q4766788'], 'question': 'Where was anna-lisa baude born?'}
+{'ans': 'Q615196', 'gt_topic': 'Q8032994', 'candidate_topic': ['Q8032994'], 'question': 'what kind of architectural style is woodlawn'}
+{'ans': 'Q172798', 'gt_topic': 'Q133255', 'candidate_topic': ['Q133255'], 'question': 'Who is someone of bulgarians decent'}
+{'ans': 'Q15207701', 'gt_topic': 'Q5148367', 'candidate_topic': ['Q5148367'], 'question': 'whats an example of colonial revival architecture'}
+{'ans': 'Q11399', 'gt_topic': 'Q5228704', 'candidate_topic': ['Q5228704'], 'question': 'what type of music is dave dunlop?'}
+{'ans': 'Q164983', 'gt_topic': 'Q4821370', 'candidate_topic': ['Q4821370'], 'question': 'what conflict did augustus agar participate in'}
+{'ans': 'Q30', 'gt_topic': 'Q263562', 'candidate_topic': ['Q263562'], 'question': 'Which country does william j. mann have nationality in'}
+{'ans': 'Q1027800', 'gt_topic': 'Q5667655', 'candidate_topic': ['Q5667655'], 'question': 'where is harry butsko born'}
+{'ans': 'Q24925', 'gt_topic': 'Q16200573', 'candidate_topic': ['Q16200573'], 'question': 'what kind of book is the ghost pirates?'}
+{'ans': 'Q151608', 'gt_topic': 'Q1344', 'candidate_topic': ['Q1344'], 'question': 'Who is an example of an opera singer?'}
+{'ans': 'Q12078', 'gt_topic': 'Q2563720', 'candidate_topic': ['Q2563720'], 'question': 'what was the cause of death for wes farrell?'}
+{'ans': 'Q495662', 'gt_topic': 'Q1185875', 'candidate_topic': ['Q1185875'], 'question': 'what county is tidioute located inside of'}
+{'ans': 'Q150', 'gt_topic': 'Q3326864', 'candidate_topic': ['Q3326864'], 'question': 'What is the language that desire in motion was made in'}
+{'ans': 'Q172', 'gt_topic': 'Q5011724', 'candidate_topic': ['Q5011724'], 'question': 'Which area does the cilq-fm serve?'}
+{'ans': 'Q1371229', 'gt_topic': 'Q1228304', 'candidate_topic': ['Q1228304'], 'question': 'who wrote dirty work'}
+{'ans': 'Q65', 'gt_topic': 'Q16297854', 'candidate_topic': ['Q16297854'], 'question': 'Which city was dylan boersma born in'}
+{'ans': 'Q9759', 'gt_topic': 'Q5336103', 'candidate_topic': ['Q5336103'], 'question': 'what genre is eddie harsch'}
+{'ans': 'Q33946', 'gt_topic': 'Q12021803', 'candidate_topic': ['Q12021803'], 'question': 'whats the nationality of irena bernášková'}
+{'ans': 'Q311745', 'gt_topic': 'Q553132', 'candidate_topic': ['Q553132'], 'question': 'Who did james mark baldwin influence?'}
+{'ans': 'Q525', 'gt_topic': 'Q657366', 'candidate_topic': ['Q657366'], 'question': 'what does 3484 neugebauer orbit around?'}
+{'ans': 'Q165172', 'gt_topic': 'Q61859', 'candidate_topic': ['Q61859'], 'question': 'what film did henry koster direct'}
+{'ans': 'Q233956', 'gt_topic': 'Q537038', 'candidate_topic': ['Q537038'], 'question': 'which author wrote the mandelbaum gate'}
+{'ans': 'Q11366', 'gt_topic': 'Q5434219', 'candidate_topic': ['Q5434219'], 'question': 'what genre is fantastic planet in'}
+{'ans': 'Q621437', 'gt_topic': 'Q4529724', 'candidate_topic': ['Q4529724'], 'question': 'who is eureka by'}
+{'ans': 'Q1820618', 'gt_topic': 'Q770103', 'candidate_topic': ['Q770103'], 'question': 'what artist is governed by bertelsmann music group'}
+{'ans': 'Q38022', 'gt_topic': 'Q6128395', 'candidate_topic': ['Q30', 'Q6128395'], 'question': 'which US city is james adkisson from'}
+{'ans': 'Q2859017', 'gt_topic': 'Q130232', 'candidate_topic': ['Q130232'], 'question': 'what fench movie is drama'}
+{'ans': 'Q154581', 'gt_topic': 'Q959790', 'candidate_topic': ['Q959790'], 'question': 'what title is a crime dramas?'}
+{'ans': 'Q484179', 'gt_topic': 'Q4566173', 'candidate_topic': ['Q4566173'], 'question': 'what type of music does Øystein brun play'}
+{'ans': 'Q30192', 'gt_topic': 'Q39565', 'candidate_topic': ['Q12143', 'Q39565'], 'question': 'what time zone does  gavar belong to'}
+{'ans': 'Q885824', 'gt_topic': 'Q37073', 'candidate_topic': ['Q37073'], 'question': 'who is an music that plays pop music?'}
+{'ans': 'Q2392121', 'gt_topic': 'Q126399', 'candidate_topic': ['Q126399', 'Q506240'], 'question': 'what animated TV movie was produced by warner bros.'}
+{'ans': 'Q3084070', 'gt_topic': 'Q650980', 'candidate_topic': ['Q650980'], 'question': "who is robert bourassa's child?"}
+{'ans': 'Q4873072', 'gt_topic': 'Q769668', 'candidate_topic': ['Q769668'], 'question': 'what happened in the province of new york'}
+{'ans': 'Q692', 'gt_topic': 'Q114115', 'candidate_topic': ['Q114115'], 'question': 'who wrote the story for henry v'}
+{'ans': 'Q1344', 'gt_topic': 'Q154331', 'candidate_topic': ['Q154331'], 'question': 'györgy ligeti is what kind of artist?'}
+{'ans': 'Q30', 'gt_topic': 'Q5263492', 'candidate_topic': ['Q5263492'], 'question': "What is des mcaleenan's nationality?"}
+{'ans': 'Q6213859', 'gt_topic': 'Q386854', 'candidate_topic': ['Q386854', 'Q1367820'], 'question': 'What is the name of the drummer in Eskimo Joe?'}
+{'ans': 'Q10514275', 'gt_topic': 'Q27541', 'candidate_topic': ['Q2736', 'Q27541'], 'question': "Who's a footballer that was born in ružomberok"}
+{'ans': 'Q2732142', 'gt_topic': 'Q7192251', 'candidate_topic': ['Q7192251'], 'question': "what is pierre gy's profession"}
+{'ans': 'Q6111378', 'gt_topic': 'Q201330', 'candidate_topic': ['Q2736', 'Q201330', 'Q1095556'], 'question': 'What is the name of a former north american soccer league goalkeeper?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q9339214', 'candidate_topic': ['Q9339214'], 'question': 'what is the gender of bo-chow lan'}
+{'ans': 'Q30', 'gt_topic': 'Q15837492', 'candidate_topic': ['Q15837492'], 'question': 'what north american country gives olivia birkelund her nationality'}
+{'ans': 'Q4633079', 'gt_topic': 'Q3071', 'candidate_topic': ['Q3071'], 'question': 'who is an artist under the punk rock genre'}
+{'ans': 'Q53002', 'gt_topic': 'Q1171341', 'candidate_topic': ['Q1544656', 'Q1171341'], 'question': 'who was the director of the film the green room'}
+{'ans': 'Q3244280', 'gt_topic': 'Q234430', 'candidate_topic': ['Q234430'], 'question': 'What ethnicity is freema agyeman?'}
+{'ans': 'Q3793414', 'gt_topic': 'Q271824', 'candidate_topic': ['Q8261', 'Q19842222', 'Q271824'], 'question': 'was 1922 crime novel was written by edgar wallace'}
+{'ans': 'Q5237628', 'gt_topic': 'Q175111', 'candidate_topic': ['Q175111'], 'question': 'Who died from a hanging?'}
+{'ans': 'Q2705334', 'gt_topic': 'Q7143911', 'candidate_topic': ['Q7143911'], 'question': 'which film did pat paulsen direct'}
+{'ans': 'Q6554598', 'gt_topic': 'Q21167', 'candidate_topic': ['Q38108', 'Q21167'], 'question': 'who is a figure skater born in enköping'}
+{'ans': 'Q4802644', 'gt_topic': 'Q18208134', 'candidate_topic': ['Q18208134'], 'question': 'Who edited elelwani'}
+{'ans': 'Q460040', 'gt_topic': 'Q154347', 'candidate_topic': ['Q5598', 'Q154347'], 'question': 'who discovered 4511 rembrandt'}
+{'ans': 'Q3134980', 'gt_topic': 'Q79437', 'candidate_topic': ['Q79437'], 'question': 'Which time zone is litchfield park located in'}
+{'ans': 'Q1133140', 'gt_topic': 'Q494121', 'candidate_topic': ['Q494121'], 'question': 'what is a city found in franklin county'}
+{'ans': 'Q222344', 'gt_topic': 'Q10274194', 'candidate_topic': ['Q10274194'], 'question': "what is eryk rocha's profession?"}
+{'ans': 'Q182015', 'gt_topic': 'Q17076685', 'candidate_topic': ['Q17076685'], 'question': 'what genre is proxy'}
+{'ans': 'Q578289', 'gt_topic': 'Q484263', 'candidate_topic': ['Q484263'], 'question': 'where is lake county?'}
+{'ans': 'Q211573', 'gt_topic': 'Q765665', 'candidate_topic': ['Q765665'], 'question': 'what kind of music is autobiography?'}
+{'ans': 'Q1048902', 'gt_topic': 'Q5346537', 'candidate_topic': ['Q5369', 'Q5346537'], 'question': 'What position is edwin hurtado known for playing in baseball'}
+{'ans': 'Q1860', 'gt_topic': 'Q3795020', 'candidate_topic': ['Q3795020'], 'question': 'what language is spoken in the clown'}
+{'ans': 'Q1860', 'gt_topic': 'Q7485284', 'candidate_topic': ['Q7485284'], 'question': 'sun city (song) was composed in what language'}
+{'ans': 'Q193592', 'gt_topic': 'Q5525605', 'candidate_topic': ['Q5525605'], 'question': 'what position did gary mills play'}
+{'ans': 'Q2274654', 'gt_topic': 'Q5223238', 'candidate_topic': ['Q5223238'], 'question': 'which british company published dark fusion'}
+{'ans': 'Q17042', 'gt_topic': 'Q15493347', 'candidate_topic': ['Q15493347'], 'question': 'where was sidney peterson born'}
+{'ans': 'Q8684', 'gt_topic': 'Q16183011', 'candidate_topic': ['Q16183011'], 'question': 'where was hyunyoung born?'}
+{'ans': 'Q622747', 'gt_topic': 'Q3430413', 'candidate_topic': ['Q3430413'], 'question': 'Which position did rich campbell play?'}
+{'ans': 'Q3324468', 'gt_topic': 'Q457840', 'candidate_topic': ['Q457840'], 'question': 'who has will rogers influenced?'}
+{'ans': 'Q1153176', 'gt_topic': 'Q7440900', 'candidate_topic': ['Q7440900'], 'question': 'what position did sean conover play in football'}
+{'ans': 'Q1168137', 'gt_topic': 'Q1369625', 'candidate_topic': ['Q1369625'], 'question': 'what film did lou scheimer produce?'}
+{'ans': 'Q953162', 'gt_topic': 'Q123724', 'candidate_topic': ['Q123724'], 'question': 'What is a film that patrick moraz contributed music to'}
+{'ans': 'Q139093', 'gt_topic': 'Q193592', 'candidate_topic': ['Q2736', 'Q193592'], 'question': 'who played midfielder in soccer'}
+{'ans': 'Q140201', 'gt_topic': 'Q3282894', 'candidate_topic': ['Q3282894'], 'question': 'who is the author of the burning world?'}
+{'ans': 'Q2746831', 'gt_topic': 'Q7549485', 'candidate_topic': ['Q7549485'], 'question': 'what genre is so romantic'}
+{'ans': 'Q1328499', 'gt_topic': 'Q54925', 'candidate_topic': ['Q54925'], 'question': 'what battle took place at the province of guadalajara'}
+{'ans': 'Q336286', 'gt_topic': 'Q3941582', 'candidate_topic': ['Q3941582'], 'question': 'what position does football player ross perry play'}
+{'ans': 'Q711806', 'gt_topic': 'Q7301487', 'candidate_topic': ['Q7301487'], 'question': 'who composed reason to believe'}
+{'ans': 'Q627533', 'gt_topic': 'Q2148583', 'candidate_topic': ['Q222344', 'Q2148583'], 'question': 'What is a film ric waite is known for having been the cinematographer?'}
+{'ans': 'Q5967378', 'gt_topic': 'Q7572545', 'candidate_topic': ['Q7572545'], 'question': 'how is space viking classified'}
+{'ans': 'Q961808', 'gt_topic': 'Q2924879', 'candidate_topic': ['Q2924879'], 'question': 'where was brian cashman born'}
+{'ans': 'Q7802221', 'gt_topic': 'Q38848', 'candidate_topic': ['Q38848', 'Q183'], 'question': 'What are the heavy metal albums released in germany?'}
+{'ans': 'Q2086913', 'gt_topic': 'Q7306750', 'candidate_topic': ['Q1570118', 'Q7306750'], 'question': 'what time is reedsburg located in'}
+{'ans': 'Q2614098', 'gt_topic': 'Q525', 'candidate_topic': ['Q3863', 'Q525'], 'question': 'what asteroid discovered on 1997 gravitates aroudn the sun'}
+{'ans': 'Q1486', 'gt_topic': 'Q6764880', 'candidate_topic': ['Q6764880'], 'question': 'where did mario pergolini take his first breath'}
+{'ans': 'Q42406', 'gt_topic': 'Q974615', 'candidate_topic': ['Q974615'], 'question': "What is martin walsh's ethnicity?"}
+{'ans': 'Q30', 'gt_topic': 'Q1687797', 'candidate_topic': ['Q1687797'], 'question': 'What country is jerry azumah from?'}
+{'ans': 'Q24925', 'gt_topic': 'Q7732320', 'candidate_topic': ['Q45003', 'Q7732320'], 'question': 'what type of the subject matter can be found in the entropy tango'}
+{'ans': 'Q49084', 'gt_topic': 'Q7721831', 'candidate_topic': ['Q7721831'], 'question': 'is the celestial omnibus a short story or a novel?'}
+{'ans': 'Q193638', 'gt_topic': 'Q718872', 'candidate_topic': ['Q718872'], 'question': 'Where was ken tokura born?'}
+{'ans': 'Q319221', 'gt_topic': 'Q12127256', 'candidate_topic': ['Q12127256'], 'question': 'What type of film is runaway railway considered to be'}
+{'ans': 'Q83201', 'gt_topic': 'Q9161', 'candidate_topic': ['Q9161'], 'question': 'What organization did josip broz tito found'}
+{'ans': 'Q1617336', 'gt_topic': 'Q1260861', 'candidate_topic': ['Q4282636', 'Q1260861'], 'question': 'what is an example of a tactical shooter game'}
+{'ans': 'Q192068', 'gt_topic': 'Q7921263', 'candidate_topic': ['Q7921263'], 'question': 'What style is the architecture of vergennes schoolhouse?'}
+{'ans': 'Q16256408', 'gt_topic': 'Q1935609', 'candidate_topic': ['Q1935609'], 'question': 'whats the title of a propaganda film'}
+{'ans': 'Q28389', 'gt_topic': 'Q5083384', 'candidate_topic': ['Q5083384'], 'question': 'what is charles waterstreet best known for'}
+{'ans': 'Q1156', 'gt_topic': 'Q6395070', 'candidate_topic': ['Q6395070'], 'question': 'which city did keshu ramsay pass away'}
+{'ans': 'Q656118', 'gt_topic': 'Q333625', 'candidate_topic': ['Q333625'], 'question': 'what movie is absurdism'}
+{'ans': 'Q7744801', 'gt_topic': 'Q183387', 'candidate_topic': ['Q183387'], 'question': 'what musician is signed with columbia records'}
+{'ans': 'Q372642', 'gt_topic': 'Q12078', 'candidate_topic': ['Q794', 'Q12078'], 'question': "Who's an iranian actor that died from cancer"}
+{'ans': 'Q223685', 'gt_topic': 'Q7750991', 'candidate_topic': ['Q7750991'], 'question': 'what type of music does the men that will not be blamed for nothing play?'}
+{'ans': 'Q693036', 'gt_topic': 'Q800715', 'candidate_topic': ['Q800715'], 'question': 'Which line is the ebisu station on?'}
+{'ans': 'Q2450004', 'gt_topic': 'Q26587', 'candidate_topic': ['Q135744', 'Q26587'], 'question': 'Which towns are in galveston county'}
+{'ans': 'Q1860', 'gt_topic': 'Q3016952', 'candidate_topic': ['Q3016952'], 'question': 'what language is spoken in the film date with an angel?'}
+{'ans': 'Q4991371', 'gt_topic': 'Q314271', 'candidate_topic': ['Q314271'], 'question': 'what is moussa dadis camara known as?'}
+{'ans': 'Q30', 'gt_topic': 'Q194530', 'candidate_topic': ['Q194530'], 'question': 'which country is tor hamer from'}
+{'ans': 'Q488548', 'gt_topic': 'Q1520232', 'candidate_topic': ['Q1520232'], 'question': 'In what county is Shelley located?'}
+{'ans': 'Q860750', 'gt_topic': 'Q1432516', 'candidate_topic': ['Q1326048', 'Q30', 'Q1432516', 'Q7889'], 'question': 'what types of videogame is daytona usa 2'}
+{'ans': 'Q461862', 'gt_topic': 'Q170435', 'candidate_topic': ['Q170435'], 'question': 'what are titles if trance music albums'}
+{'ans': 'Q7833', 'gt_topic': 'Q1633771', 'candidate_topic': ['Q173', 'Q1633771'], 'question': 'Who composed the alabama song?'}
+{'ans': 'Q84', 'gt_topic': 'Q964704', 'candidate_topic': ['Q313763', 'Q964704'], 'question': 'where did george graham die'}
+{'ans': 'Q3296255', 'gt_topic': 'Q8058467', 'candidate_topic': ['Q8058467'], 'question': 'who wrote the film young triffie?'}
+{'ans': 'Q6581072', 'gt_topic': 'Q230456', 'candidate_topic': ['Q230456'], 'question': 'What gender is alexandra david-néel?'}
+{'ans': 'Q211756', 'gt_topic': 'Q913194', 'candidate_topic': ['Q913194'], 'question': 'what kind of music does roll deep create'}
+{'ans': 'Q1215255', 'gt_topic': 'Q18419', 'candidate_topic': ['Q18419'], 'question': 'which writer was born in brooklyn'}
+{'ans': 'Q414', 'gt_topic': 'Q3953818', 'candidate_topic': ['Q3953818'], 'question': 'where is sebastián grazzini from'}
+{'ans': 'Q4788533', 'gt_topic': 'Q1055974', 'candidate_topic': ['Q7889', 'Q1055974'], 'question': "What's an example of a light gun video game"}
+{'ans': 'Q6581072', 'gt_topic': 'Q441764', 'candidate_topic': ['Q441764', 'Q48277'], 'question': 'what gender does karen silkwood associate with'}
+{'ans': 'Q6581097', 'gt_topic': 'Q7364028', 'candidate_topic': ['Q7364028'], 'question': 'what gender is  ron king'}
+{'ans': 'Q8253', 'gt_topic': 'Q4840295', 'candidate_topic': ['Q1233720', 'Q4840295'], 'question': 'The genre of the young-adult novel bad girls is what?'}
+{'ans': 'Q36091', 'gt_topic': 'Q9179197', 'candidate_topic': ['Q186545', 'Q9179197'], 'question': "where in the midwest is brenda ueland's place of birth?"}
+{'ans': 'Q3501201', 'gt_topic': 'Q11399', 'candidate_topic': ['Q11399'], 'question': 'who plays rock music'}
+{'ans': 'Q183387', 'gt_topic': 'Q511277', 'candidate_topic': ['Q511277'], 'question': 'what label is the fabulous thunderbirds signed under?'}
+{'ans': 'Q2607824', 'gt_topic': 'Q208850', 'candidate_topic': ['Q208850'], 'question': 'what is a single-player game?'}
+{'ans': 'Q156501', 'gt_topic': 'Q15059374', 'candidate_topic': ['Q107000', 'Q15059374'], 'question': 'who wrote mirza ghalib'}
+{'ans': 'Q1758264', 'gt_topic': 'Q84', 'candidate_topic': ['Q84'], 'question': 'Name someone born in london'}
+{'ans': 'Q204933', 'gt_topic': 'Q162356', 'candidate_topic': ['Q162356'], 'question': 'how did lady jane grey die'}
+{'ans': 'Q1860', 'gt_topic': 'Q167022', 'candidate_topic': ['Q167022'], 'question': 'What is the language of something evil?'}
+{'ans': 'Q686', 'gt_topic': 'Q7514202', 'candidate_topic': ['Q7514202'], 'question': "What is sailas namatak's place of origin?"}
+{'ans': 'Q1637693', 'gt_topic': 'Q2283665', 'candidate_topic': ['Q2283665', 'Q18127'], 'question': 'Who is an artist on the tvt records label'}
+{'ans': 'Q429264', 'gt_topic': 'Q3284802', 'candidate_topic': ['Q3284802'], 'question': 'what kind of music is on the shadiest one?'}
+{'ans': 'Q1860', 'gt_topic': 'Q3284940', 'candidate_topic': ['Q142', 'Q3284940'], 'question': 'is mambéty for ever in english or french'}
+{'ans': 'Q160946', 'gt_topic': 'Q2845576', 'candidate_topic': ['Q3282637', 'Q2845576'], 'question': 'who was the film producer for anatole dauman'}
+{'ans': 'Q727694', 'gt_topic': 'Q3212493', 'candidate_topic': ['Q8686', 'Q3212493'], 'question': 'what language is shanghai affairs filmed in'}
+{'ans': 'Q55', 'gt_topic': 'Q5125278', 'candidate_topic': ['Q5125278'], 'question': 'which country is claire oberman from'}
+{'ans': 'Q817138', 'gt_topic': 'Q7691403', 'candidate_topic': ['Q7691403'], 'question': 'what kind of music does team9 create'}
+{'ans': 'Q217597', 'gt_topic': 'Q5307857', 'candidate_topic': ['Q5307857'], 'question': 'what type of music does drive-by argument make?'}
+{'ans': 'Q236135', 'gt_topic': 'Q2289691', 'candidate_topic': ['Q2289691'], 'question': "who is ylenia carrisi's mother"}
+{'ans': 'Q6581097', 'gt_topic': 'Q7174814', 'candidate_topic': ['Q7174814'], 'question': 'is  peter hynes male or female'}
+{'ans': 'Q11366', 'gt_topic': 'Q7638961', 'candidate_topic': ['Q7638961'], 'question': 'Which genre of music is on the album sunburst and snowblind'}
+{'ans': 'Q5381726', 'gt_topic': 'Q33999', 'candidate_topic': ['Q33999'], 'question': 'Name one of your favorite actors'}
+{'ans': 'Q364062', 'gt_topic': 'Q134085', 'candidate_topic': ['Q134085'], 'question': 'who did jean baptiste perrin help influence'}
+{'ans': 'Q93204', 'gt_topic': 'Q7768397', 'candidate_topic': ['Q7768397'], 'question': 'what type of film is the ten-year lunch'}
+{'ans': 'Q2105066', 'gt_topic': 'Q7325', 'candidate_topic': ['Q7325'], 'question': 'who is a jewish people painter'}
+{'ans': 'Q432', 'gt_topic': 'Q337984', 'candidate_topic': ['Q9174', 'Q337984'], 'question': 'what religion does  marvi memon practice'}
+{'ans': 'Q2937236', 'gt_topic': 'Q6895044', 'candidate_topic': ['Q6895044'], 'question': 'What is the name of a game that has multiplayer mode?'}
+{'ans': 'Q114171', 'gt_topic': 'Q7535907', 'candidate_topic': ['Q7535907'], 'question': 'what military person was involved in  skirmish at miskel farm'}
+{'ans': 'Q280658', 'gt_topic': 'Q6007164', 'candidate_topic': ['Q2736', 'Q6007164'], 'question': 'what position does mauro fernández play in soccer?'}
+{'ans': 'Q902', 'gt_topic': 'Q3346041', 'candidate_topic': ['Q3346041'], 'question': 'where is tanvir mokammel from'}
+{'ans': 'Q151634', 'gt_topic': 'Q770103', 'candidate_topic': ['Q770103'], 'question': 'Who is an artist associated with bertelsmann music group'}
+{'ans': 'Q1054574', 'gt_topic': 'Q5375177', 'candidate_topic': ['Q5375177'], 'question': 'what kind of film is enakku 20 unakku 18'}
+{'ans': 'Q36', 'gt_topic': 'Q8711253', 'candidate_topic': ['Q8711253'], 'question': 'what country is the film keep away from the window filmed in?'}
+{'ans': 'Q1809250', 'gt_topic': 'Q11629', 'candidate_topic': ['Q11629'], 'question': 'Which cvg game is a painting game?'}
+{'ans': 'Q3814719', 'gt_topic': 'Q1928777', 'candidate_topic': ['Q1928777'], 'question': 'name an american journalist born in ladora'}
+{'ans': 'Q30', 'gt_topic': 'Q5546356', 'candidate_topic': ['Q5546356'], 'question': "What is George Weidler's nationality?"}
+{'ans': 'Q40738', 'gt_topic': 'Q133168', 'candidate_topic': ['Q133168'], 'question': 'what city did orhan die'}
+{'ans': 'Q226730', 'gt_topic': 'Q2535572', 'candidate_topic': ['Q2535572'], 'question': "what language is spoken on autour d'une cabine"}
+{'ans': 'Q280658', 'gt_topic': 'Q1178926', 'candidate_topic': ['Q1178926'], 'question': 'which position does w. g. richardson play'}
+{'ans': 'Q30', 'gt_topic': 'Q4758683', 'candidate_topic': ['Q4758683'], 'question': 'which country was andrew szanton born in'}
+{'ans': 'Q2614514', 'gt_topic': 'Q525', 'candidate_topic': ['Q6999', 'Q525'], 'question': 'What celestial body orbits the sun'}
+{'ans': 'Q187760', 'gt_topic': 'Q732480', 'candidate_topic': ['Q732480'], 'question': 'what type of music does paul gardiner make'}
+{'ans': 'Q208258', 'gt_topic': 'Q20631171', 'candidate_topic': ['Q20631171'], 'question': "what is raphaël hamburger's mother?"}
+{'ans': 'Q1048902', 'gt_topic': 'Q6696338', 'candidate_topic': ['Q6696338'], 'question': 'what position is lucas turk'}
+{'ans': 'Q668182', 'gt_topic': 'Q673897', 'candidate_topic': ['Q235', 'Q673897'], 'question': 'honoré iii, prince of monaco is a member of what family?'}
+{'ans': 'Q57143', 'gt_topic': 'Q728753', 'candidate_topic': ['Q728753'], 'question': 'which style of music does steve digiorgio play in?'}
+{'ans': 'Q947387', 'gt_topic': 'Q880114', 'candidate_topic': ['Q880114'], 'question': 'Who created the show black books'}
+{'ans': 'Q1196752', 'gt_topic': 'Q4728543', 'candidate_topic': ['Q4728543'], 'question': 'What type of music is in all aglow again!'}
+{'ans': 'Q211950', 'gt_topic': 'Q18043758', 'candidate_topic': ['Q22', 'Q18043758'], 'question': 'where in scotland is doug allan born in?'}
+{'ans': 'Q3372439', 'gt_topic': 'Q2894780', 'candidate_topic': ['Q2894780'], 'question': 'Who did the music for the film blown away?'}
+{'ans': 'Q21', 'gt_topic': 'Q4353971', 'candidate_topic': ['Q4353971'], 'question': 'which country is kyle patterson from'}
+{'ans': 'Q1384', 'gt_topic': 'Q1097790', 'candidate_topic': ['Q30', 'Q1097790'], 'question': 'Where in the US did ira cohen die'}
+{'ans': 'Q11425', 'gt_topic': 'Q392530', 'candidate_topic': ['Q392530'], 'question': 'what type of film is treasure planet?'}
+{'ans': 'Q730370', 'gt_topic': 'Q1341481', 'candidate_topic': ['Q1341481'], 'question': 'what film was  robert lepage the writer of'}
+{'ans': 'Q30755', 'gt_topic': 'Q157194', 'candidate_topic': ['Q157194'], 'question': 'who influenced  alberto giacometti'}
+{'ans': 'Q30', 'gt_topic': 'Q6422972', 'candidate_topic': ['Q6422972'], 'question': 'where is knoll lake located'}
+{'ans': 'Q1165469', 'gt_topic': 'Q77202', 'candidate_topic': ['Q77202'], 'question': 'What game did 1c company publish?'}
+{'ans': 'Q7920404', 'gt_topic': 'Q23916', 'candidate_topic': ['Q7889', 'Q23916'], 'question': 'what are adventure computer video games'}
+{'ans': 'Q16', 'gt_topic': 'Q15978520', 'candidate_topic': ['Q15978520'], 'question': 'what is the nationality of  jonathan malen'}
+{'ans': 'Q64', 'gt_topic': 'Q90677', 'candidate_topic': ['Q90677'], 'question': 'where was moritz traube deceased'}
+{'ans': 'Q842256', 'gt_topic': 'Q5446705', 'candidate_topic': ['Q5446705'], 'question': 'what type of film is the fiddlers three?'}
+{'ans': 'Q200092', 'gt_topic': 'Q17076861', 'candidate_topic': ['Q17076861'], 'question': 'the living coffin movie falls under which genre?'}
+{'ans': 'Q7252230', 'gt_topic': 'Q83270', 'candidate_topic': ['Q83270'], 'question': 'what is a hard rock album?'}
+{'ans': 'Q51492', 'gt_topic': 'Q3950821', 'candidate_topic': ['Q3950821'], 'question': 'Who created the story for saturday afternoon?'}
+{'ans': 'Q1860', 'gt_topic': 'Q4237142', 'candidate_topic': ['Q4237142'], 'question': 'is the movie nightmare in english or another language'}
+{'ans': 'Q6581097', 'gt_topic': 'Q3940966', 'candidate_topic': ['Q3940966'], 'question': 'What gender is ron emory?'}
+{'ans': 'Q225885', 'gt_topic': 'Q316596', 'candidate_topic': ['Q316596'], 'question': "What's a film consecutively produced by justin theroux"}
+{'ans': 'Q318991', 'gt_topic': 'Q2981321', 'candidate_topic': ['Q2981321'], 'question': 'who directed the film coco'}
+{'ans': 'Q159846', 'gt_topic': 'Q1955868', 'candidate_topic': ['Q1955868'], 'question': 'which company produced so proudly we hail!'}
+{'ans': 'Q11399', 'gt_topic': 'Q7898086', 'candidate_topic': ['Q7898086'], 'question': 'what kind of music is the up off the floor album'}
+{'ans': 'Q183504', 'gt_topic': 'Q5976614', 'candidate_topic': ['Q5976614'], 'question': 'what sort of music is i can wonder what you did with your day'}
+{'ans': 'Q841476', 'gt_topic': 'Q1943638', 'candidate_topic': ['Q1943638'], 'question': 'What film has molly nyman contributed to'}
+{'ans': 'Q7522577', 'gt_topic': 'Q1443316', 'candidate_topic': ['Q1443316', 'Q19809'], 'question': "what's the name of a christmas music"}
+{'ans': 'Q59670', 'gt_topic': 'Q6332722', 'candidate_topic': ['Q6332722'], 'question': 'where was klik broadcasted'}
+{'ans': 'Q30', 'gt_topic': 'Q8019602', 'candidate_topic': ['Q8019602'], 'question': "what is william tyler olcott's nationality?"}
+{'ans': 'Q681427', 'gt_topic': 'Q25105', 'candidate_topic': ['Q25105'], 'question': 'Where did ali rizā die'}
+{'ans': 'Q732503', 'gt_topic': 'Q3297682', 'candidate_topic': ['Q3297682'], 'question': 'Which music label is soulhead apart of?'}
+{'ans': 'Q5528974', 'gt_topic': 'Q3806646', 'candidate_topic': ['Q3806646'], 'question': 'Which film did james longley edit?'}
+{'ans': 'Q6581097', 'gt_topic': 'Q4834683', 'candidate_topic': ['Q222', 'Q4834683'], 'question': 'What gender is carol victor, hereditary prince of albania'}
+{'ans': 'Q7129609', 'gt_topic': 'Q233118', 'candidate_topic': ['Q233118'], 'question': 'what is the ethnicity of traci lords'}
+{'ans': 'Q527711', 'gt_topic': 'Q116861', 'candidate_topic': ['Q602446', 'Q116861'], 'question': "what's one song that fran walsh wrote the lyrics for"}
+{'ans': 'Q8454', 'gt_topic': 'Q15999523', 'candidate_topic': ['Q15999523'], 'question': 'what kind of punishment is responsible for joseph \\\\"mad dog\\\\" taborsky\'s death'}
+{'ans': 'Q407116', 'gt_topic': 'Q188473', 'candidate_topic': ['Q188473'], 'question': 'what is an action film?'}
+{'ans': 'Q17', 'gt_topic': 'Q405527', 'candidate_topic': ['Q405527'], 'question': 'where is seishiro etō from'}
+{'ans': 'Q740798', 'gt_topic': 'Q212961', 'candidate_topic': ['Q12078', 'Q212961'], 'question': 'which governor died from pancreatic cancer?'}
+{'ans': 'Q21', 'gt_topic': 'Q208882', 'candidate_topic': ['Q208882'], 'question': 'what is  steve gibb nationality'}
+{'ans': 'Q460664', 'gt_topic': 'Q1257444', 'candidate_topic': ['Q1257444'], 'question': 'What is a film in the film adaptation genre?'}
+{'ans': 'Q5220464', 'gt_topic': 'Q2338889', 'candidate_topic': ['Q2338889', 'Q18127'], 'question': 'who is an artist from the record label mca records?'}
+{'ans': 'Q4365889', 'gt_topic': 'Q592', 'candidate_topic': ['Q592'], 'question': 'what is a gay film directed by zero chou'}
+{'ans': 'Q30', 'gt_topic': 'Q490423', 'candidate_topic': ['Q490423', 'Q1527'], 'question': 'What country is rice county, minnesota an administrative division of'}
+{'ans': 'Q381854', 'gt_topic': 'Q2671826', 'candidate_topic': ['Q2671826'], 'question': 'who was pulaski named after'}
+{'ans': 'Q39984', 'gt_topic': 'Q722356', 'candidate_topic': ['Q722356'], 'question': 'where did  babik reinhardt die'}
+{'ans': 'Q453472', 'gt_topic': 'Q3711', 'candidate_topic': ['Q3711'], 'question': 'who was born in belgrade?'}
+{'ans': 'Q1860', 'gt_topic': 'Q7800708', 'candidate_topic': ['Q7800708'], 'question': 'what is the language of tickled pink?'}
+{'ans': 'Q9293928', 'gt_topic': 'Q102350', 'candidate_topic': ['Q102350'], 'question': 'Who was born in bytom?'}
+{'ans': 'Q2962846', 'gt_topic': 'Q93204', 'candidate_topic': ['Q93204'], 'question': 'Name a documentary film.'}
+{'ans': 'Q7099166', 'gt_topic': 'Q235770', 'candidate_topic': ['Q235770'], 'question': 'What is an album by miss kittin?'}
+{'ans': 'Q90', 'gt_topic': 'Q497177', 'candidate_topic': ['Q497177'], 'question': 'Where did victor baltard die?'}
+{'ans': 'Q2017294', 'gt_topic': 'Q17028428', 'candidate_topic': ['Q17028428'], 'question': 'who released the silver gymnasium'}
+{'ans': 'Q83270', 'gt_topic': 'Q3833172', 'candidate_topic': ['Q3833172'], 'question': 'What sort of rock does lion write'}
+{'ans': 'Q25989', 'gt_topic': 'Q42509', 'candidate_topic': ['Q42509'], 'question': 'which time zone is used in bussero'}
+{'ans': 'Q1439722', 'gt_topic': 'Q130232', 'candidate_topic': ['Q21010853', 'Q130232'], 'question': 'A drama film would be what?'}
+{'ans': 'Q51506', 'gt_topic': 'Q5497282', 'candidate_topic': ['Q5497282'], 'question': 'Who is the son of frederick attenborough?'}
+{'ans': 'Q4790987', 'gt_topic': 'Q771', 'candidate_topic': ['Q771'], 'question': 'Who was born in massachusetts'}
+{'ans': 'Q17', 'gt_topic': 'Q1054388', 'candidate_topic': ['Q1054388'], 'question': 'what country gives nationality to yoshimi iwasaki'}
+{'ans': 'Q1841', 'gt_topic': 'Q2059697', 'candidate_topic': ['Q2059697'], 'question': 'Which religion does paul g. hatfield identify with'}
+{'ans': 'Q64', 'gt_topic': 'Q1876600', 'candidate_topic': ['Q1876600'], 'question': 'Where was luise berndt born?'}
+{'ans': 'Q459290', 'gt_topic': 'Q1514846', 'candidate_topic': ['Q1514846'], 'question': 'What type of film is gerry?'}
+{'ans': 'Q688467', 'gt_topic': 'Q8343', 'candidate_topic': ['Q8343'], 'question': 'Who is a person well known for being skilled at the clarinet'}
+{'ans': 'Q408', 'gt_topic': 'Q4739706', 'candidate_topic': ['Q4739706'], 'question': 'what country is amanda muggleton from'}
+{'ans': 'Q6224477', 'gt_topic': 'Q27844', 'candidate_topic': ['Q1393', 'Q27844', 'Q1400'], 'question': 'who is a man born in delaware county, pennsylvania'}
+{'ans': 'Q239464', 'gt_topic': 'Q2360255', 'candidate_topic': ['Q2360255'], 'question': 'which singer released an album called eve-olution'}
+{'ans': 'Q142', 'gt_topic': 'Q3235113', 'candidate_topic': ['Q907311', 'Q3235113'], 'question': 'What is the netflix genre for regrets?'}
+{'ans': 'Q2808', 'gt_topic': 'Q2014046', 'candidate_topic': ['Q2014046'], 'question': 'Who is the lyricist from the song good morning'}
+{'ans': 'Q54365', 'gt_topic': 'Q6917544', 'candidate_topic': ['Q6917544'], 'question': 'what kind of music is mothermania'}
+{'ans': 'Q2118122', 'gt_topic': 'Q3805', 'candidate_topic': ['Q3805'], 'question': 'Name a person born in amman.'}
+{'ans': 'Q6581072', 'gt_topic': 'Q6303290', 'candidate_topic': ['Q6303290'], 'question': 'is judith berman male or female'}
+{'ans': 'Q3765062', 'gt_topic': 'Q578109', 'candidate_topic': ['Q578109'], 'question': 'what is the name of a television producer'}
+{'ans': 'Q13377795', 'gt_topic': 'Q3210438', 'candidate_topic': ['Q3210438'], 'question': 'What kind of film is the red house'}
+{'ans': 'Q183', 'gt_topic': 'Q61771', 'candidate_topic': ['Q61771'], 'question': 'Where is emil wiechert from?'}
+{'ans': 'Q7756484', 'gt_topic': 'Q598929', 'candidate_topic': ['Q598929'], 'question': 'whats a name of a post-punk genre album'}
+{'ans': 'Q157443', 'gt_topic': 'Q237215', 'candidate_topic': ['Q201658', 'Q237215'], 'question': 'what film genre is barton fink?'}
+{'ans': 'Q739702', 'gt_topic': 'Q4873211', 'candidate_topic': ['Q4873211'], 'question': 'what series is battles of the clans from?'}
+{'ans': 'Q1123745', 'gt_topic': 'Q841701', 'candidate_topic': ['Q841701'], 'question': 'what type of genre does turbonegro make'}
+{'ans': 'Q1860', 'gt_topic': 'Q5109038', 'candidate_topic': ['Q5109038'], 'question': 'The actors in the film christabel spoke what language'}
+{'ans': 'Q24862', 'gt_topic': 'Q2936241', 'candidate_topic': ['Q2936241'], 'question': 'what is the genre of the film fake fruit factory'}
+{'ans': 'Q5546586', 'gt_topic': 'Q361', 'candidate_topic': ['Q361'], 'question': 'what military person was involved in world war i'}
+{'ans': 'Q389261', 'gt_topic': 'Q3378062', 'candidate_topic': ['Q2078759', 'Q3378062'], 'question': 'who developed phantasy star collection'}
+{'ans': 'Q159', 'gt_topic': 'Q2412010', 'candidate_topic': ['Q2412010'], 'question': 'which country is nikita bazhenov from'}
+{'ans': 'Q182415', 'gt_topic': 'Q5468684', 'candidate_topic': ['Q5468684'], 'question': 'what genre does forensic investigators belong to'}
+{'ans': 'Q201330', 'gt_topic': 'Q5277665', 'candidate_topic': ['Q5277665'], 'question': 'What position is dimitris rizos'}
+{'ans': 'Q6581097', 'gt_topic': 'Q12059163', 'candidate_topic': ['Q12059163'], 'question': 'What is the gender of tomáš baldýnský'}
+{'ans': 'Q910204', 'gt_topic': 'Q6581097', 'candidate_topic': ['Q6581097'], 'question': "Who's a fictional male character"}
+{'ans': 'Q7075919', 'gt_topic': 'Q8341', 'candidate_topic': ['Q8341'], 'question': 'Name a jazz album.'}
+{'ans': 'Q12599326', 'gt_topic': 'Q745915', 'candidate_topic': ['Q745915'], 'question': 'what genre is the artist cryptopsy'}
+{'ans': 'Q8646', 'gt_topic': 'Q7772530', 'candidate_topic': ['Q7772530'], 'question': 'What country does the film the victim originate?'}
+{'ans': 'Q598929', 'gt_topic': 'Q1008863', 'candidate_topic': ['Q1008863'], 'question': 'which genre does chapel club belong to'}
+{'ans': 'Q626865', 'gt_topic': 'Q1054574', 'candidate_topic': ['Q1054574'], 'question': "What's a romance film"}
+{'ans': 'Q159', 'gt_topic': 'Q4477603', 'candidate_topic': ['Q4477603'], 'question': 'what country is nina usatova from'}
+{'ans': 'Q202440', 'gt_topic': 'Q7821729', 'candidate_topic': ['Q7821729'], 'question': 'which label did chef tone sign to'}
+{'ans': 'Q377453', 'gt_topic': 'Q912909', 'candidate_topic': ['Q912909'], 'question': 'Which label is the raconteurs apart of?'}
+{'ans': 'Q253918', 'gt_topic': 'Q659186', 'candidate_topic': ['Q659186'], 'question': 'what genre is the album figure number five'}
+{'ans': 'Q1183898', 'gt_topic': 'Q6774533', 'candidate_topic': ['Q6774533'], 'question': 'which  town was martha rial born'}
+{'ans': 'Q571750', 'gt_topic': 'Q193592', 'candidate_topic': ['Q193592'], 'question': 'who is a midfielder'}
+{'ans': 'Q3130', 'gt_topic': 'Q2882218', 'candidate_topic': ['Q2882218'], 'question': 'which city is catherine sutherland from'}
+{'ans': 'Q6581097', 'gt_topic': 'Q1525553', 'candidate_topic': ['Q1525553'], 'question': 'what gender is giorgio stegani'}
+{'ans': 'Q30', 'gt_topic': 'Q269698', 'candidate_topic': ['Q269698'], 'question': "What is marilyn burns's nationality?"}
+{'ans': 'Q183504', 'gt_topic': 'Q7045699', 'candidate_topic': ['Q7045699'], 'question': 'What music genre is Noble Beast?'}
+{'ans': 'Q653308', 'gt_topic': 'Q6394259', 'candidate_topic': ['Q6394259'], 'question': 'What is a character created by keron grant'}
+{'ans': 'Q13377795', 'gt_topic': 'Q1271874', 'candidate_topic': ['Q907311', 'Q1271874'], 'question': 'What is the netflix genre that after the thin man is in?'}
+{'ans': 'Q142', 'gt_topic': 'Q3380582', 'candidate_topic': ['Q46', 'Q3380582'], 'question': 'Where in europe is philippe quesne from'}
+{'ans': 'Q34692', 'gt_topic': 'Q3259402', 'candidate_topic': ['Q3259402'], 'question': 'where was lord tanamo born'}
+{'ans': 'Q11366', 'gt_topic': 'Q7062126', 'candidate_topic': ['Q395', 'Q7062126'], 'question': 'What genre of music is not mathematics?'}
+{'ans': 'Q669127', 'gt_topic': 'Q3640970', 'candidate_topic': ['Q14009165', 'Q3640970'], 'question': 'which label is blitzen trapper signed to'}
+{'ans': 'Q25989', 'gt_topic': 'Q159685', 'candidate_topic': ['Q12143', 'Q159685'], 'question': 'what time zone is  bolsena located in'}
+{'ans': 'Q142', 'gt_topic': 'Q3110134', 'candidate_topic': ['Q215085', 'Q3110134'], 'question': 'in what country was golem: the petrified garden filmed'}
+{'ans': 'Q336286', 'gt_topic': 'Q792977', 'candidate_topic': ['Q792977'], 'question': 'what position does  aykut demir play in fotball'}
+{'ans': 'Q49451', 'gt_topic': 'Q7752979', 'candidate_topic': ['Q7752979'], 'question': 'What genre is neskimos'}
+{'ans': 'Q1860', 'gt_topic': 'Q7997203', 'candidate_topic': ['Q7997203'], 'question': 'what language was who did you think i was composed in'}
+{'ans': 'Q6581097', 'gt_topic': 'Q1292684', 'candidate_topic': ['Q1292684'], 'question': 'What is the gender of jerningham wakefield'}
+{'ans': 'Q306870', 'gt_topic': 'Q11237', 'candidate_topic': ['Q11237'], 'question': 'who is the parent of nelson rockefeller'}
+{'ans': 'Q51290', 'gt_topic': 'Q442207', 'candidate_topic': ['Q442207'], 'question': 'what instrument does gillian welch  play'}
+{'ans': 'Q10547424', 'gt_topic': 'Q336286', 'candidate_topic': ['Q336286', 'Q238113'], 'question': 'which english defender plays for the fortuna liga side'}
+{'ans': 'Q7102171', 'gt_topic': 'Q105527', 'candidate_topic': ['Q105527', 'Q8341'], 'question': 'What is the name of a popular jazz fusion artist'}
+{'ans': 'Q150', 'gt_topic': 'Q540624', 'candidate_topic': ['Q183', 'Q540624'], 'question': 'Which language is the film germany, year zero in?'}
+{'ans': 'Q269171', 'gt_topic': 'Q132311', 'candidate_topic': ['Q2074644', 'Q132311'], 'question': 'what is the name of a fantasy taiwaneese drama'}
+{'ans': 'Q1428', 'gt_topic': 'Q3605920', 'candidate_topic': ['Q3605920'], 'question': 'which state was aedin mincks born in'}
+{'ans': 'Q1860', 'gt_topic': 'Q1406158', 'candidate_topic': ['Q142', 'Q1406158'], 'question': 'What is the original language of the book the french powder mystery'}
+{'ans': 'Q753110', 'gt_topic': 'Q180723', 'candidate_topic': ['Q180723'], 'question': 'what profession does ami suzuki have?'}
+{'ans': 'Q702340', 'gt_topic': 'Q1457636', 'candidate_topic': ['Q1457636'], 'question': 'what is the label of helstar'}
+{'ans': 'Q49085', 'gt_topic': 'Q332991', 'candidate_topic': ['Q332991'], 'question': "whats elston howard's ethnicity"}
+{'ans': 'Q676555', 'gt_topic': 'Q3663700', 'candidate_topic': ['Q2977', 'Q207486', 'Q3663700', 'Q207486', 'Q20103', 'Q163687'], 'question': 'who is the cathedral basilica of st. francis of assisi named after'}
+{'ans': 'Q172', 'gt_topic': 'Q5040222', 'candidate_topic': ['Q5040222'], 'question': 'where did carl goldenberg die?'}
+{'ans': 'Q6214118', 'gt_topic': 'Q723703', 'candidate_topic': ['Q723703'], 'question': 'what family is woolf barnato from?'}
+{'ans': 'Q30', 'gt_topic': 'Q6181696', 'candidate_topic': ['Q6181696'], 'question': 'jeremy messersmith claims nationality from where?'}
+{'candidate_topic': ['Q723703'], 'ans': 'Q6214118', 'question': 'what family is woolf barnato from?', 'gt_topic': 'Q723703'}
+{'candidate_topic': ['Q6181696'], 'ans': 'Q30', 'question': 'jeremy messersmith claims nationality from where?', 'gt_topic': 'Q6181696'}
+{'candidate_topic': ['Q715784', 'Q1100647'], 'ans': 'Q23556', 'question': 'Where was clete donald johnson, jr. born?', 'gt_topic': 'Q1100647'}
+{'candidate_topic': ['Q151792'], 'ans': 'Q150', 'question': 'what language is the science of sleep filmed in?', 'gt_topic': 'Q151792'}
+{'candidate_topic': ['Q8253'], 'ans': 'Q11690315', 'question': 'Name a work of fiction.', 'gt_topic': 'Q8253'}
+{'gt_topic': 'Q4736312', 'ans': 'Q49451', 'question': 'what type of rock music is altered state considered', 'candidate_topic': ['Q4736312']}
+{'gt_topic': 'Q756320', 'ans': 'Q5243428', 'question': 'which musician recorded metal blade records', 'candidate_topic': ['Q756320']}
+{'gt_topic': 'Q813313', 'ans': 'Q30', 'question': 'Which country is beattie feathers from?', 'candidate_topic': ['Q813313']}
+{'gt_topic': 'Q6988561', 'ans': 'Q22', 'question': 'what country is neil forsyth from', 'candidate_topic': ['Q6988561']}
+{'gt_topic': 'Q6435718', 'ans': 'Q155385', 'question': "who is one of kpatcha gnassingbé's parents", 'candidate_topic': ['Q6435718']}
+{'gt_topic': 'Q24925', 'ans': 'Q3666118', 'question': 'Which book belongs to the science fiction genre?', 'candidate_topic': ['Q24925']}
+{'gt_topic': 'Q598', 'ans': 'Q25989', 'question': 'what is the time zone for rzeszów', 'candidate_topic': ['Q598']}
+{'gt_topic': 'Q7558577', 'ans': 'Q1345', 'question': 'where was solomon bush born', 'candidate_topic': ['Q7558577']}
+{'gt_topic': 'Q755403', 'ans': 'Q6173735', 'question': 'which senator was born in litchfield', 'candidate_topic': ['Q755403']}
+{'gt_topic': 'Q6969977', 'ans': 'Q9089', 'question': 'what faith does nathuram mirdha practice', 'candidate_topic': ['Q6969977']}
+{'gt_topic': 'Q1676309', 'ans': 'Q16555', 'question': 'Where was j. doyne farmer born?', 'candidate_topic': ['Q1676309']}
+{'gt_topic': 'Q3025840', 'ans': 'Q121254', 'question': 'what is the ideology of liberal democratic union', 'candidate_topic': ['Q3025840']}
+{'gt_topic': 'Q7973253', 'ans': 'Q3469687', 'question': 'Who was the artist for the album water?', 'candidate_topic': ['Q7973253']}
+{'gt_topic': 'Q1584627', 'ans': 'Q183862', 'question': 'Which genre of music is the artist vampires everywhere!', 'candidate_topic': ['Q46721', 'Q1584627']}
+{'gt_topic': 'Q1298630', 'ans': 'Q3863', 'question': 'what is 29457 marcopolo', 'candidate_topic': ['Q1298630']}
+{'gt_topic': 'Q942581', 'ans': 'Q155', 'question': 'which country was violeta went to heaven made in', 'candidate_topic': ['Q942581']}
+{'gt_topic': 'Q2438097', 'ans': 'Q16083', 'question': "what is tobias zellner's place of birth?", 'candidate_topic': ['Q2438097']}
+{'gt_topic': 'Q12188688', 'ans': 'Q1860', 'question': 'What language is used in the book mr. tucket', 'candidate_topic': ['Q12188688']}
+{'gt_topic': 'Q278800', 'ans': 'Q178169', 'question': 'what religion is betty castor', 'candidate_topic': ['Q278800']}
+{'gt_topic': 'Q617827', 'ans': 'Q858847', 'question': 'where did the apache wars occur', 'candidate_topic': ['Q102090', 'Q617827']}
+{'gt_topic': 'Q1522269', 'ans': 'Q495', 'question': 'where was gian-carlo wick born', 'candidate_topic': ['Q1522269']}
+{'gt_topic': 'Q47912', 'ans': 'Q505960', 'question': 'Which person died from lung cancer?', 'candidate_topic': ['Q12078', 'Q47912']}
+{'gt_topic': 'Q11366', 'ans': 'Q2227147', 'question': 'What is the name of an alternative rock album', 'candidate_topic': ['Q11366']}
+{'gt_topic': 'Q14950453', 'ans': 'Q25113', 'question': 'what position does mike pucillo play', 'candidate_topic': ['Q14950453']}
+{'gt_topic': 'Q4631312', 'ans': 'Q1571', 'question': 'Which language is the film 22 june 1897 in', 'candidate_topic': ['Q4631312']}
+{'gt_topic': 'Q12718754', 'ans': 'Q2056208', 'question': 'Who is an artist that is signed to the suicide squeeze records', 'candidate_topic': ['Q12718754']}
+{'gt_topic': 'Q83440', 'ans': 'Q3146395', 'question': 'what is a country album?', 'candidate_topic': ['Q83440']}
+{'gt_topic': 'Q7876976', 'ans': 'Q668', 'question': "what is udaya bhanu's nationality", 'candidate_topic': ['Q7876976']}
+{'gt_topic': 'Q2060582', 'ans': 'Q60130', 'question': 'what city was francisco javier alegre born', 'candidate_topic': ['Q2060582']}
+{'gt_topic': 'Q2092695', 'ans': 'Q38', 'question': "WHat is pier giorgio bellocchio's nationality", 'candidate_topic': ['Q2092695']}
+{'gt_topic': 'Q6759214', 'ans': 'Q7755309', 'question': 'margaret brown  was the writer for what film', 'candidate_topic': ['Q6759214']}
+{'gt_topic': 'Q383614', 'ans': 'Q118725', 'question': 'Who was involved in the battle of kohima?', 'candidate_topic': ['Q383614', 'Q234056']}
+{'gt_topic': 'Q17022565', 'ans': 'Q7749', 'question': "what kind of music genre is twangin'", 'candidate_topic': ['Q17022565']}
+{'gt_topic': 'Q4198159', 'ans': 'Q432', 'question': 'what religion does ismail abdul rahman follow?', 'candidate_topic': ['Q4198159']}
+{'gt_topic': 'Q7325', 'ans': 'Q458186', 'question': 'Which jewish people writer became famous in Argentina?', 'candidate_topic': ['Q414', 'Q7325']}
+{'gt_topic': 'Q965498', 'ans': 'Q30', 'question': 'what country is neil labute from?', 'candidate_topic': ['Q965498']}
+{'gt_topic': 'Q5081976', 'ans': 'Q203995', 'question': 'what was the death place for charles regan', 'candidate_topic': ['Q5081976']}
+{'gt_topic': 'Q913266', 'ans': 'Q6175265', 'question': 'What man was born in coos bay?', 'candidate_topic': ['Q5168063', 'Q913266']}
+{'gt_topic': 'Q170238', 'ans': 'Q7092635', 'question': 'Name a tv sitcom.', 'candidate_topic': ['Q170238']}
+{'gt_topic': 'Q746612', 'ans': 'Q713750', 'question': 'what country is my 20th century from?', 'candidate_topic': ['Q746612']}
+{'gt_topic': 'Q7174155', 'ans': 'Q6581097', 'question': "What is peter gaffney's gender", 'candidate_topic': ['Q7174155']}
+{'gt_topic': 'Q7743743', 'ans': 'Q13377795', 'question': 'what type of book is the judas pair', 'candidate_topic': ['Q7743743']}
+{'gt_topic': 'Q7088396', 'ans': 'Q6581097', 'question': 'What is the sex of olly alexander?', 'candidate_topic': ['Q7088396']}
+{'gt_topic': 'Q4705132', 'ans': 'Q191170', 'question': 'Where was alaa al-tamimi birthed', 'candidate_topic': ['Q4705132']}
+{'gt_topic': 'Q15818', 'ans': 'Q8839', 'question': 'Which constellation is eta ceti a star of?', 'candidate_topic': ['Q15818', 'Q8928', 'Q14396', 'Q523']}
+{'gt_topic': 'Q3807425', 'ans': 'Q4172847', 'question': 'jason pagara is of what ethnic group?', 'candidate_topic': ['Q41710', 'Q3807425']}
+{'gt_topic': 'Q1531577', 'ans': 'Q288781', 'question': 'What city is justine frischmann born', 'candidate_topic': ['Q1531577']}
+{'gt_topic': 'Q367910', 'ans': 'Q597', 'question': 'where was mariano gago born?', 'candidate_topic': ['Q367910']}
+{'gt_topic': 'Q349146', 'ans': 'Q133163', 'question': 'which instrument does jack dejohnette play', 'candidate_topic': ['Q349146']}
+{'gt_topic': 'Q5244582', 'ans': 'Q492096', 'question': 'what musical genre is de libertad y amor considered', 'candidate_topic': ['Q5244582']}
+{'gt_topic': 'Q471656', 'ans': 'Q15720517', 'question': 'which song is written by thomas bangalter', 'candidate_topic': ['Q471656']}
+{'gt_topic': 'Q3125235', 'ans': 'Q645928', 'question': 'what kind of film is the legend is born – ip man', 'candidate_topic': ['Q3125235']}
+{'gt_topic': 'Q7200272', 'ans': 'Q30', 'question': 'in which country was the placebo effect filmed', 'candidate_topic': ['Q269829', 'Q7200272']}
+{'gt_topic': 'Q6143773', 'ans': 'Q12796', 'question': 'how did james stronge die', 'candidate_topic': ['Q6143773']}
+{'gt_topic': 'Q2299344', 'ans': 'Q537386', 'question': 'Who did the music for the film the stepfather', 'candidate_topic': ['Q2299344']}
+{'gt_topic': 'Q7922084', 'ans': 'Q6581097', 'question': 'is vernon carey male or female', 'candidate_topic': ['Q7922084']}
+{'gt_topic': 'Q3523192', 'ans': 'Q369190', 'question': 'who directed the vanishing virginian?', 'candidate_topic': ['Q3523192']}
+{'gt_topic': 'Q28591', 'ans': 'Q182865', 'question': 'in which conflict did david petraeus participate', 'candidate_topic': ['Q28591']}
+{'gt_topic': 'Q2362572', 'ans': 'Q18097', 'question': 'which country did myung jae nam die in', 'candidate_topic': ['Q2362572']}
+{'gt_topic': 'Q6152402', 'ans': 'Q12152', 'question': "what was the cause of jane hylton's death", 'candidate_topic': ['Q6152402']}
+{'gt_topic': 'Q2086913', 'ans': 'Q1928296', 'question': 'what is the name of a location found in the north american central time zone', 'candidate_topic': ['Q2086913']}
+{'gt_topic': 'Q5346290', 'ans': 'Q362', 'question': 'what war did edwin charles parsons participate in', 'candidate_topic': ['Q5346290']}
+{'gt_topic': 'Q1371097', 'ans': 'Q37073', 'question': 'what kind of music does ethan johns make', 'candidate_topic': ['Q1371097']}
+{'gt_topic': 'Q315811', 'ans': 'Q1989697', 'question': 'what albums are by steve hackett', 'candidate_topic': ['Q315811']}
+{'gt_topic': 'Q7807093', 'ans': 'Q4354870', 'question': 'what was the organization that timothy c. draper founded', 'candidate_topic': ['Q7807093']}
+{'gt_topic': 'Q32090', 'ans': 'Q16836822', 'question': 'which lifestyle (sociology) tv program shows people with bad tattoos', 'candidate_topic': ['Q21201', 'Q32090']}
+{'gt_topic': 'Q4797109', 'ans': 'Q6581097', 'question': 'What gender is art thieme', 'candidate_topic': ['Q48277', 'Q4797109']}
+{'gt_topic': 'Q847191', 'ans': 'Q7305106', 'question': 'What label the fleshtones signed with', 'candidate_topic': ['Q847191']}
+{'gt_topic': 'Q604773', 'ans': 'Q122741', 'question': 'who published children of the nile', 'candidate_topic': ['Q3392', 'Q604773']}
+{'gt_topic': 'Q896048', 'ans': 'Q6181194', 'question': 'Name a football player born in boynton beach, florida.', 'candidate_topic': ['Q812', 'Q896048']}
+{'gt_topic': 'Q3168992', 'ans': 'Q49085', 'question': 'what ethnicity is sister souljah', 'candidate_topic': ['Q3168992']}
+{'gt_topic': 'Q7798827', 'ans': 'Q17', 'question': 'where is the film thumbelina from', 'candidate_topic': ['Q7798827']}
+{'gt_topic': 'Q1430616', 'ans': 'Q236913', 'question': 'what type a subgenre of rock music does the monster magnet play', 'candidate_topic': ['Q1430616', 'Q11399', 'Q483394']}
+{'gt_topic': 'Q16247609', 'ans': 'Q183504', 'question': 'what kind of rock music is on the album dawn metropolis', 'candidate_topic': ['Q16247609']}
+{'gt_topic': 'Q7245456', 'ans': 'Q1161836', 'question': 'which artist recorded the album priority?', 'candidate_topic': ['Q7245456']}
+{'gt_topic': 'Q3992519', 'ans': 'Q30', 'question': 'which country is tom petersson from', 'candidate_topic': ['Q3992519']}
+{'gt_topic': 'Q16006655', 'ans': 'Q1368195', 'question': 'what position in baseball does harry spratt play', 'candidate_topic': ['Q5369', 'Q16006655']}
+{'gt_topic': 'Q130232', 'ans': 'Q1686150', 'question': 'what is a drama on netflix?', 'candidate_topic': ['Q907311', 'Q130232']}
+{'gt_topic': 'Q55415', 'ans': 'Q700206', 'question': 'leni riefenstahl  directed what film', 'candidate_topic': ['Q55415']}
+{'gt_topic': 'Q2599101', 'ans': 'Q801', 'question': 'which country is zeev revach from', 'candidate_topic': ['Q2599101']}
+{'gt_topic': 'Q713477', 'ans': 'Q206159', 'question': 'What genre is jacques dutronc known to play?', 'candidate_topic': ['Q713477']}
+{'gt_topic': 'Q4527923', 'ans': 'Q207294', 'question': 'where was alexandr uman born?', 'candidate_topic': ['Q4527923']}
+{'gt_topic': 'Q3210677', 'ans': 'Q13377795', 'question': 'what is the film genre os the turn of the screw?', 'candidate_topic': ['Q625923', 'Q3210677']}
+{'gt_topic': 'Q130232', 'ans': 'Q4703119', 'question': 'Which film genre does drama fall under?', 'candidate_topic': ['Q130232']}
+{'gt_topic': 'Q1260861', 'ans': 'Q2708028', 'question': 'What is the name of a tactical shooter gane', 'candidate_topic': ['Q1260861']}
+{'gt_topic': 'Q16562056', 'ans': 'Q33999', 'question': 'what is the job title of janusz petelski', 'candidate_topic': ['Q16562056']}
+{'gt_topic': 'Q2888366', 'ans': 'Q175284', 'question': 'Which entity was involved in crossbarry ambush?', 'candidate_topic': ['Q4241734', 'Q2888366']}
+{'gt_topic': 'Q401958', 'ans': 'Q506240', 'question': 'Which genre of film is while the children sleep?', 'candidate_topic': ['Q401958']}
+{'gt_topic': 'Q3645862', 'ans': 'Q193592', 'question': 'what position does bruno nobili play at?', 'candidate_topic': ['Q3645862']}
+{'gt_topic': 'Q9799', 'ans': 'Q829991', 'question': 'Name someone who was born in heerlen', 'candidate_topic': ['Q9799']}
+{'gt_topic': 'Q130232', 'ans': 'Q3506167', 'question': 'what is a Croatian drama film', 'candidate_topic': ['Q21010853', 'Q224', 'Q130232']}
+{'gt_topic': 'Q682702', 'ans': 'Q1054574', 'question': 'What type of film is baby face (film)', 'candidate_topic': ['Q682702']}
+{'gt_topic': 'Q231286', 'ans': 'Q37073', 'question': 'what kind of music does emmylou harris make?', 'candidate_topic': ['Q231286']}
+{'gt_topic': 'Q860626', 'ans': 'Q4911833', 'question': 'which movie is romantic comedy', 'candidate_topic': ['Q860626']}
+{'gt_topic': 'Q254106', 'ans': 'Q5342752', 'question': 'who participated in the crimean war', 'candidate_topic': ['Q254106']}
+{'gt_topic': 'Q979971', 'ans': 'Q5300589', 'question': 'what football player was born in memphis', 'candidate_topic': ['Q16563', 'Q979971']}
+{'gt_topic': 'Q7631987', 'ans': 'Q1557801', 'question': 'who is the artist of subseven: the ep', 'candidate_topic': ['Q7631987']}
+{'gt_topic': 'Q183412', 'ans': 'Q7769270', 'question': "What's a artist on emi", 'candidate_topic': ['Q183412']}
+{'gt_topic': 'Q713273', 'ans': 'Q30', 'question': 'What country is billy may from', 'candidate_topic': ['Q713273']}
+{'gt_topic': 'Q49085', 'ans': 'Q15522057', 'question': 'who is an african american journalist', 'candidate_topic': ['Q30', 'Q2035701', 'Q49085']}
+{'gt_topic': 'Q4943601', 'ans': 'Q1754', 'question': 'what location is the birthplace of malin crepin', 'candidate_topic': ['Q4943601']}
+{'gt_topic': 'Q271006', 'ans': 'Q130232', 'question': 'What type of movie is enemy at the gates?', 'candidate_topic': ['Q271006']}
+{'gt_topic': 'Q3316456', 'ans': 'Q167565', 'question': 'which county contains clayton', 'candidate_topic': ['Q3316456']}
+{'gt_topic': 'Q3565578', 'ans': 'Q41', 'question': 'what is the nationality of katerina gogou', 'candidate_topic': ['Q3565578']}
+{'gt_topic': 'Q7230981', 'ans': 'Q173782', 'question': 'what kind of architecture is the port theatre', 'candidate_topic': ['Q11635', 'Q7230981']}
+{'gt_topic': 'Q7717637', 'ans': 'Q6289449', 'question': 'Who directed the film the big fix', 'candidate_topic': ['Q7717637']}
+{'gt_topic': 'Q1335207', 'ans': 'Q1946521', 'question': 'which record label does tommy roe belong to?', 'candidate_topic': ['Q18127', 'Q1335207']}
+{'gt_topic': 'Q15033015', 'ans': 'Q34740', 'question': 'what is the rank of caracara in organism classification', 'candidate_topic': ['Q4583899', 'Q15033015']}
+{'gt_topic': 'Q3271710', 'ans': 'Q11425', 'question': 'what type of program is symphogear', 'candidate_topic': ['Q3271710']}
+{'gt_topic': 'Q4183972', 'ans': 'Q8646', 'question': 'what is the country that fire of conscience was filmed in?', 'candidate_topic': ['Q4183972']}
+{'gt_topic': 'Q537923', 'ans': 'Q85', 'question': 'where was the battle of ridaniya', 'candidate_topic': ['Q537923']}
+{'gt_topic': 'Q150', 'ans': 'Q1113049', 'question': 'which movie uses french language in netflix', 'candidate_topic': ['Q907311', 'Q150']}
+{'gt_topic': 'Q1265214', 'ans': 'Q30', 'question': 'where is todd palin from', 'candidate_topic': ['Q1265214']}
+{'gt_topic': 'Q4929219', 'ans': 'Q2022163', 'question': 'what type of music does blue highway put out', 'candidate_topic': ['Q4929219']}
+{'gt_topic': 'Q7773757', 'ans': 'Q8253', 'question': 'what book genre is  the watsons go to birmingham – 1963', 'candidate_topic': ['Q2256', 'Q7773757']}
+{'gt_topic': 'Q313081', 'ans': 'Q6607', 'question': 'which instruments can kyu sakamoto play', 'candidate_topic': ['Q313081']}
+{'gt_topic': 'Q1840760', 'ans': 'Q372796', 'question': 'what county is found in reeseville, wisconsin', 'candidate_topic': ['Q1840760']}
+{'gt_topic': 'Q4864679', 'ans': 'Q6581097', 'question': 'what gender is barry robins', 'candidate_topic': ['Q4864679']}
+{'gt_topic': 'Q16299470', 'ans': 'Q47034', 'question': 'which finland city was mikko jurkka born in', 'candidate_topic': ['Q33', 'Q16299470']}
+{'gt_topic': 'Q7364380', 'ans': 'Q10871364', 'question': 'who is ron shepherd', 'candidate_topic': ['Q7364380']}
+{'gt_topic': 'Q8261', 'ans': 'Q7455078', 'question': 'Which book is a novel?', 'candidate_topic': ['Q8261']}
+{'gt_topic': 'Q6782866', 'ans': 'Q484641', 'question': 'What genre of music is maschera?', 'candidate_topic': ['Q6782866']}
+{'gt_topic': 'Q4661830', 'ans': 'Q54365', 'question': 'what is the genre to which aaron barrett belongs', 'candidate_topic': ['Q4661830']}
+{'gt_topic': 'Q325470', 'ans': 'Q3518417', 'question': "who is one of vikram sarabhai's children", 'candidate_topic': ['Q325470']}
+{'gt_topic': 'Q75789', 'ans': 'Q686109', 'question': 'where was cosima wagner buried', 'candidate_topic': ['Q75789']}
+{'gt_topic': 'Q2379008', 'ans': 'Q159', 'question': 'where was the film the miracle tree created', 'candidate_topic': ['Q2379008']}
+{'gt_topic': 'Q199896', 'ans': 'Q5255204', 'question': "who is karl malone's daughter", 'candidate_topic': ['Q199896']}
+{'gt_topic': 'Q2435418', 'ans': 'Q157128', 'question': 'what was elysian fields avenue named after', 'candidate_topic': ['Q2435418', 'Q5368562']}
+{'gt_topic': 'Q16259089', 'ans': 'Q7139860', 'question': 'who is a publisher of the computer videogame pyst', 'candidate_topic': ['Q16259089']}
+{'gt_topic': 'Q327', 'ans': 'Q3532385', 'question': 'what event happened in brittany?', 'candidate_topic': ['Q327']}
+{'gt_topic': 'Q16725177', 'ans': 'Q130232', 'question': 'What kind of film is separation at the port of busan', 'candidate_topic': ['Q16520', 'Q16725177']}
+{'gt_topic': 'Q216638', 'ans': 'Q5237515', 'question': 'Name a person born in Wakefield', 'candidate_topic': ['Q216638']}
+{'gt_topic': 'Q5203743', 'ans': 'Q93191', 'question': 'What is the religion of d. n. jackson?', 'candidate_topic': ['Q5203743']}
+{'gt_topic': 'Q4384270', 'ans': 'Q1175275', 'question': 'who was the author of a voyage to arcturus?', 'candidate_topic': ['Q4384270', 'Q12985']}
+{'gt_topic': 'Q6581097', 'ans': 'Q7148282', 'question': 'Who is a male character from the Absolutely Fabulous show?', 'candidate_topic': ['Q332554', 'Q6581097']}
+{'gt_topic': 'Q7325', 'ans': 'Q3124136', 'question': 'What is the name of someone that identifies with jewish people', 'candidate_topic': ['Q7325']}
+{'gt_topic': 'Q3985991', 'ans': 'Q188473', 'question': 'What kind of film is black cobra 2', 'candidate_topic': ['Q3985991']}
+{'gt_topic': 'Q5120550', 'ans': 'Q33999', 'question': 'what is the occupation of cindy kurleto', 'candidate_topic': ['Q5120550']}
+{'gt_topic': 'Q4958571', 'ans': 'Q6581097', 'question': 'What gender is brayton c. ives?', 'candidate_topic': ['Q4958571']}
+{'gt_topic': 'Q82955', 'ans': 'Q2067897', 'question': 'name a professional politician.', 'candidate_topic': ['Q82955']}
+{'gt_topic': 'Q1154391', 'ans': 'Q6581097', 'question': 'What is francesco merli gender?', 'candidate_topic': ['Q48277', 'Q1154391']}
+{'gt_topic': 'Q2907097', 'ans': 'Q8341', 'question': 'What genre is Blow-Up?', 'candidate_topic': ['Q2907097']}
+{'gt_topic': 'Q7764660', 'ans': 'Q10922', 'question': 'what kind of music is recorded by the skulls', 'candidate_topic': ['Q7764660']}
+{'gt_topic': 'Q62248', 'ans': 'Q6581097', 'question': "What is franz von soxhlet's gender", 'candidate_topic': ['Q48277', 'Q62248']}
+{'gt_topic': 'Q55842', 'ans': 'Q145', 'question': "What is kazimierz sabbat's nationality", 'candidate_topic': ['Q55842']}
+{'gt_topic': 'Q319221', 'ans': 'Q2655213', 'question': 'What is the name of a program in the adventure film category', 'candidate_topic': ['Q319221']}
+{'gt_topic': 'Q144347', 'ans': 'Q43343', 'question': 'what kind of music does zaim imamović make?', 'candidate_topic': ['Q144347']}
+{'gt_topic': 'Q3228616', 'ans': 'Q30', 'question': 'what country made the film leadbelly', 'candidate_topic': ['Q3228616']}
+{'gt_topic': 'Q6080386', 'ans': 'Q130232', 'question': 'what type of film is when derin falls?', 'candidate_topic': ['Q6080386']}
+{'gt_topic': 'Q656746', 'ans': 'Q3863', 'question': 'What kind of space object is 5082 nihonsyoki', 'candidate_topic': ['Q656746']}
+{'gt_topic': 'Q3018923', 'ans': 'Q843402', 'question': 'what label is david van tieghem with', 'candidate_topic': ['Q3018923']}
+{'gt_topic': 'Q354508', 'ans': 'Q6487310', 'question': 'name an album by sun ra', 'candidate_topic': ['Q354508']}
+{'gt_topic': 'Q1143044', 'ans': 'Q289250', 'question': 'where did battles of kawanakajima occur', 'candidate_topic': ['Q1143044']}
+{'gt_topic': 'Q11309811', 'ans': 'Q6581097', 'question': 'what is jackie fargos gender', 'candidate_topic': ['Q11309811']}
+{'gt_topic': 'Q6297515', 'ans': 'Q33999', 'question': 'What is the profession of joyce heron?', 'candidate_topic': ['Q6297515']}
+{'gt_topic': 'Q1690722', 'ans': 'Q30', 'question': 'Which nation is joan c. gratz from?', 'candidate_topic': ['Q1690722']}
+{'gt_topic': 'Q987262', 'ans': 'Q258542', 'question': 'which american politician was born in virginia city', 'candidate_topic': ['Q987262', 'Q1370']}
+{'gt_topic': 'Q681849', 'ans': 'Q101895', 'question': 'who founded the organization xing', 'candidate_topic': ['Q681849']}
+{'gt_topic': 'Q2086913', 'ans': 'Q2608595', 'question': "What's a city in north american central time zone", 'candidate_topic': ['Q2086913']}
+{'gt_topic': 'Q1921568', 'ans': 'Q5146', 'question': 'what language is mercury filmed in?', 'candidate_topic': ['Q1921568']}
+{'gt_topic': 'Q158536', 'ans': 'Q6581097', 'question': "what is petr eben's gender", 'candidate_topic': ['Q158536']}
+{'gt_topic': 'Q7703893', 'ans': 'Q200092', 'question': 'What type of movie is terror and black lace?', 'candidate_topic': ['Q231250', 'Q7703893']}
+{'gt_topic': 'Q4636038', 'ans': 'Q753520', 'question': 'what type of music does 38th parallel play?', 'candidate_topic': ['Q483102', 'Q4636038']}
+{'gt_topic': 'Q5422835', 'ans': 'Q5967378', 'question': 'what literary genre is the book  eyes of the calculor', 'candidate_topic': ['Q223393', 'Q5422835']}
+{'gt_topic': 'Q16226045', 'ans': 'Q6607', 'question': 'What instrument did jules hodgeson play?', 'candidate_topic': ['Q16226045']}
+{'gt_topic': 'Q54540', 'ans': 'Q10833314', 'question': 'What does chuck mckinley do for a living', 'candidate_topic': ['Q54540']}
+{'gt_topic': 'Q160778', 'ans': 'Q1055', 'question': 'where was kai hansen born in?', 'candidate_topic': ['Q160778']}
+{'gt_topic': 'Q7170745', 'ans': 'Q49451', 'question': 'what music genre is perspective?', 'candidate_topic': ['Q7170745']}
+{'gt_topic': 'Q599432', 'ans': 'Q562063', 'question': 'who wrote the story for nutty professor ii: the klumps', 'candidate_topic': ['Q599432']}
+{'gt_topic': 'Q6434843', 'ans': 'Q11399', 'question': 'what type of music does kovas make?', 'candidate_topic': ['Q6434843']}
+{'gt_topic': 'Q60', 'ans': 'Q6152569', 'question': 'what person was born in new york city?', 'candidate_topic': ['Q60', 'Q1384']}
+{'gt_topic': 'Q7195997', 'ans': 'Q1860', 'question': 'what language is from pink eye', 'candidate_topic': ['Q7195997']}
+{'gt_topic': 'Q7044060', 'ans': 'Q34981', 'question': 'Who is the author of the book no connection', 'candidate_topic': ['Q7044060']}
+{'gt_topic': 'Q65', 'ans': 'Q19544338', 'question': 'Name a person born in Los Angeles.', 'candidate_topic': ['Q65']}
+{'gt_topic': 'Q14543185', 'ans': 'Q727694', 'question': 'what is the predominant language spoken in tiny times 2', 'candidate_topic': ['Q14543185']}
+{'gt_topic': 'Q2575177', 'ans': 'Q78', 'question': 'where did wilhelm speyer pass away', 'candidate_topic': ['Q2575177']}
+{'gt_topic': 'Q2622822', 'ans': 'Q525', 'question': 'What does 14065 flegel orbit', 'candidate_topic': ['Q2622822']}
+{'gt_topic': 'Q1325589', 'ans': 'Q939079', 'question': 'who produced the film risky business', 'candidate_topic': ['Q1325589']}
+{'gt_topic': 'Q4796595', 'ans': 'Q1860', 'question': 'which language is primarily used in arson, inc.', 'candidate_topic': ['Q327541', 'Q4796595']}
+{'gt_topic': 'Q1423789', 'ans': 'Q3861014', 'question': 'tecmo developed what computer videogame?', 'candidate_topic': ['Q1423789', 'Q7889']}
+{'gt_topic': 'Q157443', 'ans': 'Q1867501', 'question': 'What is an example of a 2007 tv comedy?', 'candidate_topic': ['Q157443']}
+{'gt_topic': 'Q5247035', 'ans': 'Q7518813', 'question': "Who created the fictional character death's head?", 'candidate_topic': ['Q95074', 'Q5247035']}
+{'gt_topic': 'Q7749336', 'ans': 'Q30', 'question': 'which country is the mad whirl from', 'candidate_topic': ['Q7749336']}
+{'gt_topic': 'Q1182680', 'ans': 'Q5085240', 'question': 'who was born in nanty glo', 'candidate_topic': ['Q1182680']}
+{'gt_topic': 'Q7168625', 'ans': 'Q786038', 'question': 'What film is considered to be a period piece?', 'candidate_topic': ['Q7168625']}
+{'gt_topic': 'Q11012680', 'ans': 'Q93196', 'question': 'What genre of film is raksha?', 'candidate_topic': ['Q11012680']}
+{'gt_topic': 'Q2904819', 'ans': 'Q1218', 'question': 'where was sallai meridor born?', 'candidate_topic': ['Q2904819']}
+{'gt_topic': 'Q1432596', 'ans': 'Q16233664', 'question': 'Who is a child of orlando woolridge', 'candidate_topic': ['Q1432596']}
+{'gt_topic': 'Q2166517', 'ans': 'Q490381', 'question': 'who is the composer of symphony no. 9?', 'candidate_topic': ['Q9734', 'Q36834', 'Q11989', 'Q2166517']}
+{'gt_topic': 'Q2273733', 'ans': 'Q3071', 'question': 'what is the genre of the artist poly styrene', 'candidate_topic': ['Q2273733']}
+{'gt_topic': 'Q5493032', 'ans': 'Q12892', 'question': 'where was franz van stampart born?', 'candidate_topic': ['Q5493032']}
+{'gt_topic': 'Q2478532', 'ans': 'Q2295537', 'question': 'What musical key is you are my sunshine played?', 'candidate_topic': ['Q2478532']}
+{'gt_topic': 'Q195383', 'ans': 'Q193592', 'question': 'what position does ryoichi kurisawa play', 'candidate_topic': ['Q195383']}
+{'gt_topic': 'Q711931', 'ans': 'Q1891', 'question': 'where was the birthplace of giuseppe aldrovandini', 'candidate_topic': ['Q711931']}
+{'gt_topic': 'Q445448', 'ans': 'Q1772880', 'question': 'who wrote the lyrics for gary rossington', 'candidate_topic': ['Q445448']}
+{'gt_topic': 'Q5229100', 'ans': 'Q694052', 'question': 'What label is dave kincaid signed to', 'candidate_topic': ['Q5229100']}
+{'gt_topic': 'Q4898396', 'ans': 'Q9926', 'question': 'where in the Netherlands was bette franke born?', 'candidate_topic': ['Q55', 'Q4898396']}
+{'gt_topic': 'Q816610', 'ans': 'Q1342', 'question': 'Where was ben tatar born', 'candidate_topic': ['Q35565', 'Q816610']}
+{'gt_topic': 'Q7229940', 'ans': 'Q6749421', 'question': 'who wrote the music for the film poramboku', 'candidate_topic': ['Q7229940']}
+{'gt_topic': 'Q6768787', 'ans': 'Q49238', 'question': 'where in north carolina was mark mccracken born', 'candidate_topic': ['Q1454', 'Q6768787']}
+{'gt_topic': 'Q727270', 'ans': 'Q3569058', 'question': "Who's a designated hitter that played in the MLB", 'candidate_topic': ['Q727270']}
+{'gt_topic': 'Q477472', 'ans': 'Q30', 'question': 'which country is the true glory from', 'candidate_topic': ['Q477472']}
+{'gt_topic': 'Q11629', 'ans': 'Q448207', 'question': 'who is a Danish painter painting visual art form', 'candidate_topic': ['Q36649', 'Q735', 'Q35', 'Q11629']}
+{'gt_topic': 'Q4027094', 'ans': 'Q16952403', 'question': 'what is an album made by evita', 'candidate_topic': ['Q4027094']}
+{'gt_topic': 'Q50157', 'ans': 'Q273073', 'question': 'what italian television presenter was born in sulmona', 'candidate_topic': ['Q50157', 'Q947873', 'Q38']}
+{'gt_topic': 'Q1381193', 'ans': 'Q145', 'question': 'What is the nationality of meera simhan', 'candidate_topic': ['Q1381193']}
+{'gt_topic': 'Q5521603', 'ans': 'Q11720', 'question': 'where was the birthplace of gao kang', 'candidate_topic': ['Q5521603']}
+{'gt_topic': 'Q75437', 'ans': 'Q38848', 'question': 'What kind of metal does nick st. nicholas play', 'candidate_topic': ['Q75437']}
+{'gt_topic': 'Q313514', 'ans': 'Q65', 'question': 'which city was joe flanigan born', 'candidate_topic': ['Q313514']}
+{'gt_topic': 'Q5696117', 'ans': 'Q1489', 'question': "where is anita blanch's death place", 'candidate_topic': ['Q5696117']}
+{'gt_topic': 'Q193592', 'ans': 'Q968691', 'question': 'which player plays the football position midfielder', 'candidate_topic': ['Q193592']}
+{'gt_topic': 'Q7758566', 'ans': 'Q130232', 'question': 'What genre is the film the proof of the man from', 'candidate_topic': ['Q7758566']}
+{'gt_topic': 'Q6468196', 'ans': 'Q1681509', 'question': 'who is the artist of laced with romance?', 'candidate_topic': ['Q6468196']}
+{'gt_topic': 'Q159498', 'ans': 'Q25989', 'question': 'to what time zone does bagnoregio belong', 'candidate_topic': ['Q159498']}
+{'gt_topic': 'Q7736509', 'ans': 'Q842256', 'question': 'What type of film is the girl most likely under?', 'candidate_topic': ['Q7736509']}
+{'gt_topic': 'Q17000227', 'ans': 'Q130232', 'question': 'What genre is the netflix title high hell?', 'candidate_topic': ['Q907311', 'Q17000227']}
+{'gt_topic': 'Q5520849', 'ans': 'Q10090', 'question': "What is Ganesh Prasad's ethnicity?", 'candidate_topic': ['Q5520849']}
+{'gt_topic': 'Q1389203', 'ans': 'Q280658', 'question': 'what position does gunnar andersson play in football', 'candidate_topic': ['Q1389203']}
+{'gt_topic': 'Q953626', 'ans': 'Q130232', 'question': 'what kinds of movie is bhowani junction', 'candidate_topic': ['Q953626']}
+{'gt_topic': 'Q596698', 'ans': 'Q484641', 'question': 'what kinds of music is played by andrew gold', 'candidate_topic': ['Q596698']}
+{'gt_topic': 'Q6546310', 'ans': 'Q1330417', 'question': 'Which music label record is lighthouse under?', 'candidate_topic': ['Q39715', 'Q18127', 'Q6546310']}
+{'gt_topic': 'Q5182122', 'ans': 'Q484641', 'question': 'What genre of music is the band cranial screwtop', 'candidate_topic': ['Q5182122']}
+{'gt_topic': 'Q6470538', 'ans': 'Q131578', 'question': 'what kind of genre is true romance', 'candidate_topic': ['Q6470538']}
+{'gt_topic': 'Q1131337', 'ans': 'Q2397895', 'question': 'what label is while heaven wept signed to', 'candidate_topic': ['Q1131337']}
+{'gt_topic': 'Q1580686', 'ans': 'Q369747', 'question': 'what is the genre of the film come see the paradise', 'candidate_topic': ['Q1580686']}
+{'gt_topic': 'Q522440', 'ans': 'Q959541', 'question': 'who influenced john gray?', 'candidate_topic': ['Q522440']}
+{'gt_topic': 'Q165911', 'ans': 'Q1318345', 'question': 'what is an album by usher?', 'candidate_topic': ['Q165911']}
+{'gt_topic': 'Q326143', 'ans': 'Q23589', 'question': 'what type of series is californication (tv series)?', 'candidate_topic': ['Q326143']}
+{'gt_topic': 'Q15436057', 'ans': 'Q11401', 'question': 'What musical genre does the artist og ron c fall under?', 'candidate_topic': ['Q188451', 'Q15436057']}
+{'gt_topic': 'Q1759086', 'ans': 'Q772494', 'question': 'Which record label are the dells on?', 'candidate_topic': ['Q161792', 'Q18127', 'Q1759086']}
+{'gt_topic': 'Q208850', 'ans': 'Q692320', 'question': 'What was the last single-player game released for the PlayStation', 'candidate_topic': ['Q208850']}
+{'gt_topic': 'Q83812', 'ans': 'Q504775', 'question': 'what was the cause of death for  edward g. robinson', 'candidate_topic': ['Q83812']}
+{'gt_topic': 'Q1440054', 'ans': 'Q1860', 'question': 'What language is the film up the down staircase?', 'candidate_topic': ['Q1440054']}
+{'gt_topic': 'Q1368185', 'ans': 'Q51290', 'question': 'which instrument does john p. hammond play', 'candidate_topic': ['Q1368185']}
+{'gt_topic': 'Q353023', 'ans': 'Q5652887', 'question': 'what album is by the musician taj mahal?', 'candidate_topic': ['Q353023']}
+{'gt_topic': 'Q6581097', 'ans': 'Q5666725', 'question': 'Who is a male character', 'candidate_topic': ['Q6581097']}
+{'gt_topic': 'Q130232', 'ans': 'Q11008923', 'question': 'what is a drama film?', 'candidate_topic': ['Q21010853', 'Q130232']}
+{'gt_topic': 'Q234875', 'ans': 'Q12192', 'question': 'What caused the death of sandra dee?', 'candidate_topic': ['Q234875']}
+{'gt_topic': 'Q4827202', 'ans': 'Q183504', 'question': 'what is the musical genre that  autumn owls creates', 'candidate_topic': ['Q4827202']}
+{'gt_topic': 'Q5092', 'ans': 'Q6383573', 'question': 'Who was born in baltimore, maryland?', 'candidate_topic': ['Q1391', 'Q5092']}
+{'gt_topic': 'Q610062', 'ans': 'Q323301', 'question': 'Which religion does antun saadeh follow?', 'candidate_topic': ['Q610062']}
+{'gt_topic': 'Q1070457', 'ans': 'Q7884154', 'question': 'plastic tree has an album titled what?', 'candidate_topic': ['Q1070457']}
+{'gt_topic': 'Q1372222', 'ans': 'Q16552', 'question': 'what southern california city is the birthplace of michael j. mcculley', 'candidate_topic': ['Q1372222', 'Q844837']}
+{'gt_topic': 'Q73506', 'ans': 'Q28389', 'question': 'what does roddy doyle do for a living?', 'candidate_topic': ['Q73506']}
+{'gt_topic': 'Q4758285', 'ans': 'Q16266490', 'question': 'what is a game that andrew plotkin has worked on', 'candidate_topic': ['Q4758285']}
+{'gt_topic': 'Q7845793', 'ans': 'Q36778', 'question': 'in which language was the tropical fish movie spoken', 'candidate_topic': ['Q7845793']}
+{'gt_topic': 'Q953055', 'ans': 'Q3296255', 'question': 'who was the program creator of the television show this hour has 22 minutes?', 'candidate_topic': ['Q953055']}
+{'gt_topic': 'Q1190617', 'ans': 'Q201330', 'question': 'which football position is sean murdoch charged of', 'candidate_topic': ['Q1190617']}
+{'gt_topic': 'Q2756554', 'ans': 'Q8093', 'question': 'who was the published the game flipnote studio?', 'candidate_topic': ['Q2756554']}
+{'gt_topic': 'Q2899122', 'ans': 'Q83497', 'question': 'which landmarks are named after charles e. rushmore?', 'candidate_topic': ['Q2899122']}
+{'gt_topic': 'Q5285124', 'ans': 'Q11366', 'question': 'what kind of music is played in dizzy heights', 'candidate_topic': ['Q5285124']}
+{'gt_topic': 'Q974099', 'ans': 'Q6581097', 'question': 'what gender is eros pisano', 'candidate_topic': ['Q974099']}
+{'gt_topic': 'Q4957102', 'ans': 'Q6106', 'question': 'in what oregon city was brandon tyler born', 'candidate_topic': ['Q824', 'Q849596', 'Q4957102']}
+{'gt_topic': 'Q340911', 'ans': 'Q168383', 'question': 'what company produced rollercoaster', 'candidate_topic': ['Q340911']}
+{'gt_topic': 'Q6761052', 'ans': 'Q37073', 'question': 'what genre of music is featured on maria bethânia', 'candidate_topic': ['Q235980', 'Q6761052']}
+{'gt_topic': 'Q953035', 'ans': 'Q744038', 'question': 'what kinds of videogame is zendoku', 'candidate_topic': ['Q7889', 'Q953035']}
+{'gt_topic': 'Q2539256', 'ans': 'Q145', 'question': 'Which country was a hazard of hearts based in?', 'candidate_topic': ['Q2539256']}
+{'gt_topic': 'Q38848', 'ans': 'Q5247783', 'question': 'name a musical artist that performs heavy metal music.', 'candidate_topic': ['Q38848']}
+{'gt_topic': 'Q2086913', 'ans': 'Q1912930', 'question': 'what is a township that can be found in the north american central time zone', 'candidate_topic': ['Q2086913', 'Q19610511']}
+{'gt_topic': 'Q2850579', 'ans': 'Q36', 'question': 'which country is anna maria mucha  from', 'candidate_topic': ['Q2850579']}
+{'gt_topic': 'Q8025086', 'ans': 'Q24925', 'question': 'what type of game is wing commander arena?', 'candidate_topic': ['Q641226', 'Q4891933', 'Q8025086']}
+{'gt_topic': 'Q1326154', 'ans': 'Q6848912', 'question': "Who's a first baseman that played for the yankees", 'candidate_topic': ['Q1326154']}
+{'gt_topic': 'Q16595995', 'ans': 'Q6581072', 'question': "What is marie nyreröd's gender?", 'candidate_topic': ['Q48277', 'Q16595995']}
+{'gt_topic': 'Q5112911', 'ans': 'Q60', 'question': 'which city was christopher moynihan born', 'candidate_topic': ['Q5112911']}
+{'gt_topic': 'Q8003194', 'ans': 'Q43668', 'question': 'where was will wolford born', 'candidate_topic': ['Q8003194']}
+{'gt_topic': 'Q213710', 'ans': 'Q311450', 'question': 'who is a musician signed to apple records', 'candidate_topic': ['Q213710']}
+{'gt_topic': 'Q230906', 'ans': 'Q90', 'question': 'where was marie of brabant, queen of france buried?', 'candidate_topic': ['Q142', 'Q230906']}
+{'gt_topic': 'Q265610', 'ans': 'Q156747', 'question': 'where was zhanna prokhorenko born', 'candidate_topic': ['Q265610']}
+{'gt_topic': 'Q6307339', 'ans': 'Q30', 'question': 'which country is julian kytasty from', 'candidate_topic': ['Q6307339']}
+{'gt_topic': 'Q4760379', 'ans': 'Q41819', 'question': 'where was andy ashby born', 'candidate_topic': ['Q4760379']}
+{'gt_topic': 'Q7679192', 'ans': 'Q336181', 'question': 'what type of program is talent varieties', 'candidate_topic': ['Q7679192']}
+{'gt_topic': 'Q402913', 'ans': 'Q462082', 'question': 'Who is a person of the bengali people', 'candidate_topic': ['Q402913']}
+{'gt_topic': 'Q7432', 'ans': 'Q663412', 'question': "what's a species that lives on the island of java", 'candidate_topic': ['Q3757', 'Q7432']}
+{'gt_topic': 'Q16148864', 'ans': 'Q842324', 'question': 'artist, the ant , creates what type of music', 'candidate_topic': ['Q7386', 'Q16148864']}
+{'gt_topic': 'Q15862', 'ans': 'Q238564', 'question': 'which songs did queen provide the lyrics for?', 'candidate_topic': ['Q602446', 'Q15862']}
+{'gt_topic': 'Q4894959', 'ans': 'Q60', 'question': 'which city did bert andrews pass away in?', 'candidate_topic': ['Q4894959']}
+{'gt_topic': 'Q2448596', 'ans': 'Q132311', 'question': 'What film genre does space buddies fall under?', 'candidate_topic': ['Q201658', 'Q2448596']}
+{'gt_topic': 'Q80379', 'ans': 'Q219124', 'question': 'Who is someone that gave significant contributions to the hobbit: an unexpected journey', 'candidate_topic': ['Q74359', 'Q74287', 'Q80379']}
+{'gt_topic': 'Q6016319', 'ans': 'Q483352', 'question': 'What is the  genre of the album independent?', 'candidate_topic': ['Q6016319']}
+{'gt_topic': 'Q36180', 'ans': 'Q516177', 'question': 'who is a person with the writing profession', 'candidate_topic': ['Q36180']}
+{'gt_topic': 'Q2304452', 'ans': 'Q2473282', 'question': 'who is someone that was born in  goffstown', 'candidate_topic': ['Q2304452']}
+{'gt_topic': 'Q272254', 'ans': 'Q155', 'question': 'são vicente is a second level division of what country', 'candidate_topic': ['Q112031', 'Q272254']}
+{'gt_topic': 'Q7441129', 'ans': 'Q12202', 'question': 'What led to sean kenny"s death?', 'candidate_topic': ['Q7441129']}
+{'gt_topic': 'Q179593', 'ans': 'Q850412', 'question': 'what types of music is nate hills', 'candidate_topic': ['Q179593']}
+{'gt_topic': 'Q11926950', 'ans': 'Q29', 'question': 'isona passola  is of what nationality', 'candidate_topic': ['Q11926950']}
+{'gt_topic': 'Q4935123', 'ans': 'Q1368170', 'question': 'What position does bobby hofman play?', 'candidate_topic': ['Q4935123']}
+{'gt_topic': 'Q413622', 'ans': 'Q280658', 'question': 'Which position does aka adek mba play?', 'candidate_topic': ['Q413622']}
+{'gt_topic': 'Q6323248', 'ans': 'Q6581097', 'question': "what's k. c. singh baba gender", 'candidate_topic': ['Q6323248']}
+{'gt_topic': 'Q1373067', 'ans': 'Q159', 'question': 'whats the nationality of yegor podomatsky', 'candidate_topic': ['Q1373067']}
+{'gt_topic': 'Q991562', 'ans': 'Q520549', 'question': "what is bruce c. murray's profession", 'candidate_topic': ['Q991562']}
+{'gt_topic': 'Q1701353', 'ans': 'Q30', 'question': 'john patton, jr.  is of what nationaltiy', 'candidate_topic': ['Q1701353']}
+{'gt_topic': 'Q645928', 'ans': 'Q5682031', 'question': 'what is a film in the genre biographical film?', 'candidate_topic': ['Q645928']}
+{'gt_topic': 'Q83270', 'ans': 'Q3235437', 'question': 'what album is hard rock?', 'candidate_topic': ['Q83270']}
+{'gt_topic': 'Q3666089', 'ans': 'Q868217', 'question': 'what computer videogame genre is championship manager 93/94', 'candidate_topic': ['Q7889', 'Q3666089']}
+{'gt_topic': 'Q538460', 'ans': 'Q1494', 'question': 'Which state did margaret garner die in', 'candidate_topic': ['Q538460']}
+{'gt_topic': 'Q2307951', 'ans': 'Q969806', 'question': 'Who created the character nathan scott', 'candidate_topic': ['Q2307951']}
+{'gt_topic': 'Q3119435', 'ans': 'Q53133', 'question': 'Where was guido gratton birthed?', 'candidate_topic': ['Q3119435']}
+{'gt_topic': 'Q190240', 'ans': 'Q6343', 'question': 'Where did cyprian die', 'candidate_topic': ['Q190240']}
+{'gt_topic': 'Q218837', 'ans': 'Q3837739', 'question': "whats the title of one of the supremes's albums", 'candidate_topic': ['Q218837']}
+{'gt_topic': 'Q2524557', 'ans': 'Q87', 'question': 'what was the birthplace of anatolius of laodicea', 'candidate_topic': ['Q200030', 'Q2524557']}
+{'gt_topic': 'Q21010853', 'ans': 'Q339876', 'question': "what's a drama film on netflix", 'candidate_topic': ['Q21010853', 'Q907311']}
+{'gt_topic': 'Q1149', 'ans': 'Q12796', 'question': 'why did indira gandhi die', 'candidate_topic': ['Q1149']}
+{'gt_topic': 'Q1048902', 'ans': 'Q4908358', 'question': 'Who was a pitcher for the boston red sox', 'candidate_topic': ['Q1048902', 'Q213959']}
+{'gt_topic': 'Q1965370', 'ans': 'Q2143665', 'question': 'what genre is gena the crocodile', 'candidate_topic': ['Q1965370']}
+{'gt_topic': 'Q1340851', 'ans': 'Q131578', 'question': 'kaze wa fuiteiru is what kind of genre?', 'candidate_topic': ['Q1340851']}
+{'gt_topic': 'Q500337', 'ans': 'Q212692', 'question': 'Who composed onward, christian soldiers', 'candidate_topic': ['Q500337']}
+{'gt_topic': 'Q157443', 'ans': 'Q640403', 'question': 'whats an example of a comedy tv program', 'candidate_topic': ['Q157443']}
+{'gt_topic': 'Q10993', 'ans': 'Q6935055', 'question': 'What is the ethnicity of tiger woods?', 'candidate_topic': ['Q10993']}
+{'gt_topic': 'Q2897209', 'ans': 'Q7325', 'question': 'With what ethnic group of people does benjamin fain associate', 'candidate_topic': ['Q41710', 'Q2897209']}
+{'gt_topic': 'Q454464', 'ans': 'Q3988024', 'question': 'what films have been directed by william c. demille?', 'candidate_topic': ['Q454464']}
+{'gt_topic': 'Q129283', 'ans': 'Q720293', 'question': 'who wrote the film king ralph', 'candidate_topic': ['Q129283']}
+{'gt_topic': 'Q2958461', 'ans': 'Q30', 'question': 'is charles b. griffith from the united states or canada', 'candidate_topic': ['Q2958461', 'Q16', 'Q30']}
+{'gt_topic': 'Q7820530', 'ans': 'Q8818', 'question': 'Where did tomás yepes die', 'candidate_topic': ['Q7820530']}
+{'gt_topic': 'Q7298147', 'ans': 'Q6581097', 'question': 'is ray stehr a male or female', 'candidate_topic': ['Q7298147']}
+{'gt_topic': 'Q40187', 'ans': 'Q354010', 'question': 'Who produced the film dogma (film)', 'candidate_topic': ['Q620749', 'Q40187']}
+{'gt_topic': 'Q8050885', 'ans': 'Q483251', 'question': 'what genre of music does year of desolation create', 'candidate_topic': ['Q8050885']}
+{'gt_topic': 'Q280658', 'ans': 'Q6881296', 'question': 'who plays forward in soccer?', 'candidate_topic': ['Q2736', 'Q280658']}
+{'gt_topic': 'Q1087132', 'ans': 'Q3863', 'question': 'what type of celestial body is 20482 dustinshea', 'candidate_topic': ['Q1087132']}
+{'gt_topic': 'Q1622572', 'ans': 'Q1107', 'question': 'what genre is the tv show little women', 'candidate_topic': ['Q1622572']}
+{'gt_topic': 'Q200092', 'ans': 'Q936921', 'question': 'Name a film in the horror genre', 'candidate_topic': ['Q200092']}
+{'gt_topic': 'Q7292165', 'ans': 'Q24976', 'question': 'what position does randy dixon play in american football', 'candidate_topic': ['Q30', 'Q41323', 'Q7292165']}
+{'gt_topic': 'Q7804427', 'ans': 'Q5994', 'question': 'what instrument can tim vine play?', 'candidate_topic': ['Q7804427']}
+{'gt_topic': 'Q41604', 'ans': 'Q911448', 'question': "What's a conflict that occurred in amiens", 'candidate_topic': ['Q41604']}
+{'gt_topic': 'Q846779', 'ans': 'Q206159', 'question': 'which specific kind of rock music is on imperial bedroom', 'candidate_topic': ['Q11399', 'Q846779']}
+{'gt_topic': 'Q1392321', 'ans': 'Q981373', 'question': 'who is an artist signed to liberty records', 'candidate_topic': ['Q1392321']}
+{'gt_topic': 'Q15460933', 'ans': 'Q408', 'question': 'Where is jennifer strauss from?', 'candidate_topic': ['Q15460933']}
+{'gt_topic': 'Q69962', 'ans': 'Q75809', 'question': 'What religion does john ernest ii, duke of saxe-weimar practice', 'candidate_topic': ['Q315667', 'Q69962']}
+{'gt_topic': 'Q7713204', 'ans': 'Q770103', 'question': 'which song was created by the almighty r.s.o.', 'candidate_topic': ['Q7713204']}
+{'gt_topic': 'Q47430', 'ans': 'Q7634327', 'question': 'What woman was born in green bay?', 'candidate_topic': ['Q47430']}
+{'gt_topic': 'Q21010853', 'ans': 'Q651982', 'question': 'what title is a netflix drama?', 'candidate_topic': ['Q907311', 'Q21010853']}
+{'gt_topic': 'Q83440', 'ans': 'Q6552697', 'question': 'who is a country artist?', 'candidate_topic': ['Q83440']}
+{'gt_topic': 'Q2035455', 'ans': 'Q7146485', 'question': 'who was involved in the battle of kings mountain', 'candidate_topic': ['Q1742139', 'Q2035455']}
+{'gt_topic': 'Q6952461', 'ans': 'Q83270', 'question': 'Is nascar: crank it up a hard rock album or a rap album', 'candidate_topic': ['Q233929', 'Q83270', 'Q6952461']}
+{'gt_topic': 'Q700897', 'ans': 'Q881', 'question': 'Which country does hoang van thai have nationality in', 'candidate_topic': ['Q700897']}
+{'gt_topic': 'Q1541282', 'ans': 'Q30', 'question': "What is thegradymartin's nationality?", 'candidate_topic': ['Q1541282']}
+{'gt_topic': 'Q3036288', 'ans': 'Q16', 'question': 'what country is the film totally spies! the movie from', 'candidate_topic': ['Q3036288']}
+{'gt_topic': 'Q1321751', 'ans': 'Q188473', 'question': 'What is the genre of the film They Were Eleven?', 'candidate_topic': ['Q1321751']}
+{'gt_topic': 'Q506240', 'ans': 'Q5619404', 'question': 'what is a television movie based off the tv series', 'candidate_topic': ['Q506240']}
+{'gt_topic': 'Q7787262', 'ans': 'Q30', 'question': "what is thomas b. marsh's country of nationality", 'candidate_topic': ['Q7787262']}
+{'gt_topic': 'Q16995604', 'ans': 'Q963142', 'question': "Who is the singer of the album hittin' the road", 'candidate_topic': ['Q1246960', 'Q16995604']}
+{'gt_topic': 'Q278997', 'ans': 'Q7168625', 'question': 'what genre is the fantasy movie big fish', 'candidate_topic': ['Q278997']}
+{'gt_topic': 'Q76364', 'ans': 'Q392915', 'question': 'what movie does hans zimmer contribute music to?', 'candidate_topic': ['Q76364']}
+{'gt_topic': 'Q242344', 'ans': 'Q160311', 'question': "Who is beatrice of england's parent", 'candidate_topic': ['Q21', 'Q242344']}
+{'gt_topic': 'Q163490', 'ans': 'Q7959282', 'question': 'Who is a former Al Qaeda member born in sidon?', 'candidate_topic': ['Q163490', 'Q34490']}
+{'gt_topic': 'Q109823', 'ans': 'Q1055', 'question': "where in germany was hanns-joachim friedrichs's place of death?", 'candidate_topic': ['Q183', 'Q109823']}
+{'gt_topic': 'Q3413923', 'ans': 'Q142', 'question': 'What country is "que la barque se brise, que la jonque sentrouvre" filmed in?', 'candidate_topic': ['Q205011', 'Q3413923']}
+{'gt_topic': 'Q604055', 'ans': 'Q956732', 'question': 'what district is in the indian standard time', 'candidate_topic': ['Q604055']}
+{'gt_topic': 'Q7735179', 'ans': 'Q24862', 'question': 'what genre is the freckled fish?', 'candidate_topic': ['Q7735179']}
+{'gt_topic': 'Q1930554', 'ans': 'Q15401689', 'question': 'which record label signed the serenes', 'candidate_topic': ['Q18127', 'Q1930554']}
+{'gt_topic': 'Q3531483', 'ans': 'Q280658', 'question': 'what position does george brann play', 'candidate_topic': ['Q3531483']}
+{'gt_topic': 'Q710913', 'ans': 'Q2179', 'question': 'Which asteroid belt is (9868) 1991 vp1 apart of?', 'candidate_topic': ['Q2179', 'Q3863', 'Q710913']}
+{'gt_topic': 'Q193207', 'ans': 'Q1187341', 'question': 'what albums play ambient music', 'candidate_topic': ['Q193207']}
+{'gt_topic': 'Q24925', 'ans': 'Q1139373', 'question': 'Name a science fiction film', 'candidate_topic': ['Q471839', 'Q24925']}
+{'gt_topic': 'Q6111232', 'ans': 'Q62', 'question': 'Which city did jack bee garland die in', 'candidate_topic': ['Q7391', 'Q6111232']}
+{'gt_topic': 'Q11324435', 'ans': 'Q30', 'question': 'where is nick berk from', 'candidate_topic': ['Q11324435']}
+{'gt_topic': 'Q215530', 'ans': 'Q3376803', 'question': 'Name someone who was born in kingdom of ireland', 'candidate_topic': ['Q215530', 'Q22890']}
+{'gt_topic': 'Q6064855', 'ans': 'Q35997', 'question': 'where did hüseyin kutman die?', 'candidate_topic': ['Q6064855']}
+{'gt_topic': 'Q12060557', 'ans': 'Q30', 'question': 'what is the nationality of shep houghton', 'candidate_topic': ['Q12060557']}
+{'gt_topic': 'Q1329633', 'ans': 'Q186080', 'question': 'What is the los angeles sparks home stadium?', 'candidate_topic': ['Q1329633', 'Q65']}
+{'gt_topic': 'Q419', 'ans': 'Q742813', 'question': 'What war took place in peru', 'candidate_topic': ['Q419']}
+{'gt_topic': 'Q7776821', 'ans': 'Q1860', 'question': 'What language is used in the young and evil', 'candidate_topic': ['Q7776821']}
+{'gt_topic': 'Q487914', 'ans': 'Q4738467', 'question': 'What is a pop punk album that came out of new zealand?', 'candidate_topic': ['Q664', 'Q3071', 'Q487914']}
+{'gt_topic': 'Q3595865', 'ans': 'Q9089', 'question': 'what religion does chandrashekhara kambara practice?', 'candidate_topic': ['Q9174', 'Q3595865']}
+{'gt_topic': 'Q1427240', 'ans': 'Q4545078', 'question': "what's an album by the knack", 'candidate_topic': ['Q1427240']}
+{'gt_topic': 'Q7747403', 'ans': 'Q319389', 'question': 'who wrote the line', 'candidate_topic': ['Q7747403']}
+{'gt_topic': 'Q24862', 'ans': 'Q3013770', 'question': 'what is the name of short film', 'candidate_topic': ['Q24862']}
+{'gt_topic': 'Q76092', 'ans': 'Q712678', 'question': 'name an artist in the glam rock genre.', 'candidate_topic': ['Q76092']}
+{'gt_topic': 'Q208850', 'ans': 'Q3783835', 'question': "what's a single-player game from 2005", 'candidate_topic': ['Q208850']}
+{'gt_topic': 'Q838149', 'ans': 'Q15180', 'question': 'what country is the mirror from', 'candidate_topic': ['Q838149']}
+{'gt_topic': 'Q16193040', 'ans': 'Q131512', 'question': "What is jerry carroll's profession?", 'candidate_topic': ['Q16193040']}
+{'gt_topic': 'Q974693', 'ans': 'Q228871', 'question': 'Who is a notable italian american', 'candidate_topic': ['Q38', 'Q974693']}
+{'gt_topic': 'Q1212511', 'ans': 'Q2143665', 'question': 'what kind of film is escape to witch mountain?', 'candidate_topic': ['Q1212511']}
+{'gt_topic': 'Q977899', 'ans': 'Q51114', 'question': 'who directed wagon master?', 'candidate_topic': ['Q977899']}
+{'gt_topic': 'Q1930', 'ans': 'Q16223273', 'question': 'whats the name of a man who was born in  ottawa', 'candidate_topic': ['Q1930']}
+{'gt_topic': 'Q2556427', 'ans': 'Q6581097', 'question': 'what is the gneder of arno meijs?', 'candidate_topic': ['Q2556427']}
+{'gt_topic': 'Q1083372', 'ans': 'Q2832478', 'question': 'who directed with honors?', 'candidate_topic': ['Q1083372']}
+{'gt_topic': 'Q3703831', 'ans': 'Q378988', 'question': 'What genre of music is days in avalon?', 'candidate_topic': ['Q3703831']}
+{'gt_topic': 'Q4733392', 'ans': 'Q8253', 'question': 'What type of book is ally?', 'candidate_topic': ['Q4733392']}
+{'gt_topic': 'Q381038', 'ans': 'Q328763', 'question': 'who was interred at sais?', 'candidate_topic': ['Q381038']}
+{'gt_topic': 'Q212688', 'ans': 'Q16232374', 'question': 'who is a dub artist?', 'candidate_topic': ['Q212688']}
+{'gt_topic': 'Q942822', 'ans': 'Q181754', 'question': 'what did thomas h. ince die from', 'candidate_topic': ['Q942822']}
+{'gt_topic': 'Q622812', 'ans': 'Q5547050', 'question': 'which program is in the genre talk show', 'candidate_topic': ['Q622812']}
+{'gt_topic': 'Q6194897', 'ans': 'Q6581097', 'question': "what is jim fairbank's gender?", 'candidate_topic': ['Q48277', 'Q6194897']}
+{'gt_topic': 'Q2894949', 'ans': 'Q183504', 'question': 'Which music format does bellini belong to?', 'candidate_topic': ['Q2894949']}
+{'gt_topic': 'Q7850144', 'ans': 'Q34600', 'question': 'where in japan was tsunamasa shidei born in?', 'candidate_topic': ['Q17', 'Q7850144']}
+{'gt_topic': 'Q7728834', 'ans': 'Q8261', 'question': 'what kind of book is the dancing floor', 'candidate_topic': ['Q7728834']}
+{'gt_topic': 'Q5331232', 'ans': 'Q1860', 'question': 'what language is eat my dust! spoken in', 'candidate_topic': ['Q5331232']}
+{'gt_topic': 'Q211723', 'ans': 'Q1755848', 'question': 'who loves speed metal', 'candidate_topic': ['Q211723']}
+{'gt_topic': 'Q2024675', 'ans': 'Q1342372', 'question': 'what type of movie is the robot vs. the aztec mummy', 'candidate_topic': ['Q12542', 'Q4832970', 'Q2024675', 'Q43616']}
+{'gt_topic': 'Q4851333', 'ans': 'Q449140', 'question': 'who composed ballad of easy rider', 'candidate_topic': ['Q805125', 'Q503638', 'Q4851333']}
+{'gt_topic': 'Q808967', 'ans': 'Q4712545', 'question': 'who is a professional barrister', 'candidate_topic': ['Q808967']}
+{'gt_topic': 'Q611451', 'ans': 'Q223761', 'question': 'Where was mamadou zongo born', 'candidate_topic': ['Q611451']}
+{'gt_topic': 'Q7373019', 'ans': 'Q336286', 'question': 'what position does football player roy kay play', 'candidate_topic': ['Q7373019']}
+{'gt_topic': 'Q7783673', 'ans': 'Q30', 'question': 'where was they came for good filmed', 'candidate_topic': ['Q7783673']}
+{'gt_topic': 'Q5736088', 'ans': 'Q193592', 'question': 'what position does herbie evans play on a football team?', 'candidate_topic': ['Q5736088']}
+{'gt_topic': 'Q1464617', 'ans': 'Q860750', 'question': 'What game genre is test drive le mans classified as', 'candidate_topic': ['Q1476', 'Q1464617']}
+{'gt_topic': 'Q292717', 'ans': 'Q213665', 'question': 'What type of pop does g.na perform', 'candidate_topic': ['Q292717']}
+{'gt_topic': 'Q5084338', 'ans': 'Q19204627', 'question': "What is charley pell's profession", 'candidate_topic': ['Q5084338']}
+{'gt_topic': 'Q16251107', 'ans': 'Q1860', 'question': 'What language is spoken in a heart of gold', 'candidate_topic': ['Q16251107']}
+{'gt_topic': 'Q11046452', 'ans': 'Q17', 'question': "what is shinichi yamada's nationality", 'candidate_topic': ['Q11046452']}
+{'gt_topic': 'Q931909', 'ans': 'Q4921864', 'question': 'What is an album by robyn hitchcock?', 'candidate_topic': ['Q931909']}
+{'gt_topic': 'Q3907268', 'ans': 'Q1280214', 'question': 'who was the program creator of police surgeon', 'candidate_topic': ['Q3907268']}
+{'gt_topic': 'Q300932', 'ans': 'Q4841596', 'question': 'what classification is the album the stone roses', 'candidate_topic': ['Q29606', 'Q300932']}
+{'gt_topic': 'Q3701627', 'ans': 'Q499169', 'question': 'what city and state was daniel hernández born', 'candidate_topic': ['Q3701627']}
+{'gt_topic': 'Q1175569', 'ans': 'Q159386', 'question': "who is david mayer de rothschild's family?", 'candidate_topic': ['Q1175569']}
+{'gt_topic': 'Q191037', 'ans': 'Q1518589', 'question': 'what movie is produce by jim henson', 'candidate_topic': ['Q191037']}
+{'gt_topic': 'Q6657188', 'ans': 'Q193355', 'question': 'what music genre is live from austin, tx', 'candidate_topic': ['Q16559', 'Q6657188']}
+{'gt_topic': 'Q5399462', 'ans': 'Q747905', 'question': 'Who was the director of the episode essence of life', 'candidate_topic': ['Q5399462']}
+{'gt_topic': 'Q7926540', 'ans': 'Q34740', 'question': 'what rank is the victoria moth', 'candidate_topic': ['Q1725788', 'Q7926540']}
+{'gt_topic': 'Q6113512', 'ans': 'Q981222', 'question': 'What is the place of death of Jack Knott?', 'candidate_topic': ['Q6113512']}
+{'gt_topic': 'Q1066446', 'ans': 'Q5287', 'question': 'what language was used in the film sailor moon s the movie', 'candidate_topic': ['Q1643098', 'Q1066446']}
+{'gt_topic': 'Q2034475', 'ans': 'Q132821', 'question': 'how did ernesto miranda die', 'candidate_topic': ['Q2034475']}
+{'gt_topic': 'Q1616717', 'ans': 'Q145', 'question': 'which country was the movie witchville released in', 'candidate_topic': ['Q1616717']}
+{'gt_topic': 'Q5132519', 'ans': 'Q208445', 'question': 'what city did cliff aberson die in', 'candidate_topic': ['Q5132519']}
+{'gt_topic': 'Q11425', 'ans': 'Q12124946', 'question': 'what is an animation film involving Tweety and Sylvester', 'candidate_topic': ['Q623553', 'Q10990037', 'Q11425']}
+{'gt_topic': 'Q3132212', 'ans': 'Q145', 'question': "what is oliver jackson-cohen's nationality?", 'candidate_topic': ['Q3132212']}
+{'gt_topic': 'Q164983', 'ans': 'Q6143395', 'question': 'What is the name of a person involved in the battle of gallipoli', 'candidate_topic': ['Q192860', 'Q164983']}
+{'gt_topic': 'Q925741', 'ans': 'Q2179', 'question': 'What is 9938 kretlow a member of?', 'candidate_topic': ['Q925741']}
+{'gt_topic': 'Q191489', 'ans': 'Q486141', 'question': 'Name a tv melodrama.', 'candidate_topic': ['Q191489']}
+{'gt_topic': 'Q49085', 'ans': 'Q6829765', 'question': 'Name a man of african american  ethnic background', 'candidate_topic': ['Q2035701', 'Q49085']}
+{'gt_topic': 'Q6768120', 'ans': 'Q11399', 'question': 'what type of music does mark howard play', 'candidate_topic': ['Q6768120']}
+{'gt_topic': 'Q1414168', 'ans': 'Q8341', 'question': 'what kind of album is filles de kilimanjaro', 'candidate_topic': ['Q7296', 'Q1414168']}
+{'gt_topic': 'Q15053704', 'ans': 'Q21186', 'question': 'Who was involved in the french revolutionary wars?', 'candidate_topic': ['Q142', 'Q207318', 'Q40949', 'Q15053704']}
+{'gt_topic': 'Q7332041', 'ans': 'Q798658', 'question': 'which label is rickybellakaslick signed under', 'candidate_topic': ['Q7332041']}
+{'gt_topic': 'Q2806459', 'ans': 'Q2086913', 'question': 'what is the time zone of ithaca', 'candidate_topic': ['Q217346', 'Q2806459']}
+{'gt_topic': 'Q2398103', 'ans': 'Q8349', 'question': 'who made the album alapalooza', 'candidate_topic': ['Q2398103']}
+{'gt_topic': 'Q289108', 'ans': 'Q1251139', 'question': 'What label is margaret whiting affiliated with?', 'candidate_topic': ['Q289108']}
+{'gt_topic': 'Q189366', 'ans': 'Q175111', 'question': 'what caused the death of john brown', 'candidate_topic': ['Q189366']}
+{'gt_topic': 'Q652119', 'ans': 'Q25989', 'question': 'what time zone is dalmand in', 'candidate_topic': ['Q12143', 'Q652119']}
+{'gt_topic': 'Q2191352', 'ans': 'Q31', 'question': 'what nationality is suzanne saerens', 'candidate_topic': ['Q2191352']}
+{'gt_topic': 'Q1919781', 'ans': 'Q133163', 'question': 'what instrument does melvin gibbs play', 'candidate_topic': ['Q1919781']}
+{'gt_topic': 'Q42201', 'ans': 'Q7734644', 'question': 'what is the name of an indie rock band from england', 'candidate_topic': ['Q183504', 'Q21', 'Q42201']}
+{'gt_topic': 'Q7129202', 'ans': 'Q181754', 'question': 'what was the cause of death for pamela levy', 'candidate_topic': ['Q7129202']}
+{'gt_topic': 'Q955194', 'ans': 'Q270038', 'question': 'The film kidnapped was directed by who?', 'candidate_topic': ['Q955194']}
+{'gt_topic': 'Q1047474', 'ans': 'Q1444', 'question': 'what instrument does brendon urie play', 'candidate_topic': ['Q1047474']}
+{'gt_topic': 'Q889369', 'ans': 'Q79924', 'question': 'where did john n. irwin die?', 'candidate_topic': ['Q889369']}
+{'gt_topic': 'Q13403424', 'ans': 'Q956', 'question': 'which city did jia hongsheng die', 'candidate_topic': ['Q13403424']}
+{'gt_topic': 'Q1368195', 'ans': 'Q4915396', 'question': 'Who is a notable second baseman', 'candidate_topic': ['Q1368195']}
+{'gt_topic': 'Q436237', 'ans': 'Q280658', 'question': 'What soccer position does joshua king play?', 'candidate_topic': ['Q2736', 'Q436237']}
+{'gt_topic': 'Q482980', 'ans': 'Q7693562', 'question': 'List an american author', 'candidate_topic': ['Q482980']}
+{'gt_topic': 'Q270948', 'ans': 'Q4949822', 'question': 'what si the name of a game whose genre is action game', 'candidate_topic': ['Q270948']}
+{'gt_topic': 'Q319221', 'ans': 'Q15039566', 'question': 'what is an adventure film', 'candidate_topic': ['Q319221']}
+{'gt_topic': 'Q1132978', 'ans': 'Q130232', 'question': 'what types of movie is coriolanus in netflix', 'candidate_topic': ['Q907311', 'Q463126', 'Q1132978']}
+{'gt_topic': 'Q1171815', 'ans': 'Q24925', 'question': 'what is the genre of the film hercules against the moon men?', 'candidate_topic': ['Q405', 'Q240679', 'Q1171815']}
+{'gt_topic': 'Q12192', 'ans': 'Q230633', 'question': 'Who died of pneumonia', 'candidate_topic': ['Q12192']}
+{'gt_topic': 'Q547054', 'ans': 'Q142', 'question': 'Where is nicolas ouédec from', 'candidate_topic': ['Q547054']}
+{'gt_topic': 'Q4758081', 'ans': 'Q6581097', 'question': 'What is the gendre of andrew mumford', 'candidate_topic': ['Q4758081']}
+{'gt_topic': 'Q74636', 'ans': 'Q1860', 'question': 'which language was whiteout filmed in', 'candidate_topic': ['Q74636']}
+{'gt_topic': 'Q63656', 'ans': 'Q2634', 'question': 'which city did carl mayer von rothschild die', 'candidate_topic': ['Q63656']}
+{'gt_topic': 'Q5557826', 'ans': 'Q38', 'question': "what is giacinto bellini's nationality?", 'candidate_topic': ['Q5557826']}
+{'gt_topic': 'Q2296291', 'ans': 'Q1484216', 'question': 'who created the fictional character vulture (comics)', 'candidate_topic': ['Q95074', 'Q2296291']}
+{'gt_topic': 'Q4241876', 'ans': 'Q17884', 'question': 'In which genre does circuit fall?', 'candidate_topic': ['Q4241876']}
+{'gt_topic': 'Q186424', 'ans': 'Q1141218', 'question': 'what is the rating of orca (film)', 'candidate_topic': ['Q26843', 'Q186424']}
+{'gt_topic': 'Q1265137', 'ans': 'Q9503', 'question': 'what netflix genre does fatal charm belong to', 'candidate_topic': ['Q907311', 'Q1265137']}
+{'gt_topic': 'Q440100', 'ans': 'Q239910', 'question': 'who was jonathan lethem influenced by?', 'candidate_topic': ['Q440100']}
+{'gt_topic': 'Q36908', 'ans': 'Q1970225', 'question': 'what American climber died due to mountaineering', 'candidate_topic': ['Q36908']}
+{'gt_topic': 'Q1568', 'ans': 'Q7711195', 'question': 'what movie is hindi in netflix', 'candidate_topic': ['Q1568', 'Q907311']}
+{'gt_topic': 'Q7756517', 'ans': 'Q206159', 'question': 'Does the penance and the patience feature indie rock or psychedelic rock', 'candidate_topic': ['Q206159', 'Q183504', 'Q7756517']}
+{'gt_topic': 'Q1886990', 'ans': 'Q30', 'question': 'what type of nationality is malcolm bilson', 'candidate_topic': ['Q1886990']}
+{'gt_topic': 'Q355130', 'ans': 'Q719215', 'question': "who are richard petty's parents", 'candidate_topic': ['Q355130']}
+{'gt_topic': 'Q2001175', 'ans': 'Q1231720', 'question': 'Who was the author of the book called rose-marie', 'candidate_topic': ['Q2001175']}
+{'gt_topic': 'Q25562', 'ans': 'Q1450', 'question': 'who is the artist of locked out of heaven', 'candidate_topic': ['Q25562']}
+{'gt_topic': 'Q149086', 'ans': 'Q7344884', 'question': 'which inventor died from a homicide?', 'candidate_topic': ['Q149086']}
+{'gt_topic': 'Q7803768', 'ans': 'Q389735', 'question': 'What caused the death of tim kennelly?', 'candidate_topic': ['Q7803768']}
+{'gt_topic': 'Q1276720', 'ans': 'Q23436', 'question': 'Where was henry mackenzie born?', 'candidate_topic': ['Q1276720']}
+{'gt_topic': 'Q3013527', 'ans': 'Q200092', 'question': 'what is the genre of dangerous seductress', 'candidate_topic': ['Q3013527']}
+{'gt_topic': 'Q1627861', 'ans': 'Q525', 'question': 'what object does 19873 chentao orbit', 'candidate_topic': ['Q1627861']}
+{'gt_topic': 'Q15639636', 'ans': 'Q668', 'question': 'which country produces chatur singh two star', 'candidate_topic': ['Q15639636']}
+{'gt_topic': 'Q485420', 'ans': 'Q30', 'question': 'what country is copiah county located in', 'candidate_topic': ['Q485420']}
+{'gt_topic': 'Q383569', 'ans': 'Q33999', 'question': 'What is the profession of bucky lasek?', 'candidate_topic': ['Q383569']}
+{'gt_topic': 'Q3666606', 'ans': 'Q46739', 'question': 'who influenced charles tomlinson', 'candidate_topic': ['Q3666606']}
+{'gt_topic': 'Q485420', 'candidate_topic': ['Q485420'], 'question': 'what country is copiah county located in', 'ans': 'Q30'}
+{'gt_topic': 'Q383569', 'candidate_topic': ['Q383569'], 'question': 'What is the profession of bucky lasek?', 'ans': 'Q33999'}
+{'gt_topic': 'Q3666606', 'candidate_topic': ['Q3666606'], 'question': 'who influenced charles tomlinson', 'ans': 'Q46739'}

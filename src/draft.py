@@ -1,6 +1,15 @@
 import heapq
 import numpy as np
 
-str='abc'
-for char in str:
-  print(char)
+
+
+a='a'
+b='b'
+
+
+dict={}
+dict[(a,b)]=1
+print(dict)
+
+
+print(dict[(a,b)])
