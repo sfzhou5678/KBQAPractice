@@ -144,7 +144,7 @@ def question_entities_recognition(question_path, res_path, log_path):
             break
 
 
-def sqdata_question_entities_recognition(f, wf, log_path, error_wf, is_train=True):
+def sqdata_question_entities_recognition(f, wf, log_path, error_wf, db, data_helper, is_train=True):
   """
   专门处理SimpleQuestions中问题数据的函数
   :param question_path:
@@ -199,6 +199,10 @@ def sqdata_question_entities_recognition(f, wf, log_path, error_wf, is_train=Tru
       qa_pair['candidate_topic'] = candidate_topic
 
       qa_pair['gt_relation'] = relation
+
+      candidate_relation_pids = data_helper.build_relation_set(db, candidate_topic)
+      candidate_relation_pids = list(candidate_relation_pids)
+      qa_pair['candidate_relation'] = candidate_relation_pids
 
       w_lock.acquire()
 
@@ -288,20 +292,29 @@ def main():
   # question_entities_recognition(test_path, test_res_path, test_log_path)
 
   ## 处理SimpleQuestions
-  sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
-  # sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
+  # sq_data_folder = r'C:\Users\zsf\Desktop\SimpleQuestions-Wikidata\wikidata-simplequestions-master'
+  sq_data_folder = r'D:\DeeplearningData\NLP-DATA\英文QA\SimpleQuestions-wikidata'
 
   sq_train_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_train.txt')
   sq_test_data_path = os.path.join(sq_data_folder, 'annotated_wd_data_test.txt')
 
-  sq_train_res_path = '../../data/SimpleQuestions/sq.train.textrazor.txt'
-  sq_test_res_path = '../../data/SimpleQuestions/sq.test.textrazor.txt'
+  sq_train_res_path = '../../data/SimpleQuestions/sq.train.textrazor.withRelation.txt'
+  sq_test_res_path = '../../data/SimpleQuestions/sq.test.textrazor.withRelation.txt'
 
   sq_train_log_path = '../../log/SimpleQuestions/train.log'
   sq_test_log_path = '../../log/SimpleQuestions/test.log'
 
   sq_train_error_path = '../../log/SimpleQuestions/train_error.log'
   sq_test_error_path = '../../log/SimpleQuestions/test_error.log'
+
+  from src.top_level.QADataManager import DataDataManagerImp
+  from src.database.DBManager import DBManager
+
+  data_helper = DataDataManagerImp()
+
+  db_setting = {'host': '192.168.1.139', 'port': 3306, 'user': 'root', "psd": '1405', "db": 'knowledge_base'}
+  db = DBManager(host=db_setting['host'], port=db_setting['port'], user=db_setting['user'],
+                 psd=db_setting['psd'], db=db_setting['db'])
 
   global train_total_handled_count
   global test_total_handled_count
@@ -319,7 +332,7 @@ def main():
 
   for _ in range(thread_num):
     t = threading.Thread(target=sqdata_question_entities_recognition,
-                         args=(train_f, train_wf, sq_train_log_path, train_error_wf))
+                         args=(train_f, train_wf, sq_train_log_path, train_error_wf, db, data_helper))
     thread_list.append(t)
     t.start()
     time.sleep(2)
@@ -338,7 +351,7 @@ def main():
   # sqdata_question_entities_recognition(test_f, test_wf, test_log_wf, test_error_wf)
   for _ in range(thread_num):
     t = threading.Thread(target=sqdata_question_entities_recognition,
-                         args=(test_f, test_wf, sq_test_log_path, test_error_wf, False))
+                         args=(test_f, test_wf, sq_test_log_path, test_error_wf, db, data_helper, False,))
     thread_list.append(t)
     t.start()
     time.sleep(2)

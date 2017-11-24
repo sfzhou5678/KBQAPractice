@@ -266,5 +266,5 @@ def pred():
 
 
 if __name__ == '__main__':
-  # main()
-  pred()
+  main()
+  # pred()

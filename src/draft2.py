@@ -1,12 +1,12 @@
+import tensorflow as tf
+
+cnn_w1 = tf.get_variable("cnn_w1", [16, 32, 32, 16])
+shapes=cnn_w1.get_shape().as_list()
+fc_w1 = tf.get_variable("fc_w1", shapes)
+
+res = tf.nn.tanh(tf.multiply(cnn_w1, fc_w1))
 
 
-
-wf=open('hello.txt','w')
-a=123
-b=3.32
-
-s=','.join([str(a),str(b)])
-print(s)
-wf.write('%d  %f'%(a,b))
-# wf.write("abc"+'\n')
-# wf.write("abc"+'\n')
+with tf.Session() as sess:
+  tf.global_variables_initializer().run()
+  print(sess.run(res))
