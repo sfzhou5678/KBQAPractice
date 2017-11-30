@@ -52,6 +52,8 @@ if __name__ == '__main__':
 
   train_ids, test_ids = get_train_test_ids(transe_data_save_path, transe_ids_save_path,
                                            item_vocab, relation_vocab, percent=0.95)
+  train_ids=train_ids[:1000]
+  test_ids=test_ids[:300]
   print('ids准备完毕')
 
   # ==========转化成tensor========
@@ -104,27 +106,6 @@ if __name__ == '__main__':
           _, bf_softmax_loss = sess.run([model.softmax_train_op, model.softmax_loss],
                                         {model.heads: bf_head, model.relations: relations,
                                          model.tails: bf_tail, model.is_forward: False})
-
-          softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
-            [model.softmax_pred, model.softmax_accuracy,
-             model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
-            {model.heads: head, model.relations: relations, model.tails: tail, model.is_forward: True})
-
-          bf_softmax_pred, bf_softmax_acc, bf_softmax_top20_acc, bf_softmax_top100_acc = sess.run(
-            [model.softmax_pred, model.softmax_accuracy,
-             model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
-            {model.heads: bf_head, model.relations: relations, model.tails: bf_tail, model.is_forward: False})
-
-          test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
-          test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
-                                                  {test_model.heads: test_head, test_model.relations: test_relation,
-                                                   test_model.tails: test_tail, test_model.is_forward: True})
-          test_softmax_pred, test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc = sess.run(
-            [test_model.softmax_pred, test_model.softmax_accuracy,
-             test_model.softmax_top20_accuracy, test_model.softmax_top100_accuracy, ],
-            {test_model.heads: test_head, test_model.relations: test_relation, test_model.tails: test_tail,
-             test_model.is_forward: True})
-
           # print('==============[%d] %.4f %.4f\t %.4f %.4f==============' % (step, loss, softmax_loss,
           #                                                                   test_loss, test_softmax_loss))
           # print('[softmax acc: %.3f]\t[top20 acc: %.3f]\t[top100 acc: %.3f]' % (
@@ -132,7 +113,26 @@ if __name__ == '__main__':
           # print('[t-softmax acc: %.3f]\t[t-top20 acc: %.3f]\t[t-top100 acc: %.3f]' % (
           #   test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc))
           if step % 2000 == 0:
-            saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
+            # saver.save(sess, os.path.join(ckpt_folder_path, 'model.ckpt'), global_step=step)
+            softmax_pred, softmax_acc, softmax_top20_acc, softmax_top100_acc = sess.run(
+              [model.softmax_pred, model.softmax_accuracy,
+               model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
+              {model.heads: head, model.relations: relations, model.tails: tail, model.is_forward: True})
+
+            bf_softmax_pred, bf_softmax_acc, bf_softmax_top20_acc, bf_softmax_top100_acc = sess.run(
+              [model.softmax_pred, model.softmax_accuracy,
+               model.softmax_top20_accuracy, model.softmax_top100_accuracy, ],
+              {model.heads: bf_head, model.relations: relations, model.tails: bf_tail, model.is_forward: False})
+
+            test_head, test_relation, test_tail = sess.run([test_head_batch, test_r_batch, test_t_batch])
+            test_loss, test_softmax_loss = sess.run([test_model.loss, test_model.softmax_loss, ],
+                                                    {test_model.heads: test_head, test_model.relations: test_relation,
+                                                     test_model.tails: test_tail, test_model.is_forward: True})
+            test_softmax_pred, test_softmax_acc, test_softmax_top20_acc, test_softmax_top100_acc = sess.run(
+              [test_model.softmax_pred, test_model.softmax_accuracy,
+               test_model.softmax_top20_accuracy, test_model.softmax_top100_accuracy, ],
+              {test_model.heads: test_head, test_model.relations: test_relation, test_model.tails: test_tail,
+               test_model.is_forward: True})
 
             print('==============[%d] %s %.4f %.4f\t %.4f %.4f\t %.4f %.4f==============' % (
               step, time.strftime('[%m%d-%H%M]', time.localtime(time.time())),
